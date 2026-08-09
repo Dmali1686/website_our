@@ -59,120 +59,15 @@ export function renderHomePage(): string {
             </div>
 
             <!-- Hero Visual (Dashboard Mockup) -->
-            <div class="hero-visual animate-scale-in delay-300" style="position: relative; width: 100%; height: 600px;">
+            <div class="hero-visual animate-scale-in delay-300" style="position: relative; width: 100%; height: 600px; display: flex; align-items: center; justify-content: center;">
               <!-- Background Shape -->
-              <div style="position: absolute; top: -5%; right: -10%; width: 120%; height: 110%; background: linear-gradient(135deg, rgba(var(--primary-rgb),0.05) 0%, rgba(var(--primary-rgb),0.0) 100%); border-radius: 40px; transform: rotate(-5deg); z-index: 0;"></div>
+              <div style="position: absolute; top: 0%; right: -10%; width: 120%; height: 100%; background: var(--surface-container-low); border-radius: 40px; z-index: 0;"></div>
               
-              <!-- Dashboard Window -->
-              <div class="dashboard-mockup" style="position: absolute; top: 10%; right: 5%; width: 90%; height: 80%; background: white; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.08); z-index: 1; overflow: hidden; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column;">
-                <!-- Window Header -->
-                <div style="height: 32px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 16px; gap: 6px;">
-                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></div>
-                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #eab308;"></div>
-                  <div style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e;"></div>
-                </div>
-                <!-- Dashboard Content -->
-                <div style="flex: 1; padding: 24px; display: flex; gap: 24px;">
-                  <!-- Sidebar -->
-                  <div style="width: 48px; display: flex; flex-direction: column; gap: 16px; align-items: center;">
-                    <div style="width: 32px; height: 32px; background: var(--primary); border-radius: 8px; color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 24px;">C</div>
-                    <div style="width: 24px; height: 6px; background: #cbd5e1; border-radius: 3px;"></div>
-                    <div style="width: 24px; height: 6px; background: #cbd5e1; border-radius: 3px;"></div>
-                    <div style="width: 24px; height: 6px; background: #cbd5e1; border-radius: 3px;"></div>
-                    <div style="width: 24px; height: 6px; background: #cbd5e1; border-radius: 3px;"></div>
-                    <div style="width: 24px; height: 6px; background: #cbd5e1; border-radius: 3px;"></div>
-                  </div>
-                  <!-- Main Area -->
-                  <div style="flex: 1; display: flex; flex-direction: column; gap: 24px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                      <div style="font-weight: 600; font-size: 1rem; color: var(--on-surface);">Dashboard</div>
-                      <div style="display: flex; gap: 8px;">
-                        <div style="width: 24px; height: 24px; border-radius: 50%; background: #e2e8f0;"></div>
-                        <div style="width: 24px; height: 24px; border-radius: 50%; background: #e2e8f0;"></div>
-                      </div>
-                    </div>
-                    <!-- Cards Row -->
-                    <div style="display: flex; gap: 16px;">
-                      <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
-                        <div style="font-size: 0.75rem; color: var(--on-surface-variant); margin-bottom: 8px;">Total Projects</div>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--on-surface); margin-bottom: 12px;">50+</div>
-                        <!-- Simple SVG line chart -->
-                        <svg viewBox="0 0 100 30" style="width: 100%; height: 30px; overflow: visible;">
-                          <path d="M0,20 Q10,25 20,15 T40,25 T60,10 T80,20 T100,5" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                          <path d="M0,20 Q10,25 20,15 T40,25 T60,10 T80,20 T100,5 L100,30 L0,30 Z" fill="rgba(var(--primary-rgb), 0.1)" stroke="none"/>
-                        </svg>
-                      </div>
-                      <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
-                        <div style="font-size: 0.75rem; color: var(--on-surface-variant); margin-bottom: 8px;">Performance</div>
-                        <div style="font-size: 1.5rem; font-weight: 700; color: var(--on-surface); margin-bottom: 12px;">+28%</div>
-                        <svg viewBox="0 0 100 30" style="width: 100%; height: 30px; overflow: visible;">
-                          <path d="M0,25 Q15,10 30,20 T60,15 T100,0" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                          <path d="M0,25 Q15,10 30,20 T60,15 T100,0 L100,30 L0,30 Z" fill="rgba(34, 197, 94, 0.1)" stroke="none"/>
-                        </svg>
-                      </div>
-                    </div>
-                    <!-- Bottom Row -->
-                    <div style="display: flex; gap: 16px; flex: 1;">
-                      <div style="flex: 1.5; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
-                        <div style="font-size: 0.75rem; color: var(--on-surface-variant); margin-bottom: 16px;">Recent Activity</div>
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                          <div style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary);"></div>
-                          <div style="height: 6px; background: #cbd5e1; border-radius: 3px; flex: 1;"></div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                          <div style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e;"></div>
-                          <div style="height: 6px; background: #cbd5e1; border-radius: 3px; width: 60%;"></div>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 12px;">
-                          <div style="width: 8px; height: 8px; border-radius: 50%; background: #3b82f6;"></div>
-                          <div style="height: 6px; background: #cbd5e1; border-radius: 3px; width: 80%;"></div>
-                        </div>
-                      </div>
-                      <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        <div style="font-size: 0.75rem; color: var(--on-surface-variant); margin-bottom: 12px; align-self: flex-start;">Top Services</div>
-                        <div style="width: 60px; height: 60px; border-radius: 50%; border: 12px solid var(--primary); border-top-color: #cbd5e1; transform: rotate(-45deg);"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mobile Phone Mockup (Overlapping) -->
-              <div class="mobile-mockup animate-slide-up delay-500" style="position: absolute; bottom: 0; right: 0; width: 220px; height: 440px; background: white; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.15), inset 0 0 0 8px #0f172a; z-index: 2; overflow: hidden; display: flex; flex-direction: column;">
-                <!-- Notch -->
-                <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 20px; background: #0f172a; border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; z-index: 10;"></div>
-                
-                <div style="flex: 1; padding: 32px 16px 16px 16px; background: #f8fafc; display: flex; flex-direction: column; gap: 16px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="material-symbols-outlined" style="font-size: 20px;">menu</span>
-                    <div style="font-size: 0.75rem; font-weight: 600;">Dashboard</div>
-                    <div style="width: 20px;"></div>
-                  </div>
-                  
-                  <div style="background: var(--primary); border-radius: 12px; padding: 16px; color: white;">
-                    <div style="font-size: 0.65rem; opacity: 0.8; margin-bottom: 4px;">Active Projects</div>
-                    <div style="font-size: 1.5rem; font-weight: 700;">24</div>
-                  </div>
-                  
-                  <div style="background: white; border-radius: 12px; padding: 16px; border: 1px solid #e2e8f0; flex: 1;">
-                    <div style="font-size: 0.65rem; color: var(--on-surface-variant); margin-bottom: 4px;">Growth</div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: #22c55e; margin-bottom: 12px;">+18%</div>
-                    <svg viewBox="0 0 100 40" style="width: 100%; height: 40px; overflow: visible;">
-                      <path d="M0,35 Q20,20 40,30 T80,10 L100,0" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    
-                    <div style="font-size: 0.65rem; color: var(--on-surface-variant); margin-top: 16px; margin-bottom: 8px;">Tasks</div>
-                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                      <div style="width: 12px; height: 12px; background: var(--primary); border-radius: 3px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 10px; color: white;">check</span></div>
-                      <div style="height: 6px; background: #e2e8f0; border-radius: 3px; flex: 1;"></div>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                      <div style="width: 12px; height: 12px; background: var(--primary); border-radius: 3px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 10px; color: white;">check</span></div>
-                      <div style="height: 6px; background: #e2e8f0; border-radius: 3px; width: 60%;"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <!-- Desktop Mockup -->
+              <img src="/images/hero-desktop.png" alt="Desktop Dashboard Mockup" style="position: absolute; top: 5%; right: 0; width: 95%; max-width: 600px; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.12); z-index: 1; object-fit: contain;" />
+              
+              <!-- Mobile Mockup -->
+              <img src="/images/hero-mobile.png" alt="Mobile App Mockup" style="position: absolute; bottom: -5%; right: -5%; width: 240px; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); z-index: 2; object-fit: contain;" />
             </div>
             
           </div>
