@@ -62,14 +62,10 @@ export function renderAboutPage(): string {
         <div class="container max-w-5xl">
           <div class="abt-leader-block animate-fade-in-up delay-200">
             <div class="abt-leader-image">
-              <!-- Placeholder for team image. User can replace this src with their own team image -->
-              <div class="abt-image-placeholder">
-                <span class="material-symbols-outlined">image</span>
-                <span>Team Image</span>
-              </div>
+              <img src="/images/founder.png" alt="Raj Bhandari - Founder & CEO" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="abt-leader-info">
-              <h3 class="font-headline-lg">Arjun Mehta</h3>
+              <h3 class="font-headline-lg">Raj Bhandari</h3>
               <div class="abt-leader-role">Founder & CEO</div>
               
               <div class="abt-quote">
@@ -77,16 +73,22 @@ export function renderAboutPage(): string {
               </div>
               
               <p class="abt-leader-bio">
-                With over 15 years of experience in enterprise architecture and distributed systems, Arjun founded Cresenix Solutions to bridge the gap between theoretical AI capabilities and practical, scalable business applications. His vision drives our commitment to uncompromising quality and strategic innovation.
+                With a deep background in enterprise architecture and distributed systems, Raj founded Cresenix Solutions to bridge the gap between theoretical AI capabilities and practical, scalable business applications. His vision drives our commitment to uncompromising quality and strategic innovation.
               </p>
               
               <div class="abt-leader-social">
+                <a href="tel:+917387792415" class="abt-social-btn" aria-label="Phone" title="+91 73877 92415">
+                  <span class="material-symbols-outlined" style="font-size:20px;">call</span>
+                </a>
+                <a href="https://wa.me/917387792415" class="abt-social-btn" aria-label="WhatsApp">
+                  <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
+                </a>
                 <a href="#" class="abt-social-btn" aria-label="LinkedIn">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </a>
-                <a href="mailto:arjun@cresenix.com" class="abt-social-btn" aria-label="Email">
+                <a href="mailto:raj@cresenix.com" class="abt-social-btn" aria-label="Email">
                   <span class="material-symbols-outlined" style="font-size:20px;">mail</span>
                 </a>
               </div>

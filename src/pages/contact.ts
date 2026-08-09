@@ -42,7 +42,7 @@ export function renderContactPage(): string {
                 </div>
                 <div class="info-content">
                   <span class="info-label">PHONE</span>
-                  <span class="info-value">+1 (555) 123-4567</span>
+                  <span class="info-value">+91 73877 92415</span>
                 </div>
               </div>
               <div class="contact-info-item">
@@ -66,7 +66,7 @@ export function renderContactPage(): string {
 
             <!-- Form Card -->
             <div class="contact-form-card animate-fade-in-up delay-200">
-              <form id="contact-form" class="form-grid" onsubmit="return false;">
+              <form id="contact-form" class="form-grid">
                 <div class="form-group">
                   <label class="form-label" for="fullName">FULL NAME</label>
                   <input class="form-input" type="text" id="fullName" placeholder="John Doe" required />

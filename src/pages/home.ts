@@ -13,7 +13,7 @@ export function renderHomePage(): string {
       <!-- Hero Section -->
       <main class="hero bg-mesh" style="padding-top: 140px; padding-bottom: 80px;">
         <div class="container">
-          <div class="hero-grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem;">
+          <div class="hero-grid" style="align-items: center;">
             
             <!-- Hero Content -->
             <div class="hero-content" style="max-width: 600px;">
@@ -21,7 +21,7 @@ export function renderHomePage(): string {
                 <span class="badge-dot" style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary);"></span>
                 <span>WE BUILD DIGITAL SOLUTIONS THAT DRIVE GROWTH</span>
               </div>
-              <h1 class="hero-title animate-fade-in-up delay-100" style="font-family: var(--font-display); font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--on-background);">
+              <h1 class="hero-title animate-fade-in-up delay-100" style="font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--on-background);">
                 We Build. You Grow.<br/>
                 <span style="color: var(--primary);">Simple. Scalable. Smart.</span>
               </h1>
@@ -38,7 +38,7 @@ export function renderHomePage(): string {
               </div>
               
               <!-- Service Pills -->
-              <div class="hero-service-pills animate-fade-in-up delay-400" style="display: flex; gap: 12px; flex-wrap: nowrap;">
+              <div class="hero-service-pills animate-fade-in-up delay-400" style="display: flex; gap: 12px; flex-wrap: wrap;">
                 <div class="service-pill" style="display: flex; align-items: center; gap: 8px; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); font-size: 0.8rem; font-weight: 600; color: var(--on-surface); white-space: nowrap;">
                   <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); width: 28px; height: 28px; min-width: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 16px;">code</span></div>
                   Web<br/>Development
@@ -59,7 +59,7 @@ export function renderHomePage(): string {
             </div>
 
             <!-- Hero Visual (Dashboard Mockup) -->
-            <div class="hero-visual animate-scale-in delay-300" style="position: relative; width: 100%; height: 600px; display: flex; align-items: center; justify-content: center;">
+            <div class="hero-visual animate-scale-in delay-300" style="position: relative; width: 100%; min-height: 400px; display: flex; align-items: center; justify-content: center; margin-top: 40px;">
               <!-- Background Shape -->
               <div style="position: absolute; top: 0%; right: -10%; width: 120%; height: 100%; background: var(--surface-container-low); border-radius: 40px; z-index: 0;"></div>
               
