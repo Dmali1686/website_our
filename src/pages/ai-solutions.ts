@@ -44,7 +44,7 @@ export function renderAISolutionsPage(): string {
                 NEXT-GEN AI
               </span>
               <h1 class="hero-title animate-fade-in-up delay-100" style="font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--on-background); margin-bottom: 24px;">
-                AI-Powered Solutions for the <span class="text-gradient-primary">Modern Enterprise.</span>
+                AI Solutions — Chatbots, Voice Agents & <span class="text-gradient-primary">Intelligent Automation</span>
               </h1>
               <p class="hero-subtitle animate-fade-in-up delay-200">
                 Transform your operations with state-of-the-art artificial intelligence. From predictive analytics to intelligent workflow automation, we build systems that scale.

@@ -14,7 +14,7 @@ export function renderContactPage(): string {
       <div class="contact-header">
         <div class="container">
           <h1 class="font-display-lg animate-fade-in-up">
-            Let's build the <span class="text-gradient-primary">future together.</span>
+            Contact Us — Book a <span class="text-gradient-primary">Free Consultation</span>
           </h1>
           <p class="animate-fade-in-up delay-100">
             Reach out to our team of experts to discuss how Cresenix Solutions can accelerate your digital transformation.

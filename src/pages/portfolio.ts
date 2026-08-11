@@ -162,7 +162,7 @@ export function renderPortfolioPage(): string {
       <section class="portfolio-hero" style="padding-top: 140px; padding-bottom: 80px;">
         <div class="container">
           <h1 class="animate-fade-in-up" style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--on-background); margin-bottom: 24px;">
-            Engineering <br/> <span class="text-gradient-primary">Digital Excellence</span>
+            Our Work — <br/> <span class="text-gradient-primary">Software & AI Case Studies</span>
           </h1>
           <p class="animate-fade-in-up delay-100" style="font-size: 1.15rem; color: #475569; line-height: 1.7; max-width: 650px; margin-bottom: 40px; font-weight: 500;">
             Explore our portfolio of high-performance software, robust ERP systems, and intuitive learning platforms designed to drive business transformation across industries.

@@ -22,8 +22,8 @@ export function renderHomePage(): string {
                 <span>WE BUILD DIGITAL SOLUTIONS THAT DRIVE GROWTH</span>
               </div>
               <h1 class="font-display-lg animate-fade-in-up delay-100" style="margin-bottom: 24px; color: var(--on-background);">
-                Architecting your <br/>
-                <span class="text-gradient-primary">digital future.</span>
+                Custom Software, AI & <br/>
+                <span class="text-gradient-primary">App Development Company</span>
               </h1>
 
               <!-- Trust Strip -->
@@ -88,10 +88,10 @@ export function renderHomePage(): string {
               <div style="position: absolute; top: 0%; right: -10%; width: 110%; height: 95%; background: var(--surface-container-low); border-radius: 40px; z-index: 0;"></div>
               
               <!-- Desktop Mockup -->
-              <img src="/images/hero-desktop.png" alt="Desktop Dashboard Mockup" style="position: absolute; top: 5%; right: 5%; width: 85%; max-width: 600px; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.12); z-index: 1; object-fit: contain;" />
+              <img src="/images/hero-desktop.png" alt="Cresenix Solutions custom software dashboard for client analytics and reporting" style="position: absolute; top: 5%; right: 5%; width: 85%; max-width: 600px; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.12); z-index: 1; object-fit: contain;" />
               
               <!-- Mobile Mockup -->
-              <img src="/images/hero-mobile.png" alt="Mobile App Mockup" style="position: absolute; bottom: 0; right: 0; width: 35%; max-width: 240px; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); z-index: 2; object-fit: contain;" />
+              <img src="/images/hero-mobile.png" alt="Cresenix Solutions mobile application development showcase" style="position: absolute; bottom: 0; right: 0; width: 35%; max-width: 240px; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); z-index: 2; object-fit: contain;" />
             </div>
             
           </div>

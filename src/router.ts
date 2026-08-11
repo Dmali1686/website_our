@@ -8,6 +8,7 @@ import { setActiveNavId, getActiveNavId } from './components/navbar';
 export interface Route {
   path: string;
   title: string;
+  description?: string;
   render: () => string;
   onMount?: () => void;
 }
@@ -42,6 +43,17 @@ function matchRoute(path: string): Route | undefined {
   return routes.find(r => r.path === path);
 }
 
+/** Update the meta description tag dynamically for SPA SEO */
+function updateMetaDescription(description: string): void {
+  let meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'description';
+    document.head.appendChild(meta);
+  }
+  meta.content = description;
+}
+
 /** Render the current route into #app */
 function renderRoute(): void {
   const path = getHashPath();
@@ -74,7 +86,12 @@ function performRender(route: Route | undefined, appEl: HTMLElement, path: strin
 
   if (route) {
     appEl.innerHTML = route.render();
-    document.title = `${route.title} — Cresenix Solutions`;
+    document.title = route.title;
+    
+    // Update meta description for SEO
+    if (route.description) {
+      updateMetaDescription(route.description);
+    }
     
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });

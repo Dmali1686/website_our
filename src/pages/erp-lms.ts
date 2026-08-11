@@ -20,7 +20,7 @@ export function renderERPLMSPage(): string {
                 <span style="color:var(--accent);">ENTERPRISE SOLUTIONS</span>
               </div>
               <h1 class="hero-title animate-fade-in-up delay-100">
-                Enterprise-Grade <span class="text-gradient">ERP &amp; LMS</span> Solutions
+                Custom <span class="text-gradient">ERP Software &amp; LMS</span> Development
               </h1>
               <p class="hero-subtitle animate-fade-in-up delay-200">
                 Custom systems designed for operational excellence. Streamline HR, payroll, inventory management, and educational delivery with scalable, high-performance platforms.

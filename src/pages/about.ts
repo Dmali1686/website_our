@@ -122,7 +122,7 @@ export function renderAboutPage(): string {
         <div class="container max-w-5xl">
           <div class="abt-leader-block animate-fade-in-up delay-200">
             <div class="abt-leader-image animate-float">
-              <img src="/images/founder.png" alt="Raj Bhandari - Founder & CEO" style="width: 100%; height: 100%; object-fit: cover;" />
+              <img src="/images/founder.png" alt="Raj Bhandari — Founder and CEO of Cresenix Solutions LLP, AI and software consultancy" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="abt-leader-info">
               <h3 class="font-headline-lg">Raj Bhandari</h3>
