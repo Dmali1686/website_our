@@ -13,7 +13,9 @@ export function renderContactPage(): string {
       <!-- Contact Header -->
       <div class="contact-header">
         <div class="container">
-          <h1 class="animate-fade-in-up">Let's build the future together.</h1>
+          <h1 class="font-display-lg animate-fade-in-up">
+            Let's build the <span class="text-gradient-primary">future together.</span>
+          </h1>
           <p class="animate-fade-in-up delay-100">
             Reach out to our team of experts to discuss how Cresenix Solutions can accelerate your digital transformation.
           </p>
@@ -21,7 +23,7 @@ export function renderContactPage(): string {
       </div>
 
       <!-- Contact Grid -->
-      <section style="padding-bottom:var(--section-gap-desktop);">
+      <section style="padding-bottom: 24px;">
         <div class="container">
           <div class="contact-grid">
             <!-- Info Card -->
@@ -98,7 +100,7 @@ export function renderContactPage(): string {
                 </div>
                 <div class="form-group full-width">
                   <label class="form-label" for="message">MESSAGE</label>
-                  <textarea class="form-textarea" id="message" placeholder="Tell us about your project..." rows="5"></textarea>
+                  <textarea class="form-textarea" id="message" placeholder="Tell us about your project..." rows="3"></textarea>
                 </div>
                 <div class="form-group full-width">
                   <button type="submit" class="form-submit">
@@ -115,4 +117,64 @@ export function renderContactPage(): string {
       ${renderFooter()}
     </div>
   `;
+}
+
+export function initContactForm(): void {
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('.form-submit') as HTMLButtonElement;
+    const originalBtnHTML = submitBtn.innerHTML;
+    
+    // Set loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending... <span class="material-symbols-outlined" style="font-size:20px; animation: spin 1s linear infinite;">sync</span>';
+
+    try {
+      const payload = {
+        fullName: (document.getElementById('fullName') as HTMLInputElement).value,
+        company: (document.getElementById('company') as HTMLInputElement).value || null,
+        email: (document.getElementById('email') as HTMLInputElement).value,
+        phone: (document.getElementById('phone') as HTMLInputElement).value || null,
+        service: (document.getElementById('service') as HTMLSelectElement).value,
+        message: (document.getElementById('message') as HTMLTextAreaElement).value
+      };
+
+      const response = await fetch('http://localhost:8000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      // Success
+      submitBtn.innerHTML = 'Message Sent! <span class="material-symbols-outlined" style="font-size:20px;">check</span>';
+      submitBtn.style.backgroundColor = '#10b981'; // green
+      form.reset();
+      
+      // Reset button after 3s
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        submitBtn.style.backgroundColor = '';
+      }, 3000);
+
+    } catch (err) {
+      console.error(err);
+      submitBtn.innerHTML = 'Error. Try Again.';
+      submitBtn.style.backgroundColor = '#ef4444'; // red
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        submitBtn.style.backgroundColor = '';
+      }, 3000);
+    }
+  });
 }

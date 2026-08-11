@@ -33,14 +33,14 @@ export function renderFooter(): string {
           </div>
           <div class="footer-column">
             <span class="footer-column-title">Company</span>
-            <a class="footer-link" href="#">About Us</a>
-            <a class="footer-link" href="#">Careers</a>
+            <a class="footer-link" data-route="/about" href="#/about">About Us</a>
+            <a class="footer-link" data-route="/careers" href="#/careers">Careers</a>
             <a class="footer-link" data-route="/contact" href="#/contact">Contact</a>
           </div>
           <div class="footer-column">
             <span class="footer-column-title">Legal</span>
-            <a class="footer-link" href="#">Privacy Policy</a>
-            <a class="footer-link" href="#">Terms of Service</a>
+            <a class="footer-link" data-route="/privacy" href="#/privacy">Privacy Policy</a>
+            <a class="footer-link" data-route="/terms" href="#/terms">Terms of Service</a>
           </div>
         </div>
       </div>

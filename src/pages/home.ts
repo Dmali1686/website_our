@@ -21,9 +21,9 @@ export function renderHomePage(): string {
                 <span class="badge-dot" style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary);"></span>
                 <span>WE BUILD DIGITAL SOLUTIONS THAT DRIVE GROWTH</span>
               </div>
-              <h1 class="hero-title animate-fade-in-up delay-100" style="font-weight: 800; line-height: 1.1; margin-bottom: 24px; color: var(--on-background);">
-                We Build. You Grow.<br/>
-                <span style="color: var(--primary);">Simple. Scalable. Smart.</span>
+              <h1 class="font-display-lg animate-fade-in-up delay-100" style="margin-bottom: 24px; color: var(--on-background);">
+                Architecting your <br/>
+                <span class="text-gradient-primary">digital future.</span>
               </h1>
 
               <!-- Trust Strip -->
@@ -810,10 +810,12 @@ export function renderHomePage(): string {
             
             <!-- Left: Copy + Calendly -->
             <div class="animate-fade-in-up">
-              <h2 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 16px; line-height: 1.15;">Ready to Turn Visitors<br/>Into <span style="color: var(--primary);">Paying Clients</span>?</h2>
+              <h2 class="font-display-lg animate-fade-in-up" style="color: white; margin-bottom: 16px;">
+                Ready to Turn Visitors<br/>Into <span class="text-gradient-primary">Paying Clients</span>?
+              </h2>
               <p style="font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 32px;">Book a free 30-minute strategy call. We'll review your current site, identify quick wins, and show you exactly how we'd improve conversions.</p>
               
-              <a href="https://calendly.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3);">
+              <a href="#" onclick="event.preventDefault(); window.Calendly && window.Calendly.initPopupWidget({url: 'https://calendly.com/cresenix'}); return false;" style="display: inline-flex; align-items: center; gap: 10px; background: var(--primary); color: white; padding: 16px 32px; border-radius: 12px; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3);">
                 <span class="material-symbols-outlined" style="font-size: 22px;">calendar_month</span>
                 Book a Free 30-Min Call
               </a>
@@ -867,4 +869,64 @@ export function renderHomePage(): string {
       ${renderFooter()}
     </div>
   `;
+}
+
+export function initHomeForm(): void {
+  const form = document.getElementById('final-cta-form') as HTMLFormElement;
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalBtnHTML = submitBtn.innerHTML;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending... <span class="material-symbols-outlined" style="font-size:20px; animation: spin 1s linear infinite;">sync</span>';
+
+    try {
+      const inputs = form.querySelectorAll('input');
+      const select = form.querySelector('select');
+      
+      const payload = {
+        fullName: inputs[0].value,
+        company: null,
+        email: inputs[1].value,
+        phone: null,
+        service: 'General Inquiry',
+        message: 'Budget Range: ' + (select?.value || 'Not specified')
+      };
+
+      const response = await fetch('http://localhost:8000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      submitBtn.innerHTML = 'Message Sent! <span class="material-symbols-outlined" style="font-size:20px;">check</span>';
+      submitBtn.style.backgroundColor = '#10b981';
+      form.reset();
+      
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        submitBtn.style.backgroundColor = '';
+      }, 3000);
+
+    } catch (err) {
+      console.error(err);
+      submitBtn.innerHTML = 'Error. Try Again.';
+      submitBtn.style.backgroundColor = '#ef4444';
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        submitBtn.style.backgroundColor = '';
+      }, 3000);
+    }
+  });
 }

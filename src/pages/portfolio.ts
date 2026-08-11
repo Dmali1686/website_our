@@ -159,15 +159,21 @@ export function renderPortfolioPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Portfolio Hero -->
-      <section class="portfolio-hero">
+      <section class="portfolio-hero" style="padding-top: 140px; padding-bottom: 80px;">
         <div class="container">
-          <h1 class="animate-fade-in-up">Engineering Digital<br/>Excellence</h1>
-          <p class="animate-fade-in-up delay-100">
+          <h1 class="animate-fade-in-up" style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--on-background); margin-bottom: 24px;">
+            Engineering <br/> <span class="text-gradient-primary">Digital Excellence</span>
+          </h1>
+          <p class="animate-fade-in-up delay-100" style="font-size: 1.15rem; color: #475569; line-height: 1.7; max-width: 650px; margin-bottom: 40px; font-weight: 500;">
             Explore our portfolio of high-performance software, robust ERP systems, and intuitive learning platforms designed to drive business transformation across industries.
           </p>
-          <div class="hero-chips animate-fade-in-up delay-200">
-            <span class="chip"><span class="material-symbols-outlined">check_circle</span> PROVEN RESULTS</span>
-            <span class="chip"><span class="material-symbols-outlined">check_circle</span> GLOBAL REACH</span>
+          <div class="hero-chips animate-fade-in-up delay-200" style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <span style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid #cbd5e1; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: #64748b; letter-spacing: 0.05em; text-transform: uppercase; background: white;">
+              <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary);">check_circle</span> PROVEN RESULTS
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border: 1px solid #cbd5e1; border-radius: 50px; font-size: 0.8rem; font-weight: 700; color: #64748b; letter-spacing: 0.05em; text-transform: uppercase; background: white;">
+              <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary);">check_circle</span> GLOBAL REACH
+            </span>
           </div>
         </div>
       </section>

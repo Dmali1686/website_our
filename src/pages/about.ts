@@ -16,7 +16,7 @@ export function renderAboutPage(): string {
         <div class="container text-center max-w-3xl mx-auto pt-24">
           <div class="abt-tag animate-fade-in-up">OUR VISION</div>
           <h1 class="font-display-lg mt-4 animate-fade-in-up delay-100">
-            Engineering the Future of<br/>Digital Intelligence
+            Empowering growth through <span class="text-gradient-primary">technology.</span>
           </h1>
           <p class="font-body-lg mt-6 text-on-surface-variant animate-fade-in-up delay-200">
             We empower enterprises to navigate the complexities of the modern digital landscape through scalable, high-performance software architecture and state-of-the-art artificial intelligence integration. Precision is our baseline.
@@ -35,16 +35,76 @@ export function renderAboutPage(): string {
         <div class="container">
           <div class="abt-journey-grid">
             <div class="abt-journey-title animate-fade-in-up">
-              <h2>The Cresenix Journey</h2>
-              <div class="abt-line"></div>
+              <h2 style="font-size: 2.8rem; letter-spacing: -0.04em;">The Cresenix Journey</h2>
+              <p style="font-size: 1.1rem; color: var(--on-surface-variant); margin-top: 8px; margin-bottom: 24px;">From Code to Intelligence. From Ideas to Impact.</p>
+              <div style="width: 48px; height: 4px; background: var(--primary); margin-bottom: 48px;"></div>
+              
+              <!-- Timeline -->
+              <div style="position: relative; padding-left: 56px; border-left: 2px solid var(--primary-container); margin-left: 28px;">
+                <!-- Stop 1 -->
+                <div style="position: relative; margin-bottom: 40px;">
+                  <div style="position: absolute; left: -85px; top: -4px; width: 56px; height: 56px; background: white; border: 2px solid var(--primary-container); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05);">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">rocket_launch</span>
+                  </div>
+                  <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">2022</div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--on-background); margin-bottom: 8px;">Our Beginning</h3>
+                  <p style="font-size: 0.95rem; color: var(--on-surface-variant); line-height: 1.6;">Started as a specialized development company focused on complex enterprise integrations.</p>
+                </div>
+                
+                <!-- Stop 2 -->
+                <div style="position: relative; margin-bottom: 40px;">
+                  <div style="position: absolute; left: -85px; top: -4px; width: 56px; height: 56px; background: white; border: 2px solid var(--primary-container); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05);">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">code</span>
+                  </div>
+                  <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">2023</div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--on-background); margin-bottom: 8px;">Expanding Solutions</h3>
+                  <p style="font-size: 0.95rem; color: var(--on-surface-variant); line-height: 1.6;">Delivered robust web, mobile and enterprise solutions that helped businesses scale.</p>
+                </div>
+                
+                <!-- Stop 3 -->
+                <div style="position: relative; margin-bottom: 40px;">
+                  <div style="position: absolute; left: -85px; top: -4px; width: 56px; height: 56px; background: white; border: 2px solid var(--primary-container); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05);">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">psychology</span>
+                  </div>
+                  <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">2024</div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--on-background); margin-bottom: 8px;">AI & Automation Era</h3>
+                  <p style="font-size: 0.95rem; color: var(--on-surface-variant); line-height: 1.6;">Integrated AI, machine learning and automation to build intelligent and data-driven systems.</p>
+                </div>
+                
+                <!-- Stop 4 -->
+                <div style="position: relative;">
+                  <div style="position: absolute; left: -85px; top: -4px; width: 56px; height: 56px; background: white; border: 2px solid var(--primary-container); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); box-shadow: 0 8px 16px rgba(0,0,0,0.05);">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">trending_up</span>
+                  </div>
+                  <div style="color: var(--primary); font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">2025+</div>
+                  <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--on-background); margin-bottom: 8px;">AI & Software Consultancy</h3>
+                  <p style="font-size: 0.95rem; color: var(--on-surface-variant); line-height: 1.6;">Evolved into a leading AI and software consultancy delivering measurable business impact.</p>
+                </div>
+              </div>
             </div>
+            
             <div class="abt-journey-content animate-fade-in-up delay-100">
-              <div class="abt-journey-card">
-                <p>
-                  What began as a specialized boutique development shop focused on complex enterprise integrations has rapidly evolved into a premier AI and software consultancy. We recognized early that the convergence of robust system architecture and machine learning would dictate the next era of business agility.
+              <div style="font-size: 1.05rem; line-height: 1.8; color: var(--on-surface);">
+                <p style="margin-bottom: 2.5rem;">
+                  What began as a specialized development company has evolved into a leading AI and software consultancy. We recognized early that strong system architecture combined with artificial intelligence is shaping the future of business.
                 </p>
-                <p class="mt-6">
-                  Today, Cresenix Solutions stands at the vanguard of this convergence. We don't just write code; we engineer scalable intelligence paradigms. From conceptualizing bespoke ERP systems to deploying localized LLMs for data-sensitive environments, our trajectory is defined by an unrelenting pursuit of technical excellence and measurable client impact.
+                
+                <!-- Accent Box matching Mockup -->
+                <div style="border-left: 4px solid var(--primary); padding: 32px; margin-bottom: 2.5rem; background: var(--primary-container); border-radius: 0 16px 16px 0; display: flex; gap: 24px; align-items: flex-start; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.08);">
+                  <div style="flex-shrink: 0; width: 48px; height: 48px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);">
+                     <span class="material-symbols-outlined" style="font-size: 24px;">lightbulb</span>
+                  </div>
+                  <div>
+                    <div style="color: var(--primary); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">What We Do</div>
+                    <h3 style="font-size: 1.75rem; font-weight: 800; color: var(--on-background); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em;">We turn ideas into scalable digital solutions.</h3>
+                    <p style="color: var(--on-surface); line-height: 1.7; font-size: 0.95rem;">
+                      We design custom software, enterprise applications, AI-powered products, and intelligent automation systems to solve your most complex challenges.
+                    </p>
+                  </div>
+                </div>
+                
+                <p style="color: var(--on-surface-variant);">
+                  From robust ERP platforms to secure LLMs, our work is driven by technical excellence and measurable outcomes. We don't just build software—we create solutions that help organizations operate smarter and faster.
                 </p>
               </div>
             </div>
@@ -61,7 +121,7 @@ export function renderAboutPage(): string {
         
         <div class="container max-w-5xl">
           <div class="abt-leader-block animate-fade-in-up delay-200">
-            <div class="abt-leader-image">
+            <div class="abt-leader-image animate-float">
               <img src="/images/founder.png" alt="Raj Bhandari - Founder & CEO" style="width: 100%; height: 100%; object-fit: cover;" />
             </div>
             <div class="abt-leader-info">
