@@ -42,6 +42,11 @@
   --inverse-surface: #213145;
   --inverse-on-surface: #eaf1ff;
 
+  /* Typography */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-headline: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
   /* Spacing */
   --base: 8px;
   --gutter: 24px;
@@ -2439,5 +2444,143 @@ h1, h2, h3, h4, h5, h6 {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   BLUEPRINT SECTIONS — Testimonials, Process, Pricing, FAQ, CTA
+   ============================================================ */
+
+/* --- Testimonial Cards --- */
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonial-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- Trust Badges --- */
+.trust-badges-row > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .trust-badges-row {
+    gap: 16px !important;
+  }
+  .trust-badges-row > div {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 140px;
+  }
+}
+
+/* --- Portfolio Showcase Cards --- */
+.portfolio-showcase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+}
+
+@media (max-width: 768px) {
+  .portfolio-showcase-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- Process Timeline --- */
+@media (max-width: 1024px) {
+  .process-timeline {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 32px !important;
+  }
+  .process-line {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* --- Pricing Cards --- */
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+}
+
+.pricing-featured:hover {
+  transform: scale(1.04) translateY(-4px) !important;
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px !important;
+  }
+  .pricing-featured {
+    transform: none !important;
+  }
+  .pricing-featured:hover {
+    transform: translateY(-4px) !important;
+  }
+}
+
+/* --- FAQ Accordion --- */
+.faq-item:hover {
+  border-color: rgba(var(--primary-rgb), 0.15);
+}
+
+.faq-item.faq-open {
+  border-color: rgba(var(--primary-rgb), 0.2);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.faq-item.faq-open .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-item.faq-open .faq-content {
+  max-height: 300px !important;
+}
+
+/* --- Final CTA Responsive --- */
+@media (max-width: 768px) {
+  .final-cta-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
+  .final-cta-grid h2 {
+    font-size: 2rem !important;
+  }
+}
+
+/* --- Hero Trust Strip Responsive --- */
+@media (max-width: 640px) {
+  .hero-trust-strip {
+    gap: 10px !important;
+  }
+  .hero-trust-strip > div:nth-child(even) {
+    display: none;
   }
 }
