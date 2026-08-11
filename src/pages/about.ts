@@ -112,7 +112,7 @@ export function renderAboutPage(): string {
                 <span class="material-symbols-outlined">lightbulb</span>
               </div>
               <h3>Innovation</h3>
-              <p>We don't follow trends; we anticipate them. We continuously explore frontier technologies to deliver solutions that provide a lasting competitive advantage.</p>
+              <p>We anticipate trends and explore frontier technologies to deliver solutions that provide a competitive advantage.</p>
             </div>
             
             <!-- Value 2 -->
@@ -121,7 +121,7 @@ export function renderAboutPage(): string {
                 <span class="material-symbols-outlined">verified_user</span>
               </div>
               <h3>Integrity</h3>
-              <p>Transparency and honesty form the bedrock of our client relationships. We engineer secure, compliant, and ethically sound AI and software systems.</p>
+              <p>Transparency is our bedrock. We engineer secure, compliant, and ethically sound AI and software systems.</p>
             </div>
             
             <!-- Value 3 -->
@@ -130,7 +130,7 @@ export function renderAboutPage(): string {
                 <span class="material-symbols-outlined">workspace_premium</span>
               </div>
               <h3>Excellence</h3>
-              <p>Mediocrity is unacceptable. We adhere to rigorous standards of code quality, architectural design, and project execution to ensure flawless delivery.</p>
+              <p>We adhere to rigorous standards of code quality and architectural design to ensure flawless delivery.</p>
             </div>
             
             <!-- Value 4 -->
@@ -139,7 +139,7 @@ export function renderAboutPage(): string {
                 <span class="material-symbols-outlined">groups</span>
               </div>
               <h3>Scalability</h3>
-              <p>We build for tomorrow. Every solution is architected with a forward-looking perspective, ensuring it can handle exponential growth gracefully.</p>
+              <p>Every solution is architected with a forward-looking perspective to handle exponential growth gracefully.</p>
             </div>
           </div>
         </div>

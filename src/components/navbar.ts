@@ -105,13 +105,33 @@ export function renderNavbar(): string {
   activatedRoutes.clear();
 
   const mobileLinksHTML = NAV_LINKS.map(link => {
+    if (link.dropdown) {
+      const childrenHtml = link.dropdown.map(d => {
+        let isChildActive = false;
+        if (resolvedId) {
+          isChildActive = d.id === resolvedId;
+        } else if (d.path === currentPath && !activatedRoutes.has(d.path)) {
+          isChildActive = true;
+          activatedRoutes.add(d.path);
+        }
+        return `<a class="nav-link${isChildActive ? ' active' : ''}" data-route="${d.path}" data-nav-id="${d.id}" href="#${d.path}" style="padding-left: 32px; font-size: 0.95rem; font-weight: 500;">${d.label}</a>`;
+      }).join('');
+      
+      return `
+        <div style="padding: 12px 16px 4px 16px; font-weight: 700; color: var(--on-surface-variant); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 8px;">
+          ${link.label}
+        </div>
+        ${childrenHtml}
+      `;
+    }
+
     let isActive = false;
     if (resolvedId) {
       isActive = link.id === resolvedId;
     } else {
-      if (link.path === currentPath && !activatedRoutes.has(link.path)) {
+      if (link.path === currentPath && !activatedRoutes.has(link.path!)) {
         isActive = true;
-        activatedRoutes.add(link.path);
+        activatedRoutes.add(link.path!);
       }
     }
     return `<a class="nav-link${isActive ? ' active' : ''}" data-route="${link.path}" data-nav-id="${link.id}" href="#${link.path}">${link.label}</a>`;
