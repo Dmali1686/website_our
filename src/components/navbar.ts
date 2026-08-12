@@ -143,8 +143,8 @@ export function renderNavbar(): string {
           ${linksHTML}
         </nav>
         <div class="nav-actions">
-          <a class="btn-primary nav-start-btn" data-route="/contact" href="#/contact">
-            Start Project <span class="material-symbols-outlined ml-1" style="font-size:18px;">arrow_forward</span>
+          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: #facc15; color: #111827; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, background 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.background='#eab308';" onmouseout="this.style.transform='scale(1)'; this.style.background='#facc15';">
+            Contact Us
           </a>
         </div>
         <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">

@@ -466,39 +466,41 @@ h6 {
 /* --- Navigation --- */
 .main-nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1200px;
     z-index: 50;
-    height: 64px;
+    height: 70px;
     display: flex;
     align-items: center;
-    background: rgba(248, 249, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(198, 198, 205, 0.1);
-    box-shadow: var(--shadow-nav);
+    background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     transition: all var(--transition);
 }
 
 .main-nav.scrolled {
-    background: rgba(248, 249, 255, 0.92);
-    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    top: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .nav-inner {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--margin-mobile);
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 16px 0 24px;
 }
 
 @media (min-width: 768px) {
     .nav-inner {
-        padding: 0 var(--gutter);
+        padding: 0 12px 0 32px;
     }
 }
 
@@ -2161,13 +2163,13 @@ h6 {
 /* --- Contact Page Header --- */
 .contact-header {
     text-align: center;
-    padding-top: 80px;
+    padding-top: 150px;
     padding-bottom: 24px;
 }
 
 @media (min-width: 768px) {
     .contact-header {
-        padding-top: 80px;
+        padding-top: 150px;
         padding-bottom: 32px;
     }
 }
