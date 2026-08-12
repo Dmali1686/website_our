@@ -10,378 +10,458 @@ export function renderHomePage(): string {
   return `
     ${renderNavbar()}
     <div class="page-wrapper">
-      <!-- Hero Section -->
-      <main class="hero bg-mesh" style="padding-top: 140px; padding-bottom: 120px;">
-        <div class="container">
-          <div class="hero-grid" style="align-items: center;">
+      <!-- Hero Section (AI Dark Theme) -->
+      <main class="ai-hero-full" style="padding-top: 80px; background-size: cover; background-position: center;">
+        <!-- Neural Network Animated Background -->
+        <div class="neural-bg"><canvas id="neural-canvas"></canvas></div>
+        <!-- Right Side Person Overlay -->
+        <div class="robot-box"></div>
+        
+        <div class="container" style="position: relative; z-index: 5; padding-right:550px">
             
-            <!-- Hero Content -->
-            <div class="hero-content" style="max-width: 600px;">
-              <div class="hero-badge animate-fade-in-up" style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); padding: 8px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
-                <span class="badge-dot" style="width: 8px; height: 8px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary);"></span>
+            <!-- Hero Content (Left Side) -->
+            <div class="hero-content" style="max-width: 650px;">
+              <div class="hero-badge animate-fade-in-up" style="padding: 10px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 2px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;">
+                <span class="badge-dot" style="width: 8px; height: 8px; border-radius: 50%;"></span>
                 <span>WE BUILD DIGITAL SOLUTIONS THAT DRIVE GROWTH</span>
               </div>
-              <h1 class="font-display-lg animate-fade-in-up delay-100" style="margin-bottom: 24px; color: var(--on-background);">
+              <h1 class="animate-fade-in-up delay-100" style="margin-bottom: 24px; font-weight: 700; font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 4.5vw, 4rem);">
                 Custom Software, AI & <br/>
-                <span class="text-gradient-primary">App Development Company</span>
+                <span class="text-gradient-hero">App Development Company</span>
               </h1>
 
               <!-- Trust Strip -->
               <div class="hero-trust-strip animate-fade-in-up delay-150" style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; align-items: center;">
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--on-surface);">
-                  <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary);">verified</span>
+                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
+                  <span class="material-symbols-outlined" style="font-size: 18px; color: #3b82f6;">verified</span>
                   <span>15+ Projects Delivered</span>
                 </div>
-                <div style="width: 1px; height: 16px; background: rgba(0,0,0,0.15);"></div>
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--on-surface);">
+                <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15);"></div>
+                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
                   <span class="material-symbols-outlined" style="font-size: 18px; color: #f59e0b;">star</span>
                   <span>4.9★ Client Rating</span>
                 </div>
-                <div style="width: 1px; height: 16px; background: rgba(0,0,0,0.15);"></div>
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--on-surface);">
-                  <span class="material-symbols-outlined" style="font-size: 18px; color: #22c55e;">speed</span>
+                <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15);"></div>
+                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
+                  <span class="material-symbols-outlined" style="font-size: 18px; color: #00d4ff;">speed</span>
                   <span>Agile Delivery</span>
                 </div>
-                <div style="width: 1px; height: 16px; background: rgba(0,0,0,0.15);"></div>
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600; color: var(--on-surface);">
+                <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15);"></div>
+                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
                   <span class="material-symbols-outlined" style="font-size: 18px; color: #8b5cf6;">support_agent</span>
                   <span>24/7 Support</span>
                 </div>
               </div>
 
-              <p class="hero-subtitle animate-fade-in-up delay-200" style="font-size: 1.125rem; color: var(--on-surface-variant); line-height: 1.6; margin-bottom: 32px;">
+              <p class="hero-subtitle animate-fade-in-up delay-200" style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 36px; font-weight: 400;">
                 Web Development, Mobile Apps, AI Solutions & Digital Marketing to help your business grow faster and smarter.
               </p>
               <div class="hero-actions animate-fade-in-up delay-300" style="display: flex; gap: 16px; margin-bottom: 48px;">
                 <a class="btn-primary" data-route="/contact" href="#/contact" style="padding: 14px 28px; font-weight: 600;">
                   Book a Free Consultation <span class="material-symbols-outlined ml-2" style="font-size:20px;">arrow_forward</span>
                 </a>
-                <a class="btn-outline" data-route="/contact" href="#/contact" style="padding: 14px 28px; font-weight: 600; color: var(--primary); border: 1px solid rgba(var(--primary-rgb), 0.2); background: transparent;">
+                <a class="btn-outline" data-route="/contact" href="#/contact" style="padding: 14px 28px; font-weight: 600;">
                   Get a Free Website Audit <span class="material-symbols-outlined ml-2" style="font-size:20px;">arrow_forward</span>
                 </a>
               </div>
               
               <!-- Service Pills -->
-              <div class="hero-service-pills animate-fade-in-up delay-400" style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <div class="service-pill" style="display: flex; align-items: center; gap: 8px; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); font-size: 0.8rem; font-weight: 600; color: var(--on-surface); white-space: nowrap;">
-                  <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); width: 28px; height: 28px; min-width: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 16px;">code</span></div>
-                  Web<br/>Development
-                </div>
-                <div class="service-pill" style="display: flex; align-items: center; gap: 8px; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); font-size: 0.8rem; font-weight: 600; color: var(--on-surface); white-space: nowrap;">
-                  <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); width: 28px; height: 28px; min-width: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 16px;">smartphone</span></div>
-                  Mobile<br/>Apps
-                </div>
-                <div class="service-pill" style="display: flex; align-items: center; gap: 8px; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); font-size: 0.8rem; font-weight: 600; color: var(--on-surface); white-space: nowrap;">
-                  <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); width: 28px; height: 28px; min-width: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 16px;">auto_awesome</span></div>
-                  AI<br/>Solutions
-                </div>
-                <div class="service-pill" style="display: flex; align-items: center; gap: 8px; background: white; padding: 10px 16px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); font-size: 0.8rem; font-weight: 600; color: var(--on-surface); white-space: nowrap;">
-                  <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); width: 28px; height: 28px; min-width: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center;"><span class="material-symbols-outlined" style="font-size: 16px;">campaign</span></div>
-                  Performance<br/>Marketing
-                </div>
+              
+     
+            </div>
+            
+        </div>
+      </main>      <!-- Trusted By Section -->
+      <section class="trusted-by-section" style="padding: 60px 0; background: #fafafa; border-top: 1px solid rgba(0,0,0,0.05); overflow: hidden;">
+        <div class="container">
+          
+          <!-- Stats Cards -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
+              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">ads_click</span>
+              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">1000+</div>
+              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Projects Delivered</div>
+            </div>
+            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
+              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">military_tech</span>
+              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">25+</div>
+              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Years Experience</div>
+            </div>
+            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
+              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">groups</span>
+              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">97%</div>
+              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Client Retention</div>
+            </div>
+            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
+              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">bolt</span>
+              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">100%</div>
+              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Global Reach</div>
+            </div>
+          </div>
+
+          <!-- Trusted By Header -->
+          <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 40px; gap: 16px;">
+            <div style="height: 2px; background: #e5e7eb; flex: 1; max-width: 250px; position: relative;">
+              <div style="position: absolute; right: 0; top: 0; height: 100%; width: 50px; background: linear-gradient(90deg, transparent, var(--primary));"></div>
+            </div>
+            <div style="font-size: 1rem; font-weight: 800; color: #374151; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap;">Trusted by World's Best</div>
+            <div style="height: 2px; background: #e5e7eb; flex: 1; max-width: 250px; position: relative;">
+               <div style="position: absolute; left: 0; top: 0; height: 100%; width: 50px; background: linear-gradient(90deg, var(--primary), transparent);"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marquee Logos Row -->
+        <div class="marquee-container" style="margin-bottom: 40px;">
+          <div class="marquee-track">
+            
+            <!-- First Set -->
+            <div class="marquee-set">
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #dc2626; letter-spacing: -0.05em; display: flex; align-items: center; gap: 4px;">
+                HONDA
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; color: #2563eb; letter-spacing: -0.05em; display: flex; align-items: center; gap: 4px;">
+                <span class="material-symbols-outlined" style="font-size: 24px; color: #2563eb;">all_inclusive</span> PHILIPS
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; align-items: center;">
+                <span style="color: #c026d3;">I</span>DRIM<span style="font-size: 1rem; position: relative; top: -5px; color: #0891b2;">CO</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; flex-direction: column; line-height: 1; justify-content: center;">
+                <span>HITACHI</span>
+                <span style="font-size: 0.6rem; font-weight: 400; letter-spacing: 0;">Inspire the Next</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; flex-direction: column; line-height: 1; justify-content: center;">
+                <span>Boston</span>
+                <span>Scientific</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #1e3a8a; letter-spacing: -0.05em; font-style: italic; display: flex; align-items: center; gap: 8px;">
+                TVS <span class="material-symbols-outlined" style="color: #dc2626; font-size: 28px;">agriculture</span>
               </div>
             </div>
 
-            <!-- Hero Visual (Dashboard Mockup) -->
-            <div class="hero-visual animate-scale-in delay-300" style="position: relative; width: 100%; aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center;">
-              <!-- Background Shape -->
-              <div style="position: absolute; top: 0%; right: -10%; width: 110%; height: 95%; background: var(--surface-container-low); border-radius: 40px; z-index: 0;"></div>
+            <!-- Duplicate Set for Seamless Loop -->
+            <div class="marquee-set">
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #dc2626; letter-spacing: -0.05em; display: flex; align-items: center; gap: 4px;">
+                HONDA
+              </div>
               
-              <!-- Desktop Mockup -->
-              <img src="/images/hero-desktop.png" alt="Cresenix Solutions custom software dashboard for client analytics and reporting" style="position: absolute; top: 5%; right: 5%; width: 85%; max-width: 600px; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.12); z-index: 1; object-fit: contain;" />
+              <div style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; color: #2563eb; letter-spacing: -0.05em; display: flex; align-items: center; gap: 4px;">
+                <span class="material-symbols-outlined" style="font-size: 24px; color: #2563eb;">all_inclusive</span> PHILIPS
+              </div>
               
-              <!-- Mobile Mockup -->
-              <img src="/images/hero-mobile.png" alt="Cresenix Solutions mobile application development showcase" style="position: absolute; bottom: 0; right: 0; width: 35%; max-width: 240px; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,0,0,0.2); z-index: 2; object-fit: contain;" />
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; align-items: center;">
+                <span style="color: #c026d3;">I</span>DRIM<span style="font-size: 1rem; position: relative; top: -5px; color: #0891b2;">CO</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; flex-direction: column; line-height: 1; justify-content: center;">
+                <span>HITACHI</span>
+                <span style="font-size: 0.6rem; font-weight: 400; letter-spacing: 0;">Inspire the Next</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #111827; letter-spacing: -0.05em; display: flex; flex-direction: column; line-height: 1; justify-content: center;">
+                <span>Boston</span>
+                <span>Scientific</span>
+              </div>
+              
+              <div style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1.5rem; color: #1e3a8a; letter-spacing: -0.05em; font-style: italic; display: flex; align-items: center; gap: 8px;">
+                TVS <span class="material-symbols-outlined" style="color: #dc2626; font-size: 28px;">agriculture</span>
+              </div>
             </div>
-            
-          </div>
-        </div>
-      </main>      <!-- Trusted By Section (Marquee) -->
-      <section class="trusted-by-section" style="padding: 48px 0; background: white; border-top: 1px solid rgba(0,0,0,0.05); overflow: hidden;">
-        <div class="container" style="text-align: center;">
-          <h3 style="font-family: var(--font-body); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.15em; color: var(--on-surface-variant); text-transform: uppercase; margin-bottom: 40px;">
-            TRUSTED BY BUSINESSES ACROSS MULTIPLE INDUSTRIES
-          </h3>
-        </div>
-        <div class="marquee-container">
-          <div class="marquee-track">
-            <!-- First set -->
-            <div class="trusted-logo-item">
-              <div style="width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.85rem; font-family: var(--font-display);">Gc</div>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">GeekByChoice</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">LMS</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">pets</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">MH12</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Animal NGO</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #22c55e;">public</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">EARTH</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Charity Foundation</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #f97316;">bolt</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">JAYSREE</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Electro Coating</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">settings</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">FutureSoft</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Technologies</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #8b5cf6;">school</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">BrightPath</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Education</div></div>
-            </div>
-            <div class="marquee-divider"></div>
 
-            <!-- Duplicate set for seamless loop -->
-            <div class="trusted-logo-item">
-              <div style="width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.85rem; font-family: var(--font-display);">Gc</div>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">GeekByChoice</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">LMS</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">pets</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">MH12</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Animal NGO</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #22c55e;">public</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">EARTH</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Charity Foundation</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #f97316;">bolt</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">JAYSREE</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Electro Coating</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">settings</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">FutureSoft</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Technologies</div></div>
-            </div>
-            <div class="marquee-divider"></div>
-            <div class="trusted-logo-item">
-              <span class="material-symbols-outlined" style="font-size: 28px; color: #8b5cf6;">school</span>
-              <div style="text-align: left;"><div style="font-weight: 700; font-size: 1rem; color: var(--on-surface);">BrightPath</div><div style="font-size: 0.7rem; color: var(--on-surface-variant); font-weight: 500;">Education</div></div>
-            </div>
-            <div class="marquee-divider"></div>
           </div>
+        </div>
+
+        <div class="container">
+          <!-- Trusted By Footer -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+            <div style="height: 2px; background: #e5e7eb; flex: 1; max-width: 250px; position: relative;">
+              <div style="position: absolute; right: 0; top: 0; height: 100%; width: 50px; background: linear-gradient(90deg, transparent, var(--primary));"></div>
+            </div>
+            <div style="font-size: 1rem; font-weight: 800; color: #374151; text-transform: uppercase; letter-spacing: 0.15em; white-space: nowrap;">MORE THAN 150 BRANDS</div>
+            <div style="height: 2px; background: #e5e7eb; flex: 1; max-width: 250px; position: relative;">
+               <div style="position: absolute; left: 0; top: 0; height: 100%; width: 50px; background: linear-gradient(90deg, var(--primary), transparent);"></div>
+            </div>
+          </div>
+
         </div>
       </section>
 
       <!-- Social Proof / Testimonials Section -->
-      <section class="section-gap" style="background: var(--surface-container-lowest); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: -30%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(var(--primary-rgb), 0.06) 0%, transparent 70%); border-radius: 50%;"></div>
-        <div class="container" style="position: relative; z-index: 1;">
-          <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 64px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-              <span class="material-symbols-outlined" style="font-size: 16px;">format_quote</span> CLIENT TESTIMONIALS
-            </div>
-            <h2 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; color: var(--on-background); margin-bottom: 16px;">What Our Clients Say</h2>
-            <p class="section-subtitle" style="font-family: var(--font-display); font-size: 1.1rem; color: var(--on-surface-variant); max-width: 600px; margin: 0 auto; line-height: 1.6;">Real feedback from businesses we've helped transform through technology.</p>
+      <section class="section-gap" style="background: #f1f3f5; position: relative;">
+        <div class="container" style="max-width: 1200px; padding: 80px 20px;">
+          
+          <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 16px;">What Our Clients Say About Their Transformative Journeys</h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #4b5563; max-width: 800px; margin: 0 auto;">We've served more than 300 clients globally in the last 8 years and retained 95% of them.</p>
           </div>
 
-          <!-- Testimonial Cards Grid -->
-          <div class="testimonial-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 64px;">
+          <!-- Testimonial Slider Container -->
+          <div style="position: relative; display: flex; align-items: center; justify-content: center;">
             
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card animate-fade-in-up delay-100" style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative;">
-              <div style="display: flex; gap: 4px; margin-bottom: 20px;">
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-              </div>
-              <p style="font-size: 0.95rem; color: var(--on-surface); line-height: 1.7; margin-bottom: 24px; font-style: italic;">"Cresenix delivered our LMS platform ahead of schedule. Student engagement jumped 40% within the first quarter. Their attention to detail and understanding of education tech is unmatched."</p>
-              <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06);">
-                <div style="width: 44px; height: 44px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 0.8rem; font-family: var(--font-display);">Gc</div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">GeekByChoice</div>
-                  <div style="font-size: 0.75rem; color: var(--on-surface-variant);">LMS Platform · Education</div>
+            <!-- Left Arrow -->
+            <button id="prevTestimonialBtn" style="position: absolute; left: -60px; z-index: 10; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #111827; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;">
+              <span class="material-symbols-outlined" style="color: #111827; font-size: 20px;">arrow_back</span>
+            </button>
+
+            <!-- Carousel Viewport -->
+            <div class="testimonial-carousel-viewport">
+              <!-- Cards Track -->
+              <div class="testimonial-carousel-track" id="testimonialTrack">
+                
+                <!-- Card 1 -->
+                <div class="testimonial-slide" style="background: white; border-radius: 8px; padding: 40px 32px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+                  <!-- Quote Badge -->
+                  <div style="position: absolute; top: 0; left: 32px; transform: translateY(-50%); width: 48px; height: 48px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined" style="color: white; font-size: 28px; font-variation-settings: 'FILL' 1;">format_quote</span>
+                  </div>
+                  
+                  <!-- Stars -->
+                  <div style="display: flex; gap: 2px; margin-bottom: 24px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  
+                  <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 40px; flex: 1;">
+                    Binmile has been a valuable and trusted partner in providing Software Quality Engineering services. Provided consultants are very well technically trained and available to deliver on aggressive timelines. Overall very happy with the services provided.
+                  </p>
+                  
+                  <!-- Footer -->
+                  <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="padding-right: 16px;">
+                      <div style="font-weight: 700; font-size: 0.9rem; color: #111827; margin-bottom: 4px;">Anish Ohri</div>
+                      <div style="font-size: 0.75rem; color: #6b7280; line-height: 1.4;">Director of Quality Engineering at<br>Trepp, LLC</div>
+                    </div>
+                    <div style="border-left: 1px solid #e5e7eb; padding-left: 20px; display: flex; align-items: center;">
+                      <div style="font-weight: 700; font-size: 1.4rem; color: #1d4ed8; font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+                        Trepp<span style="font-size: 0.5rem; position: relative; top: -10px; color: #60a5fa;">o</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <!-- Card 2 -->
+                <div class="testimonial-slide" style="background: white; border-radius: 8px; padding: 40px 32px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+                  <!-- Quote Badge -->
+                  <div style="position: absolute; top: 0; left: 32px; transform: translateY(-50%); width: 48px; height: 48px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined" style="color: white; font-size: 28px; font-variation-settings: 'FILL' 1;">format_quote</span>
+                  </div>
+                  
+                  <!-- Stars -->
+                  <div style="display: flex; gap: 2px; margin-bottom: 24px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  
+                  <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 40px; flex: 1;">
+                    They were very prompt in their responses and always available. Thanks to Binmile's engineers, we were able to complete all projects on time and without any issues. The team was very prompt in terms of responding to queries and requests.
+                  </p>
+                  
+                  <!-- Footer -->
+                  <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="padding-right: 16px;">
+                      <div style="font-weight: 700; font-size: 0.9rem; color: #111827; margin-bottom: 4px;">Abhishek Singh</div>
+                      <div style="font-size: 0.75rem; color: #6b7280; line-height: 1.4;">CEO, AiDash</div>
+                    </div>
+                    <div style="border-left: 1px solid #e5e7eb; padding-left: 20px; display: flex; align-items: center;">
+                      <div style="font-weight: 900; font-style: italic; font-size: 1.2rem; color: #1e3a8a; font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+                        AIDASH
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="testimonial-slide" style="background: white; border-radius: 8px; padding: 40px 32px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+                  <!-- Quote Badge -->
+                  <div style="position: absolute; top: 0; left: 32px; transform: translateY(-50%); width: 48px; height: 48px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined" style="color: white; font-size: 28px; font-variation-settings: 'FILL' 1;">format_quote</span>
+                  </div>
+                  
+                  <!-- Stars -->
+                  <div style="display: flex; gap: 2px; margin-bottom: 24px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  
+                  <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 40px; flex: 1;">
+                    Binmile has successfully delivered the app. They took the time to thoroughly understand my business objectives and target audience, ensuring that the mobile app aligned perfectly with our goals. Their ability to translate my ideas into a functional and visually appealing app was truly impressive.
+                  </p>
+                  
+                  <!-- Footer -->
+                  <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="padding-right: 16px;">
+                      <div style="font-weight: 700; font-size: 0.9rem; color: #111827; margin-bottom: 4px;">Daniel Prince</div>
+                      <div style="font-size: 0.75rem; color: #6b7280; line-height: 1.4;">Product Manager, E-Learning<br>Platform</div>
+                    </div>
+                    <div style="border-left: 1px solid #e5e7eb; padding-left: 20px; display: flex; align-items: center;">
+                      <div style="font-weight: 500; font-size: 1.3rem; color: #111827; font-family: 'Inter', sans-serif; letter-spacing: -0.05em;">
+                        <span style="color: #10b981;">V</span>eranda
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="testimonial-slide" style="background: white; border-radius: 8px; padding: 40px 32px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+                  <div style="position: absolute; top: 0; left: 32px; transform: translateY(-50%); width: 48px; height: 48px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined" style="color: white; font-size: 28px; font-variation-settings: 'FILL' 1;">format_quote</span>
+                  </div>
+                  <div style="display: flex; gap: 2px; margin-bottom: 24px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 40px; flex: 1;">
+                    Cresenix consolidated our 5 legacy systems into one unified ERP. IT costs dropped 30% and our global operations finally have a single source of truth. Remarkable execution and engineering.
+                  </p>
+                  <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="padding-right: 16px;">
+                      <div style="font-weight: 700; font-size: 0.9rem; color: #111827; margin-bottom: 4px;">Sarah Jenkins</div>
+                      <div style="font-size: 0.75rem; color: #6b7280; line-height: 1.4;">COO, Earth Charity<br>Foundation</div>
+                    </div>
+                    <div style="border-left: 1px solid #e5e7eb; padding-left: 20px; display: flex; align-items: center;">
+                      <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #22c55e, #4ade80); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 18px; color: white;">public</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="testimonial-slide" style="background: white; border-radius: 8px; padding: 40px 32px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+                  <div style="position: absolute; top: 0; left: 32px; transform: translateY(-50%); width: 48px; height: 48px; background: #f59e0b; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined" style="color: white; font-size: 28px; font-variation-settings: 'FILL' 1;">format_quote</span>
+                  </div>
+                  <div style="display: flex; gap: 2px; margin-bottom: 24px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b; font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #374151; line-height: 1.8; margin-bottom: 40px; flex: 1;">
+                    Our inventory accuracy hit 99.8% and production cycles shortened by 15% after Cresenix implemented our manufacturing ERP. They truly understand industrial-grade requirements.
+                  </p>
+                  <div style="border-top: 1px solid #e5e7eb; padding-top: 24px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="padding-right: 16px;">
+                      <div style="font-weight: 700; font-size: 0.9rem; color: #111827; margin-bottom: 4px;">Rahul Mehta</div>
+                      <div style="font-size: 0.75rem; color: #6b7280; line-height: 1.4;">VP Operations, Jayshree<br>Electro Coating</div>
+                    </div>
+                    <div style="border-left: 1px solid #e5e7eb; padding-left: 20px; display: flex; align-items: center;">
+                      <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #f97316, #fb923c); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                        <span class="material-symbols-outlined" style="font-size: 18px; color: white;">bolt</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card animate-fade-in-up delay-200" style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative;">
-              <div style="display: flex; gap: 4px; margin-bottom: 20px;">
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-              </div>
-              <p style="font-size: 0.95rem; color: var(--on-surface); line-height: 1.7; margin-bottom: 24px; font-style: italic;">"The mobile app Cresenix built for us has coordinated over 2,500 animal rescues. Real-time GPS tracking and seamless volunteer management — they truly understood our mission."</p>
-              <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06);">
-                <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #3b82f6, #60a5fa); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span class="material-symbols-outlined" style="font-size: 22px; color: white;">pets</span>
-                </div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">MH12 Animal NGO</div>
-                  <div style="font-size: 0.75rem; color: var(--on-surface-variant);">Mobile App · Social / NGO</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card animate-fade-in-up delay-300" style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative;">
-              <div style="display: flex; gap: 4px; margin-bottom: 20px;">
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-              </div>
-              <p style="font-size: 0.95rem; color: var(--on-surface); line-height: 1.7; margin-bottom: 24px; font-style: italic;">"Cresenix consolidated our 5 legacy systems into one unified ERP. IT costs dropped 30% and our global operations finally have a single source of truth. Remarkable execution."</p>
-              <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06);">
-                <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #22c55e, #4ade80); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span class="material-symbols-outlined" style="font-size: 22px; color: white;">public</span>
-                </div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">Earth Charity Foundation</div>
-                  <div style="font-size: 0.75rem; color: var(--on-surface-variant);">ERP System · NGO</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 4 -->
-            <div class="testimonial-card animate-fade-in-up delay-100" style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative;">
-              <div style="display: flex; gap: 4px; margin-bottom: 20px;">
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-              </div>
-              <p style="font-size: 0.95rem; color: var(--on-surface); line-height: 1.7; margin-bottom: 24px; font-style: italic;">"Our inventory accuracy hit 99.8% and production cycles shortened by 15% after Cresenix implemented our manufacturing ERP. They understand industrial-grade requirements."</p>
-              <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06);">
-                <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #f97316, #fb923c); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span class="material-symbols-outlined" style="font-size: 22px; color: white;">bolt</span>
-                </div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">Jayshree Electro Coating</div>
-                  <div style="font-size: 0.75rem; color: var(--on-surface-variant);">ERP System · Manufacturing</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Testimonial 5 -->
-            <div class="testimonial-card animate-fade-in-up delay-200" style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease; position: relative;">
-              <div style="display: flex; gap: 4px; margin-bottom: 20px;">
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-                <span class="material-symbols-outlined" style="font-size: 20px; color: #f59e0b;">star</span>
-              </div>
-              <p style="font-size: 0.95rem; color: var(--on-surface); line-height: 1.7; margin-bottom: 24px; font-style: italic;">"Working with Cresenix felt like having an in-house team. They scaled our platform from concept to 10,000+ users with zero downtime. Truly enterprise-level engineering."</p>
-              <div style="display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.06);">
-                <div style="width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), #60a5fa); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                  <span class="material-symbols-outlined" style="font-size: 22px; color: white;">settings</span>
-                </div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">FutureSoft Technologies</div>
-                  <div style="font-size: 0.75rem; color: var(--on-surface-variant);">Web Platform · Technology</div>
-                </div>
-              </div>
-            </div>
-
+            <!-- Right Arrow -->
+            <button id="nextTestimonialBtn" style="position: absolute; right: -60px; z-index: 10; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #111827; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;">
+              <span class="material-symbols-outlined" style="color: #111827; font-size: 20px;">arrow_forward</span>
+            </button>
+            
           </div>
-
-          <!-- Trust Badges -->
-          <div class="trust-badges-row animate-fade-in-up" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 32px;">
-            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 16px 24px; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05);">
-              <div style="width: 48px; height: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 26px; color: #22c55e;">verified_user</span>
-              </div>
-              <div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">100% Satisfaction</div>
-                <div style="font-size: 0.75rem; color: var(--on-surface-variant);">Guarantee</div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 16px 24px; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05);">
-              <div style="width: 48px; height: 48px; background: rgba(var(--primary-rgb), 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 26px; color: var(--primary);">shield</span>
-              </div>
-              <div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">NDA Protected</div>
-                <div style="font-size: 0.75rem; color: var(--on-surface-variant);">Your IP is Safe</div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 16px 24px; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05);">
-              <div style="width: 48px; height: 48px; background: rgba(139, 92, 246, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 26px; color: #8b5cf6;">lock</span>
-              </div>
-              <div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">Secure Infrastructure</div>
-                <div style="font-size: 0.75rem; color: var(--on-surface-variant);">Enterprise-Grade</div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; background: white; padding: 16px 24px; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05);">
-              <div style="width: 48px; height: 48px; background: rgba(249, 115, 22, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 26px; color: #f97316;">support_agent</span>
-              </div>
-              <div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--on-surface);">Free Post-Launch</div>
-                <div style="font-size: 0.75rem; color: var(--on-surface-variant);">30-Day Support</div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
+
       <!-- Comprehensive Services Section -->
-      <section class="section-gap" style="background: var(--background); position: relative; z-index: 10;">
-        <div class="container">
+      <section class="section-gap" style="background: white; position: relative; z-index: 10;">
+        <div class="container" style="max-width: 1200px;">
           <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 64px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-              <span class="material-symbols-outlined" style="font-size: 16px;">category</span> OUR SERVICES
-            </div>
-            <h2 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; color: var(--on-background); margin-bottom: 16px;">Comprehensive Digital Solutions</h2>
-            <p class="section-subtitle" style="font-family: var(--font-display); font-size: 1.1rem; color: var(--on-surface-variant); max-width: 600px; margin: 0 auto; line-height: 1.6;">End-to-end software development and AI integration services designed to scale your enterprise operations.</p>
+            <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.3;">
+              Powering Innovation with AI-Driven Solutions Built for Speed and Precision
+            </h2>
+
           </div>
-          <div class="cards-grid cols-3">
-            <div class="service-card animate-fade-in-up delay-100">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">code</span></div>
-              <h3 class="card-title">Custom Software</h3>
-              <p class="card-description">Tailored scalable applications built to address your unique business challenges and streamline complex workflows.</p>
-              <a class="card-link" data-route="/portfolio" href="#/portfolio">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+          
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 40px;">
+            
+            <!-- Service 1 -->
+            <div class="animate-fade-in-up delay-100" style="padding: 40px 32px; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #f59e0b;">web</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Custom Software<br>Development</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                We are a reputed software development company that provides creative solutions for businesses.
+              </p>
             </div>
-            <div class="service-card animate-fade-in-up delay-200">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">web</span></div>
-              <h3 class="card-title">Web Applications</h3>
-              <p class="card-description">High-performance, secure, and responsive web portals designed for optimal user engagement and robust data handling.</p>
-              <a class="card-link" data-route="/portfolio" href="#/portfolio">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+
+            <!-- Service 2 -->
+            <div class="animate-fade-in-up delay-200" style="padding: 40px 32px; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #3b82f6;">devices</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Application<br>Development</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                Powered by clients' unique needs, we customize and deliver unique application solutions.
+              </p>
             </div>
-            <div class="service-card animate-fade-in-up delay-300">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">smartphone</span></div>
-              <h3 class="card-title">Mobile Apps</h3>
-              <p class="card-description">Native and cross-platform mobile experiences that deliver seamless functionality and premium UI/UX across all devices.</p>
-              <a class="card-link" data-route="/portfolio" href="#/portfolio">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+
+            <!-- Service 3 -->
+            <div class="animate-fade-in-up delay-300" style="padding: 40px 32px; border-bottom: 1px solid #e5e7eb;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #f97316;">smart_toy</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">AI as a<br>Service</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                Unlock doors to success with AI. We provide cutting-edge AI solutions to clients that transform businesses.
+              </p>
             </div>
-            <div class="service-card animate-fade-in-up delay-100">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">psychology</span></div>
-              <h3 class="card-title">AI Automation</h3>
-              <p class="card-description">Intelligent automation powered by cutting-edge AI — chatbots, voice agents, predictive analytics and workflow optimization.</p>
-              <a class="card-link" data-route="/ai-solutions" href="#/ai-solutions">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+
+            <!-- Service 4 -->
+            <div class="animate-fade-in-up delay-100" style="padding: 40px 32px; border-right: 1px solid #e5e7eb;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #10b981;">smartphone</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Mobile App<br>Development</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                Native and cross-platform mobile experiences that deliver seamless functionality and premium UI/UX across all devices.
+              </p>
             </div>
-            <div class="service-card animate-fade-in-up delay-200">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">grid_view</span></div>
-              <h3 class="card-title">ERP Systems</h3>
-              <p class="card-description">Enterprise resource planning that unifies procurement, accounting, HR, and inventory into a single powerful platform.</p>
-              <a class="card-link" data-route="/erp-lms" href="#/erp-lms">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+
+            <!-- Service 5 -->
+            <div class="animate-fade-in-up delay-200" style="padding: 40px 32px; border-right: 1px solid #e5e7eb;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #8b5cf6;">domain</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">ERP<br>Systems</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                Enterprise resource planning that unifies procurement, accounting, HR, and inventory into a single powerful platform.
+              </p>
             </div>
-            <div class="service-card animate-fade-in-up delay-300">
-              <div class="card-icon-wrapper" style="background: rgba(var(--primary-rgb), 0.08);"><span class="material-symbols-outlined" style="color: var(--primary);">school</span></div>
-              <h3 class="card-title">LMS Platforms</h3>
-              <p class="card-description">Comprehensive learning management with course builders, progress tracking, gamification, and advanced analytics.</p>
-              <a class="card-link" data-route="/erp-lms" href="#/erp-lms">Explore Service <span class="material-symbols-outlined">chevron_right</span></a>
+
+            <!-- Service 6 -->
+            <div class="animate-fade-in-up delay-300" style="padding: 40px 32px;">
+              <div style="margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="font-size: 40px; color: #ef4444;">school</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">LMS<br>Platforms</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
+                Comprehensive learning management with course builders, progress tracking, gamification, and advanced analytics.
+              </p>
             </div>
+
           </div>
         </div>
       </section>
@@ -431,192 +511,304 @@ export function renderHomePage(): string {
         </div>
       </section>
 
-      <!-- Portfolio Showcase Section -->
-      <section class="section-gap" style="background: var(--surface-container-lowest);">
-        <div class="container">
-          <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 64px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-              <span class="material-symbols-outlined" style="font-size: 16px;">work</span> OUR WORK
-            </div>
-            <h2 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; color: var(--on-background); margin-bottom: 16px;">Results That Speak</h2>
-            <p class="section-subtitle" style="font-family: var(--font-display); font-size: 1.1rem; color: var(--on-surface-variant); max-width: 600px; margin: 0 auto; line-height: 1.6;">Real outcomes from real projects — not just pretty screenshots.</p>
-          </div>
+      <!-- Tech Stack Section -->
+      ${(() => {
+      const techStackCategories = [
+        {
+          id: "frontend", title: "Frontend Engineering", icon: "draw",
+          desc: "Build seamless and engaging user experiences with responsive, intuitive, and visually stunning frontend design.",
+          techs: [
+            { name: "React", color: "#61DAFB" }, { name: "NEXT.js", color: "#000000" }, { name: "Angular", color: "#DD0031" },
+            { name: "Vue.js", color: "#4FC08D" }, { name: "TypeScript", color: "#3178C6" }, { name: "HTML5", color: "#E34F26" },
+            { name: "CSS3", color: "#1572B6" }, { name: "JS", color: "#F7DF1E" }, { name: "Bootstrap", color: "#7952B3" }
+          ]
+        },
+        {
+          id: "backend", title: "Backend Engineering", icon: "terminal",
+          desc: "Develop robust, scalable, and secure server-side architectures that power your applications with high performance.",
+          techs: [
+            { name: "Node.js", color: "#339933" }, { name: "Python", color: "#3776AB" }, { name: "Java", color: "#007396" },
+            { name: ".NET", color: "#512BD4" }, { name: "Go", color: "#00ADD8" }, { name: "PHP", color: "#777BB4" }
+          ]
+        },
+        {
+          id: "gen-ai", title: "Generative AI", icon: "psychology",
+          desc: "Empower your business with cutting-edge artificial intelligence, custom LLMs, and automated intelligent workflows.",
+          techs: [
+            { name: "OpenAI", color: "#10a37f" }, { name: "LangChain", color: "#000000" }, { name: "Hugging Face", color: "#FFD21E" },
+            { name: "Llama", color: "#3B82F6" }, { name: "TensorFlow", color: "#FF6F00" }, { name: "PyTorch", color: "#EE4C2C" }
+          ]
+        },
+        {
+          id: "databases", title: "Databases", icon: "database",
+          desc: "Design resilient data architectures with relational and NoSQL databases optimized for speed and reliability.",
+          techs: [
+            { name: "PostgreSQL", color: "#336791" }, { name: "MongoDB", color: "#47A248" }, { name: "MySQL", color: "#4479A1" },
+            { name: "Redis", color: "#DC382D" }, { name: "Cassandra", color: "#1287B1" }, { name: "Firebase", color: "#FFCA28" }
+          ]
+        },
+        {
+          id: "quality", title: "Quality Engineering", icon: "bug_report",
+          desc: "Ensure flawless execution with comprehensive automated testing, continuous integration, and rigorous QA.",
+          techs: [
+            { name: "Selenium", color: "#43B02A" }, { name: "Cypress", color: "#17202C" }, { name: "Jest", color: "#C21325" },
+            { name: "Appium", color: "#66228B" }, { name: "JUnit", color: "#25A162" }, { name: "Postman", color: "#FF6C37" }
+          ]
+        },
+        {
+          id: "digital", title: "Digital Experience", icon: "shopping_cart",
+          desc: "Create immersive digital touchpoints tailored for e-commerce, content management, and user engagement.",
+          techs: [
+            { name: "Shopify", color: "#95BF47" }, { name: "WordPress", color: "#21759B" }, { name: "Magento", color: "#F26322" },
+            { name: "Figma", color: "#F24E1E" }, { name: "Webflow", color: "#4353FF" }, { name: "Strapi", color: "#2E7EEA" }
+          ]
+        },
+        {
+          id: "mobile", title: "Mobile", icon: "smartphone",
+          desc: "Reach your users on any device with high-performance native and cross-platform mobile applications.",
+          techs: [
+            { name: "React Native", color: "#61DAFB" }, { name: "Flutter", color: "#02569B" }, { name: "Swift", color: "#F05138" },
+            { name: "Kotlin", color: "#7F52FF" }, { name: "Android", color: "#3DDC84" }, { name: "iOS", color: "#000000" }
+          ]
+        },
+        {
+          id: "cloud", title: "Cloud & DevOps", icon: "cloud",
+          desc: "Scale infinitely with secure, automated cloud infrastructures and continuous delivery pipelines.",
+          techs: [
+            { name: "AWS", color: "#232F3E" }, { name: "Azure", color: "#0089D6" }, { name: "GCP", color: "#4285F4" },
+            { name: "Docker", color: "#2496ED" }, { name: "Kubernetes", color: "#326CE5" }, { name: "Jenkins", color: "#D24939" }
+          ]
+        },
+        {
+          id: "data", title: "Data Engineering", icon: "dns",
+          desc: "Transform raw data into actionable insights with robust data pipelines and analytics solutions.",
+          techs: [
+            { name: "Snowflake", color: "#29B5E8" }, { name: "Apache Spark", color: "#E25A1C" }, { name: "Kafka", color: "#231F20" },
+            { name: "Hadoop", color: "#66CC00" }, { name: "Airflow", color: "#017CEE" }, { name: "Tableau", color: "#E97627" }
+          ]
+        },
+        {
+          id: "platform", title: "Platform", icon: "settings_applications",
+          desc: "Leverage powerful enterprise platforms to accelerate digital transformation and workflow automation.",
+          techs: [
+            { name: "Salesforce", color: "#00A1E0" }, { name: "SAP", color: "#008FD3" }, { name: "Oracle", color: "#C74634" },
+            { name: "ServiceNow", color: "#81B5A1" }, { name: "MuleSoft", color: "#00A1E0" }, { name: "Odoo", color: "#714B67" }
+          ]
+        }
+      ];
 
-          <div class="portfolio-showcase-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 48px;">
-            
-            <!-- Case 1 -->
-            <div class="portfolio-showcase-card animate-fade-in-up delay-100" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;">
-              <div style="height: 200px; background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.15)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                <div style="width: 80%; max-width: 320px; background: white; border-radius: 12px 12px 0 0; box-shadow: 0 -8px 30px rgba(0,0,0,0.1); padding: 12px 16px 0; position: relative; top: 20px;">
-                  <div style="display: flex; gap: 4px; margin-bottom: 8px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e;"></span></div>
-                  <div style="height: 8px; background: rgba(var(--primary-rgb), 0.15); border-radius: 4px; width: 60%; margin-bottom: 6px;"></div>
-                  <div style="height: 6px; background: rgba(0,0,0,0.06); border-radius: 4px; width: 80%; margin-bottom: 6px;"></div>
-                  <div style="height: 6px; background: rgba(0,0,0,0.04); border-radius: 4px; width: 40%;"></div>
-                </div>
+      return `
+          <section style="background: #f8f9fa; padding:15px;">
+            <div style="display: flex; min-height: 700px; width: 100%;">
+              
+              <!-- Left Sidebar (Tabs) -->
+              <div style="width: 320px; background: #07476f; color: white; display: flex; flex-direction: column;" id="techStackTabs">
+                ${techStackCategories.map((cat, index) => `
+                  <button class="tech-tab-btn" data-target="${cat.id}" style="
+                    display: flex; align-items: center; gap: 16px; padding: 20px 24px; 
+                    background: ${index === 0 ? '#115b90' : 'transparent'}; 
+                    color: white; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); 
+                    font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 500; text-align: left; 
+                    cursor: pointer; transition: background 0.3s; position: relative;
+                  ">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">${cat.icon}</span>
+                    ${cat.title}
+                    <!-- Arrow pointing right when active -->
+                    <div class="active-arrow" style="
+                      display: ${index === 0 ? 'block' : 'none'}; 
+                      position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+                      width: 0; height: 0; 
+                      border-top: 12px solid transparent; 
+                      border-bottom: 12px solid transparent; 
+                      border-left: 12px solid #f59e0b; 
+                      z-index: 10;
+                    "></div>
+                  </button>
+                `).join('')}
               </div>
-              <div style="padding: 28px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                  <span style="background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">Education</span>
-                  <span style="font-size: 0.75rem; color: var(--on-surface-variant);">LMS Platform</span>
-                </div>
-                <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--on-surface); margin-bottom: 8px;">GeekByChoice LMS</h3>
-                <p style="font-size: 0.85rem; color: var(--on-surface-variant); line-height: 1.5; margin-bottom: 16px;">Interactive learning platform with automated grading and video delivery.</p>
-                <div style="display: flex; align-items: center; gap: 8px; background: rgba(34, 197, 94, 0.08); padding: 10px 14px; border-radius: 10px;">
-                  <span class="material-symbols-outlined" style="font-size: 20px; color: #22c55e;">trending_up</span>
-                  <span style="font-size: 0.85rem; font-weight: 700; color: #16a34a;">40% increase in student engagement</span>
-                </div>
-              </div>
-            </div>
 
-            <!-- Case 2 -->
-            <div class="portfolio-showcase-card animate-fade-in-up delay-200" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;">
-              <div style="height: 200px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(96, 165, 250, 0.15)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                <div style="width: 100px; height: 180px; background: white; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); padding: 8px; position: relative; top: 10px;">
-                  <div style="width: 100%; height: 100%; background: rgba(var(--primary-rgb), 0.05); border-radius: 14px; display: flex; flex-direction: column; align-items: center; padding-top: 16px; gap: 6px;">
-                    <div style="width: 24px; height: 24px; background: rgba(var(--primary-rgb), 0.15); border-radius: 50%;"></div>
-                    <div style="height: 4px; background: rgba(0,0,0,0.08); border-radius: 2px; width: 50%;"></div>
-                    <div style="height: 4px; background: rgba(0,0,0,0.05); border-radius: 2px; width: 70%;"></div>
+              <!-- Right Content Area -->
+              <div style="flex: 1; padding: 60px 40px; background: #f8f9fa; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;" id="techStackContent">
+                ${techStackCategories.map((cat, index) => `
+                  <div class="tech-content-panel" id="tech-panel-${cat.id}" style="
+                    display: ${index === 0 ? 'block' : 'none'};
+                    width: 100%; max-width: 900px; animation: fadeIn 0.4s ease;
+                  ">
+                     <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #07476f; text-align: center; margin-bottom: 16px;">
+                       ${cat.title}
+                     </h2>
+                     <div style="width: 80px; height: 4px; background: #f59e0b; margin: 0 auto 32px;"></div>
+                     
+                     <p style="text-align: center; color: #4b5563; font-size: 1.05rem; line-height: 1.6; margin-bottom: 60px; font-family: 'Inter', sans-serif; max-width: 700px; margin-left: auto; margin-right: auto;">
+                       ${cat.desc}
+                     </p>
+                     
+                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin-bottom: 60px;">
+                        ${cat.techs.map((tech, tIndex) => `
+                          <div style="
+                            text-align: center; padding: 32px 16px; 
+                            ${tIndex % 3 !== 2 ? 'border-right: 1px dashed #d1d5db;' : ''}
+                            ${tIndex < Math.floor(cat.techs.length / 3) * 3 ? 'border-bottom: 1px dashed #d1d5db;' : ''}
+                          ">
+                             <span style="font-size: 1.4rem; font-weight: 800; color: ${tech.color}; font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">
+                               ${tech.name}
+                             </span>
+                          </div>
+                        `).join('')}
+                     </div>
+                     
+                     <div style="text-align: center;">
+                       <a href="#/contact" style="
+                         display: inline-block; background: #f59e0b; color: #111827; 
+                         padding: 14px 40px; border-radius: 100px; font-weight: 700; 
+                         font-family: 'Inter', sans-serif; font-size: 1rem; text-decoration: none; 
+                         box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3); transition: transform 0.2s;
+                       ">
+                         Know More
+                       </a>
+                     </div>
                   </div>
-                </div>
-              </div>
-              <div style="padding: 28px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                  <span style="background: rgba(59, 130, 246, 0.08); color: #3b82f6; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">Social / NGO</span>
-                  <span style="font-size: 0.75rem; color: var(--on-surface-variant);">Mobile App</span>
-                </div>
-                <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--on-surface); margin-bottom: 8px;">MH12 Animal NGO</h3>
-                <p style="font-size: 0.85rem; color: var(--on-surface-variant); line-height: 1.5; margin-bottom: 16px;">Rescue coordination app with real-time GPS and volunteer management.</p>
-                <div style="display: flex; align-items: center; gap: 8px; background: rgba(34, 197, 94, 0.08); padding: 10px 14px; border-radius: 10px;">
-                  <span class="material-symbols-outlined" style="font-size: 20px; color: #22c55e;">trending_up</span>
-                  <span style="font-size: 0.85rem; font-weight: 700; color: #16a34a;">2,500+ successful rescues coordinated</span>
-                </div>
+                `).join('')}
               </div>
             </div>
-
-            <!-- Case 3 -->
-            <div class="portfolio-showcase-card animate-fade-in-up delay-100" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;">
-              <div style="height: 200px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(74, 222, 128, 0.15)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                <div style="width: 80%; max-width: 320px; background: white; border-radius: 12px 12px 0 0; box-shadow: 0 -8px 30px rgba(0,0,0,0.1); padding: 12px 16px 0; position: relative; top: 20px;">
-                  <div style="display: flex; gap: 4px; margin-bottom: 8px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e;"></span></div>
-                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-                    <div style="height: 20px; background: rgba(34,197,94,0.1); border-radius: 4px;"></div>
-                    <div style="height: 20px; background: rgba(var(--primary-rgb), 0.1); border-radius: 4px;"></div>
-                  </div>
-                </div>
-              </div>
-              <div style="padding: 28px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                  <span style="background: rgba(34, 197, 94, 0.08); color: #22c55e; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">NGO</span>
-                  <span style="font-size: 0.75rem; color: var(--on-surface-variant);">Enterprise ERP</span>
-                </div>
-                <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--on-surface); margin-bottom: 8px;">Earth Charity Foundation ERP</h3>
-                <p style="font-size: 0.85rem; color: var(--on-surface-variant); line-height: 1.5; margin-bottom: 16px;">Unified donor management, fund allocation, and global logistics platform.</p>
-                <div style="display: flex; align-items: center; gap: 8px; background: rgba(34, 197, 94, 0.08); padding: 10px 14px; border-radius: 10px;">
-                  <span class="material-symbols-outlined" style="font-size: 20px; color: #22c55e;">trending_up</span>
-                  <span style="font-size: 0.85rem; font-weight: 700; color: #16a34a;">5 legacy systems → 1 unified platform</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Case 4 -->
-            <div class="portfolio-showcase-card animate-fade-in-up delay-200" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s ease;">
-              <div style="height: 200px; background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(251, 146, 60, 0.15)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                <div style="width: 80%; max-width: 320px; background: white; border-radius: 12px 12px 0 0; box-shadow: 0 -8px 30px rgba(0,0,0,0.1); padding: 12px 16px 0; position: relative; top: 20px;">
-                  <div style="display: flex; gap: 4px; margin-bottom: 8px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #f59e0b;"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e;"></span></div>
-                  <div style="height: 30px; background: rgba(249,115,22,0.08); border-radius: 4px; display: flex; align-items: center; padding: 0 8px; gap: 6px;">
-                    <div style="width: 16px; height: 16px; background: rgba(249,115,22,0.2); border-radius: 3px;"></div>
-                    <div style="height: 4px; background: rgba(0,0,0,0.08); border-radius: 2px; flex: 1;"></div>
-                  </div>
-                </div>
-              </div>
-              <div style="padding: 28px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                  <span style="background: rgba(249, 115, 22, 0.08); color: #f97316; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;">Manufacturing</span>
-                  <span style="font-size: 0.75rem; color: var(--on-surface-variant);">Core ERP</span>
-                </div>
-                <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--on-surface); margin-bottom: 8px;">Jayshree Electro Coating ERP</h3>
-                <p style="font-size: 0.85rem; color: var(--on-surface-variant); line-height: 1.5; margin-bottom: 16px;">Industrial-grade inventory control and quality assurance automation.</p>
-                <div style="display: flex; align-items: center; gap: 8px; background: rgba(34, 197, 94, 0.08); padding: 10px 14px; border-radius: 10px;">
-                  <span class="material-symbols-outlined" style="font-size: 20px; color: #22c55e;">trending_up</span>
-                  <span style="font-size: 0.85rem; font-weight: 700; color: #16a34a;">99.8% inventory accuracy achieved</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div style="text-align: center;">
-            <a class="btn-outline animate-fade-in-up" data-route="/portfolio" href="#/portfolio" style="padding: 14px 32px; font-weight: 600; color: var(--primary); border: 1px solid rgba(var(--primary-rgb), 0.2); border-radius: 10px; display: inline-flex; align-items: center; gap: 8px;">
-              View All Projects <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
-            </a>
-          </div>
-        </div>
-      </section>
+          </section>
+        `;
+    })()}
 
       <!-- Process Timeline Section -->
-      <section class="section-gap" style="background: var(--background);">
+      <section class="section-gap" style="background: var(--surface-container-lowest); position: relative; overflow: hidden;">
+        <style>
+          .process-step-circle {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 2;
+          }
+          
+          /* Pulsing background effect on hover */
+          .process-step-circle::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background: var(--step-color);
+            opacity: 0;
+            z-index: -1;
+            transition: all 0.4s ease;
+          }
+
+          .process-step-circle::after {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            border-radius: 50%;
+            border: 2px solid var(--step-color);
+            opacity: 0;
+            z-index: -1;
+          }
+          
+          .process-step:hover .process-step-circle {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+          }
+          
+          .process-step:hover .process-step-circle::before {
+            transform: scale(1.15);
+            opacity: 0.15;
+          }
+
+          .process-step:hover .process-step-circle::after {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          }
+
+          .process-step-icon {
+            transition: transform 0.4s ease, color 0.4s ease;
+          }
+          
+          .process-step:hover .process-step-icon {
+            transform: scale(1.15);
+          }
+
+          @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
+          }
+          
+          /* Gradient Line Animation */
+          .process-line-animated {
+            background: linear-gradient(90deg, #115b90, #60a5fa, #8b5cf6, #22c55e, #115b90);
+            background-size: 300% 100%;
+            animation: gradient-flow 6s ease infinite;
+          }
+          
+          @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        </style>
+        
         <div class="container">
           <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 80px;">
-            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 8px 18px; border-radius: 100px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">
-              <span class="material-symbols-outlined" style="font-size: 16px;">route</span> OUR PROCESS
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(17, 91, 144, 0.08); color: #115b90; padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: 'Inter', sans-serif;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">route</span> OUR PROCESS
             </div>
-            <h2 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; color: var(--on-background); margin-bottom: 16px;">How We Work</h2>
-            <p class="section-subtitle" style="font-family: var(--font-display); font-size: 1.1rem; color: var(--on-surface-variant); max-width: 600px; margin: 0 auto; line-height: 1.6;">A clear, transparent process so you always know what's happening and when.</p>
+            <h2 style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: #111827; margin-bottom: 16px; letter-spacing: -0.02em;">How We Work</h2>
+            <p class="section-subtitle" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #4b5563; max-width: 650px; margin: 0 auto; line-height: 1.6;">A clear, transparent process so you always know what's happening and when.</p>
           </div>
 
-          <div class="process-timeline" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative;">
+          <div class="process-timeline" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; max-width: 1200px; margin: 0 auto;">
             
             <!-- Connecting line -->
-            <div class="process-line" style="position: absolute; top: 44px; left: 10%; right: 10%; height: 3px; background: linear-gradient(90deg, var(--primary), #60a5fa, #8b5cf6, #22c55e, var(--primary)); border-radius: 2px; z-index: 0;"></div>
+            <div class="process-line-animated" style="position: absolute; top: 44px; left: 10%; right: 10%; height: 4px; border-radius: 2px; z-index: 0; opacity: 0.7;"></div>
 
             <!-- Step 1 -->
-            <div class="process-step animate-fade-in-up delay-100" style="text-align: center; position: relative; z-index: 1;">
-              <div style="width: 88px; height: 88px; margin: 0 auto 20px; background: white; border-radius: 50%; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.15); display: flex; align-items: center; justify-content: center; border: 3px solid var(--primary);">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary);">search</span>
+            <div class="process-step animate-fade-in-up delay-100" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #115b90;">
+              <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(17, 91, 144, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #115b90;">
+                <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #115b90;">search</span>
               </div>
-              <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--on-surface); margin-bottom: 6px;">Discovery</h3>
-              <p style="font-size: 0.8rem; color: var(--on-surface-variant); line-height: 1.4;">Understanding your goals & requirements</p>
-              <div style="margin-top: 12px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; display: inline-block;">Week 1</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 8px;">Discovery</h3>
+              <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; font-family: 'Inter', sans-serif; padding: 0 10px;">Understanding your goals & requirements</p>
+              <div style="margin-top: 16px; background: rgba(17, 91, 144, 0.08); color: #115b90; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Week 1</div>
             </div>
 
             <!-- Step 2 -->
-            <div class="process-step animate-fade-in-up delay-200" style="text-align: center; position: relative; z-index: 1;">
-              <div style="width: 88px; height: 88px; margin: 0 auto 20px; background: white; border-radius: 50%; box-shadow: 0 4px 20px rgba(96, 165, 250, 0.15); display: flex; align-items: center; justify-content: center; border: 3px solid #60a5fa;">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: #60a5fa;">palette</span>
+            <div class="process-step animate-fade-in-up delay-200" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #3b82f6;">
+              <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #3b82f6;">
+                <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #3b82f6;">palette</span>
               </div>
-              <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--on-surface); margin-bottom: 6px;">Design</h3>
-              <p style="font-size: 0.8rem; color: var(--on-surface-variant); line-height: 1.4;">Wireframes, prototypes & visual design</p>
-              <div style="margin-top: 12px; background: rgba(96, 165, 250, 0.08); color: #60a5fa; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; display: inline-block;">Week 2–3</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 8px;">Design</h3>
+              <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; font-family: 'Inter', sans-serif; padding: 0 10px;">Wireframes, prototypes & visual design</p>
+              <div style="margin-top: 16px; background: rgba(59, 130, 246, 0.08); color: #3b82f6; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Week 2–3</div>
             </div>
 
             <!-- Step 3 -->
-            <div class="process-step animate-fade-in-up delay-300" style="text-align: center; position: relative; z-index: 1;">
-              <div style="width: 88px; height: 88px; margin: 0 auto 20px; background: white; border-radius: 50%; box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15); display: flex; align-items: center; justify-content: center; border: 3px solid #8b5cf6;">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: #8b5cf6;">code</span>
+            <div class="process-step animate-fade-in-up delay-300" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #8b5cf6;">
+              <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #8b5cf6;">
+                <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #8b5cf6;">code</span>
               </div>
-              <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--on-surface); margin-bottom: 6px;">Development</h3>
-              <p style="font-size: 0.8rem; color: var(--on-surface-variant); line-height: 1.4;">Agile sprints with weekly updates</p>
-              <div style="margin-top: 12px; background: rgba(139, 92, 246, 0.08); color: #8b5cf6; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; display: inline-block;">Week 4–6</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 8px;">Development</h3>
+              <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; font-family: 'Inter', sans-serif; padding: 0 10px;">Agile sprints with weekly updates</p>
+              <div style="margin-top: 16px; background: rgba(139, 92, 246, 0.08); color: #8b5cf6; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Week 4–6</div>
             </div>
 
             <!-- Step 4 -->
-            <div class="process-step animate-fade-in-up delay-400" style="text-align: center; position: relative; z-index: 1;">
-              <div style="width: 88px; height: 88px; margin: 0 auto 20px; background: white; border-radius: 50%; box-shadow: 0 4px 20px rgba(34, 197, 94, 0.15); display: flex; align-items: center; justify-content: center; border: 3px solid #22c55e;">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: #22c55e;">rocket_launch</span>
+            <div class="process-step animate-fade-in-up delay-400" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #22c55e;">
+              <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #22c55e;">
+                <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #22c55e;">rocket_launch</span>
               </div>
-              <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--on-surface); margin-bottom: 6px;">Launch</h3>
-              <p style="font-size: 0.8rem; color: var(--on-surface-variant); line-height: 1.4;">Testing, QA & deployment</p>
-              <div style="margin-top: 12px; background: rgba(34, 197, 94, 0.08); color: #22c55e; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; display: inline-block;">Week 7</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 8px;">Launch</h3>
+              <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; font-family: 'Inter', sans-serif; padding: 0 10px;">Testing, QA & deployment</p>
+              <div style="margin-top: 16px; background: rgba(34, 197, 94, 0.08); color: #22c55e; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Week 7</div>
             </div>
 
             <!-- Step 5 -->
-            <div class="process-step animate-fade-in-up delay-500" style="text-align: center; position: relative; z-index: 1;">
-              <div style="width: 88px; height: 88px; margin: 0 auto 20px; background: white; border-radius: 50%; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.15); display: flex; align-items: center; justify-content: center; border: 3px solid var(--primary);">
-                <span class="material-symbols-outlined" style="font-size: 32px; color: var(--primary);">support_agent</span>
+            <div class="process-step animate-fade-in-up delay-500" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #115b90;">
+              <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(17, 91, 144, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #115b90;">
+                <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #115b90;">support_agent</span>
               </div>
-              <h3 style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--on-surface); margin-bottom: 6px;">Support</h3>
-              <p style="font-size: 0.8rem; color: var(--on-surface-variant); line-height: 1.4;">Maintenance, updates & growth</p>
-              <div style="margin-top: 12px; background: rgba(var(--primary-rgb), 0.08); color: var(--primary); padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; display: inline-block;">Ongoing</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #111827; margin-bottom: 8px;">Support</h3>
+              <p style="font-size: 0.85rem; color: #4b5563; line-height: 1.5; font-family: 'Inter', sans-serif; padding: 0 10px;">Maintenance, updates & growth</p>
+              <div style="margin-top: 16px; background: rgba(17, 91, 144, 0.08); color: #115b90; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Ongoing</div>
             </div>
 
           </div>
@@ -879,14 +1071,14 @@ export function initHomeForm(): void {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const originalBtnHTML = submitBtn.innerHTML;
-    
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Sending... <span class="material-symbols-outlined" style="font-size:20px; animation: spin 1s linear infinite;">sync</span>';
 
     try {
       const inputs = form.querySelectorAll('input');
       const select = form.querySelector('select');
-      
+
       const payload = {
         fullName: inputs[0].value,
         company: null,
@@ -911,7 +1103,7 @@ export function initHomeForm(): void {
       submitBtn.innerHTML = 'Message Sent! <span class="material-symbols-outlined" style="font-size:20px;">check</span>';
       submitBtn.style.backgroundColor = '#10b981';
       form.reset();
-      
+
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnHTML;
@@ -928,5 +1120,160 @@ export function initHomeForm(): void {
         submitBtn.style.backgroundColor = '';
       }, 3000);
     }
+  });
+}
+
+export function initTestimonialCarousel(): void {
+  const track = document.getElementById('testimonialTrack') as HTMLDivElement;
+  const prevBtn = document.getElementById('prevTestimonialBtn') as HTMLButtonElement;
+  const nextBtn = document.getElementById('nextTestimonialBtn') as HTMLButtonElement;
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+  // Get total slides. We assume track.children are the slides.
+  const totalSlides = track.children.length;
+  if (totalSlides === 0) return;
+
+  let autoScrollInterval: ReturnType<typeof setInterval>;
+  const autoScrollDelay = 4000; // 4 seconds between auto-scrolls
+  let isHovered = false;
+
+  function updateCarousel() {
+    const slide = track.children[0] as HTMLDivElement;
+    if (!slide) return;
+
+    // Get the slide width including the gap.
+    // The gap is 32px as defined in CSS.
+    const slideWidth = slide.getBoundingClientRect().width;
+    const gap = 32;
+    const moveAmount = slideWidth + gap;
+
+    track.style.transform = `translateX(-${currentIndex * moveAmount}px)`;
+  }
+
+  function nextSlide() {
+    // Determine visible slides based on window width
+    let visibleSlides = 3;
+    if (window.innerWidth <= 768) {
+      visibleSlides = 1;
+    } else if (window.innerWidth <= 1024) {
+      visibleSlides = 2;
+    }
+
+    const maxIndex = Math.max(0, totalSlides - visibleSlides);
+
+    if (currentIndex >= maxIndex) {
+      currentIndex = 0; // loop back to start
+    } else {
+      currentIndex++;
+    }
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    let visibleSlides = 3;
+    if (window.innerWidth <= 768) {
+      visibleSlides = 1;
+    } else if (window.innerWidth <= 1024) {
+      visibleSlides = 2;
+    }
+
+    const maxIndex = Math.max(0, totalSlides - visibleSlides);
+
+    if (currentIndex <= 0) {
+      currentIndex = maxIndex; // loop back to end
+    } else {
+      currentIndex--;
+    }
+    updateCarousel();
+  }
+
+  // Event Listeners for manual navigation
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoScroll();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoScroll();
+  });
+
+  // Handle window resize to adjust boundaries
+  window.addEventListener('resize', () => {
+    let visibleSlides = 3;
+    if (window.innerWidth <= 768) visibleSlides = 1;
+    else if (window.innerWidth <= 1024) visibleSlides = 2;
+
+    const maxIndex = Math.max(0, totalSlides - visibleSlides);
+    if (currentIndex > maxIndex) {
+      currentIndex = maxIndex;
+    }
+    updateCarousel();
+  });
+
+  // Auto-scroll logic
+  function startAutoScroll() {
+    autoScrollInterval = setInterval(() => {
+      if (!isHovered) {
+        nextSlide();
+      }
+    }, autoScrollDelay);
+  }
+
+  function stopAutoScroll() {
+    clearInterval(autoScrollInterval);
+  }
+
+  function resetAutoScroll() {
+    stopAutoScroll();
+    startAutoScroll();
+  }
+
+  // Pause auto-scroll on hover
+  track.parentElement?.addEventListener('mouseenter', () => {
+    isHovered = true;
+  });
+
+  track.parentElement?.addEventListener('mouseleave', () => {
+    isHovered = false;
+  });
+
+  // Initialize
+  updateCarousel();
+  startAutoScroll();
+}
+
+export function initTechStackTabs(): void {
+  const tabs = document.querySelectorAll('.tech-tab-btn');
+  const panels = document.querySelectorAll('.tech-content-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active state from all tabs
+      tabs.forEach(t => {
+        (t as HTMLElement).style.background = 'transparent';
+        const arrow = t.querySelector('.active-arrow') as HTMLElement;
+        if (arrow) arrow.style.display = 'none';
+      });
+
+      // Add active state to clicked tab
+      (tab as HTMLElement).style.background = '#115b90';
+      const arrow = tab.querySelector('.active-arrow') as HTMLElement;
+      if (arrow) arrow.style.display = 'block';
+
+      // Hide all panels
+      panels.forEach(p => {
+        (p as HTMLElement).style.display = 'none';
+      });
+
+      // Show target panel
+      const targetId = tab.getAttribute('data-target');
+      const targetPanel = document.getElementById(`tech-panel-${targetId}`);
+      if (targetPanel) {
+        targetPanel.style.display = 'block';
+      }
+    });
   });
 }

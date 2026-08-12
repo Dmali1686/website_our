@@ -7,7 +7,7 @@ import './style.css';
 import { registerRoutes, initRouter, onNavigate } from './router';
 import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
-import { renderHomePage, initHomeForm } from './pages/home';
+import { renderHomePage, initHomeForm, initTestimonialCarousel, initTechStackTabs } from './pages/home';
 import { renderAISolutionsPage } from './pages/ai-solutions';
 import { renderERPLMSPage } from './pages/erp-lms';
 import { renderPortfolioPage } from './pages/portfolio';
@@ -27,6 +27,8 @@ registerRoutes([
     onMount: () => {
       initNavbar();
       initHomeForm();
+      initTestimonialCarousel();
+      initTechStackTabs();
     },
   },
   {

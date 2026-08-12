@@ -121,11 +121,129 @@ export function initContactForm(): void {
   });
 }
 
+/** Neural Network Canvas Animation for AI Hero */
+export function initNeuralCanvas(): void {
+  const canvas = document.getElementById('neural-canvas') as HTMLCanvasElement;
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  let animationId: number;
+  let particles: Array<{
+    x: number; y: number;
+    vx: number; vy: number;
+    radius: number;
+    opacity: number;
+    pulseSpeed: number;
+    pulsePhase: number;
+  }> = [];
+
+  function resize() {
+    const rect = canvas.parentElement!.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+
+  function createParticles() {
+    const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        radius: Math.random() * 2 + 1,
+        opacity: Math.random() * 0.5 + 0.2,
+        pulseSpeed: Math.random() * 0.02 + 0.01,
+        pulsePhase: Math.random() * Math.PI * 2,
+      });
+    }
+  }
+
+  function draw() {
+    ctx!.clearRect(0, 0, canvas.width, canvas.height);
+    const time = Date.now() * 0.001;
+
+    // Draw connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 150) {
+          const alpha = (1 - dist / 150) * 0.15;
+          ctx!.beginPath();
+          ctx!.strokeStyle = `rgba(0, 212, 255, ${alpha})`;
+          ctx!.lineWidth = 0.5;
+          ctx!.moveTo(particles[i].x, particles[i].y);
+          ctx!.lineTo(particles[j].x, particles[j].y);
+          ctx!.stroke();
+        }
+      }
+    }
+
+    // Draw particles
+    for (const p of particles) {
+      const pulse = Math.sin(time * p.pulseSpeed * 60 + p.pulsePhase) * 0.3 + 0.7;
+      const currentOpacity = p.opacity * pulse;
+
+      // Glow
+      const gradient = ctx!.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 4);
+      gradient.addColorStop(0, `rgba(0, 212, 255, ${currentOpacity * 0.6})`);
+      gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+      ctx!.beginPath();
+      ctx!.fillStyle = gradient;
+      ctx!.arc(p.x, p.y, p.radius * 4, 0, Math.PI * 2);
+      ctx!.fill();
+
+      // Core dot
+      ctx!.beginPath();
+      ctx!.fillStyle = `rgba(0, 212, 255, ${currentOpacity})`;
+      ctx!.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx!.fill();
+
+      // Move
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Bounce off edges
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+    }
+
+    animationId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  createParticles();
+  draw();
+
+  // Handle resize
+  const resizeHandler = () => {
+    resize();
+    createParticles();
+  };
+  window.addEventListener('resize', resizeHandler);
+  
+  // Cleanup on navigation (using MutationObserver to detect canvas removal)
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.getElementById('neural-canvas')) {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resizeHandler);
+      cleanupObserver.disconnect();
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
+}
+
 export function initAllEffects(): void {
   // Slight delay to ensure DOM is painted
   requestAnimationFrame(() => {
     initScrollAnimations();
     initCounterAnimations();
     initContactForm();
+    initNeuralCanvas();
   });
 }
