@@ -11,12 +11,15 @@ export function renderContactPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Contact Header -->
-      <div class="contact-header">
-        <div class="container">
-          <h1 class="font-display-lg animate-fade-in-up">
-            Contact Us — Book a <span class="text-gradient-primary">Free Consultation</span>
+      <div class="contact-header" style="position: relative; background-image: url('/images/contact-bg.png'); background-size: cover; background-position: center; padding-top: 160px; padding-bottom: 60px; margin-bottom: 40px; border-radius: 0 0 40px 40px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <!-- Dark Overlay -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(14, 165, 233, 0.7) 100%); z-index: 1;"></div>
+        
+        <div class="container" style="position: relative; z-index: 2;">
+          <h1 class="font-display-lg animate-fade-in-up" style="color: #ffffff; font-weight: 800; letter-spacing: -0.02em;">
+            Contact Us — Book a <span style="color: #67e8f9;">Free Consultation</span>
           </h1>
-          <p class="animate-fade-in-up delay-100">
+          <p class="animate-fade-in-up delay-100" style="color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 600px; margin: 16px auto 0;">
             Reach out to our team of experts to discuss how Cresenix Solutions can accelerate your digital transformation.
           </p>
         </div>

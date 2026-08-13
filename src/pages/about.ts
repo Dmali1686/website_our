@@ -11,27 +11,36 @@ export function renderAboutPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper" style="background-color: #fafbfc; color: #334155; font-family: 'Inter', sans-serif;">
       
-      <!-- Premium Light Hero -->
-      <section class="abt-hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 80px 0; background-image: url('/images/about-bg.png'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(0,0,0,0.05); overflow: hidden;">
-        <!-- Light Overlay to ensure text readability -->
-        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(250,251,252,1) 100%);"></div>
+      <!-- Premium Hero (Home-Page Style Dissolve Layout) -->
+      <section class="abt-hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; background-image: url('/images/about-bg-medium.png'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+        <!-- Dark/Medium Overlay to ensure text readability -->
+        <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(14, 165, 233, 0.5) 100%); z-index: 1;"></div>
         
-        <div class="container text-center max-w-4xl mx-auto" style="position: relative; z-index: 2;">
-          <div class="animate-fade-in-up" style="display: inline-block; padding: 8px 20px; background: rgba(7, 71, 111, 0.08); color: #07476f; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 24px; border: 1px solid rgba(7, 71, 111, 0.15);">
-            OUR VISION
+        <!-- Right Side Team Overlay (Dissolve Effect) -->
+        <div style="position: absolute; top: 0; right: 0; width: 55%; height: 100%; background-image: url('/images/portfolio-team.png'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 2; mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); opacity: 1;"></div>
+        
+        <div class="container" style="position: relative; z-index: 5;">
+          
+          <!-- Left Content -->
+          <div class="hero-content" style="max-width: 650px; padding-right: 20px; margin-right:450px">
+            <div class="animate-fade-in-up" style="display: inline-block; padding: 8px 20px; background: rgba(255, 255, 255, 0.1); color: #ffffff; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; border-radius: 50px; margin-bottom: 24px; border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
+              OUR VISION
+            </div>
+            <h1 class="animate-fade-in-up delay-100" style="margin-bottom: 24px; font-weight: 700; font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 4.5vw, 4rem); color: #ffffff; line-height: 1.1;">
+              Empowering growth <br/>
+              <span class="text-gradient-hero">through technology.</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-in-up delay-200" style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 36px; font-weight: 400; color: rgba(255, 255, 255, 0.9); max-width: 600px;">
+              We empower enterprises to navigate the complexities of the modern digital landscape through scalable, high-performance software architecture and state-of-the-art artificial intelligence integration.
+            </p>
+            <div class="animate-fade-in-up delay-300">
+              <a href="#/portfolio" class="btn-primary" style="background: #ffffff; color: #07476f; font-weight: 600; padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center; transition: all 0.3s ease;">
+                Discover Our Solutions
+                <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+              </a>
+            </div>
           </div>
-          <h1 class="animate-fade-in-up delay-100" style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: #07476f; margin-bottom: 24px;">
-            Empowering growth <br/>through <span style="color: #0ea5e9;">technology.</span>
-          </h1>
-          <p class="animate-fade-in-up delay-200" style="font-size: 1.2rem; color: #475569; line-height: 1.7; max-width: 700px; margin: 0 auto 40px; font-weight: 400;">
-            We empower enterprises to navigate the complexities of the modern digital landscape through scalable, high-performance software architecture and state-of-the-art artificial intelligence integration. Precision is our baseline.
-          </p>
-          <div class="animate-fade-in-up delay-300">
-            <a href="#/portfolio" style="display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; background: #07476f; color: white; font-weight: 600; font-size: 1rem; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(7, 71, 111, 0.2);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 15px 30px rgba(7, 71, 111, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 10px 20px rgba(7, 71, 111, 0.2)';">
-              Discover Our Solutions
-              <span class="material-symbols-outlined ml-2" style="font-size:20px;">arrow_forward</span>
-            </a>
-          </div>
+          
         </div>
       </section>
 
@@ -94,40 +103,70 @@ export function renderAboutPage(): string {
       </section>
 
       <!-- Leadership -->
-      <section style="padding: 100px 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
-        <div class="container text-center mb-16">
-          <div class="animate-fade-in-up" style="display: inline-block; padding: 6px 16px; background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 16px;">
+      <section style="padding: 60px 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
+        <div class="container text-center mb-10">
+          <div class="animate-fade-in-up" style="display: inline-block; padding: 6px 16px; background: #e0f2fe; color: #0369a1; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 12px;">
             LEADERSHIP
           </div>
-          <h2 class="animate-fade-in-up delay-100" style="font-size: 2.5rem; font-weight: 800; color: #07476f; letter-spacing: -0.02em;">Architecting Vision</h2>
+          <h2 class="animate-fade-in-up delay-100" style="font-size: 2.2rem; font-weight: 800; color: #07476f; letter-spacing: -0.02em;">Architecting Vision</h2>
         </div>
         
-        <div class="container max-w-5xl">
-          <div class="animate-fade-in-up delay-200" style="background: #ffffff; border-radius: 24px; padding: 48px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; gap: 48px; align-items: center; border: 1px solid #f1f5f9;">
-            <div style="flex-shrink: 0; width: 280px; height: 350px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-              <img src="/images/founder.png" alt="Raj Bhandari — Founder and CEO" style="width: 100%; height: 100%; object-fit: cover;" />
-            </div>
-            <div>
-              <h3 style="font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Raj Bhandari</h3>
-              <div style="color: #0ea5e9; font-weight: 600; font-size: 1.1rem; margin-bottom: 24px;">Founder & CEO</div>
-              
-              <div style="font-size: 1.25rem; line-height: 1.6; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 24px; border-left: 4px solid #0ea5e9; padding-left: 20px;">
-                "The true power of AI isn't in replacing human ingenuity; it's in augmenting it. Our goal is to build digital infrastructure so intuitive and powerful that it becomes invisible, allowing enterprises to focus entirely on their core mission."
+        <div class="container max-w-6xl">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px;">
+            
+            <!-- Founder & CEO Card -->
+            <div class="animate-fade-in-up delay-200" style="background: #ffffff; border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 24px; border: 1px solid #f1f5f9; height: 100%;">
+              <div style="width: 100%; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+                <img src="/images/founder.png" alt="Raj Bhandari — Founder and CEO" style="width: 100%; height: 100%; object-fit: cover;" />
               </div>
-              
-              <p style="color: #64748b; line-height: 1.7; font-size: 1rem; margin-bottom: 32px;">
-                With a deep background in enterprise architecture and distributed systems, Raj founded Cresenix Solutions to bridge the gap between theoretical AI capabilities and practical, scalable business applications. His vision drives our commitment to uncompromising quality and strategic innovation.
-              </p>
-              
-              <div style="display: flex; gap: 12px;">
-                <a href="tel:+917387792415" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
-                  <span class="material-symbols-outlined" style="font-size:20px;">call</span>
-                </a>
-                <a href="mailto:raj@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
-                  <span class="material-symbols-outlined" style="font-size:20px;">mail</span>
-                </a>
+              <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                <h3 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 2px;">Raj Bhandari</h3>
+                <div style="color: #0ea5e9; font-weight: 600; font-size: 1rem; margin-bottom: 20px;">Founder & CEO</div>
+                
+                <div style="font-size: 1.05rem; line-height: 1.5; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 20px; border-left: 4px solid #0ea5e9; padding-left: 16px;">
+                  "The true power of AI isn't in replacing human ingenuity; it's in augmenting it. Our goal is to build digital infrastructure so intuitive and powerful that it becomes invisible."
+                </div>
+                
+                <p style="color: #64748b; line-height: 1.6; font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+                  With a deep background in enterprise architecture, Raj founded Cresenix Solutions to bridge the gap between theoretical AI capabilities and practical, scalable business applications.
+                </p>
+                
+                <div style="display: flex; gap: 12px; margin-top: auto;">
+                  <a href="tel:+917387792415" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
+                    <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+                  </a>
+                  <a href="mailto:raj@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
+                    <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
+                  </a>
+                </div>
               </div>
             </div>
+
+            <!-- Chief Technology Officer Card -->
+            <div class="animate-fade-in-up delay-300" style="background: #ffffff; border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 24px; border: 1px solid #f1f5f9; height: 100%;">
+              <div style="width: 100%; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
+                <img src="/images/cto.png" alt="Sarah Jenkins — Chief Technology Officer" style="width: 100%; height: 100%; object-fit: cover;" />
+              </div>
+              <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                <h3 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 2px;">Sarah Jenkins</h3>
+                <div style="color: #0ea5e9; font-weight: 600; font-size: 1rem; margin-bottom: 20px;">Chief Technology Officer</div>
+                
+                <div style="font-size: 1.05rem; line-height: 1.5; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 20px; border-left: 4px solid #0ea5e9; padding-left: 16px;">
+                  "Innovation isn't just about adopting the latest framework; it's about engineering resilient systems that can adapt to tomorrow's unknown challenges."
+                </div>
+                
+                <p style="color: #64748b; line-height: 1.6; font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+                  Sarah leads the engineering division with over 15 years of experience in cloud infrastructure. She ensures that every solution we deliver is built on a foundation of security and performance.
+                </p>
+                
+                <div style="display: flex; gap: 12px; margin-top: auto;">
+                  <a href="mailto:sarah@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
+                    <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
