@@ -16,6 +16,7 @@ import { renderAboutPage } from './pages/about';
 import { renderCareersPage } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
+import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
 
 // Register all application routes with SEO-optimized titles & descriptions
 registerRoutes([
@@ -89,6 +90,16 @@ registerRoutes([
     description: 'Review the terms of service for Cresenix Solutions LLP. Understand the conditions governing our software development and consulting services.',
     render: renderTermsPage,
     onMount: initNavbar
+  },
+  {
+    path: '/use-cases',
+    title: 'Use Cases & Real-World Impact | Cresenix Solutions LLP',
+    description: 'Explore how Cresenix Solutions solves complex problems with custom software, LMS platforms, and ERP systems for NGOs, education, and manufacturing.',
+    render: renderUseCasesPage,
+    onMount: () => {
+      initNavbar();
+      initUseCasesTabs();
+    }
   }
 ]);
 

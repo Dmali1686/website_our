@@ -19,6 +19,7 @@ const NAV_LINKS: NavLink[] = [
     dropdown: [
       { path: '/ai-solutions', label: 'AI Solutions', id: 'ai-dev' },
       { path: '/erp-lms', label: 'ERP & LMS Systems', id: 'erp-lms' },
+      { path: '/use-cases', label: 'Use Cases', id: 'use-cases' },
       { path: '/portfolio', label: 'Web & Mobile Development', id: 'web-mobile' },
     ]
   },
