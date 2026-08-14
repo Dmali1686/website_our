@@ -474,7 +474,8 @@ h6 {
     display: flex;
     align-items: center;
     transition: max-width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), all 0.3s ease;
-    pointer-events: none; /* Allows clicking through the empty space */
+    pointer-events: none;
+    /* Allows clicking through the empty space */
 }
 
 .main-nav.scrolled {
@@ -492,11 +493,15 @@ h6 {
 }
 
 /* Individual pill styles for desktop */
-.nav-logo, .nav-links, .nav-actions, .nav-mobile-toggle {
+.nav-logo,
+.nav-links,
+.nav-actions,
+.nav-mobile-toggle {
     background: #ffffff;
     border-radius: 50px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    pointer-events: auto; /* Re-enable clicks */
+    pointer-events: auto;
+    /* Re-enable clicks */
     height: 56px;
     display: flex;
     align-items: center;
@@ -3143,79 +3148,84 @@ h6 {
 }
 
 /* 3D Panels Styles */
-.panels3d-demo{
-position:relative;
+.panels3d-demo {
+    position: relative;
 }
 
-.panels3d-space{
-position:relative;
-/* Removed height 1700px so it doesn't take extra space */
+.panels3d-space {
+    position: relative;
+    /* Removed height 1700px so it doesn't take extra space */
 }
 
-.panels3d-scene{
-position:relative; /* Was sticky */
-height:520px; /* Fixed height for the scene */
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-perspective:1000px;
+.panels3d-scene {
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    perspective: 1000px;
 }
 
-.panels3d-wrap{
-position:relative;
-width:620px;
-height:340px;
-transform-style:preserve-3d;
+.panels3d-wrap {
+    position: relative;
+    width: 580px;
+    height: 400px;
+    transform-style: preserve-3d;
 }
 
-.panels3d-panel{
-position:absolute;
-width:220px;
-height:300px;
-border-radius:24px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
-font-weight:900;
-color:#fff;
-box-shadow:0 30px 80px rgba(0,0,0,.55);
-backface-visibility:hidden;
-will-change:transform;
+.panels3d-panel {
+    position: absolute;
+    width: 180px;
+    height: 380px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: none;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
-.panels3d-panel:nth-child(1){
-left:0;
-top:20px;
-background:linear-gradient(135deg,#1e293b,#334155);
+.panels3d-panel:nth-child(1) {
+    left: 0;
+    top: 20px;
+    background: linear-gradient(135deg, #1e293b, #334155);
 }
 
-.panels3d-panel:nth-child(2){
-left:200px;
-top:0;
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
+.panels3d-panel:nth-child(2) {
+    left: 200px;
+    top: 0;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
 
-.panels3d-panel:nth-child(3){
-left:400px;
-top:20px;
-background:linear-gradient(135deg,#22d3ee,#22c55e);
+.panels3d-panel:nth-child(3) {
+    left: 400px;
+    top: 20px;
+    background: linear-gradient(135deg, #22d3ee, #22c55e);
 }
 
-.panels3d-label{
-position:absolute;
-bottom:28px;
-left:50%;
-transform:translateX(-50%);
-color:#cbd5e1;
-font-size:14px;
-letter-spacing:.05em;
-text-transform:uppercase;
+.panels3d-label {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #cbd5e1;
+    font-size: 14px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
 }
 
 /* Globe Animation */
 @keyframes spinGlobe {
-  0% { background-position: 0 0; }
-  100% { background-position: 200% 0; }
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
 }

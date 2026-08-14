@@ -5,64 +5,63 @@ export function renderHomePage(): string {
   return `
     ${renderNavbar()}
     <div class="page-wrapper">
-      <main class="ai-hero-full" style="min-height: 100vh; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 10;">
+      <main class="ai-hero-full" style="height: 150vh; position: relative; z-index: 10;">
         
-        <!-- Gradient Overlay -->
-        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(180, 70, 0, 0.8) 0%, rgba(180, 70, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%); z-index: 1;"></div>
+        <!-- Background Wrapper (to contain the -50px inset) -->
+        <div style="position: absolute; inset: 0; overflow: hidden; z-index: 0;">
+          <!-- Hero Background Layer -->
+          <div id="hero-bg" style="position: absolute; inset: -50px; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center; will-change: filter, transform; filter: blur(0px); transform: scale(1);"></div>
+
+          <!-- Gradient Overlay -->
+          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(180, 70, 0, 0.8) 0%, rgba(180, 70, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);"></div>
+        </div>
         
-        <div class="container" style="position: relative; z-index: 5; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 80px;">
-            
-            <!-- Top Badge -->
-            <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50px; padding: 6px 16px 6px 6px; margin-bottom: 32px; color: white; font-family: 'Inter', sans-serif; font-size: 0.95rem; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                <span style="background: #111827; color: white; padding: 4px 12px; border-radius: 50px; font-weight: 600; font-size: 0.85rem;">New</span>
-                <span style="font-weight: 500;">A calmer way to build habits</span>
-            </div>
+        <!-- Sticky text wrapper -->
+        <div style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5;">
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-8vh);">
+                <!-- Main Heading -->
+                <h1 id="hero-main-text" style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
+                    Build habits that<br/>actually stick
+                </h1>
 
-            <!-- Main Heading -->
-            <h1 style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em;">
-                Build habits that<br/>actually stick
-            </h1>
-
-            <!-- Subheading -->
-            <p style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 500; line-height: 1.5; margin-bottom: 48px; max-width: 650px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                You see the right habits at the right time so your day never feels crowded.
-            </p>
-
-            <!-- Buttons -->
-            <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: center;">
-                <a href="#" style="background: white; color: #111827; padding: 16px 32px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 1.05rem; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
-                    Start tracking for free
-                </a>
-                <a href="#" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: white; padding: 16px 32px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; transition: background 0.2s; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span> Watch demo
-                </a>
+                <!-- Subheading -->
+                <p style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 500; line-height: 1.5; margin-bottom: 0; max-width: 650px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    You see the right habits at the right time so your day never feels crowded.
+                </p>
             </div>
             
         </div>
-        <!-- Bottom Fade to seamlessly blend into next section -->
-        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 300px; background: linear-gradient(to bottom, transparent, #fafafa); z-index: 2;"></div>
 
-        <!-- 3D Panels Section (Absolutely positioned to overlap the boundary) -->
-        <div style="position: absolute; bottom: -260px; left: 0; width: 100%; z-index: 10;">
+        <!-- 3D Panels Section (Absolute, scrolls naturally) -->
+        <div style="position: absolute; top: calc(100vh - 130px); left: 0; width: 100%; z-index: 10;">
           <div class="panels3d-demo" id="panels-demo">
             <div class="panels3d-space">
               <div class="panels3d-scene">
                 <div class="panels3d-wrap" id="panels-wrap">
-                  <div class="panels3d-panel">01</div>
-                  <div class="panels3d-panel">02</div>
-                  <div class="panels3d-panel">03</div>
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
                 </div>
               </div> 
             </div>
           </div>
         </div>
+        
+        <!-- Bottom Fade to seamlessly blend into next section -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 300px; background: linear-gradient(to bottom, transparent, #fafafa); z-index: 2;"></div>
       </main>
       
       <!-- Text Content Section -->
-      <section style="background: #fafafa; padding: 320px 20px 120px; text-align: center; position: relative; z-index: 5;">
+      <section style="background: #fafafa; padding: 120px 20px 60px; text-align: center; position: relative; z-index: 5;">
         <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
           
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; color: #111827; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 40px; max-width: 900px;">
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; color: #111827; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0; max-width: 900px;">
             Build steady daily 
             <span style="display: inline-flex; align-items: center; justify-content: center; background: #e07a5f; border-radius: 50px; padding: 0 0.8em; height: 1.1em; vertical-align: -0.15em; margin: 0 0.1em; font-size: 0.85em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">🚴</span> 
             habits with a layout that keeps your mornings, evenings, 
@@ -70,22 +69,13 @@ export function renderHomePage(): string {
             and focus simple to follow.
           </h2>
 
-          <p style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 500; color: #4b5563; margin-bottom: 24px;">
-            Used by people to improve routines.
-          </p>
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
-            <span style="background: #e5e7eb; color: #1f2937; padding: 10px 24px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;">#Founders</span>
-            <span style="background: #e5e7eb; color: #1f2937; padding: 10px 24px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;">#Students</span>
-            <span style="background: #e5e7eb; color: #1f2937; padding: 10px 24px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;">#Busy parents</span>
-            <span style="background: #e5e7eb; color: #1f2937; padding: 10px 24px; border-radius: 50px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;">#Remote teams</span>
-          </div>
 
         </div>
       </section>
 
       <!-- Clients as Family Section -->
-      <section style="background: #ffffff; padding: 120px 20px; text-align: center;">
+      <section style="background: #ffffff; padding: 60px 20px 120px; text-align: center;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
           
           <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #111827; letter-spacing: -0.03em; margin-bottom: 16px;">
@@ -98,20 +88,19 @@ export function renderHomePage(): string {
 
           <!-- Cards Container -->
           <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; width: 100%;">
-            
             <!-- Card 1 -->
-            <div style="background: #fafafa; border: 1px solid #e5e7eb; border-radius: 24px; padding: 48px 32px; width: 100%; max-width: 340px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #111827;">GeekByChoice</h3>
+            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+              <img src="/images/geekbychoice_casestudy.png" alt="GeekByChoice Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
             </div>
 
             <!-- Card 2 -->
-            <div style="background: #fafafa; border: 1px solid #e5e7eb; border-radius: 24px; padding: 48px 32px; width: 100%; max-width: 340px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #111827;">MH14 Animal NGO</h3>
+            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+              <img src="/images/ngo_casestudy.png" alt="MH14 Animal NGO Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
             </div>
 
             <!-- Card 3 -->
-            <div style="background: #fafafa; border: 1px solid #e5e7eb; border-radius: 24px; padding: 48px 32px; width: 100%; max-width: 340px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.02); transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.5rem; color: #111827;">Jayshree Electrocoating</h3>
+            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
+              <img src="/images/jayshree_casestudy.png" alt="Jayshree Electrocoating Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
             </div>
 
           </div>
@@ -332,6 +321,29 @@ export function renderHomePage(): string {
 }
 
 export function initHome(): void {
+  // Hero Background Scroll Animation
+  const heroBg = document.getElementById('hero-bg');
+  const heroText = document.getElementById('hero-main-text');
+  
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      // Calculate blur (0 to 20px) and scale (1 to 1.15)
+      const maxBlur = 20;
+      const blurAmount = Math.min(scrollY / 15, maxBlur);
+      const scaleAmount = 1 + Math.min(scrollY / 2000, 0.15); // slight zoom
+      
+      heroBg.style.filter = `blur(${blurAmount}px)`;
+      heroBg.style.transform = `scale(${scaleAmount})`;
+      
+      if (heroText) {
+          const textScale = 1 + Math.min(scrollY / 3000, 0.1);
+          heroText.style.transform = `scale(${textScale})`;
+      }
+    });
+  }
+
   const space = document.querySelector('.panels3d-space') as HTMLElement;
   const wrap = document.getElementById('panels-wrap');
 
