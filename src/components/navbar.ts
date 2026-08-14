@@ -13,15 +13,7 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  {
-    label: 'Services',
-    id: 'services',
-    dropdown: [
-      { path: '/ai-solutions', label: 'AI Solutions', id: 'ai-dev' },
-      { path: '/erp-lms', label: 'ERP & LMS Systems', id: 'erp-lms' },
-      { path: '/portfolio', label: 'Web & Mobile Development', id: 'web-mobile' },
-    ]
-  },
+  { path: '/services', label: 'Services', id: 'services' },
   { path: '/portfolio', label: 'Portfolio', id: 'portfolio' },
   { path: '/about', label: 'About Us', id: 'about' },
   { path: '/contact', label: 'Contact', id: 'contact' },

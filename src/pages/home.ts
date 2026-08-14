@@ -11,13 +11,13 @@ export function renderHomePage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Hero Section (AI Dark Theme) -->
-      <main class="ai-hero-full" style="padding-top: 80px; background-size: cover; background-position: center;">
+      <main class="ai-hero-full" style="background-size: cover; background-position: center;">
         <!-- Neural Network Animated Background -->
         <div class="neural-bg"><canvas id="neural-canvas"></canvas></div>
         <!-- Right Side Person Overlay -->
         <div class="robot-box"></div>
         
-        <div class="container" style="position: relative; z-index: 5; padding-right:550px">
+        <div class="container responsive-hero-padding" style="position: relative; z-index: 5;">
             
             <!-- Hero Content (Left Side) -->
             <div class="hero-content" style="max-width: 650px;">
@@ -56,7 +56,7 @@ export function renderHomePage(): string {
               <p class="hero-subtitle animate-fade-in-up delay-200" style="font-size: 1.15rem; line-height: 1.7; margin-bottom: 36px; font-weight: 400;">
                 Web Development, Mobile Apps, AI Solutions & Digital Marketing to help your business grow faster and smarter.
               </p>
-              <div class="hero-actions animate-fade-in-up delay-300" style="display: flex; gap: 16px; margin-bottom: 48px;">
+              <div class="hero-actions animate-fade-in-up delay-300 responsive-flex-col" style="margin-bottom: 48px;">
                 <a class="btn-primary" data-route="/contact" href="#/contact" style="padding: 14px 28px; font-weight: 600;">
                   Book a Free Consultation <span class="material-symbols-outlined ml-2" style="font-size:20px;">arrow_forward</span>
                 </a>
@@ -76,26 +76,26 @@ export function renderHomePage(): string {
         <div class="container">
           
           <!-- Stats Cards -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 60px;">
-            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
-              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">ads_click</span>
-              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">1000+</div>
-              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Projects Delivered</div>
+          <div class="responsive-stats-grid">
+            <div class="stat-card">
+              <span class="material-symbols-outlined stat-icon">ads_click</span>
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">Projects Delivered</div>
             </div>
-            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
-              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">military_tech</span>
-              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">25+</div>
-              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Years Experience</div>
+            <div class="stat-card">
+              <span class="material-symbols-outlined stat-icon">military_tech</span>
+              <div class="stat-number">25+</div>
+              <div class="stat-label">Years Experience</div>
             </div>
-            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
-              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">groups</span>
-              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">97%</div>
-              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Client Retention</div>
+            <div class="stat-card">
+              <span class="material-symbols-outlined stat-icon">groups</span>
+              <div class="stat-number">97%</div>
+              <div class="stat-label">Client Retention</div>
             </div>
-            <div style="background: rgba(37, 99, 235, 0.05); padding: 32px 24px; border-radius: 12px; text-align: center;">
-              <span class="material-symbols-outlined" style="color: var(--primary); font-size: 32px; margin-bottom: 12px;">bolt</span>
-              <div style="font-size: 1.75rem; font-weight: 800; color: #1f2937; margin-bottom: 4px;">100%</div>
-              <div style="font-size: 0.9rem; font-weight: 600; color: #4b5563;">Global Reach</div>
+            <div class="stat-card">
+              <span class="material-symbols-outlined stat-icon">bolt</span>
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Global Reach</div>
             </div>
           </div>
 
@@ -193,9 +193,9 @@ export function renderHomePage(): string {
 
       <!-- Social Proof / Testimonials Section -->
       <section class="section-gap" style="background: #f1f3f5; position: relative;">
-        <div class="container" style="max-width: 1200px; padding: 80px 20px;">
+        <div class="container" style="max-width: 1200px;">
           
-          <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+          <div class="section-header responsive-header-mb" style="text-align: center;">
             <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 16px;">What Our Clients Say About Their Transformative Journeys</h2>
             <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #4b5563; max-width: 800px; margin: 0 auto;">We've served more than 300 clients globally in the last 8 years and retained 95% of them.</p>
           </div>
@@ -384,87 +384,7 @@ export function renderHomePage(): string {
       </section>
 
 
-      <!-- Comprehensive Services Section -->
-      <section class="section-gap" style="background: white; position: relative; z-index: 10;">
-        <div class="container" style="max-width: 1200px;">
-          <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 64px;">
-            <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 24px; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.3;">
-              Powering Innovation with AI-Driven Solutions Built for Speed and Precision
-            </h2>
 
-          </div>
-          
-          <div style="display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 40px;">
-            
-            <!-- Service 1 -->
-            <div class="animate-fade-in-up delay-100" style="padding: 40px 32px; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #f59e0b;">web</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Custom Software<br>Development</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                We are a reputed software development company that provides creative solutions for businesses.
-              </p>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="animate-fade-in-up delay-200" style="padding: 40px 32px; border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #3b82f6;">devices</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Application<br>Development</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                Powered by clients' unique needs, we customize and deliver unique application solutions.
-              </p>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="animate-fade-in-up delay-300" style="padding: 40px 32px; border-bottom: 1px solid #e5e7eb;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #f97316;">smart_toy</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">AI as a<br>Service</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                Unlock doors to success with AI. We provide cutting-edge AI solutions to clients that transform businesses.
-              </p>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="animate-fade-in-up delay-100" style="padding: 40px 32px; border-right: 1px solid #e5e7eb;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #10b981;">smartphone</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">Mobile App<br>Development</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                Native and cross-platform mobile experiences that deliver seamless functionality and premium UI/UX across all devices.
-              </p>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="animate-fade-in-up delay-200" style="padding: 40px 32px; border-right: 1px solid #e5e7eb;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #8b5cf6;">domain</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">ERP<br>Systems</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                Enterprise resource planning that unifies procurement, accounting, HR, and inventory into a single powerful platform.
-              </p>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="animate-fade-in-up delay-300" style="padding: 40px 32px;">
-              <div style="margin-bottom: 24px;">
-                <span class="material-symbols-outlined" style="font-size: 40px; color: #ef4444;">school</span>
-              </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 700; color: #111827; margin-bottom: 16px; line-height: 1.4;">LMS<br>Platforms</h3>
-              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4b5563; line-height: 1.7;">
-                Comprehensive learning management with course builders, progress tracking, gamification, and advanced analytics.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       <!-- Why Choose Cresenix Section -->
       <section style="padding: 100px 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; position: relative; overflow: hidden;">
@@ -478,34 +398,34 @@ export function renderHomePage(): string {
             <h2 style="font-family: var(--font-display); font-size: 2.75rem; font-weight: 800; margin-bottom: 16px;">Why <span style="color: var(--primary);">Cresenix</span>?</h2>
             <p class="section-subtitle" style="font-family: var(--font-display); font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 600px; margin: 0 auto; line-height: 1.6;">We don't just build software — we engineer competitive advantages.</p>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
-            <div class="animate-fade-in-up delay-100" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px 24px; text-align: center; transition: all 0.3s ease;">
-              <div style="width: 56px; height: 56px; margin: 0 auto 20px; background: rgba(var(--primary-rgb), 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">speed</span>
+          <div class="responsive-grid-4">
+            <div class="why-cresenix-card animate-fade-in-up delay-100">
+              <div class="why-icon-wrapper">
+                <span class="material-symbols-outlined why-icon">speed</span>
               </div>
-              <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Agile Delivery</h3>
-              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.5;">Rapid sprints with transparent milestones. Your product goes live in weeks, not months.</p>
+              <h3 class="why-title">Agile Delivery</h3>
+              <p class="why-desc">Rapid sprints with transparent milestones. Your product goes live in weeks, not months.</p>
             </div>
-            <div class="animate-fade-in-up delay-200" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px 24px; text-align: center; transition: all 0.3s ease;">
-              <div style="width: 56px; height: 56px; margin: 0 auto 20px; background: rgba(var(--primary-rgb), 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">security</span>
+            <div class="why-cresenix-card animate-fade-in-up delay-200">
+              <div class="why-icon-wrapper">
+                <span class="material-symbols-outlined why-icon">security</span>
               </div>
-              <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Enterprise Security</h3>
-              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.5;">Bank-grade encryption, secure APIs, and compliance-ready architecture from day one.</p>
+              <h3 class="why-title">Enterprise Security</h3>
+              <p class="why-desc">Bank-grade encryption, secure APIs, and compliance-ready architecture from day one.</p>
             </div>
-            <div class="animate-fade-in-up delay-300" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px 24px; text-align: center; transition: all 0.3s ease;">
-              <div style="width: 56px; height: 56px; margin: 0 auto 20px; background: rgba(var(--primary-rgb), 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">support_agent</span>
+            <div class="why-cresenix-card animate-fade-in-up delay-300">
+              <div class="why-icon-wrapper">
+                <span class="material-symbols-outlined why-icon">support_agent</span>
               </div>
-              <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Dedicated Support</h3>
-              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.5;">24/7 monitoring and a dedicated account manager for every project we deliver.</p>
+              <h3 class="why-title">Dedicated Support</h3>
+              <p class="why-desc">24/7 monitoring and a dedicated account manager for every project we deliver.</p>
             </div>
-            <div class="animate-fade-in-up delay-400" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 32px 24px; text-align: center; transition: all 0.3s ease;">
-              <div style="width: 56px; height: 56px; margin: 0 auto 20px; background: rgba(var(--primary-rgb), 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                <span class="material-symbols-outlined" style="font-size: 28px; color: var(--primary);">trending_up</span>
+            <div class="why-cresenix-card animate-fade-in-up delay-400">
+              <div class="why-icon-wrapper">
+                <span class="material-symbols-outlined why-icon">trending_up</span>
               </div>
-              <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 8px;">Scalable Growth</h3>
-              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.5;">Architectures built for scale — from 100 users today to 1M users tomorrow.</p>
+              <h3 class="why-title">Scalable Growth</h3>
+              <p class="why-desc">Architectures built for scale — from 100 users today to 1M users tomorrow.</p>
             </div>
           </div>
         </div>
@@ -599,10 +519,10 @@ export function renderHomePage(): string {
 
       return `
           <section style="background: #f8f9fa; padding:15px;">
-            <div style="display: flex; min-height: 700px; width: 100%;">
+            <div class="responsive-tech-layout">
               
               <!-- Left Sidebar (Tabs) -->
-              <div style="width: 320px; background: #07476f; color: white; display: flex; flex-direction: column;" id="techStackTabs">
+              <div class="responsive-tech-tabs" style="background: #07476f; color: white;" id="techStackTabs">
                 ${techStackCategories.map((cat, index) => `
                   <button class="tech-tab-btn" data-target="${cat.id}" style="
                     display: flex; align-items: center; gap: 16px; padding: 20px 24px; 
@@ -628,29 +548,25 @@ export function renderHomePage(): string {
               </div>
 
               <!-- Right Content Area -->
-              <div style="flex: 1; padding: 60px 40px; background: #f8f9fa; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;" id="techStackContent">
+              <div class="tech-content-area" id="techStackContent">
                 ${techStackCategories.map((cat, index) => `
                   <div class="tech-content-panel" id="tech-panel-${cat.id}" style="
                     display: ${index === 0 ? 'block' : 'none'};
                     width: 100%; max-width: 900px; animation: fadeIn 0.4s ease;
                   ">
-                     <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #07476f; text-align: center; margin-bottom: 16px;">
+                     <h2 style="font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2.2rem); font-weight: 700; color: #07476f; text-align: center; margin-bottom: 16px;">
                        ${cat.title}
                      </h2>
-                     <div style="width: 80px; height: 4px; background: #f59e0b; margin: 0 auto 32px;"></div>
+                     <div style="width: 80px; height: 4px; background: #f59e0b; margin: 0 auto 16px;"></div>
                      
-                     <p style="text-align: center; color: #4b5563; font-size: 1.05rem; line-height: 1.6; margin-bottom: 60px; font-family: 'Inter', sans-serif; max-width: 700px; margin-left: auto; margin-right: auto;">
+                     <p class="tech-desc">
                        ${cat.desc}
                      </p>
                      
-                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; margin-bottom: 60px;">
+                     <div class="tech-stack-grid">
                         ${cat.techs.map((tech, tIndex) => `
-                          <div style="
-                            text-align: center; padding: 32px 16px; 
-                            ${tIndex % 3 !== 2 ? 'border-right: 1px dashed #d1d5db;' : ''}
-                            ${tIndex < Math.floor(cat.techs.length / 3) * 3 ? 'border-bottom: 1px dashed #d1d5db;' : ''}
-                          ">
-                             <span style="font-size: 1.4rem; font-weight: 800; color: ${tech.color}; font-family: 'Inter', sans-serif; letter-spacing: -0.03em;">
+                          <div class="tech-item">
+                             <span class="tech-item-name" style="color: ${tech.color};">
                                ${tech.name}
                              </span>
                           </div>
@@ -748,21 +664,22 @@ export function renderHomePage(): string {
         </style>
         
         <div class="container">
-          <div class="section-header animate-fade-in-up" style="text-align: center; margin-bottom: 80px;">
+          <div class="section-header animate-fade-in-up responsive-header-mb" style="text-align: center;">
             <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(17, 91, 144, 0.08); color: #115b90; padding: 8px 20px; border-radius: 100px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; font-family: 'Inter', sans-serif;">
               <span class="material-symbols-outlined" style="font-size: 18px;">route</span> OUR PROCESS
             </div>
-            <h2 style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: #111827; margin-bottom: 16px; letter-spacing: -0.02em;">How We Work</h2>
+            <h2 style="font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #111827; margin-bottom: 16px; letter-spacing: -0.02em;">How We <span style="color: var(--primary);">Work</span></h2>
             <p class="section-subtitle" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #4b5563; max-width: 650px; margin: 0 auto; line-height: 1.6;">A clear, transparent process so you always know what's happening and when.</p>
           </div>
 
-          <div class="process-timeline" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; max-width: 1200px; margin: 0 auto;">
-            
-            <!-- Connecting line -->
-            <div class="process-line-animated" style="position: absolute; top: 44px; left: 10%; right: 10%; height: 4px; border-radius: 2px; z-index: 0; opacity: 0.7;"></div>
+          <div class="responsive-timeline-wrapper">
+            <div class="process-timeline responsive-timeline-grid" style="position: relative; max-width: 1200px; margin: 0 auto;">
+              
+              <!-- Connecting line -->
+              <div class="process-line-animated hide-on-mobile" style="position: absolute; top: 44px; left: 10%; right: 10%; height: 4px; border-radius: 2px; z-index: 0; opacity: 0.7;"></div>
 
-            <!-- Step 1 -->
-            <div class="process-step animate-fade-in-up delay-100" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #115b90;">
+              <!-- Step 1 -->
+              <div class="process-step animate-fade-in-up delay-100" style="text-align: center; position: relative; z-index: 1; cursor: pointer; --step-color: #115b90;">
               <div class="process-step-circle" style="width: 88px; height: 88px; margin: 0 auto 24px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(17, 91, 144, 0.1); display: flex; align-items: center; justify-content: center; border: 3px solid #115b90;">
                 <span class="material-symbols-outlined process-step-icon" style="font-size: 32px; color: #115b90;">search</span>
               </div>
@@ -811,6 +728,7 @@ export function renderHomePage(): string {
               <div style="margin-top: 16px; background: rgba(17, 91, 144, 0.08); color: #115b90; padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; display: inline-block; font-family: 'Inter', sans-serif;">Ongoing</div>
             </div>
 
+            </div>
           </div>
         </div>
       </section>
@@ -1277,3 +1195,4 @@ export function initTechStackTabs(): void {
     });
   });
 }
+
