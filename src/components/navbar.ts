@@ -13,18 +13,9 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  {
-    label: 'Services',
-    id: 'services',
-    dropdown: [
-      { path: '/ai-solutions', label: 'AI Solutions', id: 'ai-dev' },
-      { path: '/erp-lms', label: 'ERP & LMS Systems', id: 'erp-lms' },
-      { path: '/portfolio', label: 'Web & Mobile Development', id: 'web-mobile' },
-    ]
-  },
-  { path: '/portfolio', label: 'Portfolio', id: 'portfolio' },
-  { path: '/about', label: 'About Us', id: 'about' },
-  { path: '/contact', label: 'Contact', id: 'contact' },
+  { path: '/services', label: 'Services', id: 'services' },
+  { path: '/case-study', label: 'Case Study', id: 'case-study' },
+  { path: '/about', label: 'About Us', id: 'about' }
 ];
 
 /* Track which nav item was last clicked so we only highlight that one */
@@ -143,8 +134,8 @@ export function renderNavbar(): string {
           ${linksHTML}
         </nav>
         <div class="nav-actions">
-          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: #facc15; color: #111827; padding: 10px 28px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, background 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.background='#eab308';" onmouseout="this.style.transform='scale(1)'; this.style.background='#facc15';">
-            Contact Us
+          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: #111827; color: #ffffff; padding: 10px 24px; border-radius: 50px; font-weight: 500; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.9';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
+            Get in touch
           </a>
         </div>
         <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
