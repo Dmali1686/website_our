@@ -384,63 +384,7 @@ export function renderHomePage(): string {
       </section>
 
 
-      <!-- Comprehensive Services Section -->
-      <section class="section-gap" style="background: white; position: relative; z-index: 10;">
-        <div class="container" style="max-width: 1200px;">
-          <div class="section-header animate-fade-in-up responsive-header-mb" style="text-align: center;">
-            <h2 style="font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2.2rem); font-weight: 700; color: #1e3a8a; margin-bottom: 24px; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.3;">
-              Powering Innovation with AI-Driven Solutions Built for Speed and Precision
-            </h2>
 
-          </div>
-          
-          <div class="responsive-services-grid" style="margin-top: 40px;">
-            
-            <!-- Service 1 -->
-            <div class="service-card animate-fade-in-up delay-100">
-              <span class="material-symbols-outlined service-card-icon" style="color: #f59e0b;">web</span>
-              <h3 class="service-card-title">Custom Software<br>Development</h3>
-              <p class="service-card-desc">We are a reputed software development company that provides creative solutions for businesses.</p>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="service-card animate-fade-in-up delay-200">
-              <span class="material-symbols-outlined service-card-icon" style="color: #3b82f6;">devices</span>
-              <h3 class="service-card-title">Application<br>Development</h3>
-              <p class="service-card-desc">Powered by clients' unique needs, we customize and deliver unique application solutions.</p>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service-card animate-fade-in-up delay-300">
-              <span class="material-symbols-outlined service-card-icon" style="color: #f97316;">smart_toy</span>
-              <h3 class="service-card-title">AI as a<br>Service</h3>
-              <p class="service-card-desc">Unlock doors to success with AI. We provide cutting-edge AI solutions to clients that transform businesses.</p>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="service-card animate-fade-in-up delay-100">
-              <span class="material-symbols-outlined service-card-icon" style="color: #10b981;">smartphone</span>
-              <h3 class="service-card-title">Mobile App<br>Development</h3>
-              <p class="service-card-desc">Native and cross-platform mobile experiences that deliver seamless functionality and premium UI/UX across all devices.</p>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="service-card animate-fade-in-up delay-200">
-              <span class="material-symbols-outlined service-card-icon" style="color: #8b5cf6;">domain</span>
-              <h3 class="service-card-title">ERP<br>Systems</h3>
-              <p class="service-card-desc">Enterprise resource planning that unifies procurement, accounting, HR, and inventory into a single powerful platform.</p>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="service-card animate-fade-in-up delay-300">
-              <span class="material-symbols-outlined service-card-icon" style="color: #ef4444;">school</span>
-              <h3 class="service-card-title">LMS<br>Platforms</h3>
-              <p class="service-card-desc">Comprehensive learning management with course builders, progress tracking, gamification, and advanced analytics.</p>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       <!-- Why Choose Cresenix Section -->
       <section style="padding: 100px 0; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; position: relative; overflow: hidden;">
@@ -1251,3 +1195,4 @@ export function initTechStackTabs(): void {
     });
   });
 }
+
