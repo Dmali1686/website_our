@@ -5,9 +5,34 @@ export function renderServicesPage(): string {
   return `
     ${renderNavbar()}
     <div class="page-wrapper" style="padding-top: 80px;">
+      
       <!-- Services Showcase Section -->
-      <section class="section-gap" style="background: #fafbff; position: relative; z-index: 10; overflow: hidden;">
+      <section class="section-gap" style="background: #fafbff; position: relative; z-index: 10; overflow: hidden; border-bottom: 1px solid #e2e8f0;">
         <style>
+          /* Global Noise Overlay */
+          .noise-overlay {
+            position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.035; mix-blend-mode: multiply;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+          }
+          
+          /* Ambient Background Orbs */
+          .svc-ambient-orb {
+            position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0;
+            animation: orbFloat 25s infinite alternate ease-in-out;
+          }
+          @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(80px, 60px) scale(1.15); }
+          }
+          
+          /* Huge Background Watermark */
+          .svc-watermark {
+            position: absolute; top: 18%; left: 50%; transform: translateX(-50%);
+            font-family: 'Playfair Display', serif; font-size: 28vw; font-weight: 900;
+            color: rgba(15, 23, 42, 0.015); z-index: 0; pointer-events: none;
+            white-space: nowrap; user-select: none; letter-spacing: -0.05em;
+          }
+
           /* Service Showcase Styles */
           .svc-tabs-row {
             display: flex; gap: 16px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap;
@@ -403,7 +428,15 @@ export function renderServicesPage(): string {
           }
         </style>
 
-        <div class="container" style="max-width: 1200px;">
+        <div class="noise-overlay"></div>
+        
+        <!-- Background Ambient Elements -->
+        <div class="svc-ambient-orb" style="top: -10%; left: -5%; width: 600px; height: 600px; background: rgba(99,102,241,0.25);"></div>
+        <div class="svc-ambient-orb" style="bottom: 10%; right: -5%; width: 700px; height: 700px; background: rgba(168,85,247,0.15); animation-delay: -5s;"></div>
+        <div class="svc-ambient-orb" style="top: 40%; left: 50%; width: 500px; height: 500px; background: rgba(56,189,248,0.15); animation-delay: -10s; transform: translateX(-50%);"></div>
+        <div class="svc-watermark">SERVICES</div>
+
+        <div class="container" style="max-width: 1200px; position: relative; z-index: 2;">
           
           <!-- Service Category Tabs -->
           <div class="svc-tabs-row" id="svcTabs">
@@ -837,9 +870,437 @@ export function renderServicesPage(): string {
       </div>
 
       <!-- Why We & Our Process Section -->
-      <section class="svc-extra-section alt">
-        <div class="svc-extra-container motion-fade-up">
-          <h2 class="svc-extra-heading">Why We &amp; Our Process</h2>
+      <section class="svc-process-section" style="padding: 120px 24px; background: #0f172a; overflow: hidden; position: relative;">
+        <style>
+          .svc-process-container {
+            max-width: 1300px; margin: 0 auto;
+            display: flex; align-items: center; gap: 60px;
+          }
+          .svc-process-left { flex: 0 0 380px; }
+          .svc-process-right {
+            flex: 1; position: relative; height: 500px;
+            display: flex; align-items: center; justify-content: center;
+          }
+          
+          .svc-process-badge {
+            background: rgba(99, 102, 241, 0.15); color: #818cf8; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(99,102,241,0.3);
+            font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px; width: fit-content;
+          }
+          .svc-process-heading {
+            font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+            font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.02em;
+          }
+          .svc-process-divider { width: 48px; height: 3px; background: #6366f1; margin-bottom: 24px; border-radius: 2px; }
+          .svc-process-desc { font-family: 'Inter', sans-serif; font-size: 1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 40px; }
+          
+          .svc-process-feature-item { display: flex; gap: 16px; margin-bottom: 32px; }
+          .svc-process-feature-item:last-child { margin-bottom: 0; }
+          .svc-process-feature-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            background: rgba(99,102,241,0.15) !important; color: #818cf8 !important;
+          }
+          .svc-process-feature-icon .material-symbols-outlined { font-size: 24px; font-variation-settings: 'wght' 600; }
+          .svc-process-feature-text h4 { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; color: #f8fafc; margin-bottom: 4px; }
+          .svc-process-feature-text p { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin: 0; }
+          
+          /* Carousel CSS */
+          .svc-carousel-btn {
+            position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
+            width: 44px; height: 44px; border-radius: 50%; background: white; border: 1px solid #e2e8f0;
+            display: flex; align-items: center; justify-content: center; color: #6366f1; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s;
+          }
+          .svc-carousel-btn:hover { background: #f8fafc; color: #4f46e5; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+          .svc-carousel-btn.prev { left: 0; }
+          .svc-carousel-btn.next { right: 0; }
+          
+          .svc-carousel-viewport {
+            position: absolute; inset: 0 40px; /* leave room for buttons */
+          }
+          
+          .svc-carousel-card {
+            position: absolute; top: 50%; left: 50%;
+            width: 220px; height: 380px;
+            background: white; border-radius: 20px; overflow: hidden;
+            display: flex; flex-direction: column;
+            box-shadow: 0 10px 30px rgba(15,23,42,0.04);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Hidden State Default */
+            opacity: 0; pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.7); z-index: 1;
+          }
+          
+          .card-top { padding: 32px 20px; text-align: center; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+          .card-icon-wrap {
+            width: 56px; height: 56px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 20px;
+          }
+          .card-icon-wrap .material-symbols-outlined { font-size: 28px; font-variation-settings: 'wght' 300; }
+          .card-top h4 { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+          .card-top p { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #64748b; line-height: 1.5; margin: 0; }
+          .card-bottom { height: 140px; background: #f1f5f9; width: 100%; position: relative; }
+          .card-bottom img { width: 100%; height: 100%; object-fit: cover; }
+          
+          /* Logical Positions */
+          .svc-carousel-card.pos-active {
+            transform: translate(-50%, -50%) scale(1.15);
+            opacity: 1; z-index: 10; pointer-events: auto;
+            box-shadow: 0 25px 60px rgba(15,23,42,0.12);
+          }
+          .svc-carousel-card.pos-prev {
+            transform: translate(calc(-50% - 190px), -50%) scale(0.95);
+            opacity: 0.85; z-index: 5; pointer-events: auto; cursor: pointer;
+          }
+          .svc-carousel-card.pos-next {
+            transform: translate(calc(-50% + 190px), -50%) scale(0.95);
+            opacity: 0.85; z-index: 5; pointer-events: auto; cursor: pointer;
+          }
+          .svc-carousel-card.pos-prev-far {
+            transform: translate(calc(-50% - 350px), -50%) scale(0.85);
+            opacity: 0.4; z-index: 3; pointer-events: auto; cursor: pointer;
+          }
+          .svc-carousel-card.pos-next-far {
+            transform: translate(calc(-50% + 350px), -50%) scale(0.85);
+            opacity: 0.4; z-index: 3; pointer-events: auto; cursor: pointer;
+          }
+          
+          .svc-carousel-pagination {
+            position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 20;
+          }
+          .svc-page-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #e2e8f0;
+            cursor: pointer; transition: all 0.3s;
+          }
+          .svc-page-dot.active {
+            background: #6366f1; transform: scale(1.2); box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+          }
+          
+          @media (max-width: 1024px) {
+            .svc-process-container { flex-direction: column; }
+            .svc-process-left { padding-right: 0; text-align: center; }
+            .svc-process-badge { margin: 0 auto 24px; }
+            .svc-process-divider { margin: 0 auto 24px; }
+            .svc-process-desc { margin: 0 auto 40px; }
+            .svc-process-feature-item { text-align: left; }
+            .svc-process-right { width: 100%; min-height: 500px; }
+          }
+          @media (max-width: 768px) {
+            .svc-carousel-card.pos-prev { transform: translate(calc(-50% - 130px), -50%) scale(0.85); }
+            .svc-carousel-card.pos-next { transform: translate(calc(-50% + 130px), -50%) scale(0.85); }
+            .svc-carousel-card.pos-prev-far, .svc-carousel-card.pos-next-far { opacity: 0; pointer-events: none; }
+          }
+          @media (max-width: 500px) {
+            .svc-carousel-btn { display: none; }
+            .svc-carousel-card.pos-prev, .svc-carousel-card.pos-next { opacity: 0; pointer-events: none; }
+          }
+        </style>
+        
+        <div class="svc-process-container">
+          <!-- Left Content -->
+          <div class="svc-process-left">
+            <div class="svc-process-badge motion-fade-up">OUR DIFFERENCE</div>
+            <h2 class="svc-process-heading motion-fade-up">WHY WE &amp;<br>OUR PROCESS</h2>
+            <div class="svc-process-divider motion-fade-up"></div>
+            <p class="svc-process-desc motion-fade-up">We combine strategy, creativity, and technology to build digital solutions that drive real results for your business.</p>
+            
+            <div class="svc-process-features">
+              <div class="svc-process-feature-item motion-fade-up">
+                <div class="svc-process-feature-icon" style="background:#eef2ff; color:#6366f1;"><span class="material-symbols-outlined">track_changes</span></div>
+                <div class="svc-process-feature-text">
+                  <h4>Purpose-Driven Solutions</h4>
+                  <p>We focus on understanding your goals and delivering solutions that create measurable impact.</p>
+                </div>
+              </div>
+              <div class="svc-process-feature-item motion-fade-up">
+                <div class="svc-process-feature-icon" style="background:#f5f3ff; color:#8b5cf6;"><span class="material-symbols-outlined">handshake</span></div>
+                <div class="svc-process-feature-text">
+                  <h4>Collaborative Partnership</h4>
+                  <p>We work closely with you at every step, ensuring transparency and alignment.</p>
+                </div>
+              </div>
+              <div class="svc-process-feature-item motion-fade-up">
+                <div class="svc-process-feature-icon" style="background:#eff6ff; color:#3b82f6;"><span class="material-symbols-outlined">rocket_launch</span></div>
+                <div class="svc-process-feature-text">
+                  <h4>Continuous Improvement</h4>
+                  <p>We constantly refine our process to adapt, optimize, and deliver long-term value.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Carousel -->
+          <div class="svc-process-right motion-fade-up">
+            <button class="svc-carousel-btn prev" id="processBtnPrev"><span class="material-symbols-outlined">chevron_left</span></button>
+            
+            <div class="svc-carousel-viewport" id="processCarousel">
+              <!-- Cards rendered by JS -->
+            </div>
+            
+            <button class="svc-carousel-btn next" id="processBtnNext"><span class="material-symbols-outlined">chevron_right</span></button>
+            <div class="svc-carousel-pagination" id="processPagination"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="svc-faq-section" style="padding: 120px 24px; background: #fafafa;">
+        <style>
+          .svc-faq-container { max-width: 1200px; margin: 0 auto; display: flex; gap: 80px; align-items: flex-start; }
+          .svc-faq-left { flex: 0 0 380px; position: sticky; top: 120px; }
+          .svc-faq-right { flex: 1; }
+          
+          .svc-faq-badge {
+            display: inline-block; padding: 6px 16px; border-radius: 30px; border: 1px solid #e2e8f0;
+            background: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600;
+            color: #334155; margin-bottom: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+          }
+          .svc-faq-heading {
+            font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700;
+            color: #0f172a; line-height: 1.1; margin-bottom: 40px; letter-spacing: -0.03em;
+          }
+          
+          .svc-faq-contact-card {
+            background: white; border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+          }
+          .svc-faq-contact-card .icon {
+            width: 48px; height: 48px; border-radius: 50%; background: #ff5722; color: white;
+            display: flex; align-items: center; justify-content: center; margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(255,87,34,0.3);
+          }
+          .svc-faq-contact-card h4 {
+            font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #0f172a; margin-bottom: 20px;
+          }
+          .svc-faq-contact-card .btn {
+            background: #0f172a; color: white; border: none; padding: 14px 28px; border-radius: 30px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(15,23,42,0.2); transition: all 0.3s;
+          }
+          .svc-faq-contact-card .btn:hover { background: #1e293b; transform: translateY(-2px); }
+          
+          .svc-faq-item {
+            background: white; border-radius: 16px; margin-bottom: 16px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); border: 1px solid transparent;
+          }
+          .svc-faq-item:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.04); }
+          .svc-faq-item.active { border-color: #f1f5f9; box-shadow: 0 12px 30px rgba(0,0,0,0.05); }
+          
+          .svc-faq-question {
+            width: 100%; text-align: left; background: none; border: none; padding: 24px 32px;
+            font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0f172a;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+          }
+          .svc-faq-question .icon {
+            width: 32px; height: 32px; border-radius: 50%; background: #f1f5f9; display: flex;
+            align-items: center; justify-content: center; color: #475569; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); flex-shrink: 0;
+            margin-left: 20px;
+          }
+          .svc-faq-question .icon .material-symbols-outlined { font-size: 20px; font-weight: 600; transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+          
+          .svc-faq-answer-wrapper {
+            display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+          }
+          .svc-faq-item.active .svc-faq-answer-wrapper {
+            grid-template-rows: 1fr;
+          }
+          .svc-faq-answer {
+            overflow: hidden; opacity: 0; padding: 0 32px; transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+          }
+          .svc-faq-item.active .svc-faq-answer {
+            opacity: 1; transform: translateY(0);
+            transition: opacity 0.5s ease 0.15s, transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+          }
+          .svc-faq-answer p {
+            margin: 0; padding-bottom: 24px; color: #475569; line-height: 1.6; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+          }
+          
+          .svc-faq-item.active .svc-faq-question .icon { background: #e2e8f0; }
+          .svc-faq-item.active .svc-faq-question .icon .material-symbols-outlined { transform: rotate(45deg); color: #0f172a; }
+          
+          @media (max-width: 900px) {
+            .svc-faq-container { flex-direction: column; gap: 40px; }
+            .svc-faq-left { flex: none; width: 100%; position: static; }
+            .svc-faq-heading { font-size: 2.5rem; }
+          }
+        </style>
+        
+        <div class="svc-faq-container">
+          <!-- Left Column -->
+          <div class="svc-faq-left motion-fade-up">
+            <div class="svc-faq-badge">Common questions</div>
+            <h2 class="svc-faq-heading">Frequently<br>asked questions</h2>
+            
+            <div class="svc-faq-contact-card">
+              <div class="icon"><span class="material-symbols-outlined">support_agent</span></div>
+              <h4>Can't find your answer?</h4>
+              <button class="btn">Contact us</button>
+            </div>
+          </div>
+      
+          <!-- Right Column (Accordion) -->
+          <div class="svc-faq-right">
+            
+            <div class="svc-faq-item active motion-fade-up">
+              <button class="svc-faq-question">
+                What is your typical project timeline?
+                <span class="icon"><span class="material-symbols-outlined">add</span></span>
+              </button>
+              <div class="svc-faq-answer-wrapper">
+                <div class="svc-faq-answer">
+                  <p>Timelines vary depending on the complexity of the project. A standard web application might take 8-12 weeks, while a comprehensive enterprise system can take 4-6 months. We will provide a detailed timeline during the discovery phase.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="svc-faq-item motion-fade-up">
+              <button class="svc-faq-question">
+                Do you provide ongoing support and maintenance?
+                <span class="icon"><span class="material-symbols-outlined">add</span></span>
+              </button>
+              <div class="svc-faq-answer-wrapper">
+                <div class="svc-faq-answer">
+                  <p>Yes, we offer comprehensive post-launch support and maintenance packages. This includes regular security updates, performance monitoring, and priority bug fixing to ensure your solution runs smoothly.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="svc-faq-item motion-fade-up">
+              <button class="svc-faq-question">
+                How do you handle project communication?
+                <span class="icon"><span class="material-symbols-outlined">add</span></span>
+              </button>
+              <div class="svc-faq-answer-wrapper">
+                <div class="svc-faq-answer">
+                  <p>We maintain transparent communication through regular stand-ups, weekly progress reports, and a dedicated project management channel (e.g., Slack, Teams). You will always have direct access to your project manager.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="svc-faq-item motion-fade-up">
+              <button class="svc-faq-question">
+                Can you integrate with our existing systems?
+                <span class="icon"><span class="material-symbols-outlined">add</span></span>
+              </button>
+              <div class="svc-faq-answer-wrapper">
+                <div class="svc-faq-answer">
+                  <p>Absolutely. We have extensive experience building seamless integrations with legacy systems, third-party APIs, and modern cloud infrastructure to ensure your new software works perfectly with your existing stack.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="svc-faq-item motion-fade-up">
+              <button class="svc-faq-question">
+                What is your pricing structure?
+                <span class="icon"><span class="material-symbols-outlined">add</span></span>
+              </button>
+              <div class="svc-faq-answer-wrapper">
+                <div class="svc-faq-answer">
+                  <p>We offer both fixed-price contracts for clearly defined projects and time-and-materials billing for agile development. We'll work with you to choose the model that best fits your budget and flexibility requirements.</p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Form Section -->
+      <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #eef2f6; display: flex; justify-content: center;">
+        <style>
+          .svc-contact-card {
+            display: flex; max-width: 1100px; width: 100%; background: #eef2f6; border-radius: 32px; overflow: hidden;
+            box-shadow: 20px 20px 60px rgba(163, 177, 198, 0.6), -20px -20px 60px rgba(255, 255, 255, 1); border: none;
+          }
+          .svc-contact-image {
+            flex: 0 0 45%; background: url('/images/3d_software_services.jpg') center/cover no-repeat;
+            position: relative;
+          }
+          /* Subtle inset shadow over the image so it sits inside the 3D frame */
+          .svc-contact-image::after {
+            content: ''; position: absolute; inset: 0; box-shadow: inset -10px 0 20px rgba(0,0,0,0.1);
+          }
+          .svc-contact-form {
+            flex: 1; padding: 60px; background: #eef2f6;
+          }
+          .svc-form-row {
+            display: flex; gap: 24px; margin-bottom: 24px;
+          }
+          .svc-form-group {
+            flex: 1; display: flex; flex-direction: column; gap: 10px;
+          }
+          .svc-form-label {
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: #475569;
+          }
+          .svc-form-input, .svc-form-textarea {
+            width: 100%; padding: 18px 20px; border-radius: 16px; border: none; background: #eef2f6;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0f172a; transition: all 0.3s; outline: none;
+            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+          }
+          .svc-form-input::placeholder, .svc-form-textarea::placeholder {
+            color: #94a3b8; font-weight: 500;
+          }
+          .svc-form-input:focus, .svc-form-textarea:focus {
+            box-shadow: inset 8px 8px 16px rgba(163, 177, 198, 0.6), inset -8px -8px 16px rgba(255, 255, 255, 1);
+          }
+          .svc-form-textarea {
+            resize: vertical; min-height: 140px;
+          }
+          .svc-form-btn {
+            background: #eef2f6; color: #0f172a; border: none; padding: 18px 40px; border-radius: 30px;
+            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; cursor: pointer;
+            box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.5), -8px -8px 16px rgba(255, 255, 255, 1);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            margin-top: 10px; display: inline-block; letter-spacing: 0.02em;
+          }
+          .svc-form-btn:hover {
+            transform: translateY(-2px); box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.6), -12px -12px 20px rgba(255, 255, 255, 1);
+            color: #4f46e5;
+          }
+          .svc-form-btn:active {
+            transform: translateY(2px); box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+          }
+          
+          @media (max-width: 900px) {
+            .svc-contact-card { flex-direction: column; }
+            .svc-contact-image { height: 300px; }
+            .svc-contact-form { padding: 40px 24px; }
+            .svc-form-row { flex-direction: column; gap: 16px; margin-bottom: 16px; }
+          }
+        </style>
+
+        <div class="svc-contact-card motion-fade-up">
+          <div class="svc-contact-image"></div>
+          <div class="svc-contact-form">
+            <div class="svc-form-row">
+              <div class="svc-form-group">
+                <label class="svc-form-label">Your name*</label>
+                <input type="text" class="svc-form-input" placeholder="Dennis Barrett" />
+              </div>
+              <div class="svc-form-group">
+                <label class="svc-form-label">Subject</label>
+                <input type="text" class="svc-form-input" placeholder="Topic of your request" />
+              </div>
+            </div>
+            
+            <div class="svc-form-row">
+              <div class="svc-form-group">
+                <label class="svc-form-label">Email address*</label>
+                <input type="email" class="svc-form-input" placeholder="dannis@example.com" />
+              </div>
+            </div>
+            
+            <div class="svc-form-row" style="margin-bottom: 32px;">
+              <div class="svc-form-group">
+                <label class="svc-form-label">Message</label>
+                <textarea class="svc-form-textarea" placeholder="Write your message"></textarea>
+              </div>
+            </div>
+            
+            <button class="svc-form-btn">Send a message</button>
+          </div>
         </div>
       </section>
 
@@ -1020,8 +1481,121 @@ export function initServiceShowcaseTabs(): void {
         (node as HTMLElement).style.opacity = opacity.toString();
       });
     };
-    
     handleScroll();
     window.addEventListener('scroll', handleScroll);
   }
+    
+  // Process Carousel Logic
+    const processCardsData = [
+      { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
+      { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
+      { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
+      { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
+      { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
+    ];
+  
+    const carouselViewport = document.getElementById('processCarousel');
+    const carouselPagination = document.getElementById('processPagination');
+    const btnPrev = document.getElementById('processBtnPrev');
+    const btnNext = document.getElementById('processBtnNext');
+  
+    if (carouselViewport && carouselPagination && btnPrev && btnNext) {
+      let currentIndex = 2; // Start with the middle item (index 2) active
+      const totalCards = processCardsData.length;
+  
+      // Render cards
+      processCardsData.forEach((card, index) => {
+        // Create Card
+        const cardEl = document.createElement('div');
+        cardEl.className = 'svc-carousel-card';
+        cardEl.innerHTML = `
+          <div class="card-top">
+            <div class="card-icon-wrap" style="background: ${card.color};">
+              <span class="material-symbols-outlined">${card.icon}</span>
+            </div>
+            <h4>${card.id}. ${card.title}</h4>
+            <p>${card.desc}</p>
+          </div>
+          <div class="card-bottom">
+            <img src="${card.img}" alt="${card.title}" />
+          </div>
+        `;
+        // Handle click to select
+        cardEl.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+          resetAutoPlay();
+        });
+        carouselViewport.appendChild(cardEl);
+  
+        // Create Pagination Dot
+        const dot = document.createElement('div');
+        dot.className = 'svc-page-dot';
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+          resetAutoPlay();
+        });
+        carouselPagination.appendChild(dot);
+      });
+  
+      const cardElements = carouselViewport.querySelectorAll('.svc-carousel-card');
+      const dotElements = carouselPagination.querySelectorAll('.svc-page-dot');
+  
+      const updateCarousel = () => {
+        cardElements.forEach((card, i) => {
+          card.className = 'svc-carousel-card'; // reset classes
+          
+          let diff = (i - currentIndex) % totalCards;
+          if (diff < 0) diff += totalCards;
+          
+          if (diff === 0) card.classList.add('pos-active');
+          else if (diff === 1) card.classList.add('pos-next');
+          else if (diff === 2) card.classList.add('pos-next-far');
+          else if (diff === totalCards - 1) card.classList.add('pos-prev');
+          else if (diff === totalCards - 2) card.classList.add('pos-prev-far');
+        });
+  
+        dotElements.forEach((dot, i) => {
+          if (i === currentIndex) dot.classList.add('active');
+          else dot.classList.remove('active');
+        });
+      };
+  
+      // Controls
+      const goNext = () => { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); };
+      const goPrev = () => { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); };
+  
+      btnNext.addEventListener('click', () => { goNext(); resetAutoPlay(); });
+      btnPrev.addEventListener('click', () => { goPrev(); resetAutoPlay(); });
+  
+      // Auto Play loop
+      let autoPlayInterval = setInterval(goNext, 3500);
+      const resetAutoPlay = () => {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(goNext, 3500);
+      };
+  
+    // Initial render
+    updateCarousel();
+  }
+
+  // FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.svc-faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.svc-faq-question');
+    btn?.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all others
+      faqItems.forEach(faq => {
+        faq.classList.remove('active');
+      });
+
+      // Toggle current
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
 }
