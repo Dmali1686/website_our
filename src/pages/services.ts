@@ -65,10 +65,12 @@ export function renderServicesPage(): string {
           .svc-phone {
             position: absolute; width: 230px; border-radius: 28px;
             background: #1a1a2e; padding: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            bottom: 60px;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s;
+            bottom: 60px; left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+            z-index: 1;
           }
-          .svc-phone:hover { bottom: 68px; box-shadow: 0 30px 60px rgba(0,0,0,0.2) !important; }
+          .svc-phone:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.2) !important; }
           .svc-phone-screen {
             width: 100%; border-radius: 20px; overflow: hidden;
             background: white; position: relative;
@@ -77,19 +79,16 @@ export function renderServicesPage(): string {
             width: 100%; height: 100%; object-fit: cover; display: block;
           }
 
-          /* Phone positions */
-          .svc-phone.left {
-            left: 0; z-index: 1;
-            transform: rotate(-12deg) translateX(10px);
-          }
+          /* Phone positions & Fan out animation */
           .svc-phone.center {
-            left: 50%; z-index: 3;
-            transform: translateX(-50%);
-            width: 260px;
+            z-index: 3; width: 260px;
           }
-          .svc-phone.right {
-            right: 0; z-index: 1;
-            transform: rotate(12deg) translateX(-10px);
+          
+          .svc-phones-wrapper.fanned-out .svc-phone.left {
+            transform: translateX(calc(-50% - 130px)) rotate(-12deg);
+          }
+          .svc-phones-wrapper.fanned-out .svc-phone.right {
+            transform: translateX(calc(-50% + 130px)) rotate(12deg);
           }
 
           /* Video Play Overlay */
@@ -136,20 +135,29 @@ export function renderServicesPage(): string {
             text-transform: uppercase; letter-spacing: 0.1em; color: #6366f1; margin-bottom: 12px;
           }
           .svc-info-heading {
-            font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.2;
+            font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700; color: #0f172a; margin-bottom: 12px; line-height: 1.1; letter-spacing: -0.02em;
           }
           .svc-info-divider { width: 60px; height: 4px; background: #4f46e5; border-radius: 2px; margin-bottom: 32px; }
           
           /* Word-by-Word Reveal Animation */
           .textreveal-text {
-            font-family: var(--font-display); font-size: 1.75rem; line-height: 1.4;
-            font-weight: 700; color: #cbd5e1; margin-bottom: 40px;
+            font-family: 'Inter', sans-serif; font-size: 1.5rem; line-height: 1.6;
+            font-weight: 500; color: #cbd5e1; margin-bottom: 40px; letter-spacing: -0.01em;
           }
           .reveal-word {
-            transition: color 0.2s ease;
+            display: inline-block;
+            opacity: 0.15;
+            filter: blur(6px);
+            transform: translateY(8px) scale(0.95) rotateX(-20deg);
+            transform-origin: bottom;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease;
+            color: #94a3b8;
           }
           .reveal-word.revealed {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) scale(1) rotateX(0);
             color: #0f172a;
           }
 
@@ -178,21 +186,220 @@ export function renderServicesPage(): string {
             color: #475569; line-height: 1.5;
           }
 
+          /* Additional Sections */
+          .svc-impact-scroll-track {
+            height: 300vh;
+            position: relative;
+          }
+          .svc-impact-sticky {
+            position: sticky; top: 0;
+            height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; background: #fdfdfd;
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+          }
+          .svc-impact-section {
+            padding: 20px 24px;
+            width: 100%;
+            display: flex; justify-content: center; overflow: hidden;
+          }
+          .svc-impact-container {
+            max-width: 1300px; width: 100%;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(15,23,42,0.04), 0 4px 20px rgba(15,23,42,0.02);
+            display: flex; overflow: hidden;
+            border: 1px solid #f1f5f9;
+            min-height: 600px; max-height: 90vh;
+          }
+          .svc-impact-left {
+            flex: 1; padding: 40px 60px;
+            background: #ffffff;
+            display: flex; flex-direction: column; z-index: 10;
+            box-shadow: 10px 0 30px rgba(255,255,255,1);
+            justify-content: center;
+          }
+          .svc-impact-right {
+            flex: 1; padding: 40px;
+            background: #f8fafc;
+            position: relative; display: flex; align-items: center;
+            overflow: hidden;
+          }
+
+          .svc-impact-badge {
+            background: #eef2ff; color: #4f46e5;
+            padding: 6px 16px; border-radius: 20px;
+            font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
+            width: fit-content;
+          }
+          .svc-impact-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800; color: #0f172a; text-transform: uppercase;
+            line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em;
+          }
+          .svc-impact-divider {
+            width: 48px; height: 3px; background: #6366f1; border-radius: 2px; margin-bottom: 24px;
+          }
+          .svc-impact-desc {
+            font-family: 'Inter', sans-serif; font-size: 1rem; color: #475569;
+            line-height: 1.5; margin-bottom: 32px; max-width: 90%;
+          }
+          
+          .svc-impact-list {
+            display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;
+          }
+          .svc-impact-list-item {
+            display: flex; gap: 16px; align-items: flex-start;
+            padding-bottom: 16px; border-bottom: 1px solid #f1f5f9;
+          }
+          .svc-impact-list-item:last-child { border-bottom: none; padding-bottom: 0; }
+          .svc-impact-list-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 12px rgba(99,102,241,0.05);
+            display: flex; align-items: center; justify-content: center;
+            color: #6366f1; flex-shrink: 0; border: 1px solid #f1f5f9;
+          }
+          .svc-impact-list-icon .material-symbols-outlined { font-size: 24px; font-variation-settings: 'FILL' 1; }
+          .svc-impact-list-text h4 {
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 6px;
+          }
+          .svc-impact-list-text p {
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0; max-width: 90%;
+          }
+          
+          .svc-cta-btn {
+            background: #eef2ff; color: #4f46e5;
+            padding: 14px 28px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s;
+            border: none; outline: none; width: fit-content;
+          }
+          .svc-cta-btn:hover { background: #e0e7ff; color: #4338ca; }
+
+          /* Right Side Orbital Layout */
+          .svc-orbit-ring {
+            position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
+            width: 720px; height: 720px; border-radius: 50%;
+            border: 4px solid #eef2ff; pointer-events: none;
+            z-index: 1;
+          }
+          .svc-orbit-center {
+            position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
+            width: 460px; height: 460px; border-radius: 50%;
+            background: #ffffff; box-shadow: 0 0 60px rgba(99, 102, 241, 0.08);
+            display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+            text-align: left; padding-left: 260px; z-index: 2;
+          }
+          .svc-orbit-center h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em; }
+          .svc-orbit-center p { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #6366f1; font-weight: 700; margin: 0; line-height: 1.4; }
+          
+          .svc-orbit-node-wrapper {
+            position: absolute; left: 0; top: 50%; width: 360px; /* Radius is 360px */
+            transform-origin: left center; z-index: 3;
+            /* Direct transform driven by JS */
+            transform: translateY(-50%) rotate(var(--target-angle, -90deg));
+          }
+          
+          .svc-orbit-node {
+            position: absolute; right: 0; top: 50%;
+            /* Counter rotate to keep upright */
+            transform: translate(50%, -50%) rotate(calc(-1 * var(--target-angle)));
+            width: 64px; height: 64px;
+          }
+          .svc-orbit-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.06);
+            display: flex; align-items: center; justify-content: center;
+            color: #6366f1; border: 3px solid #ffffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative; z-index: 2;
+          }
+          .svc-orbit-node:hover .svc-orbit-icon { transform: scale(1.05); box-shadow: 0 16px 40px rgba(99,102,241,0.15); }
+          .svc-orbit-icon .material-symbols-outlined { font-size: 28px; font-variation-settings: 'wght' 300; }
+          
+          .svc-orbit-small-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: #818cf8; border: 4px solid #ffffff;
+            box-shadow: 0 0 0 2px #eef2ff;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            z-index: 2;
+          }
+          .svc-orbit-text {
+            position: absolute; left: calc(100% + 16px); top: 50%; transform: translateY(-50%);
+            width: max-content; z-index: 1;
+            padding: 8px 0;
+          }
+          .svc-orbit-text h4 { font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+          .svc-orbit-text p { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: #64748b; margin: 0; max-width: 180px; line-height: 1.4; white-space: normal; }
+          
+          /* Scroll Reveal Animations */
+          .motion-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .motion-fade-up.motion-in-view {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .svc-extra-section {
+            padding: 100px 24px;
+            background: #ffffff;
+            border-top: 1px solid #f1f5f9;
+          }
+          .svc-extra-section.alt {
+            background: #f8fafc;
+          }
+          .svc-extra-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: center;
+            min-height: 300px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+          }
+          .svc-extra-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700; color: #0f172a; text-transform: uppercase;
+            letter-spacing: 0.05em; text-align: center;
+          }
+
           /* Responsive */
+          @media (max-width: 1100px) {
+            .svc-impact-container { flex-direction: column; }
+            .svc-impact-left { border-bottom: 1px solid #e2e8f0; }
+            .svc-impact-right { min-height: 500px; }
+            .svc-orbit-ring { left: 50%; }
+            .svc-orbit-center { left: 50%; }
+            .svc-orbit-node-wrapper { left: 50%; transform-origin: center center; }
+          }
           @media (max-width: 900px) {
             .svc-content-row { flex-direction: column; gap: 32px; }
             .svc-phones-wrapper { min-height: 400px; width: 100%; }
             .svc-phone { width: 150px; }
             .svc-phone.center { width: 170px; }
-            .svc-info-panel { padding: 0 16px; }
+            .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 90px)) rotate(-10deg); }
+            .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 90px)) rotate(10deg); }
+            .svc-info-panel { padding: 0 16px; height: auto; }
             .svc-tab-btn { padding: 12px 20px; font-size: 0.8rem; }
+            .svc-impact-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 20px; }
+            .svc-impact-item:not(:last-child)::after { display: none; }
+            .svc-impact-cta { flex-direction: column; text-align: center; }
+            .svc-cta-left { flex-direction: column; }
           }
           @media (max-width: 600px) {
             .svc-phones-wrapper { min-height: 320px; }
             .svc-phone { width: 120px; }
             .svc-phone.center { width: 140px; }
+            .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 70px)) rotate(-8deg); }
+            .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 70px)) rotate(8deg); }
             .svc-tab-btn { padding: 10px 16px; font-size: 0.75rem; }
             .svc-tab-subtitle { display: none; }
+            .svc-impact-grid { grid-template-columns: 1fr; }
           }
         </style>
 
@@ -246,9 +453,9 @@ export function renderServicesPage(): string {
                   </div>
                 </div>
 
-                <!-- Center Phone (Straight - Video) -->
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
+                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/app-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
                     <img src="/images/app-screen-center.jpg" alt="App Demo Video" loading="lazy" />
                     <div class="svc-video-overlay">
                       <div class="svc-play-btn">
@@ -346,6 +553,7 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
+                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/erp-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
                     <img src="/images/erp-screen-center.jpg" alt="ERP Dashboard Demo" loading="lazy" />
                     <div class="svc-video-overlay">
                       <div class="svc-play-btn">
@@ -440,6 +648,7 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
+                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/lms-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
                     <img src="/images/lms-screen-center.jpg" alt="LMS Dashboard Demo" loading="lazy" />
                     <div class="svc-video-overlay">
                       <div class="svc-play-btn">
@@ -515,6 +724,125 @@ export function renderServicesPage(): string {
 
         </div>
       </section>
+
+      <!-- Business Impact Section (Sticky Scrubbing Animation) -->
+      <div class="svc-impact-scroll-track" id="svc-impact-track">
+        <div class="svc-impact-sticky">
+          <section class="svc-impact-section">
+            <div class="svc-impact-container">
+              <!-- Left Panel -->
+              <div class="svc-impact-left">
+                <div class="svc-impact-badge motion-fade-up">Business Impact</div>
+                <h2 class="svc-impact-heading motion-fade-up">How This Will Impact Your Business</h2>
+                <div class="svc-impact-divider motion-fade-up"></div>
+                <p class="svc-impact-desc motion-fade-up">Our solutions help you streamline operations, reduce costs, and drive growth with better insights and smarter decisions.</p>
+                
+                <div class="svc-impact-list">
+                  <div class="svc-impact-list-item motion-fade-up">
+                    <div class="svc-impact-list-icon"><span class="material-symbols-outlined">trending_up</span></div>
+                    <div class="svc-impact-list-text">
+                      <h4>Increased Efficiency</h4>
+                      <p>Automate workflows and eliminate manual tasks to get more done in less time.</p>
+                    </div>
+                  </div>
+                  <div class="svc-impact-list-item motion-fade-up">
+                    <div class="svc-impact-list-icon"><span class="material-symbols-outlined">savings</span></div>
+                    <div class="svc-impact-list-text">
+                      <h4>Cost Reduction</h4>
+                      <p>Optimize resources and reduce operational costs across your business.</p>
+                    </div>
+                  </div>
+                  <div class="svc-impact-list-item motion-fade-up">
+                    <div class="svc-impact-list-icon"><span class="material-symbols-outlined">visibility</span></div>
+                    <div class="svc-impact-list-text">
+                      <h4>Real-time Visibility</h4>
+                      <p>Get real-time insights into every department and make data-driven decisions.</p>
+                    </div>
+                  </div>
+                  <div class="svc-impact-list-item motion-fade-up">
+                    <div class="svc-impact-list-icon"><span class="material-symbols-outlined">track_changes</span></div>
+                    <div class="svc-impact-list-text">
+                      <h4>Better Decision Making</h4>
+                      <p>Access accurate data and reports to make smarter, faster decisions.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></button>
+              </div>
+
+              <!-- Right Panel (Orbit) -->
+              <div class="svc-impact-right">
+                <div class="svc-orbit-ring"></div>
+                <div class="svc-orbit-center">
+                  <h3>Driving Growth</h3>
+                  <p>Through Smart<br>Solutions</p>
+                </div>
+                
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="-60" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node">
+                    <div class="svc-orbit-icon"><span class="material-symbols-outlined">shield</span></div>
+                    <div class="svc-orbit-text">
+                      <h4>Stronger Compliance</h4>
+                      <p>Ensure data security and stay compliant with industry regulations.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="-40" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node"><div class="svc-orbit-small-dot"></div></div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="-20" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node">
+                    <div class="svc-orbit-icon"><span class="material-symbols-outlined">rocket_launch</span></div>
+                    <div class="svc-orbit-text">
+                      <h4>Scalable Growth</h4>
+                      <p>Our solutions grow with your business and adapt to your future needs.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="0" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node"><div class="svc-orbit-small-dot"></div></div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="20" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node">
+                    <div class="svc-orbit-icon"><span class="material-symbols-outlined">groups</span></div>
+                    <div class="svc-orbit-text">
+                      <h4>Better Collaboration</h4>
+                      <p>Improve communication and collaboration across teams and departments.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="40" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node"><div class="svc-orbit-small-dot"></div></div>
+                </div>
+
+                <div class="svc-orbit-node-wrapper svc-orbit-node-anim" data-target-angle="60" style="--target-angle: -180deg;">
+                  <div class="svc-orbit-node">
+                    <div class="svc-orbit-icon"><span class="material-symbols-outlined">pie_chart</span></div>
+                    <div class="svc-orbit-text">
+                      <h4>Data-Driven Insights</h4>
+                      <p>Leverage advanced analytics to uncover opportunities and drive business growth.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Why We & Our Process Section -->
+      <section class="svc-extra-section alt">
+        <div class="svc-extra-container motion-fade-up">
+          <h2 class="svc-extra-heading">Why We &amp; Our Process</h2>
+        </div>
+      </section>
+
     </div>
     ${renderFooter()}
   `;
@@ -594,4 +922,106 @@ export function initServiceShowcaseTabs(): void {
       });
     });
   });
+
+  // Handle video play on center phones
+  const centerPhones = document.querySelectorAll('.svc-phone.center .svc-phone-screen');
+  centerPhones.forEach(screen => {
+    const video = screen.querySelector('.svc-real-video') as HTMLVideoElement;
+    const overlay = screen.querySelector('.svc-video-overlay') as HTMLElement;
+    const controls = screen.querySelector('.svc-video-controls') as HTMLElement;
+    const img = screen.querySelector('img');
+    
+    if (video && overlay) {
+      overlay.addEventListener('click', () => {
+        video.muted = true;
+        video.style.display = 'block';
+        video.setAttribute('controls', 'true');
+        
+        // Small delay to ensure display: block is rendered before playing
+        setTimeout(() => {
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.warn("Video playback was blocked:", error);
+            });
+          }
+        }, 50);
+        
+        overlay.style.display = 'none';
+        if (controls) controls.style.display = 'none';
+      });
+    }
+  });
+
+   // Intersection Observer for Scroll Animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('motion-in-view');
+        
+        // Trigger phone fan-out animation
+        if (entry.target.classList.contains('svc-phones-wrapper')) {
+          entry.target.classList.add('fanned-out');
+        }
+      } else {
+        // Reverse phone fan-out animation when scrolling away
+        if (entry.target.classList.contains('svc-phones-wrapper')) {
+          entry.target.classList.remove('fanned-out');
+        }
+      }
+    });
+  }, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+
+  const fadeElements = document.querySelectorAll('.motion-fade-up, .svc-phones-wrapper');
+  fadeElements.forEach((el) => {
+    // Stagger list items
+    if (el.classList.contains('svc-impact-list-item')) {
+      const items = Array.from(document.querySelectorAll('.svc-impact-list-item'));
+      const index = items.indexOf(el);
+      (el as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+    } 
+    observer.observe(el);
+  });
+
+  // Scroll Scrubbing Animation for Orbit
+  const impactTrack = document.getElementById('svc-impact-track');
+  const orbitNodes = document.querySelectorAll('.svc-orbit-node-anim');
+  
+  if (impactTrack && orbitNodes.length > 0) {
+    const handleScroll = () => {
+      const rect = impactTrack.getBoundingClientRect();
+      const scrollableDistance = rect.height - window.innerHeight;
+      
+      // Calculate progress (0 to 1) through the sticky track
+      let progress = -rect.top / scrollableDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      // Starting angle: hidden at top of the circle (-180deg or -90deg)
+      const startAngle = -150; 
+      
+      orbitNodes.forEach((node, index) => {
+        const targetAngle = parseFloat(node.getAttribute('data-target-angle') || '0');
+        
+        // Offset each node slightly so they arrive in sequence
+        // e.g. node 0 starts moving immediately, node 3 waits a bit
+        let nodeProgress = progress * 1.5 - (index * 0.1);
+        nodeProgress = Math.max(0, Math.min(1, nodeProgress));
+        
+        // Easing (easeOutCubic)
+        const ease = 1 - Math.pow(1 - nodeProgress, 3);
+        
+        const currentAngle = startAngle + (ease * (targetAngle - startAngle));
+        
+        // Fade in as they swing out from the starting position
+        let opacity = nodeProgress * 2.5; 
+        opacity = Math.max(0, Math.min(1, opacity));
+        
+        (node as HTMLElement).style.setProperty('--target-angle', `${currentAngle}deg`);
+        (node as HTMLElement).style.opacity = opacity.toString();
+      });
+    };
+    
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+  }
 }

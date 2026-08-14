@@ -89,7 +89,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
@@ -99,7 +99,7 @@ body {
     font-weight: 400;
     color: var(--on-background);
     background-color: var(--background);
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 ::selection {
