@@ -14,7 +14,7 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { path: '/services', label: 'Services', id: 'services' },
-  { path: '/case-study', label: 'Case Study', id: 'case-study' },
+  { path: '/portfolio', label: 'Case Study', id: 'case-study' },
   { path: '/about', label: 'About Us', id: 'about' }
 ];
 

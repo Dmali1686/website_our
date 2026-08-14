@@ -159,7 +159,7 @@ export function renderPortfolioPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Portfolio Hero -->
-      <header class="hero" style="overflow:hidden; position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background-image: url('/images/portfolio-bg.png'); background-size: cover; background-position: center;">
+      <header class="hero" style="overflow:hidden; position: relative; height: 150vh; display: flex; flex-direction: column; padding: 80px 0 0 0; background-image: url('/images/portfolio-bg.png'); background-size: cover; background-position: center;">
         
         <!-- Dark Gradient Overlay -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(13, 20, 36, 0.85) 0%, rgba(20, 10, 30, 0.95) 100%); z-index: 1;"></div>
@@ -173,8 +173,8 @@ export function renderPortfolioPage(): string {
           />
         </div>
 
-        <div class="container" style="position: relative; z-index: 5;">
-          <div class="hero-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; min-height: 500px;">
+        <div class="container" style="position: sticky; top: 0; display: flex; align-items: center; height: 100vh; z-index: 5;">
+          <div class="hero-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; width: 100%;">
             <div class="hero-content" style="padding-right: 40px;">
               <span class="hero-badge animate-fade-in-up" style="padding: 10px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; background: rgba(255,255,255,0.1); color: #c084fc; border: 1px solid rgba(255,255,255,0.2); font-family: 'Inter', sans-serif;">
                 <span class="material-symbols-outlined" style="font-size:16px;">library_books</span>
@@ -198,6 +198,30 @@ export function renderPortfolioPage(): string {
             </div>
           </div>
         </div>
+        
+        <!-- 3D Panels Section (Absolute, scrolls naturally) -->
+        <div style="position: absolute; top: calc(100vh - 130px); left: 0; width: 100%; z-index: 10;">
+          <div class="panels3d-demo" id="panels-demo">
+            <div class="panels3d-space">
+              <div class="panels3d-scene">
+                <div class="panels3d-wrap" id="panels-wrap">
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
+                  <div class="panels3d-panel" style="padding: 0;">
+                    <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bottom Fade to seamlessly blend into next section -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 300px; background: linear-gradient(to bottom, transparent, #fafafa); z-index: 2;"></div>
       </header>
 
       <!-- Case Studies -->
@@ -212,4 +236,35 @@ export function renderPortfolioPage(): string {
       ${renderFooter()}
     </div>
   `;
+}
+
+export function initPortfolio(): void {
+  const space = document.querySelector('.panels3d-space') as HTMLElement;
+  const wrap = document.getElementById('panels-wrap');
+
+  if (space && wrap) {
+    window.addEventListener('scroll', () => {
+      // Get the position of the scene relative to the viewport
+      const scene = document.querySelector('.panels3d-scene') as HTMLElement;
+      if (!scene) return;
+      const rect = scene.getBoundingClientRect();
+      
+      // Total distance the element travels from entering bottom to leaving top
+      const totalDistance = window.innerHeight + rect.height;
+      
+      // How far it has traveled (0 when just entering bottom)
+      const scrolled = window.innerHeight - rect.top;
+      
+      // Calculate progress from 0 to 1
+      let progress = scrolled / totalDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      // Rotate between 0 and -60 degrees on Y axis, and maybe a bit on X
+      const rotateY = progress * -60; 
+      const rotateX = progress * 10;
+      const translateZ = progress * 100;
+      
+      wrap.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+  }
 }

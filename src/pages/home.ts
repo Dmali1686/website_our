@@ -32,84 +32,236 @@ export function renderHomePage(): string {
             
         </div>
 
-        <!-- 3D Panels Section (Absolute, scrolls naturally) -->
-        <div style="position: absolute; top: calc(100vh - 130px); left: 0; width: 100%; z-index: 10;">
-          <div class="panels3d-demo" id="panels-demo">
-            <div class="panels3d-space">
-              <div class="panels3d-scene">
-                <div class="panels3d-wrap" id="panels-wrap">
-                  <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
-                  </div>
-                  <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
-                  </div>
-                  <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
-                  </div>
-                </div>
-              </div> 
-            </div>
-          </div>
-        </div>
+
         
         <!-- Bottom Fade to seamlessly blend into next section -->
         <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 300px; background: linear-gradient(to bottom, transparent, #fafafa); z-index: 2;"></div>
       </main>
       
-      <!-- Text Content Section -->
-      <section style="background: #fafafa; padding: 120px 20px 60px; text-align: center; position: relative; z-index: 5;">
-        <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-          
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; color: #111827; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0; max-width: 900px;">
-            Build steady daily 
-            <span style="display: inline-flex; align-items: center; justify-content: center; background: #e07a5f; border-radius: 50px; padding: 0 0.8em; height: 1.1em; vertical-align: -0.15em; margin: 0 0.1em; font-size: 0.85em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">🚴</span> 
-            habits with a layout that keeps your mornings, evenings, 
-            <span style="display: inline-flex; align-items: center; justify-content: center; background: #90e0ef; border-radius: 50px; padding: 0 0.8em; height: 1.1em; vertical-align: -0.15em; margin: 0 0.1em; font-size: 0.85em; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);">⛅</span> 
-            and focus simple to follow.
-          </h2>
+      <!-- 3D Phones Section -->
+      <section class="color-section" data-color="#f0f9ff" style="background: transparent; padding: 0; margin-top: -150px; margin-bottom: 0; position: relative; z-index: 10;">
+        <div class="panels3d-demo" id="panels-demo-home">
+          <div class="panels3d-space">
+            <div class="panels3d-scene" id="panels-scene-home">
+              <div class="panels3d-wrap" id="panels-wrap-home">
+                <div class="panels3d-panel" style="padding: 0;">
+                  <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                </div>
+                <div class="panels3d-panel" style="padding: 0;">
+                  <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                </div>
+                <div class="panels3d-panel" style="padding: 0;">
+                  <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </section>
 
+      <!-- Text Content Section (Sticky Scroll Reveal) -->
+      <section class="color-section" data-color="#bae6fd" style="background: transparent; position: relative; z-index: 5;">
+        <div id="textreveal-scroll-wrapper" style="height: 150vh; position: relative;">
+          <div style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+              
+              <div id="textreveal-home-container" style="text-align: center;">
+                <style>
+                  .reveal-word {
+                    color: #cbd5e1;
+                    transition: color 0.2s ease-out;
+                    display: inline-block;
+                    margin-right: 0.15em;
+                  }
+                  .reveal-word.revealed {
+                    color: #111827;
+                  }
+                  .reveal-emoji {
+                    opacity: 0.4;
+                    transition: opacity 0.2s ease-out;
+                    display: inline-flex; 
+                    align-items: center; 
+                    justify-content: center; 
+                    border-radius: 50px; 
+                    padding: 0 0.8em; 
+                    height: 1.1em; 
+                    vertical-align: -0.15em; 
+                    margin: 0 0.1em; 
+                    font-size: 0.85em; 
+                    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+                  }
+                  .reveal-emoji.revealed {
+                    opacity: 1;
+                  }
+                </style>
+                <h2 id="textreveal-home" style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0; max-width: 900px;">
+                  <span class="reveal-word">Build</span>
+                  <span class="reveal-word">steady</span>
+                  <span class="reveal-word">daily</span>
+                  <span class="reveal-word reveal-emoji" style="background: #e07a5f;">🚴</span>
+                  <span class="reveal-word">habits</span>
+                  <span class="reveal-word">with</span>
+                  <span class="reveal-word">a</span>
+                  <span class="reveal-word">layout</span>
+                  <span class="reveal-word">that</span>
+                  <span class="reveal-word">keeps</span>
+                  <span class="reveal-word">your</span>
+                  <span class="reveal-word">mornings,</span>
+                  <span class="reveal-word">evenings,</span>
+                  <span class="reveal-word reveal-emoji" style="background: #90e0ef;">⛅</span>
+                  <span class="reveal-word">and</span>
+                  <span class="reveal-word">focus</span>
+                  <span class="reveal-word">simple</span>
+                  <span class="reveal-word">to</span>
+                  <span class="reveal-word">follow.</span>
+                </h2>
+              </div>
 
-
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Clients as Family Section -->
-      <section style="background: #ffffff; padding: 60px 20px 120px; text-align: center;">
+      <section class="color-section" data-color="#7dd3fc" style="background: transparent; padding: 60px 20px 120px; text-align: center;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
           
+          <style>
+            @keyframes strike-draw {
+              0% { transform: scaleX(0); transform-origin: left; opacity: 1; }
+              35% { transform: scaleX(1); transform-origin: left; opacity: 1; }
+              50% { transform: scaleX(1); transform-origin: right; opacity: 1; }
+              85% { transform: scaleX(0); transform-origin: right; opacity: 1; }
+              100% { transform: scaleX(0); transform-origin: left; opacity: 1; }
+            }
+            .animated-strike {
+              position: relative;
+              display: inline-block;
+              color: #9ca3af;
+              margin-right: 16px;
+              font-weight: 600;
+            }
+            .animated-strike::after {
+              content: '';
+              position: absolute;
+              top: 52%;
+              left: -5%;
+              width: 110%;
+              height: 0.1em;
+              background-color: #9ca3af;
+              border-radius: 4px;
+              animation: strike-draw 2.5s infinite ease-in-out;
+            }
+          </style>
           <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #111827; letter-spacing: -0.03em; margin-bottom: 16px;">
-            <span style="text-decoration: line-through; color: #9ca3af; margin-right: 16px; font-weight: 600;">Clients</span>Family
+            <span class="animated-strike">Clients</span>Family
           </h2>
 
           <p style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 500; color: #4b5563; margin-bottom: 64px;">
             We treat our clients as our family members.
           </p>
 
-          <!-- Cards Container -->
-          <div style="display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; width: 100%;">
-            <!-- Card 1 -->
-            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <img src="/images/geekbychoice_casestudy.png" alt="GeekByChoice Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
-            </div>
+          <!-- Split Scroll Sticky Container -->
+          <div id="split-scroll-wrapper" style="width: 100%; height: 300vh; position: relative;">
+            <div style="position: sticky; top: 120px; width: 100%; max-width: 1000px; height: 500px; margin: 0 auto; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex;">
+              
+              <!-- Left Side: Images (Scrolls UP) -->
+              <div style="flex: 0 0 45%; position: relative; overflow: hidden; background: #042f1c;">
+                <div id="split-scroll-left" style="position: absolute; top: 0; left: 0; width: 100%; height: 300%; display: flex; flex-direction: column; will-change: transform;">
+                  
+                  <!-- Image 1: Geek By Choice -->
+                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #042f1c;">
+                    <img src="/images/geekbychoice_casestudy.png" alt="Geek By Choice" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+                  </div>
+                  
+                  <!-- Image 2: NGO -->
+                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #000;">
+                    <img src="/images/ngo_casestudy.png" alt="NGO" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+                  </div>
+                  
+                  <!-- Image 3: Jayshree -->
+                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #031428;">
+                    <img src="/images/jayshree_casestudy.png" alt="Jayshree" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+                  </div>
 
-            <!-- Card 2 -->
-            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <img src="/images/ngo_casestudy.png" alt="MH14 Animal NGO Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
-            </div>
+                </div>
+              </div>
 
-            <!-- Card 3 -->
-            <div style="background: transparent; width: 100%; max-width: 340px; text-align: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-8px)'" onmouseout="this.style.transform='translateY(0)'">
-              <img src="/images/jayshree_casestudy.png" alt="Jayshree Electrocoating Case Study" style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);" />
-            </div>
+              <!-- Right Side: Text (Scrolls DOWN) -->
+              <div style="flex: 1; position: relative; overflow: hidden; background: #0f1115;">
+                <div id="split-scroll-right" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 300%; display: flex; flex-direction: column; will-change: transform;">
+                  
+                  <!-- Text 3: Jayshree -->
+                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">Jayshree Electrocoating</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
+                      Smart ERP for stronger operations. A powerful solution built to streamline every process from orders to production with complete visibility.
+                    </p>
+                    <div>
+                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
+                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                      </a>
+                    </div>
+                  </div>
 
+                  <!-- Text 2: NGO -->
+                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">MH-14 Animal NGO</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
+                      An operational hub for animal rescue. Simplifying operations to save more lives with complete history tracking and volunteer management.
+                    </p>
+                    <div>
+                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
+                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Text 1: Geek By Choice -->
+                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">Geek By Choice LMS</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
+                      A powerful Learning Management System that helps students prepare, practice, and improve — with the right content, insights, and performance tracking.
+                    </p>
+                    <div>
+                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
+                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
         </div>
       </section>
 
+      <!-- Text Scroll Marquee Section -->
+      <section class="color-section" data-color="#0f172a" style="background: transparent; padding: 100px 0; overflow: hidden; display: flex; flex-direction: column; gap: 0;">
+        
+        <div class="marquee-line" data-reverse="false" style="white-space: nowrap; width: max-content; font-size: clamp(5rem, 12vw, 10rem); font-family: 'Inter', sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; will-change: transform;">
+          ${Array(60).fill(0).map((_, i) => `<span style="${i % 2 === 0 ? 'color: #ffffff;' : 'color: transparent; -webkit-text-stroke: 2px #38bdf8;'} padding-right: 0.25em;">CREATIVE</span>`).join('')}
+        </div>
+        
+        <div class="marquee-line" data-reverse="true" style="white-space: nowrap; width: max-content; font-size: clamp(5rem, 12vw, 10rem); font-family: 'Inter', sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; transform: translateX(-50%); will-change: transform;">
+          ${Array(60).fill(0).map((_, i) => `<span style="${i % 2 === 0 ? 'color: #ffffff;' : 'color: transparent; -webkit-text-stroke: 2px #38bdf8;'} padding-right: 0.25em;">DESIGN</span>`).join('')}
+        </div>
+        
+        <div class="marquee-line" data-reverse="false" style="white-space: nowrap; width: max-content; font-size: clamp(5rem, 12vw, 10rem); font-family: 'Inter', sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; will-change: transform;">
+          ${Array(60).fill(0).map((_, i) => `<span style="${i % 2 === 0 ? 'color: #ffffff;' : 'color: transparent; -webkit-text-stroke: 2px #38bdf8;'} padding-right: 0.25em;">MOTION</span>`).join('')}
+        </div>
+        
+        <div class="marquee-line" data-reverse="true" style="white-space: nowrap; width: max-content; font-size: clamp(5rem, 12vw, 10rem); font-family: 'Inter', sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.02em; transform: translateX(-50%); will-change: transform;">
+          ${Array(60).fill(0).map((_, i) => `<span style="${i % 2 === 0 ? 'color: #ffffff;' : 'color: transparent; -webkit-text-stroke: 2px #38bdf8;'} padding-right: 0.25em;">STUDIO</span>`).join('')}
+        </div>
+        
+      </section>
+
       <!-- Routine Poster Section -->
-      <section style="padding: 60px 20px; background: #ffffff; display: flex; justify-content: center;">
+      <section class="color-section" data-color="#0284c7" style="padding: 60px 20px; background: transparent; display: flex; justify-content: center;">
         <div style="background: #0f1115; border-radius: 24px; width: 100%; max-width: 1200px; min-height: 540px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 60px 48px; box-sizing: border-box; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center;">
           
           <!-- Gradient Overlay -->
@@ -215,10 +367,10 @@ export function renderHomePage(): string {
       </section>
 
       <!-- Services Section -->
-      <section style="background: #fafafa; padding: 120px 20px; text-align: center;">
+      <section class="color-section" data-color="#0369a1" style="background: transparent; padding: 120px 20px; text-align: center;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
           
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #111827; letter-spacing: -0.03em; margin-bottom: 64px;">
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #ffffff; letter-spacing: -0.03em; margin-bottom: 64px;">
             Services
           </h2>
 
@@ -279,28 +431,53 @@ export function renderHomePage(): string {
       </section>
 
       <!-- Globe Section -->
-      <section style="background: #ffffff; padding: 120px 20px 80px; text-align: center; position: relative; overflow: hidden;">
+      <section class="color-section" data-color="#e0f2fe" style="background: transparent; padding: 120px 20px 80px; text-align: center; position: relative; overflow: hidden;">
+        
+        <!-- Glowing Number Hero -->
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; position: relative; z-index: 10;">
+          <!-- Pill label -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 20px; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+            Real habits, real numbers
+          </div>
+          
+          <!-- Heading -->
+          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #0f172a; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 24px 0; max-width: 600px;">
+            How people stay<br/>consistent over time
+          </h2>
+          
+          <!-- Big glowing number container -->
+          <div style="position: relative; display: inline-block;">
+            <div style="font-family: 'Inter', sans-serif; font-size: clamp(6rem, 16vw, 13rem); font-weight: 900; color: #ff5500; line-height: 0.9; letter-spacing: -0.05em; text-shadow: 0 20px 80px rgba(255, 85, 0, 0.5);">
+              62,000+
+            </div>
+            
+            <!-- Tilted badge -->
+            <div style="position: absolute; bottom: 15%; right: -5%; background: #ffffff; border: 1px solid #f1f5f9; border-radius: 999px; padding: 12px 24px; font-size: clamp(0.85rem, 2vw, 1rem); font-weight: 600; color: #334155; font-family: 'Inter', sans-serif; transform: rotate(6deg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); white-space: nowrap;">
+              Check-ins logged last month
+            </div>
+          </div>
+        </div>
         
         <!-- The Globe -->
         <div style="position: relative; width: 100%; max-width: 800px; height: 350px; overflow: hidden; margin: 0 auto; margin-bottom: 20px; display: flex; justify-content: center;">
           
           <!-- Globe Video -->
-          <video autoplay loop muted playsinline style="width: 700px; height: 700px; object-fit: cover; border-radius: 50%; mix-blend-mode: multiply;">
+          <video autoplay loop muted playsinline style="width: 700px; height: 700px; object-fit: cover; border-radius: 50%; mix-blend-mode: multiply; transform: scale(1.02);">
             <source src="/globe-moving.mp4" type="video/mp4" />
           </video>
           
           <!-- Cloud Image Overlay -->
           <div style="position: absolute; bottom: -20px; left: -10%; width: 120%; height: 160px; background-image: url('/images/cloude_img.avif'); background-size: cover; background-position: top center; z-index: 5; pointer-events: none;"></div>
           
-          <!-- Bottom Fade to white (in case the cloud image has hard edges) -->
-          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, #ffffff 20%, transparent 100%); z-index: 6; pointer-events: none;"></div>
+          <!-- Bottom Fade to match section color -->
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, #e0f2fe 20%, transparent 100%); z-index: 6; pointer-events: none;"></div>
           
         </div>
 
         <!-- The Stats -->
         <div style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1000px; margin: 0 auto; gap: 40px; position: relative; z-index: 10;">
           <div>
-            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">87<span style="color: #9333ea;">%</span></h3>
+            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">87<span style="color: #60a5fa;">%</span></h3>
             <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Faster AI execution</p>
           </div>
           <div>
@@ -308,7 +485,7 @@ export function renderHomePage(): string {
             <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Sessions completed<br/>on average</p>
           </div>
           <div>
-            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">32<span style="color: #2563eb;">+</span></h3>
+            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">32<span style="color: #60a5fa;">+</span></h3>
             <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Countries with active<br/>users</p>
           </div>
         </div>
@@ -344,32 +521,117 @@ export function initHome(): void {
     });
   }
 
-  const space = document.querySelector('.panels3d-space') as HTMLElement;
-  const wrap = document.getElementById('panels-wrap');
+  const wrap = document.getElementById('panels-wrap-home');
+  const scene = document.getElementById('panels-scene-home');
 
-  if (space && wrap) {
+  if (scene && wrap) {
     window.addEventListener('scroll', () => {
-      // Get the position of the scene relative to the viewport
-      const scene = document.querySelector('.panels3d-scene') as HTMLElement;
-      if (!scene) return;
       const rect = scene.getBoundingClientRect();
-      
-      // Total distance the element travels from entering bottom to leaving top
       const totalDistance = window.innerHeight + rect.height;
-      
-      // How far it has traveled (0 when just entering bottom)
       const scrolled = window.innerHeight - rect.top;
       
-      // Calculate progress from 0 to 1
       let progress = scrolled / totalDistance;
       progress = Math.max(0, Math.min(1, progress));
       
-      // Rotate between 0 and -60 degrees on Y axis, and maybe a bit on X
       const rotateY = progress * -60; 
       const rotateX = progress * 10;
       const translateZ = progress * 100;
       
       wrap.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
+  }
+
+  // Text Reveal Scroll Animation (Sticky)
+  const textRevealWrapper = document.getElementById('textreveal-scroll-wrapper');
+  const textRevealContainer = document.getElementById('textreveal-home-container');
+  
+  if (textRevealWrapper && textRevealContainer) {
+    const words = textRevealContainer.querySelectorAll('.reveal-word');
+    const totalWords = words.length;
+
+    window.addEventListener('scroll', () => {
+      const rect = textRevealWrapper.getBoundingClientRect();
+      
+      // The wrapper is 150vh. The sticky child is 100vh.
+      // Sticky starts when rect.top <= 0.
+      // Sticky ends when rect.bottom <= window.innerHeight
+      // Distance of sticky scroll = wrapper height - window height
+      
+      const stickyDistance = rect.height - window.innerHeight;
+      
+      // Progress is 0 when top is at 0. Progress is 1 when top is at -stickyDistance.
+      let progress = -rect.top / stickyDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      const revealIndex = Math.floor(progress * totalWords);
+
+      words.forEach((word, index) => {
+        if (index < revealIndex) {
+          word.classList.add('revealed');
+        } else {
+          word.classList.remove('revealed');
+        }
+      });
+    }, { passive: true });
+  }
+
+  // Text Marquee Scroll Animation
+  const marqueeLines = document.querySelectorAll('.marquee-line') as NodeListOf<HTMLElement>;
+  if (marqueeLines.length > 0) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      marqueeLines.forEach((line) => {
+        const isReverse = line.getAttribute('data-reverse') === 'true';
+        const direction = isReverse ? 1 : -1;
+        const offset = scrollY * 0.5 * direction;
+        line.style.transform = `translateX(calc(${isReverse ? '-50%' : '0%'} + ${offset}px))`;
+      });
+    }, { passive: true });
+  }
+
+  // Split Scroll Animation for Clients
+  const splitWrapper = document.getElementById('split-scroll-wrapper');
+  const splitLeft = document.getElementById('split-scroll-left');
+  const splitRight = document.getElementById('split-scroll-right');
+
+  if (splitWrapper && splitLeft && splitRight) {
+    window.addEventListener('scroll', () => {
+      const rect = splitWrapper.getBoundingClientRect();
+      
+      // The sticky container has top: 120px and height: 500px.
+      // Progress starts when rect.top hits 120.
+      const stickyDistance = rect.height - 500;
+      
+      let progress = (120 - rect.top) / stickyDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      // We have 3 items. Total height is 300%. To show the last item, we translate by 66.666%.
+      // Left side moves UP: translateY from 0 to -66.666%
+      splitLeft.style.transform = `translateY(-${progress * (200/3)}%)`;
+      
+      // Right side moves DOWN: translateY from 0 to 66.666%
+      splitRight.style.transform = `translateY(${progress * (200/3)}%)`;
+    }, { passive: true });
+  }
+
+  // Background Color Transition
+  const colorSections = document.querySelectorAll('.color-section');
+
+  if (colorSections.length > 0) {
+    document.body.style.transition = 'background-color 0.5s ease-out';
+    document.body.style.backgroundColor = '#f0f9ff';
+
+    window.addEventListener('scroll', () => {
+      let activeColor = '#f0f9ff';
+      colorSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        // If the top of the section is above the middle of the screen
+        if (rect.top <= window.innerHeight / 2) {
+          activeColor = section.getAttribute('data-color') || activeColor;
+        }
+      });
+      
+      document.body.style.backgroundColor = activeColor;
+    }, { passive: true });
   }
 }
