@@ -112,6 +112,9 @@ registerRoutes([
     onMount: () => {
       initNavbar();
       initUseCasesTabs();
+    }
+  },
+  {
     path: '/demo',
     title: 'Color Scroll Demo | Cresenix Solutions',
     description: 'A demo page showing scroll-based background color transitions.',
