@@ -426,6 +426,7 @@ export function renderHomePage(): string {
 
             </div>
 
+            </div>
           </div>
         </div>
       </section>
@@ -635,3 +636,4 @@ export function initHome(): void {
     }, { passive: true });
   }
 }
+

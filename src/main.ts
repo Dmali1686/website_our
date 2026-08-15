@@ -7,6 +7,8 @@ import './style.css';
 import { registerRoutes, initRouter, onNavigate } from './router';
 import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
+import { renderHomePage, initHomeForm, initTestimonialCarousel, initTechStackTabs } from './pages/home';
+import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
 import { renderHomePage, initHome } from './pages/home';
 import { renderAISolutionsPage } from './pages/ai-solutions';
 import { renderERPLMSPage } from './pages/erp-lms';
@@ -28,6 +30,16 @@ registerRoutes([
     onMount: () => {
       initNavbar();
       initHome();
+    },
+  },
+  {
+    path: '/services',
+    title: 'Our Services | Cresenix Solutions LLP',
+    description: 'Explore our comprehensive digital solutions including mobile app development, enterprise ERP systems, and custom LMS platforms.',
+    render: renderServicesPage,
+    onMount: () => {
+      initNavbar();
+      initServiceShowcaseTabs();
     },
   },
   {
