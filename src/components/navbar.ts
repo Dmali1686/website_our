@@ -13,9 +13,19 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  { path: '/services', label: 'Services', id: 'services' },
-  { path: '/portfolio', label: 'Case Study', id: 'case-study' },
-  { path: '/about', label: 'About Us', id: 'about' }
+  {
+    label: 'Services',
+    id: 'services',
+    dropdown: [
+      { path: '/ai-solutions', label: 'AI Solutions', id: 'ai-dev' },
+      { path: '/erp-lms', label: 'ERP & LMS Systems', id: 'erp-lms' },
+      { path: '/use-cases', label: 'Use Cases', id: 'use-cases' },
+      { path: '/portfolio', label: 'Web & Mobile Development', id: 'web-mobile' },
+    ]
+  },
+  { path: '/portfolio', label: 'Portfolio', id: 'portfolio' },
+  { path: '/about', label: 'About Us', id: 'about' },
+  { path: '/contact', label: 'Contact', id: 'contact' },
 ];
 
 /* Track which nav item was last clicked so we only highlight that one */
