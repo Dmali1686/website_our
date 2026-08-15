@@ -9,14 +9,16 @@ import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
 import { renderHomePage, initHomeForm, initTestimonialCarousel, initTechStackTabs } from './pages/home';
 import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
+import { renderHomePage, initHome } from './pages/home';
 import { renderAISolutionsPage } from './pages/ai-solutions';
 import { renderERPLMSPage } from './pages/erp-lms';
-import { renderPortfolioPage } from './pages/portfolio';
+import { renderPortfolioPage, initPortfolio } from './pages/portfolio';
 import { renderContactPage, initContactForm } from './pages/contact';
 import { renderAboutPage } from './pages/about';
 import { renderCareersPage } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
+import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
 
 // Register all application routes with SEO-optimized titles & descriptions
 registerRoutes([
@@ -27,9 +29,7 @@ registerRoutes([
     render: renderHomePage,
     onMount: () => {
       initNavbar();
-      initHomeForm();
-      initTestimonialCarousel();
-      initTechStackTabs();
+      initHome();
     },
   },
   {
@@ -61,7 +61,10 @@ registerRoutes([
     title: 'Case Studies & Portfolio | Cresenix Solutions LLP',
     description: 'Explore real case studies from Cresenix Solutions — custom LMS platforms, animal rescue apps, charity ERP systems, and industrial automation projects.',
     render: renderPortfolioPage,
-    onMount: initNavbar
+    onMount: () => {
+      initNavbar();
+      initPortfolio();
+    }
   },
   {
     path: '/about',
@@ -100,11 +103,28 @@ registerRoutes([
     description: 'Review the terms of service for Cresenix Solutions LLP. Understand the conditions governing our software development and consulting services.',
     render: renderTermsPage,
     onMount: initNavbar
+  },
+  {
+    path: '/demo',
+    title: 'Color Scroll Demo | Cresenix Solutions',
+    description: 'A demo page showing scroll-based background color transitions.',
+    render: renderDemoPage,
+    onMount: () => {
+      initNavbar();
+      initDemo();
+    }
   }
 ]);
 
 // After every navigation, re-initialize scroll animations and effects
 onNavigate(() => {
+  // Cleanup demo scroll listener if navigating away
+  cleanupDemo();
+  // Reset body background to default if not on demo page
+  if (window.location.hash !== '#/demo') {
+    document.body.style.backgroundColor = '#fafafa';
+  }
+  
   initAllEffects();
 });
 
