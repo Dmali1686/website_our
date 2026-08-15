@@ -7,7 +7,6 @@ import './style.css';
 import { registerRoutes, initRouter, onNavigate } from './router';
 import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
-import { renderHomePage, initHomeForm, initTestimonialCarousel, initTechStackTabs } from './pages/home';
 import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
 import { renderHomePage, initHome } from './pages/home';
 import { renderAISolutionsPage } from './pages/ai-solutions';

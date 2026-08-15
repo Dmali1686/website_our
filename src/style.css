@@ -3656,6 +3656,8 @@ h6 {
 @media (min-width: 768px) {
     .tech-item-name {
         font-size: 1.4rem;
+    }
+}
 /* 3D Panels Styles */
 .panels3d-demo {
     position: relative;
