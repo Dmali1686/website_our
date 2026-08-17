@@ -7,9 +7,8 @@ import './style.css';
 import { registerRoutes, initRouter, onNavigate } from './router';
 import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
-import { renderHomePage, initHomeForm, initTestimonialCarousel, initTechStackTabs } from './pages/home';
-import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
 import { renderHomePage, initHome } from './pages/home';
+import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
 import { renderAISolutionsPage } from './pages/ai-solutions';
 import { renderERPLMSPage } from './pages/erp-lms';
 import { renderPortfolioPage, initPortfolio } from './pages/portfolio';
@@ -18,7 +17,6 @@ import { renderAboutPage } from './pages/about';
 import { renderCareersPage } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
-import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
 import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
 
 // Register all application routes with SEO-optimized titles & descriptions
@@ -106,13 +104,6 @@ registerRoutes([
     onMount: initNavbar
   },
   {
-    path: '/use-cases',
-    title: 'Use Cases & Real-World Impact | Cresenix Solutions LLP',
-    description: 'Explore how Cresenix Solutions solves complex problems with custom software, LMS platforms, and ERP systems for NGOs, education, and manufacturing.',
-    render: renderUseCasesPage,
-    onMount: () => {
-      initNavbar();
-      initUseCasesTabs();
     path: '/demo',
     title: 'Color Scroll Demo | Cresenix Solutions',
     description: 'A demo page showing scroll-based background color transitions.',
@@ -132,7 +123,7 @@ onNavigate(() => {
   if (window.location.hash !== '#/demo') {
     document.body.style.backgroundColor = '#fafafa';
   }
-  
+
   initAllEffects();
 });
 

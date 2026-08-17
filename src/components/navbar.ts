@@ -13,19 +13,9 @@ interface NavLink {
 }
 
 const NAV_LINKS: NavLink[] = [
-  {
-    label: 'Services',
-    id: 'services',
-    dropdown: [
-      { path: '/ai-solutions', label: 'AI Solutions', id: 'ai-dev' },
-      { path: '/erp-lms', label: 'ERP & LMS Systems', id: 'erp-lms' },
-      { path: '/use-cases', label: 'Use Cases', id: 'use-cases' },
-      { path: '/portfolio', label: 'Web & Mobile Development', id: 'web-mobile' },
-    ]
-  },
-  { path: '/portfolio', label: 'Portfolio', id: 'portfolio' },
+  { path: '/services', label: 'Services', id: 'services' },
+  { path: '/use-cases', label: 'Use Cases', id: 'use-cases' },
   { path: '/about', label: 'About Us', id: 'about' },
-  { path: '/contact', label: 'Contact', id: 'contact' },
 ];
 
 /* Track which nav item was last clicked so we only highlight that one */
@@ -133,7 +123,7 @@ export function renderNavbar(): string {
   return `
     <header class="main-nav" id="main-nav">
       <div class="nav-inner">
-        <a class="nav-logo" data-route="/" href="#/">
+        <a class="nav-logo" href="/">
           <img src="/images/logo.png" alt="Cresenix Solutions Logo" class="nav-logo-img" style="height: 36px; width: auto; object-fit: contain;" />
           <div class="logo-text-stack">
             <span class="logo-text-top">CRESENIX</span>
