@@ -134,7 +134,7 @@ export function renderNavbar(): string {
           ${linksHTML}
         </nav>
         <div class="nav-actions">
-          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: #111827; color: #ffffff; padding: 10px 24px; border-radius: 50px; font-weight: 500; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.9';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
+          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: transparent; color: #111827; padding: 10px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.8';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
             Get in touch
           </a>
         </div>

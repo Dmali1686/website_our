@@ -13,14 +13,14 @@ export function renderHomePage(): string {
           <div id="hero-bg" style="position: absolute; inset: -50px; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center; will-change: filter, transform; filter: blur(0px); transform: scale(1);"></div>
 
           <!-- Gradient Overlay -->
-          <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(180, 70, 0, 0.8) 0%, rgba(180, 70, 0, 0.5) 50%, rgba(0, 0, 0, 0.2) 100%);"></div>
+          <div style="position: absolute; inset: 0;   background: linear-gradient(90deg, rgb(104 148 245 / 70%) 0%, rgb(70 115 172 / 40%) 50%, rgba(255, 255, 255, 0.1) 100%);"></div>
         </div>
         
         <!-- Sticky text wrapper -->
         <div style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5;">
             <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-8vh);">
                 <!-- Main Heading -->
-                <h1 id="hero-main-text" style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
+                <h1 id="hero-main-text" style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
                     Build habits that<br/>actually stick
                 </h1>
 
@@ -98,7 +98,7 @@ export function renderHomePage(): string {
                   <span class="reveal-word">Build</span>
                   <span class="reveal-word">steady</span>
                   <span class="reveal-word">daily</span>
-                  <span class="reveal-word reveal-emoji" style="background: #e07a5f;">🚴</span>
+                  <span class="reveal-word reveal-emoji" style="background: #3b82f6; color: white;">🚴</span>
                   <span class="reveal-word">habits</span>
                   <span class="reveal-word">with</span>
                   <span class="reveal-word">a</span>
@@ -108,7 +108,7 @@ export function renderHomePage(): string {
                   <span class="reveal-word">your</span>
                   <span class="reveal-word">mornings,</span>
                   <span class="reveal-word">evenings,</span>
-                  <span class="reveal-word reveal-emoji" style="background: #90e0ef;">⛅</span>
+                  <span class="reveal-word reveal-emoji" style="background: #0ea5e9; color: white;">⛅</span>
                   <span class="reveal-word">and</span>
                   <span class="reveal-word">focus</span>
                   <span class="reveal-word">simple</span>
