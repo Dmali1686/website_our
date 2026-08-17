@@ -18,6 +18,7 @@ import { renderCareersPage } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
 import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
+import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
 
 // Register all application routes with SEO-optimized titles & descriptions
 registerRoutes([
@@ -64,6 +65,16 @@ registerRoutes([
       initNavbar();
       initPortfolio();
     }
+  },
+  {
+    path: '/use-cases',
+    title: 'Use Cases | Cresenix Solutions LLP',
+    description: 'Explore real-world use cases of Cresenix Solutions custom software, AI, and enterprise applications.',
+    render: renderUseCasesPage,
+    onMount: () => {
+      initNavbar();
+      initUseCasesTabs();
+    },
   },
   {
     path: '/about',

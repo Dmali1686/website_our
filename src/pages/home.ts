@@ -161,72 +161,310 @@ export function renderHomePage(): string {
             We treat our clients as our family members.
           </p>
 
-          <!-- Split Scroll Sticky Container -->
-          <div id="split-scroll-wrapper" style="width: 100%; height: 300vh; position: relative;">
-            <div style="position: sticky; top: 120px; width: 100%; max-width: 1000px; height: 500px; margin: 0 auto; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex;">
+          <!-- Scroll-Snapping Cards Section -->
+          <style>
+            .snap-cards-wrapper {
+              width: 100%;
+              height: 400vh;
+              position: relative;
+            }
+            .snap-sticky-viewport {
+              position: sticky;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 100%;
+              max-width: 1100px;
+              height: 560px;
+              margin: 0 auto;
+              border-radius: 28px;
+              overflow: hidden;
+              box-shadow: 0 30px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05);
+              display: flex;
+            }
+            .snap-half {
+              flex: 1;
+              position: relative;
+              overflow: hidden;
+            }
+            .snap-half.left {
+              flex: 0 0 50%;
+            }
+            .snap-half.right {
+              flex: 0 0 50%;
+            }
+            .snap-slide-track {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 300%;
+              display: flex;
+              flex-direction: column;
+              will-change: transform;
+            }
+            .snap-slide-track.right-track {
+              top: auto;
+              bottom: 0;
+            }
+            .snap-card {
+              height: 33.3333%;
+              position: relative;
+              overflow: hidden;
+              display: flex;
+            }
+            .snap-card-image {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+              transform: scale(1.05);
+              transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .snap-card:hover .snap-card-image {
+              transform: scale(1.1);
+            }
+            .snap-card-image.contain-mode {
+              object-fit: contain;
+              padding: 8%;
+              transform: scale(1);
+            }
+            .snap-card-image.contain-mode:hover {
+              transform: scale(1.03);
+            }
+
+            /* Image overlay with gradient */
+            .snap-image-overlay {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              padding: 32px 28px;
+              background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+              z-index: 2;
+            }
+            .snap-category-badge {
+              display: inline-block;
+              background: rgba(255,255,255,0.15);
+              backdrop-filter: blur(8px);
+              -webkit-backdrop-filter: blur(8px);
+              color: #fff;
+              font-family: 'Inter', sans-serif;
+              font-size: 0.7rem;
+              font-weight: 600;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+              padding: 5px 12px;
+              border-radius: 50px;
+              border: 1px solid rgba(255,255,255,0.15);
+            }
+
+            /* Text card styling */
+            .snap-text-card {
+              height: 33.3333%;
+              padding: 52px 48px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: left;
+              position: relative;
+            }
+            .snap-text-card::before {
+              content: '';
+              position: absolute;
+              top: 16px;
+              bottom: 16px;
+              left: 0;
+              width: 3px;
+              border-radius: 3px;
+              opacity: 0;
+              transition: opacity 0.6s ease;
+            }
+            .snap-text-card.active::before {
+              opacity: 1;
+            }
+            .snap-text-card:nth-child(1)::before { background: linear-gradient(180deg, #6366f1, #818cf8); }
+            .snap-text-card:nth-child(2)::before { background: linear-gradient(180deg, #f472b6, #ec4899); }
+            .snap-text-card:nth-child(3)::before { background: linear-gradient(180deg, #34d399, #10b981); }
+
+            .snap-text-number {
+              font-family: 'Inter', sans-serif;
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: rgba(255,255,255,0.25);
+              letter-spacing: 0.15em;
+              text-transform: uppercase;
+              margin-bottom: 16px;
+            }
+            .snap-text-title {
+              font-family: 'Inter', sans-serif;
+              font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+              font-weight: 700;
+              color: #ffffff;
+              margin-bottom: 16px;
+              line-height: 1.15;
+              letter-spacing: -0.02em;
+            }
+            .snap-text-desc {
+              font-family: 'Inter', sans-serif;
+              font-size: 1rem;
+              color: #9ca3af;
+              line-height: 1.65;
+              margin-bottom: 32px;
+            }
+            .snap-text-cta {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              background: #ffffff;
+              color: #111827;
+              padding: 12px 28px;
+              border-radius: 50px;
+              font-weight: 600;
+              font-family: 'Inter', sans-serif;
+              font-size: 0.9rem;
+              text-decoration: none;
+              transition: all 0.25s ease;
+              width: fit-content;
+            }
+            .snap-text-cta:hover {
+              background: #f3f4f6;
+              transform: translateX(4px);
+            }
+
+            /* Progress dots */
+            .snap-progress {
+              position: absolute;
+              right: 24px;
+              top: 50%;
+              transform: translateY(-50%);
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              z-index: 10;
+            }
+            .snap-dot {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: rgba(255,255,255,0.2);
+              transition: all 0.4s ease;
+            }
+            .snap-dot.active {
+              background: #ffffff;
+              height: 24px;
+              border-radius: 4px;
+            }
+
+            @media (max-width: 768px) {
+              .snap-cards-wrapper {
+                height: 300vh;
+              }
+              .snap-sticky-viewport {
+                flex-direction: column;
+                height: 80vh;
+                max-height: 600px;
+                border-radius: 20px;
+                margin: 0 16px;
+                width: calc(100% - 32px);
+              }
+              .snap-half.left,
+              .snap-half.right {
+                flex: 0 0 50%;
+              }
+              .snap-text-card {
+                padding: 28px 24px;
+              }
+              .snap-text-title {
+                font-size: 1.35rem;
+              }
+              .snap-text-desc {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+              }
+              .snap-text-cta {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+              }
+              .snap-progress {
+                display: none;
+              }
+            }
+          </style>
+
+          <div class="snap-cards-wrapper" id="split-scroll-wrapper">
+            <div class="snap-sticky-viewport">
               
-              <!-- Left Side: Images (Scrolls UP) -->
-              <div style="flex: 0 0 45%; position: relative; overflow: hidden; background: #042f1c;">
-                <div id="split-scroll-left" style="position: absolute; top: 0; left: 0; width: 100%; height: 300%; display: flex; flex-direction: column; will-change: transform;">
+              <!-- Left Side: Text Cards (Scrolls UP) -->
+              <div class="snap-half left" style="background: #0f1115;">
+                <div class="snap-slide-track" id="split-scroll-left">
                   
-                  <!-- Image 1: Geek By Choice -->
-                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #042f1c;">
-                    <img src="/images/geekbychoice_casestudy.png" alt="Geek By Choice" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+                  <div class="snap-text-card active" data-card-index="0">
+                    <span class="snap-text-number">01 — EdTech</span>
+                    <h3 class="snap-text-title">Geek By Choice LMS</h3>
+                    <p class="snap-text-desc">
+                      A powerful Learning Management System that helps students prepare, practice, and improve — with the right content, insights, and performance tracking.
+                    </p>
+                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                      View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                    </a>
                   </div>
-                  
-                  <!-- Image 2: NGO -->
-                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #000;">
-                    <img src="/images/ngo_casestudy.png" alt="NGO" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+
+                  <div class="snap-text-card" data-card-index="1">
+                    <span class="snap-text-number">02 — Animal Welfare</span>
+                    <h3 class="snap-text-title">MH-14 Animal NGO</h3>
+                    <p class="snap-text-desc">
+                      An operational hub for animal rescue. Simplifying operations to save more lives with complete history tracking and volunteer management.
+                    </p>
+                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                      View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                    </a>
                   </div>
-                  
-                  <!-- Image 3: Jayshree -->
-                  <div style="height: 33.3333%; position: relative; overflow: hidden; background: #031428;">
-                    <img src="/images/jayshree_casestudy.png" alt="Jayshree" style="width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.15);" />
+
+                  <div class="snap-text-card" data-card-index="2">
+                    <span class="snap-text-number">03 — Manufacturing</span>
+                    <h3 class="snap-text-title">Jayshree Electrocoating</h3>
+                    <p class="snap-text-desc">
+                      Smart ERP for stronger operations. A powerful solution built to streamline every process from orders to production with complete visibility.
+                    </p>
+                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                      View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+                    </a>
                   </div>
 
                 </div>
+                <!-- Progress dots -->
+                <div class="snap-progress" id="snap-progress-dots">
+                  <div class="snap-dot active" data-dot="0"></div>
+                  <div class="snap-dot" data-dot="1"></div>
+                  <div class="snap-dot" data-dot="2"></div>
+                </div>
               </div>
 
-              <!-- Right Side: Text (Scrolls DOWN) -->
-              <div style="flex: 1; position: relative; overflow: hidden; background: #0f1115;">
-                <div id="split-scroll-right" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 300%; display: flex; flex-direction: column; will-change: transform;">
+              <!-- Right Side: Images (Scrolls DOWN — reversed order) -->
+              <div class="snap-half right">
+                <div class="snap-slide-track right-track" id="split-scroll-right">
                   
-                  <!-- Text 3: Jayshree -->
-                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">Jayshree Electrocoating</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
-                      Smart ERP for stronger operations. A powerful solution built to streamline every process from orders to production with complete visibility.
-                    </p>
-                    <div>
-                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
-                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
-                      </a>
+                  <!-- Image 3: Jayshree (bottom of track) -->
+                  <div class="snap-card" style="background: #031428;">
+                    <img src="/images/jayshree_casestudy.png" alt="Jayshree Electrocoating" class="snap-card-image" />
+                    <div class="snap-image-overlay">
+                      <span class="snap-category-badge">Manufacturing & Enterprise</span>
                     </div>
                   </div>
 
-                  <!-- Text 2: NGO -->
-                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">MH-14 Animal NGO</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
-                      An operational hub for animal rescue. Simplifying operations to save more lives with complete history tracking and volunteer management.
-                    </p>
-                    <div>
-                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
-                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
-                      </a>
+                  <!-- Image 2: NGO -->
+                  <div class="snap-card" style="background: #0a0a0a;">
+                    <img src="/images/ngo_interanl.jpeg" alt="MH-14 NGO" class="snap-card-image contain-mode" />
+                    <div class="snap-image-overlay">
+                      <span class="snap-category-badge">NGO & Animal Welfare</span>
                     </div>
                   </div>
 
-                  <!-- Text 1: Geek By Choice -->
-                  <div style="height: 33.3333%; padding: 60px; display: flex; flex-direction: column; justify-content: center; text-align: left; background: #0f1115;">
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 2.5rem; font-weight: 700; color: #ffffff; margin-bottom: 24px; line-height: 1.2;">Geek By Choice LMS</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #9ca3af; line-height: 1.6; margin-bottom: 40px;">
-                      A powerful Learning Management System that helps students prepare, practice, and improve — with the right content, insights, and performance tracking.
-                    </p>
-                    <div>
-                      <a href="/#/portfolio" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #111827; padding: 12px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='#ffffff'">
-                        View Case Study <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
-                      </a>
+                  <!-- Image 1: Geek By Choice (top of track) -->
+                  <div class="snap-card" style="background: #042f1c;">
+                    <img src="/images/geekbychoice_casestudy.png" alt="Geek By Choice" class="snap-card-image" />
+                    <div class="snap-image-overlay">
+                      <span class="snap-category-badge">Education & EdTech</span>
                     </div>
                   </div>
 
@@ -502,22 +740,22 @@ export function initHome(): void {
   // Hero Background Scroll Animation
   const heroBg = document.getElementById('hero-bg');
   const heroText = document.getElementById('hero-main-text');
-  
+
   if (heroBg) {
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      
+
       // Calculate blur (0 to 20px) and scale (1 to 1.15)
       const maxBlur = 20;
       const blurAmount = Math.min(scrollY / 15, maxBlur);
       const scaleAmount = 1 + Math.min(scrollY / 2000, 0.15); // slight zoom
-      
+
       heroBg.style.filter = `blur(${blurAmount}px)`;
       heroBg.style.transform = `scale(${scaleAmount})`;
-      
+
       if (heroText) {
-          const textScale = 1 + Math.min(scrollY / 3000, 0.1);
-          heroText.style.transform = `scale(${textScale})`;
+        const textScale = 1 + Math.min(scrollY / 3000, 0.1);
+        heroText.style.transform = `scale(${textScale})`;
       }
     });
   }
@@ -530,14 +768,14 @@ export function initHome(): void {
       const rect = scene.getBoundingClientRect();
       const totalDistance = window.innerHeight + rect.height;
       const scrolled = window.innerHeight - rect.top;
-      
+
       let progress = scrolled / totalDistance;
       progress = Math.max(0, Math.min(1, progress));
-      
-      const rotateY = progress * -60; 
+
+      const rotateY = progress * -60;
       const rotateX = progress * 10;
       const translateZ = progress * 100;
-      
+
       wrap.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
   }
@@ -545,25 +783,25 @@ export function initHome(): void {
   // Text Reveal Scroll Animation (Sticky)
   const textRevealWrapper = document.getElementById('textreveal-scroll-wrapper');
   const textRevealContainer = document.getElementById('textreveal-home-container');
-  
+
   if (textRevealWrapper && textRevealContainer) {
     const words = textRevealContainer.querySelectorAll('.reveal-word');
     const totalWords = words.length;
 
     window.addEventListener('scroll', () => {
       const rect = textRevealWrapper.getBoundingClientRect();
-      
+
       // The wrapper is 150vh. The sticky child is 100vh.
       // Sticky starts when rect.top <= 0.
       // Sticky ends when rect.bottom <= window.innerHeight
       // Distance of sticky scroll = wrapper height - window height
-      
+
       const stickyDistance = rect.height - window.innerHeight;
-      
+
       // Progress is 0 when top is at 0. Progress is 1 when top is at -stickyDistance.
       let progress = -rect.top / stickyDistance;
       progress = Math.max(0, Math.min(1, progress));
-      
+
       const revealIndex = Math.floor(progress * totalWords);
 
       words.forEach((word, index) => {
@@ -590,28 +828,50 @@ export function initHome(): void {
     }, { passive: true });
   }
 
-  // Split Scroll Animation for Clients
+  // Scroll-Snapping Cards Animation
   const splitWrapper = document.getElementById('split-scroll-wrapper');
   const splitLeft = document.getElementById('split-scroll-left');
   const splitRight = document.getElementById('split-scroll-right');
 
   if (splitWrapper && splitLeft && splitRight) {
+    const totalCards = 3;
+    let lastCardIndex = 0;
+
     window.addEventListener('scroll', () => {
       const rect = splitWrapper.getBoundingClientRect();
-      
-      // The sticky container has top: 120px and height: 500px.
-      // Progress starts when rect.top hits 120.
-      const stickyDistance = rect.height - 500;
-      
-      let progress = (120 - rect.top) / stickyDistance;
+      const viewportH = window.innerHeight;
+
+      // Sticky is centered vertically, so it starts sticking when rect.top reaches ~(viewportH/2 - 280)
+      // and unsticks when rect.bottom reaches ~(viewportH/2 + 280)
+      const stickyDistance = rect.height - viewportH;
+
+      let progress = -rect.top / stickyDistance;
       progress = Math.max(0, Math.min(1, progress));
-      
-      // We have 3 items. Total height is 300%. To show the last item, we translate by 66.666%.
-      // Left side moves UP: translateY from 0 to -66.666%
-      splitLeft.style.transform = `translateY(-${progress * (200/3)}%)`;
-      
-      // Right side moves DOWN: translateY from 0 to 66.666%
-      splitRight.style.transform = `translateY(${progress * (200/3)}%)`;
+
+      // Continuous translateY based on progress (from 0% to 66.666%)
+      const offsetPercent = progress * (200 / 3);
+      splitLeft.style.transform = `translateY(-${offsetPercent}%)`;
+      splitRight.style.transform = `translateY(${offsetPercent}%)`;
+
+      // Determine active card for progress indicators
+      const cardIndex = Math.min(Math.floor(progress * totalCards), totalCards - 1);
+
+      // Only update DOM class lists if card changed
+      if (cardIndex !== lastCardIndex) {
+        lastCardIndex = cardIndex;
+
+        // Update progress dots
+        const dots = document.querySelectorAll('.snap-dot');
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === cardIndex);
+        });
+
+        // Update active text card indicator
+        const textCards = document.querySelectorAll('.snap-text-card');
+        textCards.forEach((card, i) => {
+          card.classList.toggle('active', i === cardIndex);
+        });
+      }
     }, { passive: true });
   }
 
@@ -631,7 +891,7 @@ export function initHome(): void {
           activeColor = section.getAttribute('data-color') || activeColor;
         }
       });
-      
+
       document.body.style.backgroundColor = activeColor;
     }, { passive: true });
   }
