@@ -18,15 +18,15 @@ export function renderHomePage(): string {
         
         <!-- Sticky text wrapper -->
         <div style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5;">
-            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-8vh);">
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-12vh);">
                 <!-- Main Heading -->
-                <h1 id="hero-main-text" style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
-                    Build habits that<br/>actually stick
+                <h1 id="hero-main-text" style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
+                    Building The Future One Solution At <br class="desktop-only"> A Time
                 </h1>
 
                 <!-- Subheading -->
-                <p style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 500; line-height: 1.5; margin-bottom: 0; max-width: 650px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                    You see the right habits at the right time so your day never feels crowded.
+                <p style="color: white; font-family: 'Inter', sans-serif; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 500; line-height: 1.5; margin-bottom: 0; max-width: 800px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    Empowering businesses with modern software, AI-driven innovation, and scalable digital experiences.
                 </p>
             </div>
             
@@ -60,15 +60,15 @@ export function renderHomePage(): string {
       </section>
 
       <!-- Text Content Section (Sticky Scroll Reveal) -->
-      <section class="color-section" data-color="#bae6fd" style="background: transparent; position: relative; z-index: 5;">
-        <div id="textreveal-scroll-wrapper" style="height: 150vh; position: relative;">
-          <div style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <section class="color-section text-reveal-section" data-color="#bae6fd" style="background: transparent; position: relative; z-index: 5;">
+        <div id="textreveal-scroll-wrapper" class="text-reveal-wrapper" style="position: relative;">
+          <div class="text-reveal-sticky" style="position: sticky; display: flex; align-items: center; justify-content: center; overflow: hidden;">
             <div class="container" style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
               
               <div id="textreveal-home-container" style="text-align: center;">
                 <style>
                   .reveal-word {
-                    color: #cbd5e1;
+                    color: rgba(17, 24, 39, 0.15); /* Semi-transparent dark */
                     transition: color 0.2s ease-out;
                     display: inline-block;
                     margin-right: 0.15em;
@@ -94,26 +94,21 @@ export function renderHomePage(): string {
                     opacity: 1;
                   }
                 </style>
-                <h2 id="textreveal-home" style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0; max-width: 900px;">
-                  <span class="reveal-word">Build</span>
-                  <span class="reveal-word">steady</span>
-                  <span class="reveal-word">daily</span>
+                <h2 id="textreveal-home" style="font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 500; line-height: 1.3; letter-spacing: -0.02em; margin-bottom: 0; max-width: 900px;">
+                  <span class="reveal-word">Building</span>
+                  <span class="reveal-word">the</span>
+                  <span class="reveal-word">Future,</span>
                   <span class="reveal-word reveal-emoji" style="background: #3b82f6; color: white;">🚴</span>
-                  <span class="reveal-word">habits</span>
-                  <span class="reveal-word">with</span>
-                  <span class="reveal-word">a</span>
-                  <span class="reveal-word">layout</span>
-                  <span class="reveal-word">that</span>
-                  <span class="reveal-word">keeps</span>
-                  <span class="reveal-word">your</span>
-                  <span class="reveal-word">mornings,</span>
-                  <span class="reveal-word">evenings,</span>
-                  <span class="reveal-word reveal-emoji" style="background: #0ea5e9; color: white;">⛅</span>
+                  <span class="reveal-word">Today.</span>
+                  <br/>
+                  <span class="reveal-word">AI-powered</span>
+                  <span class="reveal-word">solutions</span>
+                  <span class="reveal-word">designed</span>
+                  <span class="reveal-word">for</span>
+                  <span class="reveal-word">growth</span>
                   <span class="reveal-word">and</span>
-                  <span class="reveal-word">focus</span>
-                  <span class="reveal-word">simple</span>
-                  <span class="reveal-word">to</span>
-                  <span class="reveal-word">follow.</span>
+                  <span class="reveal-word reveal-emoji" style="background: #0ea5e9; color: white;">⛅</span>
+                  <span class="reveal-word">innovation.</span>
                 </h2>
               </div>
 
@@ -137,7 +132,7 @@ export function renderHomePage(): string {
             .animated-strike {
               position: relative;
               display: inline-block;
-              color: #9ca3af;
+              color: #64748b; /* Darkened for better contrast */
               margin-right: 16px;
               font-weight: 600;
             }
@@ -148,16 +143,16 @@ export function renderHomePage(): string {
               left: -5%;
               width: 110%;
               height: 0.1em;
-              background-color: #9ca3af;
+              background-color: #64748b; /* Darkened for better contrast */
               border-radius: 4px;
               animation: strike-draw 2.5s infinite ease-in-out;
             }
           </style>
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #111827; letter-spacing: -0.03em; margin-bottom: 16px;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: #111827; letter-spacing: -0.02em; margin-bottom: 16px;">
             <span class="animated-strike">Clients</span>Family
           </h2>
 
-          <p style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 500; color: #4b5563; margin-bottom: 64px;">
+          <p style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 64px;">
             We treat our clients as our family members.
           </p>
 
@@ -167,6 +162,7 @@ export function renderHomePage(): string {
               width: 100%;
               height: 400vh;
               position: relative;
+              margin-top: 250px;
             }
             .snap-sticky-viewport {
               position: sticky;
@@ -282,7 +278,7 @@ export function renderHomePage(): string {
             .snap-text-card.active::before {
               opacity: 1;
             }
-            .snap-text-card:nth-child(1)::before { background: linear-gradient(180deg, #6366f1, #818cf8); }
+            .snap-text-card:nth-child(1)::before { background: linear-gradient(180deg, #3b82f6, #818cf8); }
             .snap-text-card:nth-child(2)::before { background: linear-gradient(180deg, #f472b6, #ec4899); }
             .snap-text-card:nth-child(3)::before { background: linear-gradient(180deg, #34d399, #10b981); }
 
@@ -331,62 +327,78 @@ export function renderHomePage(): string {
               transform: translateX(4px);
             }
 
-            /* Progress dots */
-            .snap-progress {
-              position: absolute;
-              right: 24px;
-              top: 50%;
-              transform: translateY(-50%);
-              display: flex;
-              flex-direction: column;
-              gap: 10px;
-              z-index: 10;
-            }
-            .snap-dot {
-              width: 8px;
-              height: 8px;
-              border-radius: 50%;
-              background: rgba(255,255,255,0.2);
-              transition: all 0.4s ease;
-            }
-            .snap-dot.active {
-              background: #ffffff;
-              height: 24px;
-              border-radius: 4px;
-            }
+
 
             @media (max-width: 768px) {
               .snap-cards-wrapper {
-                height: 300vh;
+                height: auto !important;
+                margin-top: 60px;
+                margin-bottom: 60px;
               }
               .snap-sticky-viewport {
-                flex-direction: column;
-                height: 80vh;
-                max-height: 600px;
-                border-radius: 20px;
+                position: relative;
+                top: auto;
+                transform: none;
+                height: auto;
+                max-height: none;
+                border-radius: 0;
                 margin: 0 16px;
                 width: calc(100% - 32px);
+                box-shadow: none;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 16px;
+                overflow: visible;
               }
-              .snap-half.left,
-              .snap-half.right {
-                flex: 0 0 50%;
+              .snap-half, .snap-slide-track {
+                display: contents; /* Flattens the DOM for CSS Grid */
               }
+              
+              /* Reset transforms applied by JS */
+              .snap-slide-track {
+                transform: none !important;
+              }
+
+              /* Interleave Cards using Grid Row */
+              /* Text 1 and Image 1 */
+              .snap-half.left .snap-text-card:nth-child(1) { grid-row: 1; }
+              .snap-half.right .snap-card:nth-child(3) { grid-row: 2; min-height: 250px; }
+              
+              /* Text 2 and Image 2 */
+              .snap-half.left .snap-text-card:nth-child(2) { grid-row: 3; margin-top: 24px; }
+              .snap-half.right .snap-card:nth-child(2) { grid-row: 4; min-height: 250px; }
+              
+              /* Text 3 and Image 3 */
+              .snap-half.left .snap-text-card:nth-child(3) { grid-row: 5; margin-top: 24px; }
+              .snap-half.right .snap-card:nth-child(1) { grid-row: 6; min-height: 250px; }
+
               .snap-text-card {
-                padding: 28px 24px;
+                padding: 32px 24px;
+                height: auto;
+                border-radius: 24px;
+              }
+              .snap-card {
+                height: auto;
+                border-radius: 24px;
+              }
+              .snap-text-number {
+                color: #0369a1; /* Darker blue for contrast */
               }
               .snap-text-title {
-                font-size: 1.35rem;
+                font-size: 2rem;
+                color: #0f172a; /* Dark slate for high contrast */
               }
               .snap-text-desc {
-                font-size: 0.9rem;
-                margin-bottom: 20px;
+                font-size: 1.05rem;
+                margin-bottom: 24px;
+                color: #334155; /* Dark gray instead of light gray */
+                font-weight: 500;
               }
               .snap-text-cta {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-              }
-              .snap-progress {
-                display: none;
+                padding: 12px 24px;
+                font-size: 0.9rem;
+                background: #0f172a;
+                color: white;
               }
             }
           </style>
@@ -432,12 +444,7 @@ export function renderHomePage(): string {
                   </div>
 
                 </div>
-                <!-- Progress dots -->
-                <div class="snap-progress" id="snap-progress-dots">
-                  <div class="snap-dot active" data-dot="0"></div>
-                  <div class="snap-dot" data-dot="1"></div>
-                  <div class="snap-dot" data-dot="2"></div>
-                </div>
+
               </div>
 
               <!-- Right Side: Images (Scrolls DOWN — reversed order) -->
@@ -565,7 +572,7 @@ export function renderHomePage(): string {
                  </div>
 
                  <div style="background: #e0e7ff; height: 130px; border-radius: 20px; padding: 16px; display: flex; flex-direction: column;">
-                   <div><span style="background: #6366f1; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">2 habits</span></div>
+                   <div><span style="background: #3b82f6; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">2 habits</span></div>
                    <div style="margin-top: auto;">
                      <div style="font-weight: 800; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #312e81; margin-bottom: 4px;">Evening Reset</div>
                      <div style="font-size: 0.7rem; color: #3730a3; line-height: 1.3;">Review, phone off</div>
@@ -605,94 +612,134 @@ export function renderHomePage(): string {
       </section>
 
       <!-- Services Section -->
-      <section class="color-section" data-color="#0369a1" style="background: transparent; padding: 120px 20px; text-align: center;">
+      <section class="color-section" data-color="#0369a1" style="background: transparent; padding: 60px 20px; text-align: center;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
           
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: #ffffff; letter-spacing: -0.03em; margin-bottom: 64px;">
+          <style>
+            .service-card {
+              transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+              cursor: pointer;
+              text-decoration: none !important;
+            }
+            .service-card:hover {
+              transform: translateY(-8px) !important;
+              box-shadow: 0 30px 60px rgba(0,0,0,0.2) !important;
+            }
+            .service-icon-wrap {
+              transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .service-card:hover .service-icon-wrap {
+              transform: scale(1.1) rotate(5deg);
+            }
+            .service-card-btn {
+              opacity: 0;
+              transform: translateY(10px);
+              transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .service-card:hover .service-card-btn {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          </style>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 12px;">
             Services
           </h2>
+          
+          <p style="font-family: 'Inter', sans-serif; font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 650px;">
+            We deliver powerful digital solutions to help businesses automate processes, engage users, and drive growth.
+          </p>
 
-          <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 24px; width: 100%; text-align: left;">
+          <div class="services-grid" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; width: 100%; text-align: left;">
             
             <!-- Left Column (Two Stacked Boxes) -->
-            <div style="flex: 1; min-width: 340px; display: flex; flex-direction: column; gap: 24px;">
+            <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
               
               <!-- App Development -->
-              <div style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 32px; padding: 48px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
-                <div style="background: #eef2ff; width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                  <span class="material-symbols-outlined" style="color: #4f46e5; font-size: 32px;">smartphone</span>
+              <a href="#/services?tab=app-dev" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit;">
+                <div class="service-icon-wrap" style="background: #eff6ff; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                  <span class="material-symbols-outlined" style="color: #2563eb; font-size: 28px;">smartphone</span>
                 </div>
-                <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.8rem; color: #111827; margin-bottom: 16px;">App Development</h3>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #6b7280; line-height: 1.6; margin: 0;">
+                <h3 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.8rem; color: #111827; margin-bottom: 12px;">App Development</h3>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 500; color: #6b7280; line-height: 1.5; margin: 0;">
                   We build highly scalable, fast, and beautiful applications for web and mobile platforms to help your business grow.
                 </p>
-              </div>
+                <div class="service-card-btn" style="margin-top: 20px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; color: #2563eb; display: flex; align-items: center; gap: 6px;">
+                  Explore Services <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                </div>
+              </a>
 
               <!-- LMS Systems -->
-              <div style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 32px; padding: 48px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
-                <div style="background: #fdf4ff; width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
-                  <span class="material-symbols-outlined" style="color: #c026d3; font-size: 32px;">school</span>
+              <a href="#/services?tab=lms" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit;">
+                <div class="service-icon-wrap" style="background: #fdf4ff; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                  <span class="material-symbols-outlined" style="color: #c026d3; font-size: 28px;">school</span>
                 </div>
-                <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.8rem; color: #111827; margin-bottom: 16px;">LMS Systems</h3>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #6b7280; line-height: 1.6; margin: 0;">
+                <h3 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.8rem; color: #111827; margin-bottom: 12px;">LMS Systems</h3>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 500; color: #6b7280; line-height: 1.5; margin: 0;">
                   Custom learning management systems tailored to your specific educational and corporate training needs.
                 </p>
-              </div>
+                <div class="service-card-btn" style="margin-top: 20px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; color: #c026d3; display: flex; align-items: center; gap: 6px;">
+                  Explore Services <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                </div>
+              </a>
 
             </div>
 
             <!-- Right Column (One Tall Box) -->
-            <div style="flex: 1; min-width: 340px; display: flex;">
+            <div style="flex: 1; min-width: 320px; display: flex;">
               
               <!-- ERP Systems -->
-              <div style="flex: 1; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-radius: 32px; padding: 64px 48px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+              <a href="#/services?tab=erp" class="service-card" style="flex: 1; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-radius: 28px; padding: 40px 48px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; transform: translateY(0); color: inherit;">
                 
                 <!-- Decorative element -->
-                <div style="position: absolute; right: -50px; bottom: -50px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
+                <div style="position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
                 
-                <div style="background: rgba(255,255,255,0.1); width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 32px; position: relative; z-index: 2; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
-                  <span class="material-symbols-outlined" style="color: white; font-size: 32px;">account_tree</span>
+                <div class="service-icon-wrap" style="background: rgba(255,255,255,0.1); width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; position: relative; z-index: 2; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+                  <span class="material-symbols-outlined" style="color: white; font-size: 28px;">account_tree</span>
                 </div>
                 
-                <h3 style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 2.5rem; color: white; margin-bottom: 24px; position: relative; z-index: 2; line-height: 1.2;">ERP Systems</h3>
+                <h3 style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2.4rem; color: white; margin-bottom: 20px; position: relative; z-index: 2; line-height: 1.2;">ERP Systems</h3>
                 
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.2rem; color: #d1d5db; line-height: 1.7; position: relative; z-index: 2; margin: 0;">
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 500; color: #d1d5db; line-height: 1.6; position: relative; z-index: 2; margin: 0;">
                   Enterprise resource planning software that connects your entire business in one streamlined, efficient platform. Maximize productivity, enhance data visibility, and automate your workflows across all departments.
                 </p>
+
+                <div class="service-card-btn" style="margin-top: 24px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.95rem; color: #818cf8; display: flex; align-items: center; gap: 6px; position: relative; z-index: 2;">
+                  Explore Services <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                </div>
                 
-              </div>
+              </a>
 
             </div>
 
-            </div>
           </div>
         </div>
       </section>
 
       <!-- Globe Section -->
-      <section class="color-section" data-color="#e0f2fe" style="background: transparent; padding: 120px 20px 80px; text-align: center; position: relative; overflow: hidden;">
+      <section class="color-section globe-section" data-color="#e0f2fe" style="background: transparent; padding: 120px 20px 80px; text-align: center; position: relative; overflow: hidden;">
         
         <!-- Glowing Number Hero -->
         <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; position: relative; z-index: 10;">
           <!-- Pill label -->
           <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 999px; padding: 8px 20px; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
-            Real habits, real numbers
+            Proven Track Record
           </div>
           
           <!-- Heading -->
-          <h2 style="font-family: 'Inter', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; color: #0f172a; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 24px 0; max-width: 600px;">
-            How people stay<br/>consistent over time
+          <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; color: #0f172a; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 24px 0; max-width: 800px;">
+            Building Solutions That<br/>Deliver Results
           </h2>
           
           <!-- Big glowing number container -->
           <div style="position: relative; display: inline-block;">
             <div style="font-family: 'Inter', sans-serif; font-size: clamp(6rem, 16vw, 13rem); font-weight: 900; color: #ff5500; line-height: 0.9; letter-spacing: -0.05em; text-shadow: 0 20px 80px rgba(255, 85, 0, 0.5);">
-              62,000+
+              50+
             </div>
             
             <!-- Tilted badge -->
-            <div style="position: absolute; bottom: 15%; right: -5%; background: #ffffff; border: 1px solid #f1f5f9; border-radius: 999px; padding: 12px 24px; font-size: clamp(0.85rem, 2vw, 1rem); font-weight: 600; color: #334155; font-family: 'Inter', sans-serif; transform: rotate(6deg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); white-space: nowrap;">
-              Check-ins logged last month
+            <div class="projects-badge" style="position: absolute; bottom: 15%; right: -5%; background: #ffffff; border: 1px solid #f1f5f9; border-radius: 999px; padding: 8px 16px; font-size: clamp(0.7rem, 1.5vw, 0.85rem); font-weight: 600; color: #334155; font-family: 'Inter', sans-serif; transform: rotate(6deg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); white-space: nowrap;">
+              Projects successfully launched
             </div>
           </div>
         </div>
@@ -714,18 +761,18 @@ export function renderHomePage(): string {
         </div>
 
         <!-- The Stats -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1000px; margin: 0 auto; gap: 40px; position: relative; z-index: 10;">
-          <div>
-            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">87<span style="color: #60a5fa;">%</span></h3>
-            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Faster AI execution</p>
+        <div class="stats-container" style="display: flex; flex-wrap: wrap; justify-content: space-around; max-width: 1000px; margin: 0 auto; gap: 40px; position: relative; z-index: 10;">
+          <div class="stat-item">
+            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">99<span style="color: #60a5fa;">%</span></h3>
+            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Client satisfaction rate</p>
           </div>
-          <div>
-            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">46</h3>
-            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Sessions completed<br/>on average</p>
+          <div class="stat-item">
+            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">40<span style="color: #60a5fa;">%</span></h3>
+            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Faster time-to-market</p>
           </div>
-          <div>
-            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">32<span style="color: #60a5fa;">+</span></h3>
-            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Countries with active<br/>users</p>
+          <div class="stat-item">
+            <h3 style="font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; font-family: 'Inter', sans-serif; margin-bottom: 8px; color: #111827; letter-spacing: -0.04em; line-height: 1;">15<span style="color: #60a5fa;">+</span></h3>
+            <p style="font-size: 1.1rem; color: #4b5563; font-weight: 500; font-family: 'Inter', sans-serif; margin: 0; padding-top: 12px;">Industries served globally</p>
           </div>
         </div>
 
@@ -860,11 +907,6 @@ export function initHome(): void {
       if (cardIndex !== lastCardIndex) {
         lastCardIndex = cardIndex;
 
-        // Update progress dots
-        const dots = document.querySelectorAll('.snap-dot');
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === cardIndex);
-        });
 
         // Update active text card indicator
         const textCards = document.querySelectorAll('.snap-text-card');

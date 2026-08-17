@@ -144,10 +144,11 @@ export function renderNavbar(): string {
       </div>
     </header>
     <div class="mobile-menu" id="mobile-menu">
-      ${mobileLinksHTML}
-      <div class="mobile-menu-actions">
-        <a class="nav-login" href="#" style="text-align:center;font-size:16px;">Login</a>
-        <a class="nav-cta" data-route="/contact" href="#/contact">Get Started</a>
+      <div class="mobile-menu-card">
+        ${mobileLinksHTML}
+        <div class="mobile-menu-actions">
+          <a class="nav-cta" data-route="/contact" href="#/contact">Get Started</a>
+        </div>
       </div>
     </div>
   `;

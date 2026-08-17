@@ -4,10 +4,10 @@ import { renderFooter } from '../components/footer';
 export function renderServicesPage(): string {
   return `
     ${renderNavbar()}
-    <div class="page-wrapper" style="padding-top: 80px;">
+    <div class="page-wrapper">
       
       <!-- Services Showcase Section -->
-      <section class="section-gap" style="background: #fafbff; position: relative; z-index: 10; overflow: hidden; border-bottom: 1px solid #e2e8f0;">
+      <section class="section-gap" style="background: #f0f9ff; position: relative; z-index: 10; overflow: hidden; border-bottom: 1px solid #e2e8f0; padding-top: 100px;">
         <style>
           /* Global Noise Overlay */
           .noise-overlay {
@@ -46,17 +46,17 @@ export function renderServicesPage(): string {
           }
           .svc-tab-btn::before {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             opacity: 0; transition: opacity 0.35s ease;
           }
-          .svc-tab-btn:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15); }
+          .svc-tab-btn:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15); }
           .svc-tab-btn.active {
-            border-color: #4f46e5; background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border-color: #2563eb; background: linear-gradient(135deg, #2563eb, #3b82f6);
             color: white; box-shadow: 0 8px 30px rgba(79, 70, 229, 0.25);
             transform: translateY(-2px);
           }
           .svc-tab-btn.active .svc-tab-icon { color: white; }
-          .svc-tab-icon { font-size: 22px; color: #6366f1; transition: color 0.3s; }
+          .svc-tab-icon { font-size: 22px; color: #3b82f6; transition: color 0.3s; }
           .svc-tab-subtitle { font-size: 0.7rem; font-weight: 400; text-transform: none; letter-spacing: 0; opacity: 0.7; display: block; }
 
           /* Service Content Panel */
@@ -81,7 +81,7 @@ export function renderServicesPage(): string {
           }
           .svc-dots span {
             width: 6px; height: 6px; border-radius: 50%;
-            background: #6366f1; opacity: 0.25;
+            background: #3b82f6; opacity: 0.25;
           }
           .svc-dots.top-right { top: 0; right: 20px; }
           .svc-dots.bottom-left { bottom: 20px; left: 0; }
@@ -128,7 +128,7 @@ export function renderServicesPage(): string {
             box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.3s;
           }
           .svc-video-overlay:hover .svc-play-btn { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,0,0,0.3); }
-          .svc-play-icon { color: #4f46e5; font-size: 28px; margin-left: 3px; }
+          .svc-play-icon { color: #2563eb; font-size: 28px; margin-left: 3px; }
 
           /* Video controls bar */
           .svc-video-controls {
@@ -142,7 +142,7 @@ export function renderServicesPage(): string {
           }
           .svc-video-controls .progress-bar::after {
             content: ''; position: absolute; left: 0; top: 0; height: 100%;
-            width: 35%; background: #6366f1; border-radius: 2px;
+            width: 35%; background: #3b82f6; border-radius: 2px;
           }
 
           /* Info Panel (Right) */
@@ -150,20 +150,22 @@ export function renderServicesPage(): string {
             flex: 1; padding: 24px 24px 160px 0;
             height: 640px; overflow-y: auto;
             position: relative;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
           }
-          .svc-info-panel::-webkit-scrollbar { width: 4px; }
-          .svc-info-panel::-webkit-scrollbar-track { background: transparent; }
-          .svc-info-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+          .svc-info-panel::-webkit-scrollbar { 
+            display: none; 
+          }
 
           .svc-info-label {
             font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em; color: #6366f1; margin-bottom: 12px;
+            text-transform: uppercase; letter-spacing: 0.1em; color: #3b82f6; margin-bottom: 12px;
           }
           .svc-info-heading {
             font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700; color: #0f172a; margin-bottom: 12px; line-height: 1.1; letter-spacing: -0.02em;
           }
-          .svc-info-divider { width: 60px; height: 4px; background: #4f46e5; border-radius: 2px; margin-bottom: 32px; }
+          .svc-info-divider { width: 60px; height: 4px; background: #2563eb; border-radius: 2px; margin-bottom: 32px; }
           
           /* Word-by-Word Reveal Animation */
           .textreveal-text {
@@ -201,7 +203,7 @@ export function renderServicesPage(): string {
             background: rgba(99, 102, 241, 0.08); display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
           }
-          .svc-feature-icon-wrap .material-symbols-outlined { font-size: 22px; color: #4f46e5; }
+          .svc-feature-icon-wrap .material-symbols-outlined { font-size: 22px; color: #2563eb; }
           .svc-feature-title {
             font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700;
             color: #0f172a; margin-bottom: 4px;
@@ -220,29 +222,36 @@ export function renderServicesPage(): string {
             position: sticky; top: 0;
             height: 100vh;
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden; background: #fdfdfd;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
+            overflow: hidden; background: #f0f9ff;
+            background-image: radial-gradient(#dbeafe 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
           }
           .svc-impact-section {
             padding: 20px 24px;
             width: 100%;
             display: flex; justify-content: center; overflow: hidden;
+            perspective: 1200px;
           }
           .svc-impact-container {
             max-width: 1300px; width: 100%;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(15,23,42,0.04), 0 4px 20px rgba(15,23,42,0.02);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            box-shadow: 0 40px 100px -20px rgba(50, 50, 93, 0.15), 0 30px 60px -30px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 1);
             display: flex; overflow: hidden;
-            border: 1px solid #f1f5f9;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 1);
             min-height: 600px; max-height: 90vh;
+            transform: translateY(0) translateZ(0);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+          }
+          .svc-impact-container:hover {
+            transform: translateY(-8px) translateZ(20px);
+            box-shadow: 0 50px 120px -20px rgba(50, 50, 93, 0.2), 0 30px 60px -30px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 1);
           }
           .svc-impact-left {
-            flex: 1; padding: 40px 60px;
-            background: #ffffff;
+            flex: 1; padding: 24px 40px;
+            background: transparent;
             display: flex; flex-direction: column; z-index: 10;
-            box-shadow: 10px 0 30px rgba(255,255,255,1);
             justify-content: center;
           }
           .svc-impact-right {
@@ -253,7 +262,7 @@ export function renderServicesPage(): string {
           }
 
           .svc-impact-badge {
-            background: #eef2ff; color: #4f46e5;
+            background: #eff6ff; color: #2563eb;
             padding: 6px 16px; border-radius: 20px;
             font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
@@ -261,24 +270,24 @@ export function renderServicesPage(): string {
           }
           .svc-impact-heading {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
             font-weight: 800; color: #0f172a; text-transform: uppercase;
-            line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em;
+            line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.01em;
           }
           .svc-impact-divider {
-            width: 48px; height: 3px; background: #6366f1; border-radius: 2px; margin-bottom: 24px;
+            width: 48px; height: 3px; background: #3b82f6; border-radius: 2px; margin-bottom: 16px;
           }
           .svc-impact-desc {
-            font-family: 'Inter', sans-serif; font-size: 1rem; color: #475569;
-            line-height: 1.5; margin-bottom: 32px; max-width: 90%;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #475569;
+            line-height: 1.5; margin-bottom: 24px; max-width: 90%;
           }
           
           .svc-impact-list {
-            display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;
+            display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;
           }
           .svc-impact-list-item {
             display: flex; gap: 16px; align-items: flex-start;
-            padding-bottom: 16px; border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px; border-bottom: 1px solid #f1f5f9;
           }
           .svc-impact-list-item:last-child { border-bottom: none; padding-bottom: 0; }
           .svc-impact-list-icon {
@@ -286,7 +295,7 @@ export function renderServicesPage(): string {
             background: linear-gradient(135deg, #f8fafc, #eff6ff);
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 12px rgba(99,102,241,0.05);
             display: flex; align-items: center; justify-content: center;
-            color: #6366f1; flex-shrink: 0; border: 1px solid #f1f5f9;
+            color: #3b82f6; flex-shrink: 0; border: 1px solid #f1f5f9;
           }
           .svc-impact-list-icon .material-symbols-outlined { font-size: 24px; font-variation-settings: 'FILL' 1; }
           .svc-impact-list-text h4 {
@@ -297,32 +306,32 @@ export function renderServicesPage(): string {
           }
           
           .svc-cta-btn {
-            background: #eef2ff; color: #4f46e5;
-            padding: 14px 28px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+            background: #eff6ff; color: #2563eb;
+            padding: 12px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
             display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s;
-            border: none; outline: none; width: fit-content;
+            border: none; outline: none; width: fit-content; text-decoration: none;
           }
           .svc-cta-btn:hover { background: #e0e7ff; color: #4338ca; }
 
           /* Right Side Orbital Layout */
           .svc-orbit-ring {
             position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
-            width: 720px; height: 720px; border-radius: 50%;
-            border: 4px solid #eef2ff; pointer-events: none;
+            width: 600px; height: 600px; border-radius: 50%;
+            border: 4px solid #eff6ff; pointer-events: none;
             z-index: 1;
           }
           .svc-orbit-center {
             position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
-            width: 460px; height: 460px; border-radius: 50%;
+            width: 380px; height: 380px; border-radius: 50%;
             background: #ffffff; box-shadow: 0 0 60px rgba(99, 102, 241, 0.08);
             display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-            text-align: left; padding-left: 260px; z-index: 2;
+            text-align: left; padding-left: 220px; z-index: 2;
           }
           .svc-orbit-center h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em; }
-          .svc-orbit-center p { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #6366f1; font-weight: 700; margin: 0; line-height: 1.4; }
+          .svc-orbit-center p { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #3b82f6; font-weight: 700; margin: 0; line-height: 1.4; }
           
           .svc-orbit-node-wrapper {
-            position: absolute; left: 0; top: 50%; width: 360px; /* Radius is 360px */
+            position: absolute; left: 0; top: 50%; width: 300px; /* Radius is 300px */
             transform-origin: left center; z-index: 3;
             /* Direct transform driven by JS */
             transform: translateY(-50%) rotate(var(--target-angle, -90deg));
@@ -338,7 +347,7 @@ export function renderServicesPage(): string {
             width: 64px; height: 64px; border-radius: 50%;
             background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.06);
             display: flex; align-items: center; justify-content: center;
-            color: #6366f1; border: 3px solid #ffffff;
+            color: #3b82f6; border: 3px solid #ffffff;
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative; z-index: 2;
           }
@@ -348,7 +357,7 @@ export function renderServicesPage(): string {
           .svc-orbit-small-dot {
             width: 12px; height: 12px; border-radius: 50%;
             background: #818cf8; border: 4px solid #ffffff;
-            box-shadow: 0 0 0 2px #eef2ff;
+            box-shadow: 0 0 0 2px #eff6ff;
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             z-index: 2;
           }
@@ -403,23 +412,34 @@ export function renderServicesPage(): string {
             .svc-orbit-node-wrapper { left: 50%; transform-origin: center center; }
           }
           @media (max-width: 900px) {
-            .svc-content-row { flex-direction: column; gap: 32px; }
-            .svc-phones-wrapper { min-height: 400px; width: 100%; }
-            .svc-phone { width: 150px; }
-            .svc-phone.center { width: 170px; }
+            .svc-impact-scroll-track { height: auto !important; }
+            .svc-impact-sticky { position: relative !important; top: auto !important; height: auto !important; padding: 40px 0; }
+            .svc-impact-container { transform: none !important; min-height: auto; max-height: none; }
+            .svc-impact-right { display: none !important; }
+            .svc-content-row { flex-direction: column-reverse; gap: 16px; }
+            .svc-phones-wrapper { min-height: auto !important; height: auto !important; width: 100%; flex: none !important; padding: 40px 0 !important; }
+            .svc-phone { width: 150px; bottom: 40px !important; }
+            .svc-phone.center { width: 170px; position: relative !important; bottom: auto !important; left: auto !important; transform: none !important; margin: 0 auto; }
             .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 90px)) rotate(-10deg); }
             .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 90px)) rotate(10deg); }
             .svc-info-panel { padding: 0 16px; height: auto; }
+            /* Disable text reveal and feature animation since panel is height: auto and doesn't scroll internally */
+            .reveal-word { opacity: 1 !important; filter: blur(0) !important; transform: none !important; color: #0f172a !important; }
+            .svc-feature-item { opacity: 1 !important; transform: none !important; }
             .svc-tab-btn { padding: 12px 20px; font-size: 0.8rem; }
             .svc-impact-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 20px; }
             .svc-impact-item:not(:last-child)::after { display: none; }
             .svc-impact-cta { flex-direction: column; text-align: center; }
             .svc-cta-left { flex-direction: column; }
+            .section-gap { padding-top: 120px !important; }
+            .textreveal-text { font-size: 1.15rem !important; margin-bottom: 32px !important; }
+            .svc-tabs-row { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; margin-bottom: 32px !important; }
+            .svc-tab-btn { padding: 12px 10px !important; font-size: 0.75rem !important; border-radius: 8px !important; justify-content: center; text-align: center; width: 100%; box-sizing: border-box; }
+            .svc-tab-btn:last-child { grid-column: 1 / -1; }
           }
           @media (max-width: 600px) {
-            .svc-phones-wrapper { min-height: 320px; }
-            .svc-phone { width: 120px; }
-            .svc-phone.center { width: 140px; }
+            .svc-phone { width: 130px; bottom: 40px !important; }
+            .svc-phone.center { width: 150px; }
             .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 70px)) rotate(-8deg); }
             .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 70px)) rotate(8deg); }
             .svc-tab-btn { padding: 10px 16px; font-size: 0.75rem; }
@@ -801,7 +821,7 @@ export function renderServicesPage(): string {
                   </div>
                 </div>
 
-                <button class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></button>
+                <a href="#/contact" data-route="/contact" class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
               </div>
 
               <!-- Right Panel (Orbit) -->
@@ -891,7 +911,7 @@ export function renderServicesPage(): string {
             font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 2.8rem);
             font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.02em;
           }
-          .svc-process-divider { width: 48px; height: 3px; background: #6366f1; margin-bottom: 24px; border-radius: 2px; }
+          .svc-process-divider { width: 48px; height: 3px; background: #3b82f6; margin-bottom: 24px; border-radius: 2px; }
           .svc-process-desc { font-family: 'Inter', sans-serif; font-size: 1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 40px; }
           
           .svc-process-feature-item { display: flex; gap: 16px; margin-bottom: 32px; }
@@ -909,10 +929,10 @@ export function renderServicesPage(): string {
           .svc-carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
             width: 44px; height: 44px; border-radius: 50%; background: white; border: 1px solid #e2e8f0;
-            display: flex; align-items: center; justify-content: center; color: #6366f1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; color: #3b82f6; cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s;
           }
-          .svc-carousel-btn:hover { background: #f8fafc; color: #4f46e5; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+          .svc-carousel-btn:hover { background: #f8fafc; color: #2563eb; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
           .svc-carousel-btn.prev { left: 0; }
           .svc-carousel-btn.next { right: 0; }
           
@@ -975,7 +995,7 @@ export function renderServicesPage(): string {
             cursor: pointer; transition: all 0.3s;
           }
           .svc-page-dot.active {
-            background: #6366f1; transform: scale(1.2); box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+            background: #3b82f6; transform: scale(1.2); box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
           }
           
           @media (max-width: 1024px) {
@@ -1008,7 +1028,7 @@ export function renderServicesPage(): string {
             
             <div class="svc-process-features">
               <div class="svc-process-feature-item motion-fade-up">
-                <div class="svc-process-feature-icon" style="background:#eef2ff; color:#6366f1;"><span class="material-symbols-outlined">track_changes</span></div>
+                <div class="svc-process-feature-icon" style="background:#eff6ff; color:#3b82f6;"><span class="material-symbols-outlined">track_changes</span></div>
                 <div class="svc-process-feature-text">
                   <h4>Purpose-Driven Solutions</h4>
                   <p>We focus on understanding your goals and delivering solutions that create measurable impact.</p>
@@ -1121,9 +1141,16 @@ export function renderServicesPage(): string {
           .svc-faq-item.active .svc-faq-question .icon .material-symbols-outlined { transform: rotate(45deg); color: #0f172a; }
           
           @media (max-width: 900px) {
-            .svc-faq-container { flex-direction: column; gap: 40px; }
+            .svc-faq-section { padding: 60px 16px !important; }
+            .svc-faq-container { flex-direction: column; gap: 32px; }
             .svc-faq-left { flex: none; width: 100%; position: static; }
-            .svc-faq-heading { font-size: 2.5rem; }
+            .svc-faq-heading { font-size: 2rem; margin-bottom: 24px; }
+            .svc-faq-contact-card { padding: 24px; }
+            .svc-faq-contact-card .icon { width: 40px; height: 40px; margin-bottom: 16px; }
+            .svc-faq-contact-card h4 { font-size: 1.1rem; margin-bottom: 16px; }
+            .svc-faq-question { padding: 20px 16px; font-size: 1rem; }
+            .svc-faq-answer { padding: 0 16px; }
+            .svc-faq-answer p { font-size: 0.9rem; padding-bottom: 20px; }
           }
         </style>
         
@@ -1208,22 +1235,21 @@ export function renderServicesPage(): string {
       </section>
 
       <!-- Contact Form Section -->
-      <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #eef2f6; display: flex; justify-content: center;">
+      <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #fafafa; display: flex; justify-content: center;">
         <style>
           .svc-contact-card {
-            display: flex; max-width: 1100px; width: 100%; background: #eef2f6; border-radius: 32px; overflow: hidden;
-            box-shadow: 20px 20px 60px rgba(163, 177, 198, 0.6), -20px -20px 60px rgba(255, 255, 255, 1); border: none;
+            display: flex; max-width: 1100px; width: 100%; background: #ffffff; border-radius: 32px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9;
           }
           .svc-contact-image {
             flex: 0 0 45%; background: url('/images/3d_software_services.jpg') center/cover no-repeat;
             position: relative;
           }
-          /* Subtle inset shadow over the image so it sits inside the 3D frame */
           .svc-contact-image::after {
-            content: ''; position: absolute; inset: 0; box-shadow: inset -10px 0 20px rgba(0,0,0,0.1);
+            content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1));
           }
           .svc-contact-form {
-            flex: 1; padding: 60px; background: #eef2f6;
+            flex: 1; padding: 60px; background: #ffffff;
           }
           .svc-form-row {
             display: flex; gap: 24px; margin-bottom: 24px;
@@ -1232,42 +1258,44 @@ export function renderServicesPage(): string {
             flex: 1; display: flex; flex-direction: column; gap: 10px;
           }
           .svc-form-label {
-            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: #475569;
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: #334155;
           }
           .svc-form-input, .svc-form-textarea {
-            width: 100%; padding: 18px 20px; border-radius: 16px; border: none; background: #eef2f6;
-            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0f172a; transition: all 0.3s; outline: none;
-            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+            width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0f172a; transition: all 0.2s; outline: none;
           }
           .svc-form-input::placeholder, .svc-form-textarea::placeholder {
             color: #94a3b8; font-weight: 500;
           }
           .svc-form-input:focus, .svc-form-textarea:focus {
-            box-shadow: inset 8px 8px 16px rgba(163, 177, 198, 0.6), inset -8px -8px 16px rgba(255, 255, 255, 1);
+            border-color: #3b82f6; background: #ffffff; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
           }
           .svc-form-textarea {
             resize: vertical; min-height: 140px;
           }
           .svc-form-btn {
-            background: #eef2f6; color: #0f172a; border: none; padding: 18px 40px; border-radius: 30px;
-            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; cursor: pointer;
-            box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.5), -8px -8px 16px rgba(255, 255, 255, 1);
+            background: #3b82f6; color: #ffffff; border: none; padding: 16px 40px; border-radius: 30px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.05rem; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             margin-top: 10px; display: inline-block; letter-spacing: 0.02em;
           }
           .svc-form-btn:hover {
-            transform: translateY(-2px); box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.6), -12px -12px 20px rgba(255, 255, 255, 1);
-            color: #4f46e5;
+            transform: translateY(-2px); box-shadow: 0 14px 28px rgba(59, 130, 246, 0.4);
+            background: #2563eb; color: #ffffff;
           }
           .svc-form-btn:active {
-            transform: translateY(2px); box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+            transform: translateY(2px); box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
           }
           
           @media (max-width: 900px) {
             .svc-contact-card { flex-direction: column; }
-            .svc-contact-image { height: 300px; }
-            .svc-contact-form { padding: 40px 24px; }
-            .svc-form-row { flex-direction: column; gap: 16px; margin-bottom: 16px; }
+            .svc-contact-image { height: 200px; }
+            .svc-contact-form { padding: 32px 16px; }
+            .svc-form-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
+            .svc-form-input, .svc-form-textarea { padding: 12px 16px; font-size: 0.9rem; }
+            .svc-form-textarea { min-height: 100px; }
+            .svc-form-btn { padding: 14px 32px; font-size: 0.95rem; width: 100%; }
           }
         </style>
 
@@ -1340,6 +1368,26 @@ export function initServiceShowcaseTabs(): void {
       }
     });
   });
+
+  // Check URL query params for initial tab selection (e.g. from homepage links)
+  const hashStr = window.location.hash;
+  if (hashStr.includes('?')) {
+    const query = hashStr.split('?')[1];
+    const urlParams = new URLSearchParams(query);
+    const initialTabId = urlParams.get('tab');
+    if (initialTabId) {
+      const targetTab = Array.from(tabs).find(t => t.getAttribute('data-svc-target') === initialTabId);
+      if (targetTab) {
+        setTimeout(() => {
+          (targetTab as HTMLElement).click();
+          const showcase = document.querySelector('.svc-showcase-section');
+          if (showcase) {
+             showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 150);
+      }
+    }
+  }
 
   // Init text reveal word splitting
   const revealTexts = document.querySelectorAll('.textreveal-text');

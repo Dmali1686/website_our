@@ -9,7 +9,7 @@ export function renderFooter(): string {
       <div class="container section-gap">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a class="nav-logo" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;" data-route="/" href="#/">
+            <a class="footer-logo" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; text-decoration: none;" data-route="/" href="#/">
               <img src="/images/logo.png" alt="Cresenix Solutions Logo" style="height: 36px; width: auto; object-fit: contain;" />
               <div class="logo-text-stack" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1;">
                 <span class="logo-text-top" style="font-family: var(--font-display); font-size: 16px; font-weight: 800; letter-spacing: 0.05em; color: var(--on-background);">CRESENIX</span>

@@ -14,13 +14,13 @@ export function renderUseCasesPage(): string {
         <div class="uc-tabs-container animate-fade-in-up delay-300">
           <div class="uc-tabs">
             <button class="uc-tab active" data-target="mh14">
-              <span class="material-symbols-outlined">pets</span> MH-14
+              <span class="material-symbols-outlined">pets</span> <span class="uc-tab-text">MH-14</span>
             </button>
             <button class="uc-tab" data-target="geek">
-              <span class="material-symbols-outlined">school</span> Geek By Choice
+              <span class="material-symbols-outlined">school</span> <span class="uc-tab-text">Geek By Choice</span>
             </button>
             <button class="uc-tab" data-target="jayshree">
-              <span class="material-symbols-outlined">factory</span> Jayshree Electrocoating
+              <span class="material-symbols-outlined">factory</span> <span class="uc-tab-text">Jayshree Electrocoating</span>
             </button>
           </div>
         </div>
@@ -285,4 +285,16 @@ export function initUseCasesTabs(): void {
       });
     });
   });
+
+  // Scroll reveal for list items
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+  const listItems = document.querySelectorAll('.uc-list li');
+  listItems.forEach(item => observer.observe(item));
 }
