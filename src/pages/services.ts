@@ -1341,53 +1341,73 @@ export function initServiceShowcaseTabs(): void {
   const tabs = document.querySelectorAll('.svc-tab-btn');
   const panels = document.querySelectorAll('.svc-content-panel');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active from all tabs
-      tabs.forEach(t => t.classList.remove('active'));
-      // Hide all panels
-      panels.forEach(p => p.classList.remove('active'));
+  const switchTab = (targetId: string, shouldScroll: boolean = false) => {
+    // Hide all currently active tabs and panels
+    document.querySelectorAll('.svc-tab-btn.active').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.svc-content-panel.active').forEach(p => p.classList.remove('active'));
 
-      // Activate clicked tab
-      tab.classList.add('active');
+    // Activate matching tab
+    const targetTab = document.querySelector(`.svc-tab-btn[data-svc-target="${targetId}"]`);
+    if (targetTab) {
+      targetTab.classList.add('active');
+    }
 
-      // Show matching panel
-      const targetId = tab.getAttribute('data-svc-target');
-      const targetPanel = document.getElementById(`svc-panel-${targetId}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-        // Reset scroll position and reveal state when changing tabs
-        const infoPanel = targetPanel.querySelector('.svc-info-panel');
-        if (infoPanel) {
-          infoPanel.scrollTop = 0;
-          const words = infoPanel.querySelectorAll('.reveal-word');
-          words.forEach(w => w.classList.remove('revealed'));
-          const features = infoPanel.querySelectorAll('.svc-feature-item');
-          features.forEach(f => f.classList.remove('feature-visible'));
+    // Show matching panel
+    const targetPanel = document.getElementById(`svc-panel-${targetId}`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      // Reset scroll position and reveal state
+      const infoPanel = targetPanel.querySelector('.svc-info-panel');
+      if (infoPanel) {
+        infoPanel.scrollTop = 0;
+        const words = infoPanel.querySelectorAll('.reveal-word');
+        words.forEach(w => w.classList.remove('revealed'));
+        const features = infoPanel.querySelectorAll('.svc-feature-item');
+        features.forEach(f => f.classList.remove('feature-visible'));
+      }
+    }
+    
+    if (shouldScroll) {
+      setTimeout(() => {
+        const showcase = document.getElementById('svcTabs');
+        if (showcase) {
+          showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      }, 50);
+    }
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = tab.getAttribute('data-svc-target');
+      if (targetId) {
+        window.history.replaceState(null, '', `#/services?tab=${targetId}`);
+        switchTab(targetId, false);
       }
     });
   });
 
-  // Check URL query params for initial tab selection (e.g. from homepage links)
-  const hashStr = window.location.hash;
-  if (hashStr.includes('?')) {
-    const query = hashStr.split('?')[1];
-    const urlParams = new URLSearchParams(query);
-    const initialTabId = urlParams.get('tab');
-    if (initialTabId) {
-      const targetTab = Array.from(tabs).find(t => t.getAttribute('data-svc-target') === initialTabId);
-      if (targetTab) {
-        setTimeout(() => {
-          (targetTab as HTMLElement).click();
-          const showcase = document.querySelector('.svc-showcase-section');
-          if (showcase) {
-             showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 150);
+  const handleHashChange = () => {
+    if (!document.getElementById('svcTabs')) {
+      window.removeEventListener('hashchange', handleHashChange);
+      return;
+    }
+    
+    const hashStr = window.location.hash;
+    if (hashStr.includes('?')) {
+      const query = hashStr.split('?')[1];
+      const urlParams = new URLSearchParams(query);
+      const targetTabId = urlParams.get('tab');
+      if (targetTabId) {
+        switchTab(targetTabId, true);
       }
     }
-  }
+  };
+
+  // Run initial switch slightly delayed to ensure DOM is ready and painted
+  setTimeout(handleHashChange, 100);
+  window.addEventListener('hashchange', handleHashChange);
 
   // Init text reveal word splitting
   const revealTexts = document.querySelectorAll('.textreveal-text');
