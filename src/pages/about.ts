@@ -593,7 +593,8 @@ export function initAbout(): void {
 
     const slide = () => {
       const gap = 28;
-      const cardWidth = (track.parentElement!.clientWidth - gap * (getVisibleCount() - 1)) / getVisibleCount();
+      const firstCard = track.querySelector('.val-card') as HTMLElement;
+      const cardWidth = firstCard ? firstCard.offsetWidth : 0;
       const offset = currentIndex * (cardWidth + gap);
       track.style.transform = `translateX(-${offset}px)`;
       updateDots();

@@ -445,6 +445,28 @@ export function renderServicesPage(): string {
             .svc-tab-btn { padding: 10px 16px; font-size: 0.75rem; }
             .svc-tab-subtitle { display: none; }
             .svc-impact-grid { grid-template-columns: 1fr; }
+            
+            /* 2-Column Features List for Mobile */
+            .svc-features-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
+            .svc-feature-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+            .svc-feature-icon-wrap { width: 40px !important; height: 40px !important; }
+            .svc-feature-icon-wrap .material-symbols-outlined { font-size: 20px !important; }
+            .svc-feature-title { font-size: 0.9rem !important; line-height: 1.2 !important; }
+            .svc-feature-desc { font-size: 0.8rem !important; line-height: 1.4 !important; }
+            
+            /* Business Impact Mobile Sizing */
+            .svc-impact-left { padding: 24px 16px !important; }
+            .svc-impact-badge { margin-bottom: 16px !important; font-size: 0.7rem !important; }
+            .svc-impact-heading { font-size: 1.6rem !important; margin-bottom: 16px !important; }
+            .svc-impact-desc { font-size: 0.85rem !important; max-width: 100% !important; margin-bottom: 24px !important; line-height: 1.4 !important; }
+            
+            /* 2-Column Impact List for Mobile */
+            .svc-impact-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
+            .svc-impact-list-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; border-bottom: none !important; padding-bottom: 0 !important; background: #ffffff; padding: 12px !important; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+            .svc-impact-list-icon { width: 40px !important; height: 40px !important; margin-bottom: 4px !important; }
+            .svc-impact-list-icon .material-symbols-outlined { font-size: 20px !important; }
+            .svc-impact-list-text h4 { font-size: 0.9rem !important; line-height: 1.2 !important; margin-bottom: 4px !important; }
+            .svc-impact-list-text p { font-size: 0.8rem !important; line-height: 1.4 !important; max-width: 100% !important; }
           }
         </style>
 
@@ -1011,6 +1033,11 @@ export function renderServicesPage(): string {
             .svc-carousel-card.pos-prev { transform: translate(calc(-50% - 130px), -50%) scale(0.85); }
             .svc-carousel-card.pos-next { transform: translate(calc(-50% + 130px), -50%) scale(0.85); }
             .svc-carousel-card.pos-prev-far, .svc-carousel-card.pos-next-far { opacity: 0; pointer-events: none; }
+            
+            /* Give the card more room so the image doesn't get pushed out */
+            .svc-carousel-card { width: 260px !important; height: 440px !important; }
+            .card-top { padding: 24px 16px !important; }
+            .card-bottom { height: 180px !important; }
           }
           @media (max-width: 500px) {
             .svc-carousel-btn { display: none; }
@@ -1289,6 +1316,7 @@ export function renderServicesPage(): string {
           }
           
           @media (max-width: 900px) {
+            .svc-contact-section { padding: 40px 16px 60px !important; }
             .svc-contact-card { flex-direction: column; }
             .svc-contact-image { height: 200px; }
             .svc-contact-form { padding: 32px 16px; }

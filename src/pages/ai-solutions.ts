@@ -138,35 +138,66 @@ export function renderAISolutionsPage(): string {
         @media (max-width: 1000px) {
           .ai-impact-scroll-track { height: auto !important; padding: 40px 20px; }
           .ai-impact-sticky { position: relative !important; height: auto !important; padding: 0; background: transparent; }
-          .ai-impact-container { flex-direction: column; }
+          .ai-impact-container { flex-direction: column; width: 100%; box-sizing: border-box; }
           
           .ai-orbit-ring { display: none; }
-          .ai-orbit-center { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; border-radius: 24px; padding: 32px 20px; margin-bottom: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(59, 130, 246, 0.1); }
+          .ai-orbit-center { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; border-radius: 24px; padding: 32px 20px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(59, 130, 246, 0.1); box-sizing: border-box; }
           
-          .ai-orbit-system { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; display: flex; flex-direction: column; gap: 16px; }
+          .ai-orbit-system { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; box-sizing: border-box; }
           
-          .ai-orbit-node-wrapper { position: relative; left: 0; top: 0; transform: none !important; width: 100%; opacity: 1 !important; }
+          .ai-orbit-node-wrapper { position: relative; left: 0; top: 0; transform: none !important; width: 100%; opacity: 1 !important; box-sizing: border-box; }
+          .ai-orbit-node-wrapper:last-child { display: none !important; }
           
-          .ai-orbit-node { position: relative; right: 0; top: 0; transform: none !important; width: 100%; height: auto; display: flex; align-items: center; gap: 16px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); }
+          .ai-orbit-node { position: relative; right: 0; top: 0; transform: none !important; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; background: white; padding: 12px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); box-sizing: border-box; overflow: hidden; }
           
-          .ai-orbit-icon { width: 56px; height: 56px; flex-shrink: 0; border: none; box-shadow: none; background: #f8fafc; }
+          .ai-orbit-icon { width: 40px; height: 40px; flex-shrink: 0; border: none; box-shadow: none; background: #f8fafc; }
+          .ai-orbit-icon .material-symbols-outlined { font-size: 20px; }
           
-          .ai-orbit-text { position: relative; top: 0; transform: none; display: block !important; left: 0 !important; right: 0 !important; max-width: none; padding: 0; text-align: left !important; }
-          .ai-orbit-text h4 { font-size: 1.1rem; margin-bottom: 6px; }
-          .ai-orbit-text p { font-size: 0.95rem; }
+          .ai-orbit-text { position: relative; top: 0; transform: none; display: block !important; left: 0 !important; right: 0 !important; max-width: 100% !important; width: auto !important; white-space: normal !important; padding: 0; text-align: left !important; box-sizing: border-box; }
+          .ai-orbit-text h4 { font-size: 0.95rem; margin-bottom: 4px; line-height: 1.2; word-wrap: break-word; }
+          .ai-orbit-text p { font-size: 0.8rem; line-height: 1.4; word-wrap: break-word; }
+        }
+        @media (max-width: 768px) {
+          .hero-grid { grid-template-columns: 1fr !important; }
+          .hero-content { padding-right: 0 !important; text-align: center; display: flex; flex-direction: column; align-items: center; }
+          .hero-actions { justify-content: center; width: 100%; }
+          .hero-actions button, .hero-actions a { width: 100%; text-align: center; justify-content: center; }
+          .ai-hero-image-wrapper { width: 100% !important; opacity: 0.4 !important; -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%) !important; mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%) !important; }
+          .hero-title { font-size: 2.2rem !important; }
+          .hero { padding: 120px 0 60px !important; }
+          
+          /* AI Process Section overrides for Mobile 2-Column */
+          .ai-process-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+          .ai-process-card { padding: 20px 16px !important; border-radius: 16px !important; }
+          .ai-process-card .step-number { font-size: 2.5rem !important; right: 12px !important; top: 12px !important; }
+          .ai-process-card .step-icon { width: 40px !important; height: 40px !important; margin-bottom: 16px !important; border-radius: 12px !important; }
+          .ai-process-card .step-icon .material-symbols-outlined { font-size: 20px !important; }
+          .ai-process-card h3 { font-size: 1.05rem !important; margin-bottom: 8px !important; line-height: 1.2 !important; }
+          .ai-process-card p { 
+            font-size: 0.85rem !important; 
+            line-height: 1.4 !important; 
+            display: -webkit-box !important;
+            -webkit-line-clamp: 3 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+          }
+          .ai-process-section { padding: 60px 0 !important; }
+          .ai-process-header { margin-bottom: 40px !important; }
+          .ai-process-section-title { font-size: 2rem !important; margin-bottom: 16px !important; line-height: 1.2 !important; }
+          .ai-process-section-subtitle { font-size: 0.95rem !important; }
         }
       </style>
 
       <!-- Hero Section -->
       <header class="hero">
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(17, 24, 39, 0.95) 100%); z-index: 1;"></div>
-        <div class="animate-scale-in delay-300" style="position: absolute; top: 0; right: 0; bottom: 0; width: 55%; z-index: 2; pointer-events: none;">
+        <div class="ai-hero-image-wrapper animate-scale-in delay-300" style="position: absolute; top: 0; right: 0; bottom: 0; width: 55%; z-index: 2; pointer-events: none; transition: all 0.3s;">
           <img src="/images/happy-team.png" alt="Happy tech team" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center left; opacity: 0.8; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);" />
         </div>
         <div class="container" style="position: relative; z-index: 5;">
           <div class="hero-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; min-height: 500px;">
             <div class="hero-content" style="padding-right: 40px;">
-              <span class="hero-badge animate-fade-in-up" style="padding: 10px 16px; border-radius: 100px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; background: rgba(255,255,255,0.1); color: #60a5fa; border: 1px solid rgba(255,255,255,0.2); font-family: 'Inter', sans-serif;">
+              <span class="hero-badge animate-fade-in-up" style="padding: 10px 16px; border-radius: 100px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; background: rgba(255,255,255,0.1); color: #60a5fa; border: 1px solid rgba(255,255,255,0.2); font-family: 'Inter', sans-serif;">
                 <span class="material-symbols-outlined" style="font-size:16px;">bolt</span>
                 NEXT-GEN AI
               </span>
@@ -209,26 +240,26 @@ export function renderAISolutionsPage(): string {
       </div>
 
       <!-- AI Integration Process Section -->
-      <section style="padding: 120px 0; background: #0f172a; position: relative; overflow: hidden;">
+      <section class="ai-process-section" style="padding: 120px 0; background: #0f172a; position: relative; overflow: hidden;">
         <!-- Background decoration -->
         <div style="position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
         <div style="position: absolute; bottom: -20%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
         
         <div class="container" style="position: relative; z-index: 5;">
-          <div style="text-align: center; margin-bottom: 80px;">
+          <div class="ai-process-header" style="text-align: center; margin-bottom: 80px;">
             <div class="animate-fade-in-up" style="display: inline-block; padding: 6px 16px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 16px; border: 1px solid rgba(59, 130, 246, 0.2);">
               METHODOLOGY
             </div>
-            <h2 class="animate-fade-in-up delay-100" style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 24px;">The AI Integration Process</h2>
-            <p class="animate-fade-in-up delay-200" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #94a3b8; max-width: 600px; margin: 0 auto; line-height: 1.6;">A structured, risk-mitigated approach to embedding intelligent systems into your core business operations.</p>
+            <h2 class="ai-process-section-title animate-fade-in-up delay-100" style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 24px;">The AI Integration Process</h2>
+            <p class="ai-process-section-subtitle animate-fade-in-up delay-200" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #94a3b8; max-width: 600px; margin: 0 auto; line-height: 1.6;">A structured, risk-mitigated approach to embedding intelligent systems into your core business operations.</p>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; position: relative;">
+          <div class="ai-process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; position: relative; box-sizing: border-box; width: 100%;">
             
             <!-- Step 1 -->
-            <div class="animate-fade-in-up delay-100" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(59, 130, 246, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
-              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">01</div>
-              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.1)); border: 1px solid rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <div class="ai-process-card animate-fade-in-up delay-100" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s; box-sizing: border-box;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(59, 130, 246, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div class="step-number" style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">01</div>
+              <div class="step-icon" style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.1)); border: 1px solid rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
                 <span class="material-symbols-outlined" style="color: #60a5fa; font-size: 28px;">search_insights</span>
               </div>
               <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Audit & Strategy</h3>
@@ -236,9 +267,9 @@ export function renderAISolutionsPage(): string {
             </div>
 
             <!-- Step 2 -->
-            <div class="animate-fade-in-up delay-200" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(168, 85, 247, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
-              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">02</div>
-              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.1)); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <div class="ai-process-card animate-fade-in-up delay-200" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s; box-sizing: border-box;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(168, 85, 247, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div class="step-number" style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">02</div>
+              <div class="step-icon" style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.1)); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
                 <span class="material-symbols-outlined" style="color: #c084fc; font-size: 28px;">verified_user</span>
               </div>
               <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Data & Security</h3>
@@ -246,9 +277,9 @@ export function renderAISolutionsPage(): string {
             </div>
 
             <!-- Step 3 -->
-            <div class="animate-fade-in-up delay-300" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
-              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">03</div>
-              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1)); border: 1px solid rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <div class="ai-process-card animate-fade-in-up delay-300" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s; box-sizing: border-box;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div class="step-number" style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">03</div>
+              <div class="step-icon" style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1)); border: 1px solid rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
                 <span class="material-symbols-outlined" style="color: #34d399; font-size: 28px;">model_training</span>
               </div>
               <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Custom Training</h3>
@@ -256,9 +287,9 @@ export function renderAISolutionsPage(): string {
             </div>
 
             <!-- Step 4 -->
-            <div class="animate-fade-in-up delay-400" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(236, 72, 153, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
-              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">04</div>
-              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(219, 39, 119, 0.1)); border: 1px solid rgba(236, 72, 153, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+            <div class="ai-process-card animate-fade-in-up delay-400" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s; box-sizing: border-box;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(236, 72, 153, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div class="step-number" style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">04</div>
+              <div class="step-icon" style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(219, 39, 119, 0.1)); border: 1px solid rgba(236, 72, 153, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
                 <span class="material-symbols-outlined" style="color: #f472b6; font-size: 28px;">rocket_launch</span>
               </div>
               <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Deployment</h3>

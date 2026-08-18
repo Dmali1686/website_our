@@ -26,32 +26,82 @@ export function renderCareersPage(): string {
       </section>
 
       <!-- Why Join Us Section -->
+      <style>
+        .careers-benefits-grid {
+          display: grid; 
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+          gap: 32px;
+        }
+        .career-benefit-card {
+          text-align: center; padding: 32px;
+        }
+        .career-benefit-icon {
+          width: 64px; height: 64px; margin: 0 auto 24px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
+        }
+        .career-benefit-icon .material-symbols-outlined {
+          font-size: 32px;
+        }
+        .career-benefit-card h3 {
+          font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0f172a;
+        }
+        .career-benefit-card p {
+          color: #475569; font-size: 0.95rem; line-height: 1.6; margin: 0;
+        }
+
+        @media (max-width: 768px) {
+          .careers-benefits-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+          }
+          .career-benefit-card {
+            padding: 16px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 16px;
+          }
+          .career-benefit-card:last-child {
+            grid-column: 1 / -1; /* Make the single item in the 2nd row span full width */
+          }
+          .career-benefit-icon {
+            width: 48px; height: 48px; margin-bottom: 12px; border-radius: 12px;
+          }
+          .career-benefit-icon .material-symbols-outlined {
+            font-size: 24px;
+          }
+          .career-benefit-card h3 {
+            font-size: 1rem; margin-bottom: 8px;
+          }
+          .career-benefit-card p {
+            font-size: 0.8rem; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; /* Use less text */
+          }
+        }
+      </style>
       <section class="career-color-section" data-color="#bae6fd" style="padding: 80px 24px; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
         <div class="container">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+          <div class="careers-benefits-grid">
             
-            <div class="animate-fade-in-up delay-100" style="text-align: center; padding: 32px;">
-              <div style="width: 64px; height: 64px; margin: 0 auto 24px; background: rgba(56, 189, 248, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(56, 189, 248, 0.4);">
-                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 32px;">public</span>
+            <div class="animate-fade-in-up delay-100 career-benefit-card">
+              <div class="career-benefit-icon" style="background: rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.4);">
+                <span class="material-symbols-outlined" style="color: #0284c7;">public</span>
               </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0f172a;">Remote First</h3>
-              <p style="color: #475569; font-size: 0.95rem; line-height: 1.6;">Work from anywhere. We value deep work and async communication over rigid office hours.</p>
+              <h3>Remote First</h3>
+              <p>Work from anywhere. We value deep work and async communication over rigid office hours.</p>
             </div>
             
-            <div class="animate-fade-in-up delay-200" style="text-align: center; padding: 32px;">
-              <div style="width: 64px; height: 64px; margin: 0 auto 24px; background: rgba(167, 139, 250, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(167, 139, 250, 0.4);">
-                <span class="material-symbols-outlined" style="color: #6d28d9; font-size: 32px;">school</span>
+            <div class="animate-fade-in-up delay-200 career-benefit-card">
+              <div class="career-benefit-icon" style="background: rgba(167, 139, 250, 0.2); border: 1px solid rgba(167, 139, 250, 0.4);">
+                <span class="material-symbols-outlined" style="color: #6d28d9;">school</span>
               </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0f172a;">Continuous Learning</h3>
-              <p style="color: #475569; font-size: 0.95rem; line-height: 1.6;">Stipends for courses, conferences, and books. We invest heavily in our team's growth.</p>
+              <h3>Continuous Learning</h3>
+              <p>Stipends for courses, conferences, and books. We invest heavily in our team's growth.</p>
             </div>
             
-            <div class="animate-fade-in-up delay-300" style="text-align: center; padding: 32px;">
-              <div style="width: 64px; height: 64px; margin: 0 auto 24px; background: rgba(52, 211, 153, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(52, 211, 153, 0.4);">
-                <span class="material-symbols-outlined" style="color: #059669; font-size: 32px;">health_and_safety</span>
+            <div class="animate-fade-in-up delay-300 career-benefit-card">
+              <div class="career-benefit-icon" style="background: rgba(52, 211, 153, 0.2); border: 1px solid rgba(52, 211, 153, 0.4);">
+                <span class="material-symbols-outlined" style="color: #059669;">health_and_safety</span>
               </div>
-              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: #0f172a;">Health & Wellness</h3>
-              <p style="color: #475569; font-size: 0.95rem; line-height: 1.6;">Comprehensive health coverage, flexible time off, and mental health resources.</p>
+              <h3>Health & Wellness</h3>
+              <p>Comprehensive health coverage, flexible time off, and mental health resources.</p>
             </div>
 
           </div>
@@ -59,6 +109,46 @@ export function renderCareersPage(): string {
       </section>
 
       <!-- Open Positions -->
+      <style>
+        .career-job-card {
+          background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 32px; backdrop-filter: blur(16px); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .career-job-card:hover {
+          transform: translateY(-4px); border-color: rgba(255, 255, 255, 0.5); box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .career-job-header {
+          display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;
+        }
+        .career-job-title {
+          font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;
+        }
+        .career-job-meta {
+          display: flex; gap: 16px; color: #e0f2fe; font-size: 0.9rem;
+        }
+        .career-job-meta span {
+          display: flex; align-items: center; gap: 6px;
+        }
+        .career-job-meta .material-symbols-outlined {
+          font-size: 18px;
+        }
+        .career-job-btn {
+          background: #ffffff; color: #0284c7; font-weight: 600; padding: 10px 24px; border-radius: 50px; text-decoration: none; transition: background 0.2s;
+        }
+        .career-job-btn:hover {
+          background: #f0f9ff;
+        }
+        .career-job-desc {
+          color: #f0f9ff; line-height: 1.6; font-size: 0.95rem; margin: 0;
+        }
+
+        @media (max-width: 768px) {
+          .career-job-card { padding: 24px 20px; }
+          .career-job-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+          .career-job-title { font-size: 1.25rem; }
+          .career-job-btn { width: 100%; text-align: center; margin-top: 8px; padding: 12px 24px; box-sizing: border-box; }
+          .career-job-desc { font-size: 0.85rem; line-height: 1.5; }
+        }
+      </style>
       <section class="career-color-section" data-color="#0284c7" style="padding: 100px 24px;">
         <div class="container max-w-3xl">
           <div class="text-center mb-12">
@@ -69,35 +159,35 @@ export function renderCareersPage(): string {
           <div style="display: flex; flex-direction: column; gap: 24px;">
             
             <!-- Job Card 1 -->
-            <div class="animate-fade-in-up delay-200" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 32px; backdrop-filter: blur(16px); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='rgba(255, 255, 255, 0.5)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none';">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+            <div class="animate-fade-in-up delay-200 career-job-card">
+              <div class="career-job-header">
                 <div>
-                  <h3 style="font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Senior Frontend Developer</h3>
-                  <div style="display: flex; gap: 16px; color: #e0f2fe; font-size: 0.9rem;">
-                    <span style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-outlined" style="font-size: 18px;">location_on</span> Remote</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-outlined" style="font-size: 18px;">schedule</span> Full-time</span>
+                  <h3 class="career-job-title">Senior Frontend Developer</h3>
+                  <div class="career-job-meta">
+                    <span><span class="material-symbols-outlined">location_on</span> Remote</span>
+                    <span><span class="material-symbols-outlined">schedule</span> Full-time</span>
                   </div>
                 </div>
-                <a href="#/contact" style="background: #ffffff; color: #0284c7; font-weight: 600; padding: 10px 24px; border-radius: 50px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f0f9ff';" onmouseout="this.style.background='#ffffff';">Apply Now</a>
+                <a href="#/contact" class="career-job-btn">Apply Now</a>
               </div>
-              <p style="color: #f0f9ff; line-height: 1.6; font-size: 0.95rem;">
+              <p class="career-job-desc">
                 We are looking for an experienced Frontend Developer with deep knowledge of modern JavaScript frameworks (React, Vue) and CSS architectures to build highly interactive, scalable user interfaces.
               </p>
             </div>
 
             <!-- Job Card 2 -->
-            <div class="animate-fade-in-up delay-300" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 32px; backdrop-filter: blur(16px); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.borderColor='rgba(255, 255, 255, 0.5)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none';">
-              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 16px;">
+            <div class="animate-fade-in-up delay-300 career-job-card">
+              <div class="career-job-header">
                 <div>
-                  <h3 style="font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 8px;">Backend Software Engineer</h3>
-                  <div style="display: flex; gap: 16px; color: #e0f2fe; font-size: 0.9rem;">
-                    <span style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-outlined" style="font-size: 18px;">location_on</span> Remote</span>
-                    <span style="display: flex; align-items: center; gap: 6px;"><span class="material-symbols-outlined" style="font-size: 18px;">schedule</span> Full-time</span>
+                  <h3 class="career-job-title">Backend Software Engineer</h3>
+                  <div class="career-job-meta">
+                    <span><span class="material-symbols-outlined">location_on</span> Remote</span>
+                    <span><span class="material-symbols-outlined">schedule</span> Full-time</span>
                   </div>
                 </div>
-                <a href="#/contact" style="background: #ffffff; color: #0284c7; font-weight: 600; padding: 10px 24px; border-radius: 50px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='#f0f9ff';" onmouseout="this.style.background='#ffffff';">Apply Now</a>
+                <a href="#/contact" class="career-job-btn">Apply Now</a>
               </div>
-              <p style="color: #f0f9ff; line-height: 1.6; font-size: 0.95rem;">
+              <p class="career-job-desc">
                 Join our backend team to build and maintain robust APIs using Python and FastAPI. Experience with PostgreSQL and scalable cloud infrastructure is required.
               </p>
             </div>
