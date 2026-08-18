@@ -18,10 +18,20 @@ export function renderHomePage(): string {
         
         <!-- Sticky text wrapper -->
         <div style="position: sticky; top: 0; left: 0; width: 100%; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 5;">
-            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-12vh);">
+            <style>
+              .home-hero-text-wrapper {
+                text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: translateY(-12vh);
+              }
+              @media (max-width: 768px) {
+                .home-hero-text-wrapper {
+                  transform: translateY(-18vh); /* Push text higher to perfectly center it on mobile screens */
+                }
+              }
+            </style>
+            <div class="container home-hero-text-wrapper">
                 <!-- Main Heading -->
                 <h1 id="hero-main-text" style="color: white; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 6rem); font-weight: 700; line-height: 1.05; margin-bottom: 24px; max-width: 900px; letter-spacing: -0.03em; text-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.5); will-change: transform;">
-                    Building The Future One Solution At <br class="desktop-only"> A Time
+                    Building The Future One Solution At <br> A Time
                 </h1>
 
                 <!-- Subheading -->
@@ -152,7 +162,7 @@ export function renderHomePage(): string {
             <span class="animated-strike">Clients</span>Family
           </h2>
 
-          <p style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 64px;">
+          <p style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: clamp(24px, 5vw, 64px);">
             We treat our clients as our family members.
           </p>
 
@@ -332,7 +342,7 @@ export function renderHomePage(): string {
             @media (max-width: 768px) {
               .snap-cards-wrapper {
                 height: auto !important;
-                margin-top: 60px;
+                margin-top: 0px;
                 margin-bottom: 60px;
               }
               .snap-sticky-viewport {
@@ -342,14 +352,27 @@ export function renderHomePage(): string {
                 height: auto;
                 max-height: none;
                 border-radius: 0;
-                margin: 0 16px;
-                width: calc(100% - 32px);
+                margin: 0;
+                width: 100vw;
                 box-shadow: none;
+                
+                /* Horizontal Scroll Grid */
                 display: grid;
-                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+                grid-template-columns: repeat(3, 85vw);
                 gap: 16px;
-                overflow: visible;
+                padding: 0 20px 30px 20px;
+                overflow-x: auto;
+                overflow-y: hidden;
+                scroll-snap-type: x mandatory;
+                scrollbar-width: none; /* Firefox */
               }
+              .snap-sticky-viewport::-webkit-scrollbar {
+                display: none; /* Safari and Chrome */
+              }
+              
+              /* Ensure there's a padding element at the end for the last item, or rely on padding */
+
               .snap-half, .snap-slide-track {
                 display: contents; /* Flattens the DOM for CSS Grid */
               }
@@ -359,18 +382,17 @@ export function renderHomePage(): string {
                 transform: none !important;
               }
 
-              /* Interleave Cards using Grid Row */
-              /* Text 1 and Image 1 */
-              .snap-half.left .snap-text-card:nth-child(1) { grid-row: 1; }
-              .snap-half.right .snap-card:nth-child(3) { grid-row: 2; min-height: 250px; }
+              /* Column 1: Text 1 and Image 1 */
+              .snap-half.left .snap-text-card:nth-child(1) { grid-column: 1; grid-row: 1; scroll-snap-align: center; }
+              .snap-half.right .snap-card:nth-child(3) { grid-column: 1; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
               
-              /* Text 2 and Image 2 */
-              .snap-half.left .snap-text-card:nth-child(2) { grid-row: 3; margin-top: 24px; }
-              .snap-half.right .snap-card:nth-child(2) { grid-row: 4; min-height: 250px; }
+              /* Column 2: Text 2 and Image 2 */
+              .snap-half.left .snap-text-card:nth-child(2) { grid-column: 2; grid-row: 1; margin-top: 0; scroll-snap-align: center; }
+              .snap-half.right .snap-card:nth-child(2) { grid-column: 2; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
               
-              /* Text 3 and Image 3 */
-              .snap-half.left .snap-text-card:nth-child(3) { grid-row: 5; margin-top: 24px; }
-              .snap-half.right .snap-card:nth-child(1) { grid-row: 6; min-height: 250px; }
+              /* Column 3: Text 3 and Image 3 */
+              .snap-half.left .snap-text-card:nth-child(3) { grid-column: 3; grid-row: 1; margin-top: 0; scroll-snap-align: center; }
+              .snap-half.right .snap-card:nth-child(1) { grid-column: 3; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
 
               .snap-text-card {
                 padding: 32px 24px;
@@ -385,11 +407,11 @@ export function renderHomePage(): string {
                 color: #0369a1; /* Darker blue for contrast */
               }
               .snap-text-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 color: #0f172a; /* Dark slate for high contrast */
               }
               .snap-text-desc {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 margin-bottom: 24px;
                 color: #334155; /* Dark gray instead of light gray */
                 font-weight: 500;
@@ -745,10 +767,30 @@ export function renderHomePage(): string {
         </div>
         
         <!-- The Globe -->
-        <div style="position: relative; width: 100%; max-width: 800px; height: 350px; overflow: hidden; margin: 0 auto; margin-bottom: 20px; display: flex; justify-content: center;">
+        <style>
+          @media (max-width: 768px) {
+            .projects-badge {
+              font-size: 0.55rem !important;
+              padding: 4px 10px !important;
+              right: -2% !important;
+              bottom: 10% !important;
+            }
+            .globe-video-wrapper {
+              width: calc(100% + 40px) !important;
+              margin-left: -20px !important;
+              margin-right: -20px !important;
+            }
+            .globe-video-element {
+              width: 130vw !important;
+              height: 130vw !important;
+              max-width: none !important;
+            }
+          }
+        </style>
+        <div class="globe-video-wrapper" style="position: relative; width: 100%; max-width: 800px; height: 350px; overflow: hidden; margin: 0 auto; margin-bottom: 20px; display: flex; justify-content: center;">
           
           <!-- Globe Video -->
-          <video autoplay loop muted playsinline style="width: 700px; height: 700px; object-fit: cover; border-radius: 50%; mix-blend-mode: multiply; transform: scale(1.02);">
+          <video class="globe-video-element" autoplay loop muted playsinline style="width: 700px; height: 700px; object-fit: cover; border-radius: 50%; mix-blend-mode: multiply; transform: scale(1.02);">
             <source src="/globe-moving.mp4" type="video/mp4" />
           </video>
           
@@ -784,38 +826,131 @@ export function renderHomePage(): string {
 }
 
 export function initHome(): void {
-  // Hero Background Scroll Animation
+  // --- DOM Elements ---
   const heroBg = document.getElementById('hero-bg');
   const heroText = document.getElementById('hero-main-text');
-
-  if (heroBg) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-
-      // Calculate blur (0 to 20px) and scale (1 to 1.15)
-      const maxBlur = 20;
-      const blurAmount = Math.min(scrollY / 15, maxBlur);
-      const scaleAmount = 1 + Math.min(scrollY / 2000, 0.15); // slight zoom
-
-      heroBg.style.filter = `blur(${blurAmount}px)`;
-      heroBg.style.transform = `scale(${scaleAmount})`;
-
-      if (heroText) {
-        const textScale = 1 + Math.min(scrollY / 3000, 0.1);
-        heroText.style.transform = `scale(${textScale})`;
-      }
-    });
-  }
-
   const wrap = document.getElementById('panels-wrap-home');
   const scene = document.getElementById('panels-scene-home');
+  const textRevealWrapper = document.getElementById('textreveal-scroll-wrapper');
+  const textRevealContainer = document.getElementById('textreveal-home-container');
+  const marqueeLines = document.querySelectorAll('.marquee-line') as NodeListOf<HTMLElement>;
+  const splitWrapper = document.getElementById('split-scroll-wrapper');
+  const splitLeft = document.getElementById('split-scroll-left');
+  const splitRight = document.getElementById('split-scroll-right');
+  const stickyViewport = document.querySelector('.snap-sticky-viewport');
+  const colorSections = document.querySelectorAll('.color-section');
+  const textCards = document.querySelectorAll('.snap-text-card');
 
-  if (scene && wrap) {
-    window.addEventListener('scroll', () => {
-      const rect = scene.getBoundingClientRect();
-      const totalDistance = window.innerHeight + rect.height;
-      const scrolled = window.innerHeight - rect.top;
+  let textRevealWords: NodeListOf<Element> | null = null;
+  if (textRevealContainer) {
+    textRevealWords = textRevealContainer.querySelectorAll('.reveal-word');
+  }
 
+  // --- Animation State (Lerping) ---
+  let targetScrollY = window.scrollY;
+  let currentScrollY = window.scrollY;
+  const lerpFactor = 0.08; // Lower = smoother, Higher = more responsive
+
+  // Caching offsets for better performance and accurate lerping
+  let sceneTop = 0;
+  let sceneHeight = 0;
+  let textRevealTop = 0;
+  let textRevealHeight = 0;
+  let splitWrapperTop = 0;
+  let splitWrapperHeight = 0;
+  
+  function updateOffsets() {
+     const scrollY = window.scrollY;
+     if (scene) {
+        const rect = scene.getBoundingClientRect();
+        sceneTop = rect.top + scrollY;
+        sceneHeight = rect.height;
+     }
+     if (textRevealWrapper) {
+        const rect = textRevealWrapper.getBoundingClientRect();
+        textRevealTop = rect.top + scrollY;
+        textRevealHeight = rect.height;
+     }
+     if (splitWrapper) {
+        const rect = splitWrapper.getBoundingClientRect();
+        splitWrapperTop = rect.top + scrollY;
+        splitWrapperHeight = rect.height;
+     }
+  }
+
+  // --- Event Listeners ---
+  let isPageScrolling = false;
+  let pageScrollTimeout: number;
+
+  window.addEventListener('scroll', () => {
+    targetScrollY = window.scrollY;
+    
+    // Track active scrolling to prevent auto-scroll from interrupting momentum
+    isPageScrolling = true;
+    window.clearTimeout(pageScrollTimeout);
+    pageScrollTimeout = window.setTimeout(() => {
+      isPageScrolling = false;
+    }, 150);
+  }, { passive: true });
+
+  // Debounce resize to prevent layout thrashing on mobile address bar hide/show
+  let resizeTimeout: number;
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimeout);
+    resizeTimeout = window.setTimeout(updateOffsets, 200);
+  }, { passive: true });
+  
+  // Initial calculation
+  setTimeout(updateOffsets, 100);
+
+  // Background transition setup
+  if (colorSections.length > 0) {
+    document.body.style.transition = 'background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    document.body.style.backgroundColor = '#f0f9ff';
+  }
+
+  // --- Main Render Loop ---
+  let animationFrameId: number;
+  let lastCardIndex = -1;
+  let lastRenderedScrollY = -1;
+  let lastRevealIndex = -1;
+
+  function render() {
+    // Lerp the scroll position
+    currentScrollY += (targetScrollY - currentScrollY) * lerpFactor;
+    
+    // Optimization: avoid micro-calculations when very close
+    if (Math.abs(targetScrollY - currentScrollY) < 0.1) {
+      currentScrollY = targetScrollY;
+    }
+
+    // Skip DOM updates if scroll hasn't changed
+    if (currentScrollY === lastRenderedScrollY) {
+      animationFrameId = requestAnimationFrame(render);
+      return;
+    }
+    lastRenderedScrollY = currentScrollY;
+
+    const viewportH = window.innerHeight;
+
+    // 1. Hero Background (Guard against negative values during rubber-band scroll)
+    if (heroBg) {
+      const maxBlur = 20;
+      const blurAmount = Math.max(0, Math.min(currentScrollY / 15, maxBlur));
+      const scaleAmount = Math.max(1, 1 + Math.min(currentScrollY / 2000, 0.15));
+      heroBg.style.filter = `blur(${blurAmount}px)`;
+      heroBg.style.transform = `scale(${scaleAmount})`;
+    }
+    if (heroText) {
+      const textScale = Math.max(1, 1 + Math.min(currentScrollY / 3000, 0.1));
+      heroText.style.transform = `scale(${textScale})`;
+    }
+
+    // 2. 3D Panels Section
+    if (scene && wrap) {
+      const totalDistance = viewportH + sceneHeight;
+      // How much have we scrolled relative to the scene's top
+      const scrolled = currentScrollY + viewportH - sceneTop;
       let progress = scrolled / totalDistance;
       progress = Math.max(0, Math.min(1, progress));
 
@@ -824,118 +959,126 @@ export function initHome(): void {
       const translateZ = progress * 100;
 
       wrap.style.transform = `translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-  }
+    }
 
-  // Text Reveal Scroll Animation (Sticky)
-  const textRevealWrapper = document.getElementById('textreveal-scroll-wrapper');
-  const textRevealContainer = document.getElementById('textreveal-home-container');
-
-  if (textRevealWrapper && textRevealContainer) {
-    const words = textRevealContainer.querySelectorAll('.reveal-word');
-    const totalWords = words.length;
-
-    window.addEventListener('scroll', () => {
-      const rect = textRevealWrapper.getBoundingClientRect();
-
-      // The wrapper is 150vh. The sticky child is 100vh.
-      // Sticky starts when rect.top <= 0.
-      // Sticky ends when rect.bottom <= window.innerHeight
-      // Distance of sticky scroll = wrapper height - window height
-
-      const stickyDistance = rect.height - window.innerHeight;
-
-      // Progress is 0 when top is at 0. Progress is 1 when top is at -stickyDistance.
-      let progress = -rect.top / stickyDistance;
+    // 3. Text Reveal (Sticky)
+    if (textRevealWrapper && textRevealWords) {
+      const stickyDistance = textRevealHeight - viewportH;
+      let progress = (currentScrollY - textRevealTop) / stickyDistance;
       progress = Math.max(0, Math.min(1, progress));
 
+      const totalWords = textRevealWords.length;
       const revealIndex = Math.floor(progress * totalWords);
 
-      words.forEach((word, index) => {
-        if (index < revealIndex) {
-          word.classList.add('revealed');
-        } else {
-          word.classList.remove('revealed');
-        }
-      });
-    }, { passive: true });
-  }
+      if (revealIndex !== lastRevealIndex) {
+        lastRevealIndex = revealIndex;
+        textRevealWords.forEach((word, index) => {
+          if (index < revealIndex) {
+            word.classList.add('revealed');
+          } else {
+            word.classList.remove('revealed');
+          }
+        });
+      }
+    }
 
-  // Text Marquee Scroll Animation
-  const marqueeLines = document.querySelectorAll('.marquee-line') as NodeListOf<HTMLElement>;
-  if (marqueeLines.length > 0) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
+    // 4. Text Marquee
+    if (marqueeLines.length > 0) {
       marqueeLines.forEach((line) => {
         const isReverse = line.getAttribute('data-reverse') === 'true';
         const direction = isReverse ? 1 : -1;
-        const offset = scrollY * 0.5 * direction;
+        const offset = currentScrollY * 0.5 * direction;
         line.style.transform = `translateX(calc(${isReverse ? '-50%' : '0%'} + ${offset}px))`;
       });
-    }, { passive: true });
-  }
+    }
 
-  // Scroll-Snapping Cards Animation
-  const splitWrapper = document.getElementById('split-scroll-wrapper');
-  const splitLeft = document.getElementById('split-scroll-left');
-  const splitRight = document.getElementById('split-scroll-right');
-
-  if (splitWrapper && splitLeft && splitRight) {
-    const totalCards = 3;
-    let lastCardIndex = 0;
-
-    window.addEventListener('scroll', () => {
-      const rect = splitWrapper.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-
-      // Sticky is centered vertically, so it starts sticking when rect.top reaches ~(viewportH/2 - 280)
-      // and unsticks when rect.bottom reaches ~(viewportH/2 + 280)
-      const stickyDistance = rect.height - viewportH;
-
-      let progress = -rect.top / stickyDistance;
+    // 5. Scroll-Snapping Cards (Desktop Only)
+    if (splitWrapper && splitLeft && splitRight && window.innerWidth > 768) {
+      const stickyDistance = splitWrapperHeight - viewportH;
+      let progress = (currentScrollY - splitWrapperTop) / stickyDistance;
       progress = Math.max(0, Math.min(1, progress));
 
-      // Continuous translateY based on progress (from 0% to 66.666%)
       const offsetPercent = progress * (200 / 3);
       splitLeft.style.transform = `translateY(-${offsetPercent}%)`;
       splitRight.style.transform = `translateY(${offsetPercent}%)`;
 
-      // Determine active card for progress indicators
+      const totalCards = 3;
       const cardIndex = Math.min(Math.floor(progress * totalCards), totalCards - 1);
 
-      // Only update DOM class lists if card changed
-      if (cardIndex !== lastCardIndex) {
+      if (cardIndex !== lastCardIndex && textCards.length > 0) {
         lastCardIndex = cardIndex;
-
-
-        // Update active text card indicator
-        const textCards = document.querySelectorAll('.snap-text-card');
         textCards.forEach((card, i) => {
           card.classList.toggle('active', i === cardIndex);
         });
       }
-    }, { passive: true });
-  }
+    }
 
-  // Background Color Transition
-  const colorSections = document.querySelectorAll('.color-section');
-
-  if (colorSections.length > 0) {
-    document.body.style.transition = 'background-color 0.5s ease-out';
-    document.body.style.backgroundColor = '#f0f9ff';
-
-    window.addEventListener('scroll', () => {
+    // 6. Background Color Transitions
+    if (colorSections.length > 0) {
       let activeColor = '#f0f9ff';
       colorSections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        // If the top of the section is above the middle of the screen
-        if (rect.top <= window.innerHeight / 2) {
+        const rectTop = section.getBoundingClientRect().top;
+        if (rectTop <= viewportH / 2) {
           activeColor = section.getAttribute('data-color') || activeColor;
         }
       });
+      if (document.body.style.backgroundColor !== activeColor) {
+        document.body.style.backgroundColor = activeColor;
+      }
+    }
 
-      document.body.style.backgroundColor = activeColor;
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  // Start loop
+  animationFrameId = requestAnimationFrame(render);
+
+  // --- Mobile Auto-Scroll Logic ---
+  let autoScrollInterval: number;
+  const startAutoScroll = () => {
+    if (window.innerWidth > 768 || !stickyViewport) return;
+    clearInterval(autoScrollInterval);
+    autoScrollInterval = window.setInterval(() => {
+      if (!stickyViewport || isPageScrolling) return; // Don't interrupt if user is scrolling
+      
+      const cardWidth = window.innerWidth * 0.85 + 16;
+      let nextScroll = stickyViewport.scrollLeft + cardWidth;
+      
+      if (nextScroll >= stickyViewport.scrollWidth - stickyViewport.clientWidth - 10) {
+        nextScroll = 0;
+      }
+      stickyViewport.scrollTo({ left: nextScroll, behavior: 'smooth' });
+    }, 3500);
+  };
+
+  if (stickyViewport) {
+    // Detect touch ANYWHERE on the window to pause auto-scroll
+    window.addEventListener('touchstart', () => clearInterval(autoScrollInterval), { passive: true });
+    window.addEventListener('touchend', () => {
+      setTimeout(startAutoScroll, 3000);
     }, { passive: true });
   }
+  startAutoScroll();
+
+  // Handle Resize for mobile interval
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      clearInterval(autoScrollInterval);
+    } else {
+      startAutoScroll();
+    }
+  }, { passive: true });
+
+  // --- Cleanup ---
+  // Ensure we don't leave memory leaks if the user navigates away from Home
+  const cleanupObserver = new MutationObserver(() => {
+    if (!document.getElementById('hero-bg')) {
+      cancelAnimationFrame(animationFrameId);
+      clearInterval(autoScrollInterval);
+      window.removeEventListener('resize', updateOffsets);
+      cleanupObserver.disconnect();
+    }
+  });
+  cleanupObserver.observe(document.body, { childList: true, subtree: true });
 }
 

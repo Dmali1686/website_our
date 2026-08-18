@@ -158,16 +158,20 @@ export function renderAboutPage(): string {
       <section style="padding: 60px 0; background: #f8fafc; border-top: 1px solid #f1f5f9;">
         <style>
           .about-leadership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 32px;
+          }
+          .about-leadership-grid > div {
+            width: 100%;
+            max-width: 450px;
           }
           .about-leadership-title {
             font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: #07476f; letter-spacing: -0.02em;
           }
           @media (max-width: 600px) {
             .about-leadership-title { font-size: 1.8rem; }
-            .about-leadership-grid { gap: 24px; }
+            .about-leadership-grid { gap: 24px; flex-direction: column; align-items: center; }
           }
         </style>
         <div class="container text-center mb-10">
@@ -202,31 +206,6 @@ export function renderAboutPage(): string {
                     <span class="material-symbols-outlined" style="font-size:18px;">call</span>
                   </a>
                   <a href="mailto:raj@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
-                    <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Chief Technology Officer Card -->
-            <div class="animate-fade-in-up delay-300" style="background: #ffffff; border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 24px; border: 1px solid #f1f5f9; height: 100%;">
-              <div style="width: 100%; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-                <img src="/images/cto.png" alt="Sarah Jenkins — Chief Technology Officer" style="width: 100%; height: 100%; object-fit: cover;" />
-              </div>
-              <div style="display: flex; flex-direction: column; flex-grow: 1;">
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 2px;">Sarah Jenkins</h3>
-                <div style="font-family: 'Inter', sans-serif; color: #0ea5e9; font-weight: 600; font-size: 1rem; margin-bottom: 20px;">Chief Technology Officer</div>
-                
-                <div style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 20px; border-left: 4px solid #0ea5e9; padding-left: 16px;">
-                  "Innovation isn't just about adopting the latest framework; it's about engineering resilient systems that can adapt to tomorrow's unknown challenges."
-                </div>
-                
-                <p style="font-family: 'Inter', sans-serif; color: #64748b; line-height: 1.6; font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
-                  Sarah leads the engineering division with over 15 years of experience in cloud infrastructure. She ensures that every solution we deliver is built on a foundation of security and performance.
-                </p>
-                
-                <div style="display: flex; gap: 12px; margin-top: auto;">
-                  <a href="mailto:sarah@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
                     <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
                   </a>
                 </div>
@@ -379,7 +358,7 @@ export function renderAboutPage(): string {
             <h2 class="animate-fade-in-up delay-100" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; color: #f1f5f9; letter-spacing: -0.02em;">The Principles That Guide Us</h2>
           </div>
           
-          <div style="overflow: hidden; border-radius: 20px;">
+          <div style="overflow: hidden; border-radius: 20px; padding: 30px 20px; margin: -30px -20px;">
             <div class="val-carousel-track" id="val-carousel-track">
               <!-- Card 1 -->
               <div class="val-card">

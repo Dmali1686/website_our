@@ -14,7 +14,7 @@ import { renderERPLMSPage } from './pages/erp-lms';
 import { renderPortfolioPage, initPortfolio } from './pages/portfolio';
 import { renderContactPage, initContactForm } from './pages/contact';
 import { renderAboutPage, initAbout } from './pages/about';
-import { renderCareersPage } from './pages/careers';
+import { renderCareersPage, initCareers, cleanupCareers } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
 import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
@@ -104,7 +104,10 @@ registerRoutes([
     title: 'Careers at Cresenix Solutions LLP | Join Our Team',
     description: 'Join Cresenix Solutions LLP — explore open positions in software development, AI engineering, mobile development, and digital marketing.',
     render: renderCareersPage,
-    onMount: initNavbar
+    onMount: () => {
+      initNavbar();
+      initCareers();
+    }
   },
   {
     path: '/privacy',
@@ -134,8 +137,14 @@ registerRoutes([
 
 // After every navigation, re-initialize scroll animations and effects
 onNavigate(() => {
-  // Cleanup demo scroll listener if navigating away
-  cleanupDemo();
+  // Cleanup scroll listeners if navigating away
+  if (window.location.hash !== '#/demo') {
+    cleanupDemo();
+  }
+  if (window.location.hash !== '#/careers') {
+    cleanupCareers();
+  }
+  
   // Reset body background to default if not on demo page
   if (window.location.hash !== '#/demo') {
     document.body.style.backgroundColor = '#fafafa';

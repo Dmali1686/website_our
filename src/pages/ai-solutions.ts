@@ -136,16 +136,24 @@ export function renderAISolutionsPage(): string {
         }
         
         @media (max-width: 1000px) {
-          .ai-impact-scroll-track { height: auto !important; }
-          .ai-impact-sticky { position: relative !important; top: auto !important; height: auto !important; padding: 60px 0; overflow: visible; }
-          .ai-orbit-ring { width: 400px; height: 400px; }
-          .ai-orbit-center { width: 220px; height: 220px; padding: 0 16px; }
-          .ai-orbit-center h3 { font-size: 1.2rem; }
-          .ai-orbit-center p { font-size: 0.85rem; }
-          .ai-orbit-system { width: 400px; height: 400px; }
-          .ai-orbit-node-wrapper { width: 200px; transform: translateY(-50%) rotate(var(--target-angle)); }
-          .ai-orbit-node { transform: translate(50%, -50%) rotate(calc(-1 * var(--target-angle))); }
-          .ai-orbit-text { display: none; } /* Hide text on mobile orbit to prevent overlap */
+          .ai-impact-scroll-track { height: auto !important; padding: 40px 20px; }
+          .ai-impact-sticky { position: relative !important; height: auto !important; padding: 0; background: transparent; }
+          .ai-impact-container { flex-direction: column; }
+          
+          .ai-orbit-ring { display: none; }
+          .ai-orbit-center { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; border-radius: 24px; padding: 32px 20px; margin-bottom: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(59, 130, 246, 0.1); }
+          
+          .ai-orbit-system { position: relative; left: 0; top: 0; transform: none; width: 100%; height: auto; display: flex; flex-direction: column; gap: 16px; }
+          
+          .ai-orbit-node-wrapper { position: relative; left: 0; top: 0; transform: none !important; width: 100%; opacity: 1 !important; }
+          
+          .ai-orbit-node { position: relative; right: 0; top: 0; transform: none !important; width: 100%; height: auto; display: flex; align-items: center; gap: 16px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); }
+          
+          .ai-orbit-icon { width: 56px; height: 56px; flex-shrink: 0; border: none; box-shadow: none; background: #f8fafc; }
+          
+          .ai-orbit-text { position: relative; top: 0; transform: none; display: block !important; left: 0 !important; right: 0 !important; max-width: none; padding: 0; text-align: left !important; }
+          .ai-orbit-text h4 { font-size: 1.1rem; margin-bottom: 6px; }
+          .ai-orbit-text p { font-size: 0.95rem; }
         }
       </style>
 
@@ -200,6 +208,67 @@ export function renderAISolutionsPage(): string {
         </div>
       </div>
 
+      <!-- AI Integration Process Section -->
+      <section style="padding: 120px 0; background: #0f172a; position: relative; overflow: hidden;">
+        <!-- Background decoration -->
+        <div style="position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -20%; left: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container" style="position: relative; z-index: 5;">
+          <div style="text-align: center; margin-bottom: 80px;">
+            <div class="animate-fade-in-up" style="display: inline-block; padding: 6px 16px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 16px; border: 1px solid rgba(59, 130, 246, 0.2);">
+              METHODOLOGY
+            </div>
+            <h2 class="animate-fade-in-up delay-100" style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #ffffff; letter-spacing: -0.02em; margin-bottom: 24px;">The AI Integration Process</h2>
+            <p class="animate-fade-in-up delay-200" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: #94a3b8; max-width: 600px; margin: 0 auto; line-height: 1.6;">A structured, risk-mitigated approach to embedding intelligent systems into your core business operations.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; position: relative;">
+            
+            <!-- Step 1 -->
+            <div class="animate-fade-in-up delay-100" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(59, 130, 246, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">01</div>
+              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.1)); border: 1px solid rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="color: #60a5fa; font-size: 28px;">search_insights</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Audit & Strategy</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">We analyze your existing architecture and identify high-ROI use cases where AI can drive immediate business value.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="animate-fade-in-up delay-200" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(168, 85, 247, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">02</div>
+              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(147, 51, 234, 0.1)); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="color: #c084fc; font-size: 28px;">verified_user</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Data & Security</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">Preparing and isolating your enterprise data to ensure complete privacy, compliance, and hallucination-free AI responses.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="animate-fade-in-up delay-300" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">03</div>
+              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1)); border: 1px solid rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="color: #34d399; font-size: 28px;">model_training</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Custom Training</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">Fine-tuning large language models and predictive algorithms to understand your specific business logic and industry context.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="animate-fade-in-up delay-400" style="background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 40px 32px; position: relative; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(236, 72, 153, 0.3)';" onmouseout="this.style.transform='none'; this.style.borderColor='rgba(255,255,255,0.08)';">
+              <div style="font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; color: rgba(255,255,255,0.5); position: absolute; top: 16px; right: 24px; line-height: 1;">04</div>
+              <div style="width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(219, 39, 119, 0.1)); border: 1px solid rgba(236, 72, 153, 0.2); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+                <span class="material-symbols-outlined" style="color: #f472b6; font-size: 28px;">rocket_launch</span>
+              </div>
+              <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 700; color: #f8fafc; margin-bottom: 12px;">Deployment</h3>
+              <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">Seamless integration into your existing tech stack, followed by continuous monitoring to ensure maximum performance.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
       ${renderFooter()}
     </div>
   `;
@@ -210,67 +279,101 @@ export function initAISolutions(): void {
   const orbitNodes = document.querySelectorAll('.ai-orbit-node-anim');
   
   if (impactTrack && orbitNodes.length > 0) {
-    const handleScroll = () => {
+    
+    // Use lerped animation loop for smoothness, similar to home page
+    let currentScrollY = window.scrollY;
+    let targetScrollY = window.scrollY;
+    let animationFrameId: number;
+    let trackTop = 0;
+    let trackHeight = 0;
+
+    const updateOffsets = () => {
       const rect = impactTrack.getBoundingClientRect();
-      const scrollableDistance = rect.height - window.innerHeight;
-      
-      let progress = -rect.top / scrollableDistance;
+      trackTop = rect.top + window.scrollY;
+      trackHeight = rect.height;
+    };
+
+    window.addEventListener('scroll', () => {
+      targetScrollY = window.scrollY;
+    }, { passive: true });
+
+    let resizeTimeout: number;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(updateOffsets, 200);
+    }, { passive: true });
+    
+    setTimeout(updateOffsets, 100);
+
+    const render = () => {
+      // Don't animate on mobile as we've switched to a static list
+      if (window.innerWidth <= 1000) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+
+      currentScrollY += (targetScrollY - currentScrollY) * 0.08;
+      if (Math.abs(targetScrollY - currentScrollY) < 0.1) {
+        currentScrollY = targetScrollY;
+      }
+
+      const scrollableDistance = trackHeight - window.innerHeight;
+      let progress = (currentScrollY - trackTop) / scrollableDistance;
       progress = Math.max(0, Math.min(1, progress));
       
-      // Start all nodes from 180 degrees (left side)
       const startAngle = 180; 
       
       orbitNodes.forEach((node, index) => {
-        // Offset for this specific node (0, 40, 80, 120...)
         const targetOffset = index * 40;
         
         let nodeProgress = progress * 1.5 - (index * 0.1);
         nodeProgress = Math.max(0, Math.min(1, nodeProgress));
         
-        // Easing so they fan out smoothly
         const ease = 1 - Math.pow(1 - nodeProgress, 3);
         const currentAngle = startAngle + (ease * targetOffset);
         
-        // Fade in as they emerge from the start angle
         let opacity = nodeProgress * 2.5; 
         opacity = Math.max(0, Math.min(1, opacity));
         
         (node as HTMLElement).style.setProperty('--target-angle', `${currentAngle}deg`);
         (node as HTMLElement).style.opacity = opacity.toString();
         
-        // Dynamically adjust text position to stay on the outer edge of the circle
         const textEl = node.querySelector('.ai-orbit-text');
         if (textEl) {
-          // Normalize angle to 0-360
           let normalized = currentAngle % 360;
           if (normalized < 0) normalized += 360;
           
-          // If the node is on the left side of the circle (90 to 270 degrees), text should be on the left
           if (normalized > 90 && normalized < 270) {
             textEl.classList.add('text-left');
             textEl.classList.remove('text-right');
           } else {
-            // Right side of circle (0-90 or 270-360), text should be on the right
             textEl.classList.add('text-right');
             textEl.classList.remove('text-left');
           }
         }
       });
+
+      animationFrameId = requestAnimationFrame(render);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Initial call
-    setTimeout(handleScroll, 50);
+    animationFrameId = requestAnimationFrame(render);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('motion-in-view');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.animate-fade-in-up').forEach(el => observer.observe(el));
+    const cleanupObserver = new MutationObserver(() => {
+      if (!document.getElementById('ai-impact-track')) {
+        cancelAnimationFrame(animationFrameId);
+        cleanupObserver.disconnect();
+      }
+    });
+    cleanupObserver.observe(document.body, { childList: true, subtree: true });
   }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('motion-in-view');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.animate-fade-in-up').forEach(el => observer.observe(el));
 }

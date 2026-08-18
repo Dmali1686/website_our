@@ -517,6 +517,17 @@ h6 {
     padding: 0 24px 0 16px;
 }
 
+@media (max-width: 768px) {
+    .nav-logo {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        padding-left: 0;
+    }
+}
+
 .main-nav.scrolled .nav-logo,
 .main-nav.scrolled .nav-links,
 .main-nav.scrolled .nav-actions,
@@ -2051,13 +2062,15 @@ h6 {
     font-size: 14px;
     color: var(--on-surface-variant);
     opacity: 0.8;
-    transition: all var(--transition);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
 }
 
 .footer-link:hover {
-    color: var(--secondary);
+    color: var(--primary);
     opacity: 1;
-    text-decoration: underline;
+    transform: translateX(4px);
 }
 
 .footer-divider {

@@ -827,7 +827,7 @@ export function renderServicesPage(): string {
               <!-- Right Panel (Orbit) -->
               <div class="svc-impact-right">
                 <div class="svc-orbit-ring"></div>
-                <div class="svc-orbit-center">
+                <div class="svc-orbit-center" style="margin-right: 5px;padding-left: 200px;">
                   <h3>Driving Growth</h3>
                   <p>Through Smart<br>Solutions</p>
                 </div>
@@ -1366,7 +1366,7 @@ export function initServiceShowcaseTabs(): void {
         features.forEach(f => f.classList.remove('feature-visible'));
       }
     }
-    
+
     if (shouldScroll) {
       setTimeout(() => {
         const showcase = document.getElementById('svcTabs');
@@ -1393,7 +1393,7 @@ export function initServiceShowcaseTabs(): void {
       window.removeEventListener('hashchange', handleHashChange);
       return;
     }
-    
+
     const hashStr = window.location.hash;
     if (hashStr.includes('?')) {
       const query = hashStr.split('?')[1];
@@ -1459,13 +1459,13 @@ export function initServiceShowcaseTabs(): void {
     const overlay = screen.querySelector('.svc-video-overlay') as HTMLElement;
     const controls = screen.querySelector('.svc-video-controls') as HTMLElement;
     const img = screen.querySelector('img');
-    
+
     if (video && overlay) {
       overlay.addEventListener('click', () => {
         video.muted = true;
         video.style.display = 'block';
         video.setAttribute('controls', 'true');
-        
+
         // Small delay to ensure display: block is rendered before playing
         setTimeout(() => {
           const playPromise = video.play();
@@ -1475,19 +1475,19 @@ export function initServiceShowcaseTabs(): void {
             });
           }
         }, 50);
-        
+
         overlay.style.display = 'none';
         if (controls) controls.style.display = 'none';
       });
     }
   });
 
-   // Intersection Observer for Scroll Animations
+  // Intersection Observer for Scroll Animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('motion-in-view');
-        
+
         // Trigger phone fan-out animation
         if (entry.target.classList.contains('svc-phones-wrapper')) {
           entry.target.classList.add('fanned-out');
@@ -1508,43 +1508,43 @@ export function initServiceShowcaseTabs(): void {
       const items = Array.from(document.querySelectorAll('.svc-impact-list-item'));
       const index = items.indexOf(el);
       (el as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
-    } 
+    }
     observer.observe(el);
   });
 
   // Scroll Scrubbing Animation for Orbit
   const impactTrack = document.getElementById('svc-impact-track');
   const orbitNodes = document.querySelectorAll('.svc-orbit-node-anim');
-  
+
   if (impactTrack && orbitNodes.length > 0) {
     const handleScroll = () => {
       const rect = impactTrack.getBoundingClientRect();
       const scrollableDistance = rect.height - window.innerHeight;
-      
+
       // Calculate progress (0 to 1) through the sticky track
       let progress = -rect.top / scrollableDistance;
       progress = Math.max(0, Math.min(1, progress));
-      
+
       // Starting angle: hidden at top of the circle (-180deg or -90deg)
-      const startAngle = -150; 
-      
+      const startAngle = -150;
+
       orbitNodes.forEach((node, index) => {
         const targetAngle = parseFloat(node.getAttribute('data-target-angle') || '0');
-        
+
         // Offset each node slightly so they arrive in sequence
         // e.g. node 0 starts moving immediately, node 3 waits a bit
         let nodeProgress = progress * 1.5 - (index * 0.1);
         nodeProgress = Math.max(0, Math.min(1, nodeProgress));
-        
+
         // Easing (easeOutCubic)
         const ease = 1 - Math.pow(1 - nodeProgress, 3);
-        
+
         const currentAngle = startAngle + (ease * (targetAngle - startAngle));
-        
+
         // Fade in as they swing out from the starting position
-        let opacity = nodeProgress * 2.5; 
+        let opacity = nodeProgress * 2.5;
         opacity = Math.max(0, Math.min(1, opacity));
-        
+
         (node as HTMLElement).style.setProperty('--target-angle', `${currentAngle}deg`);
         (node as HTMLElement).style.opacity = opacity.toString();
       });
@@ -1552,31 +1552,31 @@ export function initServiceShowcaseTabs(): void {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
   }
-    
+
   // Process Carousel Logic
-    const processCardsData = [
-      { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
-      { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
-      { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
-      { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
-      { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
-    ];
-  
-    const carouselViewport = document.getElementById('processCarousel');
-    const carouselPagination = document.getElementById('processPagination');
-    const btnPrev = document.getElementById('processBtnPrev');
-    const btnNext = document.getElementById('processBtnNext');
-  
-    if (carouselViewport && carouselPagination && btnPrev && btnNext) {
-      let currentIndex = 2; // Start with the middle item (index 2) active
-      const totalCards = processCardsData.length;
-  
-      // Render cards
-      processCardsData.forEach((card, index) => {
-        // Create Card
-        const cardEl = document.createElement('div');
-        cardEl.className = 'svc-carousel-card';
-        cardEl.innerHTML = `
+  const processCardsData = [
+    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
+    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
+    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
+    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
+    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
+  ];
+
+  const carouselViewport = document.getElementById('processCarousel');
+  const carouselPagination = document.getElementById('processPagination');
+  const btnPrev = document.getElementById('processBtnPrev');
+  const btnNext = document.getElementById('processBtnNext');
+
+  if (carouselViewport && carouselPagination && btnPrev && btnNext) {
+    let currentIndex = 2; // Start with the middle item (index 2) active
+    const totalCards = processCardsData.length;
+
+    // Render cards
+    processCardsData.forEach((card, index) => {
+      // Create Card
+      const cardEl = document.createElement('div');
+      cardEl.className = 'svc-carousel-card';
+      cardEl.innerHTML = `
           <div class="card-top">
             <div class="card-icon-wrap" style="background: ${card.color};">
               <span class="material-symbols-outlined">${card.icon}</span>
@@ -1588,62 +1588,62 @@ export function initServiceShowcaseTabs(): void {
             <img src="${card.img}" alt="${card.title}" />
           </div>
         `;
-        // Handle click to select
-        cardEl.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        carouselViewport.appendChild(cardEl);
-  
-        // Create Pagination Dot
-        const dot = document.createElement('div');
-        dot.className = 'svc-page-dot';
-        dot.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        carouselPagination.appendChild(dot);
+      // Handle click to select
+      cardEl.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoPlay();
       });
-  
-      const cardElements = carouselViewport.querySelectorAll('.svc-carousel-card');
-      const dotElements = carouselPagination.querySelectorAll('.svc-page-dot');
-  
-      const updateCarousel = () => {
-        cardElements.forEach((card, i) => {
-          card.className = 'svc-carousel-card'; // reset classes
-          
-          let diff = (i - currentIndex) % totalCards;
-          if (diff < 0) diff += totalCards;
-          
-          if (diff === 0) card.classList.add('pos-active');
-          else if (diff === 1) card.classList.add('pos-next');
-          else if (diff === 2) card.classList.add('pos-next-far');
-          else if (diff === totalCards - 1) card.classList.add('pos-prev');
-          else if (diff === totalCards - 2) card.classList.add('pos-prev-far');
-        });
-  
-        dotElements.forEach((dot, i) => {
-          if (i === currentIndex) dot.classList.add('active');
-          else dot.classList.remove('active');
-        });
-      };
-  
-      // Controls
-      const goNext = () => { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); };
-      const goPrev = () => { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); };
-  
-      btnNext.addEventListener('click', () => { goNext(); resetAutoPlay(); });
-      btnPrev.addEventListener('click', () => { goPrev(); resetAutoPlay(); });
-  
-      // Auto Play loop
-      let autoPlayInterval = setInterval(goNext, 3500);
-      const resetAutoPlay = () => {
-        clearInterval(autoPlayInterval);
-        autoPlayInterval = setInterval(goNext, 3500);
-      };
-  
+      carouselViewport.appendChild(cardEl);
+
+      // Create Pagination Dot
+      const dot = document.createElement('div');
+      dot.className = 'svc-page-dot';
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoPlay();
+      });
+      carouselPagination.appendChild(dot);
+    });
+
+    const cardElements = carouselViewport.querySelectorAll('.svc-carousel-card');
+    const dotElements = carouselPagination.querySelectorAll('.svc-page-dot');
+
+    const updateCarousel = () => {
+      cardElements.forEach((card, i) => {
+        card.className = 'svc-carousel-card'; // reset classes
+
+        let diff = (i - currentIndex) % totalCards;
+        if (diff < 0) diff += totalCards;
+
+        if (diff === 0) card.classList.add('pos-active');
+        else if (diff === 1) card.classList.add('pos-next');
+        else if (diff === 2) card.classList.add('pos-next-far');
+        else if (diff === totalCards - 1) card.classList.add('pos-prev');
+        else if (diff === totalCards - 2) card.classList.add('pos-prev-far');
+      });
+
+      dotElements.forEach((dot, i) => {
+        if (i === currentIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    };
+
+    // Controls
+    const goNext = () => { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); };
+    const goPrev = () => { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); };
+
+    btnNext.addEventListener('click', () => { goNext(); resetAutoPlay(); });
+    btnPrev.addEventListener('click', () => { goPrev(); resetAutoPlay(); });
+
+    // Auto Play loop
+    let autoPlayInterval = setInterval(goNext, 3500);
+    const resetAutoPlay = () => {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(goNext, 3500);
+    };
+
     // Initial render
     updateCarousel();
   }
@@ -1654,7 +1654,7 @@ export function initServiceShowcaseTabs(): void {
     const btn = item.querySelector('.svc-faq-question');
     btn?.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      
+
       // Close all others
       faqItems.forEach(faq => {
         faq.classList.remove('active');

@@ -69,26 +69,13 @@ function renderSolution(title: string, subtitle: string, items: string[], imageS
 
 function renderImpactBlock(text: string, quote: string) {
   return `
-    <div class="uc-impact-block uc-animate-4 premium-impact" style="position: relative; z-index: 2;">
-      <!-- Decorative Shimmer -->
-      <div class="shimmer-sweep"></div>
-      
-      <!-- Floating Particles -->
-      <div class="impact-particles">
-        <div class="particle p1"></div>
-        <div class="particle p2"></div>
-        <div class="particle p3"></div>
-      </div>
-      
-      <div class="uc-impact-header">
-        <div class="uc-impact-icon-glow">
-          <span class="material-symbols-outlined">auto_awesome</span>
-        </div>
-        <h3 class="uc-impact-title">Real-World Impact</h3>
-      </div>
-      <div class="uc-impact-content">
-        <p>${text}</p>
-        <p class="uc-impact-bold premium-quote">${quote}</p>
+    <div class="modern-impact-section uc-animate-4">
+      <div class="modern-quote-mark">“</div>
+      <div class="modern-impact-content">
+        <h3 class="modern-impact-heading">Real-World Impact</h3>
+        <p class="modern-impact-text">${text}</p>
+        <div class="modern-impact-divider"></div>
+        <p class="modern-impact-highlight">${quote}</p>
       </div>
     </div>
   `;
@@ -151,7 +138,7 @@ export function renderUseCasesPage(): string {
       .uc-pill-icon.icon-red { background: #fee2e2; color: #ef4444; }
       .uc-pill-icon.icon-green { background: #d1fae5; color: #10b981; }
       
-      .uc-pill-text { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #334155; font-weight: 500; line-height: 1.4; flex-grow: 1; text-align: left; }
+      .uc-pill-text { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #1e293b; font-weight: 600; line-height: 1.4; flex-grow: 1; text-align: left; }
       .uc-pill-trailing { color: #a7f3d0; font-size: 24px; opacity: 0.5; }
       
       .uc-illustration-card {
@@ -197,66 +184,211 @@ export function renderUseCasesPage(): string {
         border-radius: 40px;
       }
       
-      /* --- Premium Impact Block Animations --- */
-      .premium-impact {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 40px rgba(147, 51, 234, 0.1);
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      /* --- Modern Typography-Led Impact Section --- */
+      .modern-impact-section {
+        position: relative;
+        padding: 60px 40px;
+        margin: 60px 0;
+        border-radius: 32px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.8);
+        box-shadow: 0 30px 60px rgba(15, 23, 42, 0.05), inset 0 0 0 1px rgba(255,255,255,1);
+        overflow: hidden;
+        z-index: 2;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
       }
-      .premium-impact:hover {
-        transform: translateY(-8px) scale(1.01) !important;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 0 60px rgba(147, 51, 234, 0.2);
-        border-color: rgba(255, 255, 255, 0.3);
-      }
-      
-      .shimmer-sweep {
-        position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.06), transparent);
-        transform: skewX(-25deg);
-        animation: sweep 7s infinite;
-        pointer-events: none; z-index: 1;
-      }
-      @keyframes sweep {
-        0% { left: -100%; }
-        15% { left: 200%; }
-        100% { left: 200%; }
+      .modern-impact-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 40px 80px rgba(15, 23, 42, 0.08), inset 0 0 0 1px rgba(255,255,255,1);
       }
       
-      .impact-particles { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-      .particle { position: absolute; border-radius: 50%; background: #c084fc; filter: blur(2px); animation: float 10s infinite ease-in-out alternate; }
-      .p1 { width: 5px; height: 5px; top: 20%; left: 15%; opacity: 0.4; animation-delay: 0s; }
-      .p2 { width: 8px; height: 8px; top: 70%; left: 85%; opacity: 0.2; animation-delay: 2s; }
-      .p3 { width: 4px; height: 4px; top: 85%; left: 25%; opacity: 0.5; animation-delay: 4s; }
-      @keyframes float {
-        0% { transform: translateY(0px) translateX(0px); }
-        100% { transform: translateY(-25px) translateX(15px); }
+      .modern-quote-mark {
+        position: absolute;
+        top: -40px;
+        left: 20px;
+        font-family: 'Playfair Display', serif;
+        font-size: 240px;
+        line-height: 1;
+        color: rgba(147, 51, 234, 0.04);
+        z-index: 0;
+        pointer-events: none;
       }
       
-      .premium-quote {
-        border-left: none !important; position: relative; padding-left: 24px !important;
+      .modern-impact-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
-      .premium-quote::before {
-        content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 2px;
-        background: linear-gradient(180deg, #c084fc, #ec4899);
-        box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
-        animation: quoteGlow 3s infinite alternate;
+      
+      .modern-impact-heading {
+        font-family: 'Inter', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #9333ea;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
-      @keyframes quoteGlow {
-        0% { box-shadow: 0 0 5px rgba(192, 132, 252, 0.3); }
-        100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.8); }
+      .modern-impact-heading::before, .modern-impact-heading::after {
+        content: '';
+        width: 40px;
+        height: 2px;
+        background: rgba(147, 51, 234, 0.2);
+      }
+      
+      .modern-impact-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.6rem;
+        line-height: 1.6;
+        color: #0f172a;
+        max-width: 800px;
+        margin-bottom: 32px;
+        font-weight: 500;
+      }
+      
+      .modern-impact-divider {
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #c084fc, #ec4899);
+        border-radius: 2px;
+        margin-bottom: 32px;
+      }
+      
+      .modern-impact-highlight {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.5;
+        font-weight: 600;
+        color: #475569;
+        max-width: 650px;
+        background: linear-gradient(90deg, #9333ea, #db2777);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      /* Ambient Background Orbs (From Services Page) */
+      .noise-overlay {
+        position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.035; mix-blend-mode: multiply;
+        background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+      }
+      .uc-ambient-orb {
+        position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0;
+        animation: orbFloat 25s infinite alternate ease-in-out;
+      }
+      @keyframes orbFloat {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(80px, 60px) scale(1.15); }
+      }
+      .uc-watermark {
+        position: absolute; top: 120px; left: 50%; transform: translateX(-50%);
+        font-family: 'Playfair Display', serif; font-size: 20vw; font-weight: 900;
+        color: rgba(15, 23, 42, 0.015); z-index: 0; pointer-events: none;
+        white-space: nowrap; user-select: none; letter-spacing: -0.05em;
       }
 
       @media (max-width: 1000px) {
-        .uc-redesign-row { grid-template-columns: 1fr; gap: 40px; }
+        .uc-redesign-row { 
+          grid-template-columns: 1fr; 
+          gap: 40px; 
+          align-items: start; /* Prevents vertical centering bugs that cause overflow */
+        }
         .uc-redesign-row.reverse .uc-column:first-child { order: 2; }
         .uc-redesign-row.reverse .uc-column:last-child { order: 1; }
+        .uc-column { display: block; flex-shrink: 0; } /* Prevent column from shrinking and overflowing content */
+      }
+      @media (max-width: 768px) {
+        .modern-impact-section { 
+          padding: 32px 24px; 
+          margin: 32px 0; 
+          text-align: left; 
+          border-radius: 24px;
+        }
+        .modern-impact-content { align-items: flex-start; text-align: left; }
+        
+        .modern-impact-heading { justify-content: flex-start; margin-bottom: 16px; }
+        .modern-impact-heading::before { display: none; } /* Remove left line for pure left-alignment */
+        
+        .modern-impact-text { 
+          font-family: 'Inter', sans-serif; /* Switch to crisp sans-serif on mobile */
+          font-size: 1.05rem; 
+          line-height: 1.6;
+          color: #334155;
+          font-weight: 400;
+          margin-bottom: 24px;
+        }
+        
+        .modern-impact-divider { display: none; } /* Hide center divider */
+        
+        .modern-impact-highlight { 
+          font-size: 1rem; 
+          line-height: 1.5;
+          border-left: 3px solid #c084fc;
+          padding-left: 16px;
+          margin-top: 8px;
+        }
+        
+        .modern-quote-mark { 
+          font-size: 120px; 
+          left: -10px; 
+          top: -20px; 
+          color: rgba(147, 51, 234, 0.08); 
+        }
+        
+        .uc-redesign-title { font-size: 2rem; margin-bottom: 24px; }
+        
+        /* Transform list into a modern 2-column grid on mobile */
+        .uc-pill-list { 
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px; 
+          align-items: stretch; /* Ensure items in the same row stretch to match */
+          min-height: max-content; /* Force container to wrap all rows */
+        }
+        
+        .uc-pill { 
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 16px; 
+          gap: 12px; 
+          border-radius: 20px; 
+          box-sizing: border-box;
+          /* Removed explicit height:100% to let CSS Grid handle the stretching naturally, 
+             preventing the container overflow bug on mobile browsers */
+        }
+        
+        .uc-pill-icon { width: 36px; height: 36px; }
+        .uc-pill-icon .material-symbols-outlined { font-size: 18px !important; }
+        .uc-pill-text { font-size: 0.82rem; line-height: 1.4; }
+        
+        /* Hide the redundant trailing icon to save space in the new card layout */
+        .uc-pill-trailing { display: none; }
+        
+        /* Limit the list to exactly 4 boxes on mobile to keep it compact and prevent excessive scrolling */
+        .uc-pill-list .uc-pill:nth-child(n+5) {
+          display: none !important;
+        }
+        
+        .uc-card-badge { padding: 16px 20px; font-size: 0.95rem; }
       }
     </style>
     ${renderNavbar()}
-    <div class="page-wrapper use-cases-page" style="padding-top: 120px; padding-bottom: 60px; position: relative; overflow: hidden;">
+    <div class="page-wrapper use-cases-page" style="background: #f0f9ff; padding-top: 120px; padding-bottom: 60px; position: relative; overflow: hidden; min-height: 100vh;">
       
-      <!-- Decorative Background Glow -->
-      <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80vw; height: 500px; background: radial-gradient(circle, rgba(192,132,252,0.08) 0%, rgba(45,212,191,0.05) 50%, rgba(15,23,42,0) 80%); filter: blur(60px); pointer-events: none; z-index: 1;"></div>
+      <div class="noise-overlay"></div>
+      
+      <!-- Ambient Background Orbs to match Services theme -->
+      <div class="uc-ambient-orb" style="top: -10%; left: -5%; width: 600px; height: 600px; background: rgba(99,102,241,0.25);"></div>
+      <div class="uc-ambient-orb" style="bottom: 10%; right: -5%; width: 700px; height: 700px; background: rgba(168,85,247,0.15); animation-delay: -5s;"></div>
+      <div class="uc-ambient-orb" style="top: 40%; left: 50%; width: 500px; height: 500px; background: rgba(56,189,248,0.15); animation-delay: -10s; transform: translateX(-50%);"></div>
+      <div class="uc-watermark">USE CASES</div>
       
       <div class="container" style="position: relative; z-index: 5;">
         
@@ -294,11 +426,11 @@ export function renderUseCasesPage(): string {
                   "The Challenge",
                   "Fragmented workflows limiting true impact.",
                   [
-                    "No centralized system for managing rescue and animal records",
-                    "Information scattered across different channels and manual processes",
-                    "Difficult to track an animal's journey from rescue to recovery/adoption",
-                    "Limited visibility into donations, expenses, and supporting records",
-                    "Difficult to showcase real work and impact to donors and funders"
+                    "No centralized rescue management",
+                    "Scattered information and manual workflows",
+                    "Difficult to track animal recovery journeys",
+                    "Limited visibility into donations and expenses",
+                    "Struggle to showcase real impact to donors"
                   ],
                   "/images/ngo_casestudy.png"
                 )}
@@ -307,20 +439,20 @@ export function renderUseCasesPage(): string {
                   "Our Solution",
                   "A unified digital platform for complete operational control.",
                   [
-                    "Centralized digital platform for NGO operations",
-                    "Rescue, medical, and animal case management",
-                    "Animal journey tracking from rescue to recovery/adoption",
-                    "Volunteer and internal activity coordination",
-                    "Donation, expense, document, and evidence management",
-                    "Public-facing platform to showcase activities, stories, and impact"
+                    "Centralized NGO digital platform",
+                    "End-to-end case management",
+                    "Complete animal journey tracking",
+                    "Seamless volunteer coordination",
+                    "Integrated donation and expense tracking",
+                    "Public platform to showcase impact"
                   ],
                   "/images/ngo_interanl.jpeg"
                 )}
                 
                 <!-- Impact -->
                 ${renderImpactBlock(
-                  "The solution helps MH-14 build a stronger and more engaged audience by making their work visible, structured, and transparent. By consistently showcasing real activities, rescue journeys, and documented impact, the platform helps strengthen donor trust and long-term supporter relationships, creating better opportunities to attract donations and raise more funds for animal welfare.",
-                  "From managing operations to building trust — turning real-world impact into a stronger digital presence and a more loyal support community."
+                  "By making their work visible and structured, MH-14 builds a stronger audience. Consistently showcasing real rescue journeys strengthens donor trust and creates better opportunities to raise funds.",
+                  "From managing operations to building trust — turning real-world impact into a loyal support community."
                 )}
               </div>
             </div>
@@ -343,11 +475,11 @@ export function renderUseCasesPage(): string {
                   "The Challenge",
                   "Disconnected learning content and limited visibility.",
                   [
-                    "Learning content and assessments were not centralized",
-                    "Students had limited visibility into their learning progress",
-                    "Difficult to consistently manage practice tests and assessments",
-                    "Limited performance insights for identifying strengths and weaknesses",
-                    "Need for a more engaging and scalable digital learning experience"
+                    "Decentralized learning content",
+                    "Limited student progress visibility",
+                    "Hard to manage tests and assessments",
+                    "Lack of clear performance insights",
+                    "Need for scalable digital learning"
                   ],
                   "/images/geekbychoice_casestudy.png"
                 )}
@@ -356,20 +488,20 @@ export function renderUseCasesPage(): string {
                   "Our Solution",
                   "A scalable, data-driven Learning Management System.",
                   [
-                    "Custom Learning Management System (LMS)",
-                    "Centralized learning content and exam categories",
-                    "Online practice tests and assessments",
-                    "Student performance and analytics tracking",
-                    "Progress monitoring and learning insights",
-                    "Organized digital learning experience for students"
+                    "Custom scalable LMS",
+                    "Centralized learning content",
+                    "Online practice and assessments",
+                    "Detailed performance tracking",
+                    "Clear progress insights",
+                    "Engaging digital learning experience"
                   ],
                   "/images/LPP cases.png"
                 )}
                 
                 <!-- Impact -->
                 ${renderImpactBlock(
-                  "The LMS helps Geek By Choice deliver a more engaging and consistent learning experience, while giving students greater visibility into their progress. With performance data and structured digital learning in one place, it creates stronger student engagement, supports better learning outcomes, and helps Geek By Choice build a more scalable education platform.",
-                  "From scattered learning to a connected digital experience — helping students learn, practice, measure, and improve."
+                  "The LMS delivers a consistent learning experience while giving students clear visibility into their progress. Structured digital learning creates stronger engagement and helps build a scalable education platform.",
+                  "From scattered learning to a connected digital experience — helping students learn, practice, and improve."
                 )}
               </div>
             </div>
@@ -392,11 +524,11 @@ export function renderUseCasesPage(): string {
                   "The Challenge",
                   "Fragmented processes disrupting production visibility.",
                   [
-                    "Manufacturing operations required better centralized coordination",
-                    "Order, production, inventory, and dispatch information was fragmented",
-                    "Difficult to maintain complete visibility across operational processes",
-                    "Manual or disconnected workflows could slow down decision-making",
-                    "Limited centralized reporting and real-time operational insights"
+                    "Lack of centralized coordination",
+                    "Fragmented production data",
+                    "Limited process visibility",
+                    "Slow manual decision-making",
+                    "No real-time operational insights"
                   ],
                   "/images/jayshree_casestudy.png"
                 )}
@@ -405,21 +537,21 @@ export function renderUseCasesPage(): string {
                   "Our Solution",
                   "An enterprise-grade, end-to-end management system.",
                   [
-                    "Custom ERP system for centralized business operations",
-                    "Order and work order management",
-                    "Production and manufacturing tracking",
-                    "Inventory and material management",
-                    "Quality control and inspection management",
-                    "Dispatch and logistics coordination",
-                    "Centralized reports and operational insights"
+                    "Custom centralized ERP",
+                    "Streamlined order management",
+                    "Real-time production tracking",
+                    "Integrated inventory control",
+                    "Quality control management",
+                    "Seamless logistics coordination",
+                    "Centralized reports and insights"
                   ],
                   "/images/ERP cases.jpg"
                 )}
                 
                 <!-- Impact -->
                 ${renderImpactBlock(
-                  "The ERP helps Jayshree Electrocoating achieve better operational coordination, greater process visibility, and more informed decision-making. By bringing critical manufacturing information into one platform, the system supports improved efficiency, accountability, and scalability as the business grows.",
-                  "From fragmented processes to one connected system — helping manufacturing teams manage, monitor, and grow with greater clarity."
+                  "The ERP achieves better operational coordination and process visibility. By bringing critical manufacturing data into one platform, the system supports improved efficiency, accountability, and scalable growth.",
+                  "From fragmented processes to one connected system — helping teams manage, monitor, and grow with clarity."
                 )}
               </div>
             </div>
