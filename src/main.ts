@@ -9,15 +9,16 @@ import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
 import { renderHomePage, initHome } from './pages/home';
 import { renderServicesPage, initServiceShowcaseTabs } from './pages/services';
-import { renderAISolutionsPage } from './pages/ai-solutions';
+import { renderAISolutionsPage, initAISolutions } from './pages/ai-solutions';
 import { renderERPLMSPage } from './pages/erp-lms';
 import { renderPortfolioPage, initPortfolio } from './pages/portfolio';
 import { renderContactPage, initContactForm } from './pages/contact';
-import { renderAboutPage } from './pages/about';
-import { renderCareersPage } from './pages/careers';
+import { renderAboutPage, initAbout } from './pages/about';
+import { renderCareersPage, initCareers, cleanupCareers } from './pages/careers';
 import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
 import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
+import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
 
 // Register all application routes with SEO-optimized titles & descriptions
 registerRoutes([
@@ -46,7 +47,10 @@ registerRoutes([
     title: 'AI Chatbots, Voice Agents & Automation | Cresenix Solutions',
     description: 'Build intelligent AI chatbots, voice assistants, calling agents, OCR systems, and workflow automation with Cresenix Solutions. Scalable AI for modern enterprises.',
     render: renderAISolutionsPage,
-    onMount: initNavbar
+    onMount: () => {
+      initNavbar();
+      initAISolutions();
+    }
   },
   {
     path: '/erp-lms',
@@ -66,11 +70,24 @@ registerRoutes([
     }
   },
   {
+    path: '/use-cases',
+    title: 'Use Cases | Cresenix Solutions LLP',
+    description: 'Explore real-world use cases of Cresenix Solutions custom software, AI, and enterprise applications.',
+    render: renderUseCasesPage,
+    onMount: () => {
+      initNavbar();
+      initUseCasesTabs();
+    },
+  },
+  {
     path: '/about',
     title: 'About Cresenix Solutions LLP | AI & Software Consultancy',
     description: 'Cresenix Solutions LLP is an AI and software consultancy building custom enterprise applications, intelligent automation, and scalable digital solutions.',
     render: renderAboutPage,
-    onMount: initNavbar
+    onMount: () => {
+      initNavbar();
+      initAbout();
+    }
   },
   {
     path: '/contact',
@@ -87,7 +104,10 @@ registerRoutes([
     title: 'Careers at Cresenix Solutions LLP | Join Our Team',
     description: 'Join Cresenix Solutions LLP — explore open positions in software development, AI engineering, mobile development, and digital marketing.',
     render: renderCareersPage,
-    onMount: initNavbar
+    onMount: () => {
+      initNavbar();
+      initCareers();
+    }
   },
   {
     path: '/privacy',
@@ -117,8 +137,14 @@ registerRoutes([
 
 // After every navigation, re-initialize scroll animations and effects
 onNavigate(() => {
-  // Cleanup demo scroll listener if navigating away
-  cleanupDemo();
+  // Cleanup scroll listeners if navigating away
+  if (window.location.hash !== '#/demo') {
+    cleanupDemo();
+  }
+  if (window.location.hash !== '#/careers') {
+    cleanupCareers();
+  }
+  
   // Reset body background to default if not on demo page
   if (window.location.hash !== '#/demo') {
     document.body.style.backgroundColor = '#fafafa';

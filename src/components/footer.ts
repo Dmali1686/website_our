@@ -6,10 +6,10 @@
 export function renderFooter(): string {
   return `
     <footer class="site-footer">
-      <div class="container section-gap">
+      <div class="container section-gap" style="padding-left: 24px; padding-right: 24px; box-sizing: border-box;">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a class="nav-logo" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;" data-route="/" href="#/">
+            <a class="footer-logo" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; text-decoration: none;" data-route="/" href="#/">
               <img src="/images/logo.png" alt="Cresenix Solutions Logo" style="height: 36px; width: auto; object-fit: contain;" />
               <div class="logo-text-stack" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1;">
                 <span class="logo-text-top" style="font-family: var(--font-display); font-size: 16px; font-weight: 800; letter-spacing: 0.05em; color: var(--on-background);">CRESENIX</span>
@@ -21,14 +21,14 @@ export function renderFooter(): string {
           </div>
           <div class="footer-column">
             <span class="footer-column-title">Services</span>
-            <a class="footer-link" data-route="/" href="#/">Software</a>
-            <a class="footer-link" data-route="/portfolio" href="#/portfolio">Web Apps</a>
-            <a class="footer-link" data-route="/portfolio" href="#/portfolio">Mobile Apps</a>
+            <a class="footer-link" href="#/services?tab=app-dev">Software</a>
+            <a class="footer-link" href="#/services?tab=web-dev">Web Apps</a>
+            <a class="footer-link" href="#/services?tab=mobile-dev">Mobile Apps</a>
           </div>
           <div class="footer-column">
             <span class="footer-column-title">Solutions</span>
-            <a class="footer-link" data-route="/erp-lms" href="#/erp-lms">ERP</a>
-            <a class="footer-link" data-route="/erp-lms" href="#/erp-lms">LMS</a>
+            <a class="footer-link" href="#/services?tab=erp">ERP</a>
+            <a class="footer-link" href="#/services?tab=lms">LMS</a>
             <a class="footer-link" data-route="/ai-solutions" href="#/ai-solutions">AI Solutions</a>
           </div>
           <div class="footer-column">

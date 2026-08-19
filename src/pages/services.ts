@@ -4,10 +4,10 @@ import { renderFooter } from '../components/footer';
 export function renderServicesPage(): string {
   return `
     ${renderNavbar()}
-    <div class="page-wrapper" style="padding-top: 80px;">
+    <div class="page-wrapper">
       
       <!-- Services Showcase Section -->
-      <section class="section-gap" style="background: #fafbff; position: relative; z-index: 10; overflow: hidden; border-bottom: 1px solid #e2e8f0;">
+      <section class="section-gap" style="background: #f0f9ff; position: relative; z-index: 10; overflow: hidden; border-bottom: 1px solid #e2e8f0; padding-top: 100px;">
         <style>
           /* Global Noise Overlay */
           .noise-overlay {
@@ -46,17 +46,17 @@ export function renderServicesPage(): string {
           }
           .svc-tab-btn::before {
             content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
             opacity: 0; transition: opacity 0.35s ease;
           }
-          .svc-tab-btn:hover { border-color: #6366f1; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15); }
+          .svc-tab-btn:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15); }
           .svc-tab-btn.active {
-            border-color: #4f46e5; background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border-color: #2563eb; background: linear-gradient(135deg, #2563eb, #3b82f6);
             color: white; box-shadow: 0 8px 30px rgba(79, 70, 229, 0.25);
             transform: translateY(-2px);
           }
           .svc-tab-btn.active .svc-tab-icon { color: white; }
-          .svc-tab-icon { font-size: 22px; color: #6366f1; transition: color 0.3s; }
+          .svc-tab-icon { font-size: 22px; color: #3b82f6; transition: color 0.3s; }
           .svc-tab-subtitle { font-size: 0.7rem; font-weight: 400; text-transform: none; letter-spacing: 0; opacity: 0.7; display: block; }
 
           /* Service Content Panel */
@@ -81,7 +81,7 @@ export function renderServicesPage(): string {
           }
           .svc-dots span {
             width: 6px; height: 6px; border-radius: 50%;
-            background: #6366f1; opacity: 0.25;
+            background: #3b82f6; opacity: 0.25;
           }
           .svc-dots.top-right { top: 0; right: 20px; }
           .svc-dots.bottom-left { bottom: 20px; left: 0; }
@@ -128,7 +128,7 @@ export function renderServicesPage(): string {
             box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.3s;
           }
           .svc-video-overlay:hover .svc-play-btn { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,0,0,0.3); }
-          .svc-play-icon { color: #4f46e5; font-size: 28px; margin-left: 3px; }
+          .svc-play-icon { color: #2563eb; font-size: 28px; margin-left: 3px; }
 
           /* Video controls bar */
           .svc-video-controls {
@@ -142,7 +142,7 @@ export function renderServicesPage(): string {
           }
           .svc-video-controls .progress-bar::after {
             content: ''; position: absolute; left: 0; top: 0; height: 100%;
-            width: 35%; background: #6366f1; border-radius: 2px;
+            width: 35%; background: #3b82f6; border-radius: 2px;
           }
 
           /* Info Panel (Right) */
@@ -150,20 +150,22 @@ export function renderServicesPage(): string {
             flex: 1; padding: 24px 24px 160px 0;
             height: 640px; overflow-y: auto;
             position: relative;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
           }
-          .svc-info-panel::-webkit-scrollbar { width: 4px; }
-          .svc-info-panel::-webkit-scrollbar-track { background: transparent; }
-          .svc-info-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+          .svc-info-panel::-webkit-scrollbar { 
+            display: none; 
+          }
 
           .svc-info-label {
             font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em; color: #6366f1; margin-bottom: 12px;
+            text-transform: uppercase; letter-spacing: 0.1em; color: #3b82f6; margin-bottom: 12px;
           }
           .svc-info-heading {
             font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700; color: #0f172a; margin-bottom: 12px; line-height: 1.1; letter-spacing: -0.02em;
           }
-          .svc-info-divider { width: 60px; height: 4px; background: #4f46e5; border-radius: 2px; margin-bottom: 32px; }
+          .svc-info-divider { width: 60px; height: 4px; background: #2563eb; border-radius: 2px; margin-bottom: 32px; }
           
           /* Word-by-Word Reveal Animation */
           .textreveal-text {
@@ -201,7 +203,7 @@ export function renderServicesPage(): string {
             background: rgba(99, 102, 241, 0.08); display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
           }
-          .svc-feature-icon-wrap .material-symbols-outlined { font-size: 22px; color: #4f46e5; }
+          .svc-feature-icon-wrap .material-symbols-outlined { font-size: 22px; color: #2563eb; }
           .svc-feature-title {
             font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700;
             color: #0f172a; margin-bottom: 4px;
@@ -220,29 +222,36 @@ export function renderServicesPage(): string {
             position: sticky; top: 0;
             height: 100vh;
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden; background: #fdfdfd;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
+            overflow: hidden; background: #f0f9ff;
+            background-image: radial-gradient(#dbeafe 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
           }
           .svc-impact-section {
             padding: 20px 24px;
             width: 100%;
             display: flex; justify-content: center; overflow: hidden;
+            perspective: 1200px;
           }
           .svc-impact-container {
             max-width: 1300px; width: 100%;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(15,23,42,0.04), 0 4px 20px rgba(15,23,42,0.02);
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            box-shadow: 0 40px 100px -20px rgba(50, 50, 93, 0.15), 0 30px 60px -30px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 1);
             display: flex; overflow: hidden;
-            border: 1px solid #f1f5f9;
+            border: 1px solid rgba(241, 245, 249, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 1);
             min-height: 600px; max-height: 90vh;
+            transform: translateY(0) translateZ(0);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+          }
+          .svc-impact-container:hover {
+            transform: translateY(-8px) translateZ(20px);
+            box-shadow: 0 50px 120px -20px rgba(50, 50, 93, 0.2), 0 30px 60px -30px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 1);
           }
           .svc-impact-left {
-            flex: 1; padding: 40px 60px;
-            background: #ffffff;
+            flex: 1; padding: 24px 40px;
+            background: transparent;
             display: flex; flex-direction: column; z-index: 10;
-            box-shadow: 10px 0 30px rgba(255,255,255,1);
             justify-content: center;
           }
           .svc-impact-right {
@@ -253,7 +262,7 @@ export function renderServicesPage(): string {
           }
 
           .svc-impact-badge {
-            background: #eef2ff; color: #4f46e5;
+            background: #eff6ff; color: #2563eb;
             padding: 6px 16px; border-radius: 20px;
             font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
@@ -261,24 +270,24 @@ export function renderServicesPage(): string {
           }
           .svc-impact-heading {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
             font-weight: 800; color: #0f172a; text-transform: uppercase;
-            line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em;
+            line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.01em;
           }
           .svc-impact-divider {
-            width: 48px; height: 3px; background: #6366f1; border-radius: 2px; margin-bottom: 24px;
+            width: 48px; height: 3px; background: #3b82f6; border-radius: 2px; margin-bottom: 16px;
           }
           .svc-impact-desc {
-            font-family: 'Inter', sans-serif; font-size: 1rem; color: #475569;
-            line-height: 1.5; margin-bottom: 32px; max-width: 90%;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #475569;
+            line-height: 1.5; margin-bottom: 24px; max-width: 90%;
           }
           
           .svc-impact-list {
-            display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;
+            display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;
           }
           .svc-impact-list-item {
             display: flex; gap: 16px; align-items: flex-start;
-            padding-bottom: 16px; border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 12px; border-bottom: 1px solid #f1f5f9;
           }
           .svc-impact-list-item:last-child { border-bottom: none; padding-bottom: 0; }
           .svc-impact-list-icon {
@@ -286,7 +295,7 @@ export function renderServicesPage(): string {
             background: linear-gradient(135deg, #f8fafc, #eff6ff);
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 4px 12px rgba(99,102,241,0.05);
             display: flex; align-items: center; justify-content: center;
-            color: #6366f1; flex-shrink: 0; border: 1px solid #f1f5f9;
+            color: #3b82f6; flex-shrink: 0; border: 1px solid #f1f5f9;
           }
           .svc-impact-list-icon .material-symbols-outlined { font-size: 24px; font-variation-settings: 'FILL' 1; }
           .svc-impact-list-text h4 {
@@ -297,32 +306,32 @@ export function renderServicesPage(): string {
           }
           
           .svc-cta-btn {
-            background: #eef2ff; color: #4f46e5;
-            padding: 14px 28px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
+            background: #eff6ff; color: #2563eb;
+            padding: 12px 24px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600;
             display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.2s;
-            border: none; outline: none; width: fit-content;
+            border: none; outline: none; width: fit-content; text-decoration: none;
           }
           .svc-cta-btn:hover { background: #e0e7ff; color: #4338ca; }
 
           /* Right Side Orbital Layout */
           .svc-orbit-ring {
             position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
-            width: 720px; height: 720px; border-radius: 50%;
-            border: 4px solid #eef2ff; pointer-events: none;
+            width: 600px; height: 600px; border-radius: 50%;
+            border: 4px solid #eff6ff; pointer-events: none;
             z-index: 1;
           }
           .svc-orbit-center {
             position: absolute; left: 0px; top: 50%; transform: translate(-50%, -50%);
-            width: 460px; height: 460px; border-radius: 50%;
+            width: 380px; height: 380px; border-radius: 50%;
             background: #ffffff; box-shadow: 0 0 60px rgba(99, 102, 241, 0.08);
             display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-            text-align: left; padding-left: 260px; z-index: 2;
+            text-align: left; padding-left: 220px; z-index: 2;
           }
           .svc-orbit-center h3 { font-family: 'Inter', sans-serif; font-size: 1.4rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em; }
-          .svc-orbit-center p { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #6366f1; font-weight: 700; margin: 0; line-height: 1.4; }
+          .svc-orbit-center p { font-family: 'Inter', sans-serif; font-size: 1.25rem; color: #3b82f6; font-weight: 700; margin: 0; line-height: 1.4; }
           
           .svc-orbit-node-wrapper {
-            position: absolute; left: 0; top: 50%; width: 360px; /* Radius is 360px */
+            position: absolute; left: 0; top: 50%; width: 300px; /* Radius is 300px */
             transform-origin: left center; z-index: 3;
             /* Direct transform driven by JS */
             transform: translateY(-50%) rotate(var(--target-angle, -90deg));
@@ -338,7 +347,7 @@ export function renderServicesPage(): string {
             width: 64px; height: 64px; border-radius: 50%;
             background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.06);
             display: flex; align-items: center; justify-content: center;
-            color: #6366f1; border: 3px solid #ffffff;
+            color: #3b82f6; border: 3px solid #ffffff;
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative; z-index: 2;
           }
@@ -348,7 +357,7 @@ export function renderServicesPage(): string {
           .svc-orbit-small-dot {
             width: 12px; height: 12px; border-radius: 50%;
             background: #818cf8; border: 4px solid #ffffff;
-            box-shadow: 0 0 0 2px #eef2ff;
+            box-shadow: 0 0 0 2px #eff6ff;
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             z-index: 2;
           }
@@ -403,28 +412,61 @@ export function renderServicesPage(): string {
             .svc-orbit-node-wrapper { left: 50%; transform-origin: center center; }
           }
           @media (max-width: 900px) {
-            .svc-content-row { flex-direction: column; gap: 32px; }
-            .svc-phones-wrapper { min-height: 400px; width: 100%; }
-            .svc-phone { width: 150px; }
-            .svc-phone.center { width: 170px; }
+            .svc-impact-scroll-track { height: auto !important; }
+            .svc-impact-sticky { position: relative !important; top: auto !important; height: auto !important; padding: 40px 0; }
+            .svc-impact-container { transform: none !important; min-height: auto; max-height: none; }
+            .svc-impact-right { display: none !important; }
+            .svc-content-row { flex-direction: column-reverse; gap: 16px; }
+            .svc-phones-wrapper { min-height: auto !important; height: auto !important; width: 100%; flex: none !important; padding: 40px 0 !important; }
+            .svc-phone { width: 150px; bottom: 40px !important; }
+            .svc-phone.center { width: 170px; position: relative !important; bottom: auto !important; left: auto !important; transform: none !important; margin: 0 auto; }
             .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 90px)) rotate(-10deg); }
             .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 90px)) rotate(10deg); }
             .svc-info-panel { padding: 0 16px; height: auto; }
+            /* Disable text reveal and feature animation since panel is height: auto and doesn't scroll internally */
+            .reveal-word { opacity: 1 !important; filter: blur(0) !important; transform: none !important; color: #0f172a !important; }
+            .svc-feature-item { opacity: 1 !important; transform: none !important; }
             .svc-tab-btn { padding: 12px 20px; font-size: 0.8rem; }
             .svc-impact-grid { grid-template-columns: repeat(3, 1fr); gap: 40px 20px; }
             .svc-impact-item:not(:last-child)::after { display: none; }
             .svc-impact-cta { flex-direction: column; text-align: center; }
             .svc-cta-left { flex-direction: column; }
+            .section-gap { padding-top: 120px !important; }
+            .textreveal-text { font-size: 1.15rem !important; margin-bottom: 32px !important; }
+            .svc-tabs-row { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; margin-bottom: 32px !important; }
+            .svc-tab-btn { padding: 12px 10px !important; font-size: 0.75rem !important; border-radius: 8px !important; justify-content: center; text-align: center; width: 100%; box-sizing: border-box; }
+            .svc-tab-btn:last-child { grid-column: 1 / -1; }
           }
           @media (max-width: 600px) {
-            .svc-phones-wrapper { min-height: 320px; }
-            .svc-phone { width: 120px; }
-            .svc-phone.center { width: 140px; }
+            .svc-phone { width: 130px; bottom: 40px !important; }
+            .svc-phone.center { width: 150px; }
             .svc-phones-wrapper.fanned-out .svc-phone.left { transform: translateX(calc(-50% - 70px)) rotate(-8deg); }
             .svc-phones-wrapper.fanned-out .svc-phone.right { transform: translateX(calc(-50% + 70px)) rotate(8deg); }
             .svc-tab-btn { padding: 10px 16px; font-size: 0.75rem; }
             .svc-tab-subtitle { display: none; }
             .svc-impact-grid { grid-template-columns: 1fr; }
+            
+            /* 2-Column Features List for Mobile */
+            .svc-features-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
+            .svc-feature-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+            .svc-feature-icon-wrap { width: 40px !important; height: 40px !important; }
+            .svc-feature-icon-wrap .material-symbols-outlined { font-size: 20px !important; }
+            .svc-feature-title { font-size: 0.9rem !important; line-height: 1.2 !important; }
+            .svc-feature-desc { font-size: 0.8rem !important; line-height: 1.4 !important; }
+            
+            /* Business Impact Mobile Sizing */
+            .svc-impact-left { padding: 24px 16px !important; }
+            .svc-impact-badge { margin-bottom: 16px !important; font-size: 0.7rem !important; }
+            .svc-impact-heading { font-size: 1.6rem !important; margin-bottom: 16px !important; }
+            .svc-impact-desc { font-size: 0.85rem !important; max-width: 100% !important; margin-bottom: 24px !important; line-height: 1.4 !important; }
+            
+            /* 2-Column Impact List for Mobile */
+            .svc-impact-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
+            .svc-impact-list-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; border-bottom: none !important; padding-bottom: 0 !important; background: #ffffff; padding: 12px !important; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+            .svc-impact-list-icon { width: 40px !important; height: 40px !important; margin-bottom: 4px !important; }
+            .svc-impact-list-icon .material-symbols-outlined { font-size: 20px !important; }
+            .svc-impact-list-text h4 { font-size: 0.9rem !important; line-height: 1.2 !important; margin-bottom: 4px !important; }
+            .svc-impact-list-text p { font-size: 0.8rem !important; line-height: 1.4 !important; max-width: 100% !important; }
           }
         </style>
 
@@ -801,13 +843,13 @@ export function renderServicesPage(): string {
                   </div>
                 </div>
 
-                <button class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></button>
+                <a href="#/contact" data-route="/contact" class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
               </div>
 
               <!-- Right Panel (Orbit) -->
               <div class="svc-impact-right">
                 <div class="svc-orbit-ring"></div>
-                <div class="svc-orbit-center">
+                <div class="svc-orbit-center" style="margin-right: 5px;padding-left: 200px;">
                   <h3>Driving Growth</h3>
                   <p>Through Smart<br>Solutions</p>
                 </div>
@@ -891,7 +933,7 @@ export function renderServicesPage(): string {
             font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3.5vw, 2.8rem);
             font-weight: 800; color: #ffffff; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -0.02em;
           }
-          .svc-process-divider { width: 48px; height: 3px; background: #6366f1; margin-bottom: 24px; border-radius: 2px; }
+          .svc-process-divider { width: 48px; height: 3px; background: #3b82f6; margin-bottom: 24px; border-radius: 2px; }
           .svc-process-desc { font-family: 'Inter', sans-serif; font-size: 1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 40px; }
           
           .svc-process-feature-item { display: flex; gap: 16px; margin-bottom: 32px; }
@@ -909,10 +951,10 @@ export function renderServicesPage(): string {
           .svc-carousel-btn {
             position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
             width: 44px; height: 44px; border-radius: 50%; background: white; border: 1px solid #e2e8f0;
-            display: flex; align-items: center; justify-content: center; color: #6366f1; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; color: #3b82f6; cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.2s;
           }
-          .svc-carousel-btn:hover { background: #f8fafc; color: #4f46e5; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+          .svc-carousel-btn:hover { background: #f8fafc; color: #2563eb; box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
           .svc-carousel-btn.prev { left: 0; }
           .svc-carousel-btn.next { right: 0; }
           
@@ -975,7 +1017,7 @@ export function renderServicesPage(): string {
             cursor: pointer; transition: all 0.3s;
           }
           .svc-page-dot.active {
-            background: #6366f1; transform: scale(1.2); box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+            background: #3b82f6; transform: scale(1.2); box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
           }
           
           @media (max-width: 1024px) {
@@ -991,6 +1033,11 @@ export function renderServicesPage(): string {
             .svc-carousel-card.pos-prev { transform: translate(calc(-50% - 130px), -50%) scale(0.85); }
             .svc-carousel-card.pos-next { transform: translate(calc(-50% + 130px), -50%) scale(0.85); }
             .svc-carousel-card.pos-prev-far, .svc-carousel-card.pos-next-far { opacity: 0; pointer-events: none; }
+            
+            /* Give the card more room so the image doesn't get pushed out */
+            .svc-carousel-card { width: 260px !important; height: 440px !important; }
+            .card-top { padding: 24px 16px !important; }
+            .card-bottom { height: 180px !important; }
           }
           @media (max-width: 500px) {
             .svc-carousel-btn { display: none; }
@@ -1008,7 +1055,7 @@ export function renderServicesPage(): string {
             
             <div class="svc-process-features">
               <div class="svc-process-feature-item motion-fade-up">
-                <div class="svc-process-feature-icon" style="background:#eef2ff; color:#6366f1;"><span class="material-symbols-outlined">track_changes</span></div>
+                <div class="svc-process-feature-icon" style="background:#eff6ff; color:#3b82f6;"><span class="material-symbols-outlined">track_changes</span></div>
                 <div class="svc-process-feature-text">
                   <h4>Purpose-Driven Solutions</h4>
                   <p>We focus on understanding your goals and delivering solutions that create measurable impact.</p>
@@ -1121,9 +1168,16 @@ export function renderServicesPage(): string {
           .svc-faq-item.active .svc-faq-question .icon .material-symbols-outlined { transform: rotate(45deg); color: #0f172a; }
           
           @media (max-width: 900px) {
-            .svc-faq-container { flex-direction: column; gap: 40px; }
+            .svc-faq-section { padding: 60px 16px !important; }
+            .svc-faq-container { flex-direction: column; gap: 32px; }
             .svc-faq-left { flex: none; width: 100%; position: static; }
-            .svc-faq-heading { font-size: 2.5rem; }
+            .svc-faq-heading { font-size: 2rem; margin-bottom: 24px; }
+            .svc-faq-contact-card { padding: 24px; }
+            .svc-faq-contact-card .icon { width: 40px; height: 40px; margin-bottom: 16px; }
+            .svc-faq-contact-card h4 { font-size: 1.1rem; margin-bottom: 16px; }
+            .svc-faq-question { padding: 20px 16px; font-size: 1rem; }
+            .svc-faq-answer { padding: 0 16px; }
+            .svc-faq-answer p { font-size: 0.9rem; padding-bottom: 20px; }
           }
         </style>
         
@@ -1208,22 +1262,21 @@ export function renderServicesPage(): string {
       </section>
 
       <!-- Contact Form Section -->
-      <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #eef2f6; display: flex; justify-content: center;">
+      <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #fafafa; display: flex; justify-content: center;">
         <style>
           .svc-contact-card {
-            display: flex; max-width: 1100px; width: 100%; background: #eef2f6; border-radius: 32px; overflow: hidden;
-            box-shadow: 20px 20px 60px rgba(163, 177, 198, 0.6), -20px -20px 60px rgba(255, 255, 255, 1); border: none;
+            display: flex; max-width: 1100px; width: 100%; background: #ffffff; border-radius: 32px; overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9;
           }
           .svc-contact-image {
             flex: 0 0 45%; background: url('/images/3d_software_services.jpg') center/cover no-repeat;
             position: relative;
           }
-          /* Subtle inset shadow over the image so it sits inside the 3D frame */
           .svc-contact-image::after {
-            content: ''; position: absolute; inset: 0; box-shadow: inset -10px 0 20px rgba(0,0,0,0.1);
+            content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent, rgba(255,255,255,0.1));
           }
           .svc-contact-form {
-            flex: 1; padding: 60px; background: #eef2f6;
+            flex: 1; padding: 60px; background: #ffffff;
           }
           .svc-form-row {
             display: flex; gap: 24px; margin-bottom: 24px;
@@ -1232,42 +1285,45 @@ export function renderServicesPage(): string {
             flex: 1; display: flex; flex-direction: column; gap: 10px;
           }
           .svc-form-label {
-            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: #475569;
+            font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; color: #334155;
           }
           .svc-form-input, .svc-form-textarea {
-            width: 100%; padding: 18px 20px; border-radius: 16px; border: none; background: #eef2f6;
-            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0f172a; transition: all 0.3s; outline: none;
-            box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+            width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid #e2e8f0; background: #f8fafc;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #0f172a; transition: all 0.2s; outline: none;
           }
           .svc-form-input::placeholder, .svc-form-textarea::placeholder {
             color: #94a3b8; font-weight: 500;
           }
           .svc-form-input:focus, .svc-form-textarea:focus {
-            box-shadow: inset 8px 8px 16px rgba(163, 177, 198, 0.6), inset -8px -8px 16px rgba(255, 255, 255, 1);
+            border-color: #3b82f6; background: #ffffff; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
           }
           .svc-form-textarea {
             resize: vertical; min-height: 140px;
           }
           .svc-form-btn {
-            background: #eef2f6; color: #0f172a; border: none; padding: 18px 40px; border-radius: 30px;
-            font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1.05rem; cursor: pointer;
-            box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.5), -8px -8px 16px rgba(255, 255, 255, 1);
+            background: #3b82f6; color: #ffffff; border: none; padding: 16px 40px; border-radius: 30px;
+            font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.05rem; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
             transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
             margin-top: 10px; display: inline-block; letter-spacing: 0.02em;
           }
           .svc-form-btn:hover {
-            transform: translateY(-2px); box-shadow: 12px 12px 20px rgba(163, 177, 198, 0.6), -12px -12px 20px rgba(255, 255, 255, 1);
-            color: #4f46e5;
+            transform: translateY(-2px); box-shadow: 0 14px 28px rgba(59, 130, 246, 0.4);
+            background: #2563eb; color: #ffffff;
           }
           .svc-form-btn:active {
-            transform: translateY(2px); box-shadow: inset 6px 6px 12px rgba(163, 177, 198, 0.5), inset -6px -6px 12px rgba(255, 255, 255, 0.9);
+            transform: translateY(2px); box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
           }
           
           @media (max-width: 900px) {
+            .svc-contact-section { padding: 40px 16px 60px !important; }
             .svc-contact-card { flex-direction: column; }
-            .svc-contact-image { height: 300px; }
-            .svc-contact-form { padding: 40px 24px; }
-            .svc-form-row { flex-direction: column; gap: 16px; margin-bottom: 16px; }
+            .svc-contact-image { height: 200px; }
+            .svc-contact-form { padding: 32px 16px; }
+            .svc-form-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
+            .svc-form-input, .svc-form-textarea { padding: 12px 16px; font-size: 0.9rem; }
+            .svc-form-textarea { min-height: 100px; }
+            .svc-form-btn { padding: 14px 32px; font-size: 0.95rem; width: 100%; }
           }
         </style>
 
@@ -1313,33 +1369,73 @@ export function initServiceShowcaseTabs(): void {
   const tabs = document.querySelectorAll('.svc-tab-btn');
   const panels = document.querySelectorAll('.svc-content-panel');
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove active from all tabs
-      tabs.forEach(t => t.classList.remove('active'));
-      // Hide all panels
-      panels.forEach(p => p.classList.remove('active'));
+  const switchTab = (targetId: string, shouldScroll: boolean = false) => {
+    // Hide all currently active tabs and panels
+    document.querySelectorAll('.svc-tab-btn.active').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.svc-content-panel.active').forEach(p => p.classList.remove('active'));
 
-      // Activate clicked tab
-      tab.classList.add('active');
+    // Activate matching tab
+    const targetTab = document.querySelector(`.svc-tab-btn[data-svc-target="${targetId}"]`);
+    if (targetTab) {
+      targetTab.classList.add('active');
+    }
 
-      // Show matching panel
-      const targetId = tab.getAttribute('data-svc-target');
-      const targetPanel = document.getElementById(`svc-panel-${targetId}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-        // Reset scroll position and reveal state when changing tabs
-        const infoPanel = targetPanel.querySelector('.svc-info-panel');
-        if (infoPanel) {
-          infoPanel.scrollTop = 0;
-          const words = infoPanel.querySelectorAll('.reveal-word');
-          words.forEach(w => w.classList.remove('revealed'));
-          const features = infoPanel.querySelectorAll('.svc-feature-item');
-          features.forEach(f => f.classList.remove('feature-visible'));
+    // Show matching panel
+    const targetPanel = document.getElementById(`svc-panel-${targetId}`);
+    if (targetPanel) {
+      targetPanel.classList.add('active');
+      // Reset scroll position and reveal state
+      const infoPanel = targetPanel.querySelector('.svc-info-panel');
+      if (infoPanel) {
+        infoPanel.scrollTop = 0;
+        const words = infoPanel.querySelectorAll('.reveal-word');
+        words.forEach(w => w.classList.remove('revealed'));
+        const features = infoPanel.querySelectorAll('.svc-feature-item');
+        features.forEach(f => f.classList.remove('feature-visible'));
+      }
+    }
+
+    if (shouldScroll) {
+      setTimeout(() => {
+        const showcase = document.getElementById('svcTabs');
+        if (showcase) {
+          showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      }, 50);
+    }
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = tab.getAttribute('data-svc-target');
+      if (targetId) {
+        window.history.replaceState(null, '', `#/services?tab=${targetId}`);
+        switchTab(targetId, false);
       }
     });
   });
+
+  const handleHashChange = () => {
+    if (!document.getElementById('svcTabs')) {
+      window.removeEventListener('hashchange', handleHashChange);
+      return;
+    }
+
+    const hashStr = window.location.hash;
+    if (hashStr.includes('?')) {
+      const query = hashStr.split('?')[1];
+      const urlParams = new URLSearchParams(query);
+      const targetTabId = urlParams.get('tab');
+      if (targetTabId) {
+        switchTab(targetTabId, true);
+      }
+    }
+  };
+
+  // Run initial switch slightly delayed to ensure DOM is ready and painted
+  setTimeout(handleHashChange, 100);
+  window.addEventListener('hashchange', handleHashChange);
 
   // Init text reveal word splitting
   const revealTexts = document.querySelectorAll('.textreveal-text');
@@ -1391,13 +1487,13 @@ export function initServiceShowcaseTabs(): void {
     const overlay = screen.querySelector('.svc-video-overlay') as HTMLElement;
     const controls = screen.querySelector('.svc-video-controls') as HTMLElement;
     const img = screen.querySelector('img');
-    
+
     if (video && overlay) {
       overlay.addEventListener('click', () => {
         video.muted = true;
         video.style.display = 'block';
         video.setAttribute('controls', 'true');
-        
+
         // Small delay to ensure display: block is rendered before playing
         setTimeout(() => {
           const playPromise = video.play();
@@ -1407,19 +1503,19 @@ export function initServiceShowcaseTabs(): void {
             });
           }
         }, 50);
-        
+
         overlay.style.display = 'none';
         if (controls) controls.style.display = 'none';
       });
     }
   });
 
-   // Intersection Observer for Scroll Animations
+  // Intersection Observer for Scroll Animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('motion-in-view');
-        
+
         // Trigger phone fan-out animation
         if (entry.target.classList.contains('svc-phones-wrapper')) {
           entry.target.classList.add('fanned-out');
@@ -1440,43 +1536,43 @@ export function initServiceShowcaseTabs(): void {
       const items = Array.from(document.querySelectorAll('.svc-impact-list-item'));
       const index = items.indexOf(el);
       (el as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
-    } 
+    }
     observer.observe(el);
   });
 
   // Scroll Scrubbing Animation for Orbit
   const impactTrack = document.getElementById('svc-impact-track');
   const orbitNodes = document.querySelectorAll('.svc-orbit-node-anim');
-  
+
   if (impactTrack && orbitNodes.length > 0) {
     const handleScroll = () => {
       const rect = impactTrack.getBoundingClientRect();
       const scrollableDistance = rect.height - window.innerHeight;
-      
+
       // Calculate progress (0 to 1) through the sticky track
       let progress = -rect.top / scrollableDistance;
       progress = Math.max(0, Math.min(1, progress));
-      
+
       // Starting angle: hidden at top of the circle (-180deg or -90deg)
-      const startAngle = -150; 
-      
+      const startAngle = -150;
+
       orbitNodes.forEach((node, index) => {
         const targetAngle = parseFloat(node.getAttribute('data-target-angle') || '0');
-        
+
         // Offset each node slightly so they arrive in sequence
         // e.g. node 0 starts moving immediately, node 3 waits a bit
         let nodeProgress = progress * 1.5 - (index * 0.1);
         nodeProgress = Math.max(0, Math.min(1, nodeProgress));
-        
+
         // Easing (easeOutCubic)
         const ease = 1 - Math.pow(1 - nodeProgress, 3);
-        
+
         const currentAngle = startAngle + (ease * (targetAngle - startAngle));
-        
+
         // Fade in as they swing out from the starting position
-        let opacity = nodeProgress * 2.5; 
+        let opacity = nodeProgress * 2.5;
         opacity = Math.max(0, Math.min(1, opacity));
-        
+
         (node as HTMLElement).style.setProperty('--target-angle', `${currentAngle}deg`);
         (node as HTMLElement).style.opacity = opacity.toString();
       });
@@ -1484,31 +1580,31 @@ export function initServiceShowcaseTabs(): void {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
   }
-    
+
   // Process Carousel Logic
-    const processCardsData = [
-      { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
-      { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
-      { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
-      { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
-      { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
-    ];
-  
-    const carouselViewport = document.getElementById('processCarousel');
-    const carouselPagination = document.getElementById('processPagination');
-    const btnPrev = document.getElementById('processBtnPrev');
-    const btnNext = document.getElementById('processBtnNext');
-  
-    if (carouselViewport && carouselPagination && btnPrev && btnNext) {
-      let currentIndex = 2; // Start with the middle item (index 2) active
-      const totalCards = processCardsData.length;
-  
-      // Render cards
-      processCardsData.forEach((card, index) => {
-        // Create Card
-        const cardEl = document.createElement('div');
-        cardEl.className = 'svc-carousel-card';
-        cardEl.innerHTML = `
+  const processCardsData = [
+    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
+    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
+    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
+    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
+    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
+  ];
+
+  const carouselViewport = document.getElementById('processCarousel');
+  const carouselPagination = document.getElementById('processPagination');
+  const btnPrev = document.getElementById('processBtnPrev');
+  const btnNext = document.getElementById('processBtnNext');
+
+  if (carouselViewport && carouselPagination && btnPrev && btnNext) {
+    let currentIndex = 2; // Start with the middle item (index 2) active
+    const totalCards = processCardsData.length;
+
+    // Render cards
+    processCardsData.forEach((card, index) => {
+      // Create Card
+      const cardEl = document.createElement('div');
+      cardEl.className = 'svc-carousel-card';
+      cardEl.innerHTML = `
           <div class="card-top">
             <div class="card-icon-wrap" style="background: ${card.color};">
               <span class="material-symbols-outlined">${card.icon}</span>
@@ -1520,62 +1616,62 @@ export function initServiceShowcaseTabs(): void {
             <img src="${card.img}" alt="${card.title}" />
           </div>
         `;
-        // Handle click to select
-        cardEl.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        carouselViewport.appendChild(cardEl);
-  
-        // Create Pagination Dot
-        const dot = document.createElement('div');
-        dot.className = 'svc-page-dot';
-        dot.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-          resetAutoPlay();
-        });
-        carouselPagination.appendChild(dot);
+      // Handle click to select
+      cardEl.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoPlay();
       });
-  
-      const cardElements = carouselViewport.querySelectorAll('.svc-carousel-card');
-      const dotElements = carouselPagination.querySelectorAll('.svc-page-dot');
-  
-      const updateCarousel = () => {
-        cardElements.forEach((card, i) => {
-          card.className = 'svc-carousel-card'; // reset classes
-          
-          let diff = (i - currentIndex) % totalCards;
-          if (diff < 0) diff += totalCards;
-          
-          if (diff === 0) card.classList.add('pos-active');
-          else if (diff === 1) card.classList.add('pos-next');
-          else if (diff === 2) card.classList.add('pos-next-far');
-          else if (diff === totalCards - 1) card.classList.add('pos-prev');
-          else if (diff === totalCards - 2) card.classList.add('pos-prev-far');
-        });
-  
-        dotElements.forEach((dot, i) => {
-          if (i === currentIndex) dot.classList.add('active');
-          else dot.classList.remove('active');
-        });
-      };
-  
-      // Controls
-      const goNext = () => { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); };
-      const goPrev = () => { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); };
-  
-      btnNext.addEventListener('click', () => { goNext(); resetAutoPlay(); });
-      btnPrev.addEventListener('click', () => { goPrev(); resetAutoPlay(); });
-  
-      // Auto Play loop
-      let autoPlayInterval = setInterval(goNext, 3500);
-      const resetAutoPlay = () => {
-        clearInterval(autoPlayInterval);
-        autoPlayInterval = setInterval(goNext, 3500);
-      };
-  
+      carouselViewport.appendChild(cardEl);
+
+      // Create Pagination Dot
+      const dot = document.createElement('div');
+      dot.className = 'svc-page-dot';
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoPlay();
+      });
+      carouselPagination.appendChild(dot);
+    });
+
+    const cardElements = carouselViewport.querySelectorAll('.svc-carousel-card');
+    const dotElements = carouselPagination.querySelectorAll('.svc-page-dot');
+
+    const updateCarousel = () => {
+      cardElements.forEach((card, i) => {
+        card.className = 'svc-carousel-card'; // reset classes
+
+        let diff = (i - currentIndex) % totalCards;
+        if (diff < 0) diff += totalCards;
+
+        if (diff === 0) card.classList.add('pos-active');
+        else if (diff === 1) card.classList.add('pos-next');
+        else if (diff === 2) card.classList.add('pos-next-far');
+        else if (diff === totalCards - 1) card.classList.add('pos-prev');
+        else if (diff === totalCards - 2) card.classList.add('pos-prev-far');
+      });
+
+      dotElements.forEach((dot, i) => {
+        if (i === currentIndex) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    };
+
+    // Controls
+    const goNext = () => { currentIndex = (currentIndex + 1) % totalCards; updateCarousel(); };
+    const goPrev = () => { currentIndex = (currentIndex - 1 + totalCards) % totalCards; updateCarousel(); };
+
+    btnNext.addEventListener('click', () => { goNext(); resetAutoPlay(); });
+    btnPrev.addEventListener('click', () => { goPrev(); resetAutoPlay(); });
+
+    // Auto Play loop
+    let autoPlayInterval = setInterval(goNext, 3500);
+    const resetAutoPlay = () => {
+      clearInterval(autoPlayInterval);
+      autoPlayInterval = setInterval(goNext, 3500);
+    };
+
     // Initial render
     updateCarousel();
   }
@@ -1586,7 +1682,7 @@ export function initServiceShowcaseTabs(): void {
     const btn = item.querySelector('.svc-faq-question');
     btn?.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
-      
+
       // Close all others
       faqItems.forEach(faq => {
         faq.classList.remove('active');

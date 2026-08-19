@@ -29,7 +29,10 @@ export function onNavigate(cb: () => void): void {
 
 /** Get the current hash path, defaulting to '/' */
 function getHashPath(): string {
-  const hash = window.location.hash.slice(1); // Remove '#'
+  let hash = window.location.hash.slice(1); // Remove '#'
+  if (hash.includes('?')) {
+    hash = hash.split('?')[0];
+  }
   return hash || '/';
 }
 
