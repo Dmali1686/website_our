@@ -50,12 +50,14 @@ function renderSolution(title: string, subtitle: string, items: string[], imageS
     <div class="uc-redesign-row reverse uc-animate-3">
       <div class="uc-column">
         <div class="uc-illustration-card card-green" style="flex-direction: column; justify-content: flex-start; padding: 40px 30px;">
+          ${title ? `
           <div class="uc-green-top-text">
             <div class="uc-top-icon"><span class="material-symbols-outlined">lightbulb</span></div>
             <h4>${title}</h4>
             <p>${subtitle}</p>
           </div>
-          <img src="${imageSrc}" alt="${title}" class="uc-card-img" style="margin-top: auto; max-height: 220px;" />
+          ` : ''}
+          <img src="${imageSrc}" alt="Solution Image" class="uc-card-img" style="${title ? 'margin-top: auto; max-height: 220px;' : 'margin: auto; width: 100%; height: 100%; object-fit: contain; transform: scale(1.1);'}" />
         </div>
       </div>
       <div class="uc-column">
@@ -432,12 +434,12 @@ export function renderUseCasesPage(): string {
                     "Limited visibility into donations and expenses",
                     "Struggle to showcase real impact to donors"
                   ],
-                  "/images/ngo_casestudy.png"
+                  "/images/error_mh14.png"
                 )}
                 
                 ${renderSolution(
-                  "Our Solution",
-                  "A unified digital platform for complete operational control.",
+                  "",
+                  "",
                   [
                     "Centralized NGO digital platform",
                     "End-to-end case management",
@@ -446,7 +448,7 @@ export function renderUseCasesPage(): string {
                     "Integrated donation and expense tracking",
                     "Public platform to showcase impact"
                   ],
-                  "/images/ngo_interanl.jpeg"
+                  "/images/our_solution_mh14.png"
                 )}
                 
                 <!-- Impact -->
@@ -481,12 +483,12 @@ export function renderUseCasesPage(): string {
                     "Lack of clear performance insights",
                     "Need for scalable digital learning"
                   ],
-                  "/images/geekbychoice_casestudy.png"
+                  "/images/challenges-illustration.png"
                 )}
                 
                 ${renderSolution(
-                  "Our Solution",
-                  "A scalable, data-driven Learning Management System.",
+                  "",
+                  "",
                   [
                     "Custom scalable LMS",
                     "Centralized learning content",
@@ -495,7 +497,7 @@ export function renderUseCasesPage(): string {
                     "Clear progress insights",
                     "Engaging digital learning experience"
                   ],
-                  "/images/LPP cases.png"
+                  "/images/lms-solution.png"
                 )}
                 
                 <!-- Impact -->
@@ -530,12 +532,12 @@ export function renderUseCasesPage(): string {
                     "Slow manual decision-making",
                     "No real-time operational insights"
                   ],
-                  "/images/jayshree_casestudy.png"
+                  "/images/challenges-illustration.png"
                 )}
                 
                 ${renderSolution(
-                  "Our Solution",
-                  "An enterprise-grade, end-to-end management system.",
+                  "",
+                  "",
                   [
                     "Custom centralized ERP",
                     "Streamlined order management",
@@ -545,7 +547,7 @@ export function renderUseCasesPage(): string {
                     "Seamless logistics coordination",
                     "Centralized reports and insights"
                   ],
-                  "/images/ERP cases.jpg"
+                  "/images/erp-solution.png"
                 )}
                 
                 <!-- Impact -->

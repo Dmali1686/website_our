@@ -6,7 +6,20 @@
 export function renderFooter(): string {
   return `
     <footer class="site-footer">
-      <div class="container section-gap" style="padding-left: 24px; padding-right: 24px; box-sizing: border-box;">
+      <style>
+        .footer-mobile-pad {
+          padding-left: 24px;
+          padding-right: 24px;
+          box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+          .footer-mobile-pad {
+            padding-left: 32px !important;
+            padding-right: 32px !important;
+          }
+        }
+      </style>
+      <div class="container section-gap footer-mobile-pad">
         <div class="footer-grid">
           <div class="footer-brand">
             <a class="footer-logo" style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px; text-decoration: none;" data-route="/" href="#/">

@@ -416,7 +416,7 @@ export function renderServicesPage(): string {
             .svc-impact-sticky { position: relative !important; top: auto !important; height: auto !important; padding: 40px 0; }
             .svc-impact-container { transform: none !important; min-height: auto; max-height: none; }
             .svc-impact-right { display: none !important; }
-            .svc-content-row { flex-direction: column-reverse; gap: 16px; }
+            .svc-content-row { flex-direction: column; gap: 16px; }
             .svc-phones-wrapper { min-height: auto !important; height: auto !important; width: 100%; flex: none !important; padding: 40px 0 !important; }
             .svc-phone { width: 150px; bottom: 40px !important; }
             .svc-phone.center { width: 170px; position: relative !important; bottom: auto !important; left: auto !important; transform: none !important; margin: 0 auto; }
@@ -448,25 +448,46 @@ export function renderServicesPage(): string {
             
             /* 2-Column Features List for Mobile */
             .svc-features-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
-            .svc-feature-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
-            .svc-feature-icon-wrap { width: 40px !important; height: 40px !important; }
-            .svc-feature-icon-wrap .material-symbols-outlined { font-size: 20px !important; }
-            .svc-feature-title { font-size: 0.9rem !important; line-height: 1.2 !important; }
-            .svc-feature-desc { font-size: 0.8rem !important; line-height: 1.4 !important; }
+            .svc-feature-item { 
+              flex-direction: column !important; 
+              align-items: center !important; 
+              text-align: center !important;
+              background: rgba(255, 255, 255, 0.5); 
+              padding: 20px 12px !important; 
+              border-radius: 16px; 
+              border: 1px solid rgba(255, 255, 255, 0.8);
+              box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+              gap: 12px !important; 
+            }
+            .svc-feature-icon-wrap { width: 44px !important; height: 44px !important; margin: 0 auto !important; }
+            .svc-feature-icon-wrap .material-symbols-outlined { font-size: 22px !important; }
+            .svc-feature-title { font-size: 0.95rem !important; line-height: 1.3 !important; font-weight: 700 !important; }
+            .svc-feature-desc { display: none !important; } /* Hidden to reduce text on mobile */
             
             /* Business Impact Mobile Sizing */
             .svc-impact-left { padding: 24px 16px !important; }
             .svc-impact-badge { margin-bottom: 16px !important; font-size: 0.7rem !important; }
             .svc-impact-heading { font-size: 1.6rem !important; margin-bottom: 16px !important; }
-            .svc-impact-desc { font-size: 0.85rem !important; max-width: 100% !important; margin-bottom: 24px !important; line-height: 1.4 !important; }
+            .svc-impact-desc { font-size: 0.95rem !important; max-width: 100% !important; margin-bottom: 24px !important; line-height: 1.5 !important; }
             
             /* 2-Column Impact List for Mobile */
             .svc-impact-list { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 12px !important; }
-            .svc-impact-list-item { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; border-bottom: none !important; padding-bottom: 0 !important; background: #ffffff; padding: 12px !important; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-            .svc-impact-list-icon { width: 40px !important; height: 40px !important; margin-bottom: 4px !important; }
-            .svc-impact-list-icon .material-symbols-outlined { font-size: 20px !important; }
-            .svc-impact-list-text h4 { font-size: 0.9rem !important; line-height: 1.2 !important; margin-bottom: 4px !important; }
-            .svc-impact-list-text p { font-size: 0.8rem !important; line-height: 1.4 !important; max-width: 100% !important; }
+            .svc-impact-list-item { 
+              flex-direction: column !important; 
+              align-items: center !important; 
+              text-align: center !important;
+              gap: 8px !important; 
+              border-bottom: none !important; 
+              background: #ffffff; 
+              padding: 20px 12px !important; 
+              border-radius: 16px; 
+              border: 1px solid #f1f5f9; 
+              box-shadow: 0 4px 16px rgba(0,0,0,0.03); 
+            }
+            .svc-impact-list-icon { width: 44px !important; height: 44px !important; margin: 0 auto 8px auto !important; }
+            .svc-impact-list-icon .material-symbols-outlined { font-size: 22px !important; }
+            .svc-impact-list-text h4 { font-size: 0.95rem !important; line-height: 1.3 !important; margin-bottom: 0 !important; font-weight: 700 !important; }
+            .svc-impact-list-text p { display: none !important; } /* Hidden to reduce text on mobile */
           }
         </style>
 
@@ -530,20 +551,8 @@ export function renderServicesPage(): string {
 
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/app-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
-                    <img src="/images/app-screen-center.jpg" alt="App Demo Video" loading="lazy" />
-                    <div class="svc-video-overlay">
-                      <div class="svc-play-btn">
-                        <span class="material-symbols-outlined svc-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      </div>
-                    </div>
-                    <div class="svc-video-controls">
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      <span>0:00 / 1:25</span>
-                      <div class="progress-bar"></div>
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">volume_up</span>
-                      <span class="material-symbols-outlined" style="font-size: 14px;">fullscreen</span>
-                    </div>
+                    <img src="/images/app-screen-center.jpg" alt="App Demo Video" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/Web.mp4" loop playsinline controls poster="/images/app-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
 
@@ -628,20 +637,8 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/erp-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
-                    <img src="/images/erp-screen-center.jpg" alt="ERP Dashboard Demo" loading="lazy" />
-                    <div class="svc-video-overlay">
-                      <div class="svc-play-btn">
-                        <span class="material-symbols-outlined svc-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      </div>
-                    </div>
-                    <div class="svc-video-controls">
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      <span>0:00 / 2:10</span>
-                      <div class="progress-bar"></div>
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">volume_up</span>
-                      <span class="material-symbols-outlined" style="font-size: 14px;">fullscreen</span>
-                    </div>
+                    <img src="/images/erp-screen-center.jpg" alt="ERP Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/erp.mp4" loop playsinline controls poster="/images/erp-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
                 <div class="svc-phone right">
@@ -723,20 +720,8 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <video class="svc-real-video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" loop muted playsinline poster="/images/lms-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; z-index: 5;"></video>
-                    <img src="/images/lms-screen-center.jpg" alt="LMS Dashboard Demo" loading="lazy" />
-                    <div class="svc-video-overlay">
-                      <div class="svc-play-btn">
-                        <span class="material-symbols-outlined svc-play-icon" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      </div>
-                    </div>
-                    <div class="svc-video-controls">
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">play_arrow</span>
-                      <span>0:00 / 1:48</span>
-                      <div class="progress-bar"></div>
-                      <span class="material-symbols-outlined" style="font-size: 14px; font-variation-settings: 'FILL' 1;">volume_up</span>
-                      <span class="material-symbols-outlined" style="font-size: 14px;">fullscreen</span>
-                    </div>
+                    <img src="/images/lms-screen-center.jpg" alt="LMS Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/lms_main.mp4" loop playsinline controls poster="/images/lms-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
                 <div class="svc-phone right">
@@ -1318,8 +1303,8 @@ export function renderServicesPage(): string {
           @media (max-width: 900px) {
             .svc-contact-section { padding: 40px 16px 60px !important; }
             .svc-contact-card { flex-direction: column; }
-            .svc-contact-image { height: 200px; }
-            .svc-contact-form { padding: 32px 16px; }
+            .svc-contact-image { flex: none !important; height: 250px; width: 100%; }
+            .svc-contact-form { flex: none !important; padding: 32px 16px; width: 100%; box-sizing: border-box; }
             .svc-form-row { flex-direction: column; gap: 20px; margin-bottom: 20px; }
             .svc-form-input, .svc-form-textarea { padding: 12px 16px; font-size: 0.9rem; }
             .svc-form-textarea { min-height: 100px; }
@@ -1480,35 +1465,39 @@ export function initServiceShowcaseTabs(): void {
     });
   });
 
-  // Handle video play on center phones
+  // Handle video autoplay on intersection
   const centerPhones = document.querySelectorAll('.svc-phone.center .svc-phone-screen');
-  centerPhones.forEach(screen => {
-    const video = screen.querySelector('.svc-real-video') as HTMLVideoElement;
-    const overlay = screen.querySelector('.svc-video-overlay') as HTMLElement;
-    const controls = screen.querySelector('.svc-video-controls') as HTMLElement;
-    const img = screen.querySelector('img');
-
-    if (video && overlay) {
-      overlay.addEventListener('click', () => {
-        video.muted = true;
-        video.style.display = 'block';
-        video.setAttribute('controls', 'true');
-
-        // Small delay to ensure display: block is rendered before playing
-        setTimeout(() => {
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(error => {
-              console.warn("Video playback was blocked:", error);
-            });
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector('.svc-real-video') as HTMLVideoElement;
+        if (video) {
+          video.volume = 0.5; // Set volume to medium
+          if (entry.isIntersecting) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => { /* Ignore auto-play errors */ });
+            }
+          } else {
+            video.pause();
           }
-        }, 50);
-
-        overlay.style.display = 'none';
-        if (controls) controls.style.display = 'none';
+        }
       });
-    }
-  });
+    }, { threshold: 0.1 });
+
+    centerPhones.forEach(screen => {
+      videoObserver.observe(screen);
+    });
+  } else {
+    // Fallback if no IntersectionObserver
+    centerPhones.forEach(screen => {
+      const video = screen.querySelector('.svc-real-video') as HTMLVideoElement;
+      if (video) {
+        video.volume = 0.5; // Set volume to medium
+        video.setAttribute('autoplay', 'true');
+      }
+    });
+  }
 
   // Intersection Observer for Scroll Animations
   const observer = new IntersectionObserver((entries) => {
