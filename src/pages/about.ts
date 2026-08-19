@@ -174,7 +174,7 @@ export function renderAboutPage(): string {
             .about-leadership-grid { gap: 24px; flex-direction: column; align-items: center; }
           }
         </style>
-        <div class="container text-center mb-10">
+        <div class="container text-center mb-10" style="margin-bottom: 56px;">
           <div class="animate-fade-in-up" style="display: inline-block; padding: 6px 16px; background: #e0f2fe; color: #0369a1; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.1em; border-radius: 50px; margin-bottom: 12px;">
             LEADERSHIP
           </div>
@@ -185,28 +185,35 @@ export function renderAboutPage(): string {
           <div class="about-leadership-grid">
             
             <!-- Founder & CEO Card -->
-            <div class="animate-fade-in-up delay-200" style="background: #ffffff; border-radius: 20px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); display: flex; flex-direction: column; gap: 24px; border: 1px solid #f1f5f9; height: 100%;">
-              <div style="width: 100%; height: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08);">
-                <img src="/images/founder.png" alt="Raj Bhandari — Founder and CEO" style="width: 100%; height: 100%; object-fit: cover;" />
+            <div class="animate-fade-in-up delay-200" style="background: #ffffff; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.06); border: 1px solid #f1f5f9; width: 100%; max-width: 1000px !important; min-height: 450px; overflow: hidden; margin: 0 auto; display: flex; flex-wrap: wrap;">
+              
+              <!-- Left Side: Image -->
+              <div style="flex: 1 1 400px; position: relative; min-height: 400px;">
+                <img src="/images/raj.jpeg" alt="Raj Bhandari — Founder and CEO" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
-              <div style="display: flex; flex-direction: column; flex-grow: 1;">
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 2px;">Raj Bhandari</h3>
-                <div style="font-family: 'Inter', sans-serif; color: #0ea5e9; font-weight: 600; font-size: 1rem; margin-bottom: 20px;">Founder & CEO</div>
+
+              <!-- Right Side: Content Wrapper -->
+              <div style="flex: 1 1 450px; padding: 48px 56px; display: flex; flex-direction: column; justify-content: center;">
                 
-                <div style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 20px; border-left: 4px solid #0ea5e9; padding-left: 16px;">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 800; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em;">Raj Bhandari</h3>
+                <div style="font-family: 'Inter', sans-serif; color: #0ea5e9; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;">Founder & CEO</div>
+                
+                <div style="font-family: 'Inter', sans-serif; font-size: 1.15rem; line-height: 1.6; color: #334155; font-style: italic; font-weight: 500; margin-bottom: 24px; border-left: 3px solid #0ea5e9; padding-left: 20px;">
                   "The true power of AI isn't in replacing human ingenuity; it's in augmenting it. Our goal is to build digital infrastructure so intuitive and powerful that it becomes invisible."
                 </div>
                 
-                <p style="font-family: 'Inter', sans-serif; color: #64748b; line-height: 1.6; font-size: 0.95rem; margin-bottom: 24px; flex-grow: 1;">
+                <p style="font-family: 'Inter', sans-serif; color: #64748b; line-height: 1.6; font-size: 1rem; margin-bottom: 32px; font-weight: 400;">
                   With a deep background in enterprise architecture, Raj founded Cresenix Solutions to bridge the gap between theoretical AI capabilities and practical, scalable business applications.
                 </p>
                 
-                <div style="display: flex; gap: 12px; margin-top: auto;">
-                  <a href="tel:+917387792415" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
-                    <span class="material-symbols-outlined" style="font-size:18px;">call</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                  <a href="tel:+917387792415" style="display: flex; align-items: center; gap: 10px; padding: 12px 24px; border-radius: 50px; background: #ffffff; color: #334155; border: 1px solid #e2e8f0; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);" onmouseover="this.style.background='#0ea5e9'; this.style.color='white'; this.style.borderColor='#0ea5e9'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 20px -8px rgba(14,165,233,0.5)';" onmouseout="this.style.background='#ffffff'; this.style.color='#334155'; this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.02)';">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">call</span>
+                    +91 73877 92415
                   </a>
-                  <a href="mailto:raj@cresenix.com" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: #07476f; transition: all 0.2s;" onmouseover="this.style.background='#07476f'; this.style.color='white';" onmouseout="this.style.background='#f1f5f9'; this.style.color='#07476f';">
-                    <span class="material-symbols-outlined" style="font-size:18px;">mail</span>
+                  <a href="mailto:info@cresenixsolutions.com" style="display: flex; align-items: center; gap: 10px; padding: 12px 24px; border-radius: 50px; background: #ffffff; color: #334155; border: 1px solid #e2e8f0; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);" onmouseover="this.style.background='#0ea5e9'; this.style.color='white'; this.style.borderColor='#0ea5e9'; this.style.transform='translateY(-3px)'; this.style.boxShadow='0 12px 20px -8px rgba(14,165,233,0.5)';" onmouseout="this.style.background='#ffffff'; this.style.color='#334155'; this.style.borderColor='#e2e8f0'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px -1px rgba(0,0,0,0.02)';">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">mail</span>
+                    info@cresenixsolutions.com
                   </a>
                 </div>
               </div>

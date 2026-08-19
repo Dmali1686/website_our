@@ -223,19 +223,15 @@ export function renderHomePage(): string {
               height: 100%;
               object-fit: cover;
               object-position: center;
-              transform: scale(1.05);
-              transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            }
-            .snap-card:hover .snap-card-image {
-              transform: scale(1.1);
             }
             .snap-card-image.contain-mode {
               object-fit: contain;
               padding: 8%;
-              transform: scale(1);
             }
-            .snap-card-image.contain-mode:hover {
-              transform: scale(1.03);
+
+            /* Dynamic background transition for left panel */
+            .snap-half.left {
+              transition: background 0.6s ease;
             }
 
             /* Image overlay with gradient */
@@ -264,6 +260,46 @@ export function renderHomePage(): string {
               border: 1px solid rgba(255,255,255,0.15);
             }
 
+            @media (max-width: 768px) {
+              .routine-poster-container {
+                display: flex !important;
+                flex-direction: column;
+                padding: 40px 24px 0 24px !important;
+                align-items: flex-start !important;
+              }
+              .routine-poster-left {
+                max-width: 100% !important;
+                order: 1;
+              }
+              .routine-poster-footer {
+                position: relative !important;
+                bottom: auto !important;
+                left: auto !important;
+                margin-top: 32px !important;
+                margin-bottom: 40px !important;
+                order: 2;
+              }
+              .routine-poster-right {
+                min-height: auto !important;
+                width: 100%;
+                justify-content: center !important;
+                padding-right: 0 !important;
+                margin-top: 0 !important;
+                margin-bottom: -120px !important;
+                order: 3;
+              }
+              .routine-poster-right img {
+                position: relative !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 75% !important;
+                max-width: 300px !important;
+                max-height: none !important;
+                margin: 0 auto;
+                display: block;
+              }
+            }
+
             /* Text card styling */
             .snap-text-card {
               height: 33.3333%;
@@ -274,41 +310,27 @@ export function renderHomePage(): string {
               text-align: left;
               position: relative;
             }
-            .snap-text-card::before {
-              content: '';
-              position: absolute;
-              top: 16px;
-              bottom: 16px;
-              left: 0;
-              width: 3px;
-              border-radius: 3px;
-              opacity: 0;
-              transition: opacity 0.6s ease;
-            }
-            .snap-text-card.active::before {
-              opacity: 1;
-            }
-            .snap-text-card:nth-child(1)::before { background: linear-gradient(180deg, #3b82f6, #818cf8); }
-            .snap-text-card:nth-child(2)::before { background: linear-gradient(180deg, #f472b6, #ec4899); }
-            .snap-text-card:nth-child(3)::before { background: linear-gradient(180deg, #34d399, #10b981); }
+            /* Color bar removed */
 
             .snap-text-number {
               font-family: 'Inter', sans-serif;
-              font-size: 0.75rem;
+              font-size: 0.85rem;
               font-weight: 700;
-              color: rgba(255,255,255,0.25);
+              color: rgba(255, 255, 255, 0.6);
               letter-spacing: 0.15em;
               text-transform: uppercase;
               margin-bottom: 16px;
+              transition: color 0.6s ease;
             }
             .snap-text-title {
-              font-family: 'Inter', sans-serif;
+              font-family: 'Playfair Display', serif;
               font-size: clamp(1.6rem, 2.5vw, 2.2rem);
               font-weight: 700;
               color: #ffffff;
               margin-bottom: 16px;
               line-height: 1.15;
               letter-spacing: -0.02em;
+              transition: color 0.6s ease;
             }
             .snap-text-desc {
               font-family: 'Inter', sans-serif;
@@ -316,6 +338,20 @@ export function renderHomePage(): string {
               color: #9ca3af;
               line-height: 1.65;
               margin-bottom: 32px;
+              transition: color 0.6s ease;
+            }
+            
+            /* Light theme text adjustments for Geek By Choice */
+            .snap-text-card[data-theme="geek-light"] .snap-text-title { color: #2b1b22; }
+            .snap-text-card[data-theme="geek-light"] .snap-text-desc { color: #5a4b52; }
+            .snap-text-card[data-theme="geek-light"] .snap-text-number { color: rgba(43, 27, 34, 0.5); }
+            
+            .snap-text-card[data-theme="geek-light"] .snap-text-cta {
+              background: #ffffff;
+              color: #2b1b22;
+            }
+            .snap-text-card[data-theme="geek-light"] .snap-text-cta:hover {
+              background: #f3f4f6;
             }
             .snap-text-cta {
               display: inline-flex;
@@ -353,7 +389,7 @@ export function renderHomePage(): string {
                 max-height: none;
                 border-radius: 0;
                 margin: 0;
-                width: 100vw;
+                width: 100%;
                 box-shadow: none;
                 
                 /* Horizontal Scroll Grid */
@@ -361,7 +397,7 @@ export function renderHomePage(): string {
                 grid-template-rows: auto auto;
                 grid-template-columns: repeat(3, 85vw);
                 gap: 16px;
-                padding: 0 20px 30px 20px;
+                padding: 0 calc(50% - 42.5vw) 30px;
                 overflow-x: auto;
                 overflow-y: hidden;
                 scroll-snap-type: x mandatory;
@@ -382,39 +418,43 @@ export function renderHomePage(): string {
                 transform: none !important;
               }
 
-              /* Column 1: Text 1 and Image 1 */
-              .snap-half.left .snap-text-card:nth-child(1) { grid-column: 1; grid-row: 1; scroll-snap-align: center; }
-              .snap-half.right .snap-card:nth-child(3) { grid-column: 1; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              /* Column 1: Image 1 and Text 1 */
+              .snap-half.right .snap-card:nth-child(3) { grid-column: 1; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(1) { grid-column: 1; grid-row: 2; margin-top: 0; }
               
-              /* Column 2: Text 2 and Image 2 */
-              .snap-half.left .snap-text-card:nth-child(2) { grid-column: 2; grid-row: 1; margin-top: 0; scroll-snap-align: center; }
-              .snap-half.right .snap-card:nth-child(2) { grid-column: 2; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              /* Column 2: Image 2 and Text 2 */
+              .snap-half.right .snap-card:nth-child(2) { grid-column: 2; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(2) { grid-column: 2; grid-row: 2; margin-top: 0; }
               
-              /* Column 3: Text 3 and Image 3 */
-              .snap-half.left .snap-text-card:nth-child(3) { grid-column: 3; grid-row: 1; margin-top: 0; scroll-snap-align: center; }
-              .snap-half.right .snap-card:nth-child(1) { grid-column: 3; grid-row: 2; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              /* Column 3: Image 3 and Text 3 */
+              .snap-half.right .snap-card:nth-child(1) { grid-column: 3; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(3) { grid-column: 3; grid-row: 2; margin-top: 0; }
 
               .snap-text-card {
                 padding: 32px 24px;
                 height: auto;
                 border-radius: 24px;
+                width: 100%;
+                box-sizing: border-box;
               }
               .snap-card {
                 height: auto;
                 border-radius: 24px;
+                width: 100%;
+                box-sizing: border-box;
               }
               .snap-text-number {
-                color: #0369a1; /* Darker blue for contrast */
+                color: #38bdf8;
               }
               .snap-text-title {
                 font-size: 1.8rem;
-                color: #0f172a; /* Dark slate for high contrast */
+                color: #ffffff;
               }
               .snap-text-desc {
                 font-size: 1rem;
                 margin-bottom: 24px;
-                color: #334155; /* Dark gray instead of light gray */
-                font-weight: 500;
+                color: rgba(255,255,255,0.8);
+                font-weight: 400;
               }
               .snap-text-cta {
                 padding: 12px 24px;
@@ -429,10 +469,10 @@ export function renderHomePage(): string {
             <div class="snap-sticky-viewport">
               
               <!-- Left Side: Text Cards (Scrolls UP) -->
-              <div class="snap-half left" style="background: #0f1115;">
+              <div class="snap-half left">
                 <div class="snap-slide-track" id="split-scroll-left">
                   
-                  <div class="snap-text-card active" data-card-index="0">
+                  <div class="snap-text-card active" data-card-index="0" style="background: #e6d6da;" data-theme="geek-light">
                     <span class="snap-text-number">01 — EdTech</span>
                     <h3 class="snap-text-title">Geek By Choice LMS</h3>
                     <p class="snap-text-desc">
@@ -443,7 +483,7 @@ export function renderHomePage(): string {
                     </a>
                   </div>
 
-                  <div class="snap-text-card" data-card-index="1">
+                  <div class="snap-text-card" data-card-index="1" style="background: #0d3b1e;">
                     <span class="snap-text-number">02 — Animal Welfare</span>
                     <h3 class="snap-text-title">MH-14 Animal NGO</h3>
                     <p class="snap-text-desc">
@@ -454,7 +494,7 @@ export function renderHomePage(): string {
                     </a>
                   </div>
 
-                  <div class="snap-text-card" data-card-index="2">
+                  <div class="snap-text-card" data-card-index="2" style="background: #11152c;">
                     <span class="snap-text-number">03 — Manufacturing</span>
                     <h3 class="snap-text-title">Jayshree Electrocoating</h3>
                     <p class="snap-text-desc">
@@ -474,24 +514,23 @@ export function renderHomePage(): string {
                 <div class="snap-slide-track right-track" id="split-scroll-right">
                   
                   <!-- Image 3: Jayshree (bottom of track) -->
-                  <div class="snap-card" style="background: #031428;">
-                    <img src="/images/jayshree_casestudy.png" alt="Jayshree Electrocoating" class="snap-card-image" />
+                  <div class="snap-card" style="background: #11152c;">
+                    <img src="/images/Jayshree_Electrocoating.png" alt="ERP System" class="snap-card-image" style="object-fit: cover;" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">Manufacturing & Enterprise</span>
                     </div>
                   </div>
 
                   <!-- Image 2: NGO -->
-                  <div class="snap-card" style="background: #0a0a0a;">
-                    <img src="/images/ngo_interanl.jpeg" alt="MH-14 NGO" class="snap-card-image contain-mode" />
+                  <div class="snap-card" style="background: #e8f5e9;">
+                    <img src="/images/ngo_image.png" alt="MH-14 NGO" class="snap-card-image" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">NGO & Animal Welfare</span>
                     </div>
                   </div>
 
-                  <!-- Image 1: Geek By Choice (top of track) -->
-                  <div class="snap-card" style="background: #042f1c;">
-                    <img src="/images/geekbychoice_casestudy.png" alt="Geek By Choice" class="snap-card-image" />
+                  <div class="snap-card" style="background: #fce1e6;">
+                    <img src="/images/geek_by_choice_new.jpg" alt="Geek By Choice" class="snap-card-image" style="object-fit: cover;" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">Education & EdTech</span>
                     </div>
@@ -529,105 +568,29 @@ export function renderHomePage(): string {
 
       <!-- Routine Poster Section -->
       <section class="color-section" data-color="#0284c7" style="padding: 60px 20px; background: transparent; display: flex; justify-content: center;">
-        <div style="background: #0f1115; border-radius: 24px; width: 100%; max-width: 1200px; min-height: 540px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 60px 48px; box-sizing: border-box; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center;">
+        <div class="routine-poster-container" style="background: #0f1115; border-radius: 24px; width: 100%; max-width: 1200px; min-height: 540px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 60px 48px; box-sizing: border-box; background-image: url('/images/hero-person.webp'); background-size: cover; background-position: center;">
           
           <!-- Gradient Overlay -->
           <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 17, 21, 1) 0%, rgba(15, 17, 21, 0.95) 45%, rgba(15, 17, 21, 0.3) 100%); z-index: 1;"></div>
 
           <!-- Left Content -->
-          <div style="flex: 1; z-index: 2; position: relative; max-width: 500px;">
-             <h3 style="font-size: clamp(2rem, 4vw, 2.8rem); font-family: 'Inter', sans-serif; font-weight: 700; color: white; margin-bottom: 16px; letter-spacing: -0.02em;">Routine stacks</h3>
+          <div class="routine-poster-left" style="flex: 1; z-index: 2; position: relative; max-width: 500px;">
+             <h3 style="font-size: clamp(2rem, 4vw, 2.8rem); font-family: 'Playfair Display', serif; font-weight: 700; color: white; margin-bottom: 16px; letter-spacing: -0.02em;">Intelligent Automation</h3>
              <p style="font-size: 1.15rem; font-family: 'Inter', sans-serif; color: #d1d5db; margin-bottom: 40px; line-height: 1.6;">
-               Group habits into simple blocks so your day feels organized instead of scattered.
+               Streamline your complex workflows into intelligent systems so your business runs efficiently without the clutter.
              </p>
              <a href="#" style="display: inline-block; background: white; color: #111827; font-weight: 600; font-family: 'Inter', sans-serif; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-size: 1.05rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-               Start your routine now
+               Explore AI Solutions
              </a>
           </div>
 
           <!-- Right Phone Mockup -->
-          <div style="flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2; min-height: 400px; padding-right: 20px;">
-             <div style="width: 320px; height: 500px; background: white; border-radius: 40px; border: 8px solid #1e293b; position: absolute; right: 0; top: -50px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; padding: 20px 16px; overflow: hidden;">
-               
-               <!-- Phone Notch/Status -->
-               <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; font-weight: 600; font-family: 'Inter', sans-serif; color: #0f172a; margin-bottom: 30px;">
-                 <span>Mon, 07:32</span>
-                 <div style="width: 70px; height: 22px; background: black; border-radius: 20px;"></div>
-                 <div style="display: flex; gap: 4px;">
-                   <span class="material-symbols-outlined" style="font-size: 14px;">signal_cellular_4_bar</span>
-                   <span class="material-symbols-outlined" style="font-size: 14px;">wifi</span>
-                   <span class="material-symbols-outlined" style="font-size: 14px;">battery_full</span>
-                 </div>
-               </div>
-
-               <!-- Screen Content -->
-               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
-                 <h4 style="font-size: 1.4rem; font-weight: 700; font-family: 'Inter', sans-serif; color: #111827; line-height: 1.2; margin: 0;">Today's routine<br/>stacks</h4>
-                 <span style="background: #fbbf24; color: #78350f; padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">4 active stacks</span>
-               </div>
-               
-               <!-- Mock blocks -->
-               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                 
-                 <div style="background: #dcfce7; height: 130px; border-radius: 20px; padding: 16px; display: flex; flex-direction: column;">
-                   <div><span style="background: #22c55e; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">3 habits</span></div>
-                   <div style="margin-top: auto;">
-                     <div style="font-weight: 800; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #14532d; margin-bottom: 4px;">Morning Start</div>
-                     <div style="font-size: 0.7rem; color: #166534; line-height: 1.3;">Water, stretch, plan</div>
-                   </div>
-                 </div>
-
-                 <div style="background: #f3e8ff; height: 130px; border-radius: 20px; padding: 16px; display: flex; flex-direction: column;">
-                   <div><span style="background: #a855f7; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">3 habits</span></div>
-                   <div style="margin-top: auto;">
-                     <div style="font-weight: 800; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4c1d95; margin-bottom: 4px;">Focus Block</div>
-                     <div style="font-size: 0.7rem; color: #581c87; line-height: 1.3;">Deep work, break</div>
-                   </div>
-                 </div>
-
-                 <div style="background: #ffedd5; height: 130px; border-radius: 20px; padding: 16px; display: flex; flex-direction: column;">
-                   <div><span style="background: #f97316; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">2 habits</span></div>
-                   <div style="margin-top: auto;">
-                     <div style="font-weight: 800; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #7c2d12; margin-bottom: 4px;">Weekend Prep</div>
-                     <div style="font-size: 0.7rem; color: #9a3412; line-height: 1.3;">Groceries, laundry</div>
-                   </div>
-                 </div>
-
-                 <div style="background: #e0e7ff; height: 130px; border-radius: 20px; padding: 16px; display: flex; flex-direction: column;">
-                   <div><span style="background: #3b82f6; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">2 habits</span></div>
-                   <div style="margin-top: auto;">
-                     <div style="font-weight: 800; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #312e81; margin-bottom: 4px;">Evening Reset</div>
-                     <div style="font-size: 0.7rem; color: #3730a3; line-height: 1.3;">Review, phone off</div>
-                   </div>
-                 </div>
-
-               </div>
-               
-               <!-- Little popup overlapping -->
-               <div style="position: absolute; left: -40px; top: 160px; background: white; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); padding: 16px; width: 170px; z-index: 10;">
-                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                   <span style="font-weight: 700; font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #111827;">Morning Start</span>
-                   <span style="background: #fbbf24; color: #78350f; padding: 2px 6px; border-radius: 8px; font-size: 0.65rem; font-weight: 700;">85%</span>
-                 </div>
-                 <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
-                   <span class="material-symbols-outlined" style="color: #22c55e; font-size: 16px; font-variation-settings: 'FILL' 1;">check_circle</span>
-                   <span style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #6b7280; text-decoration: line-through; line-height: 1.2;">Drink a full glass of water</span>
-                 </div>
-                 <div style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
-                   <span class="material-symbols-outlined" style="color: #22c55e; font-size: 16px; font-variation-settings: 'FILL' 1;">check_circle</span>
-                   <span style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #6b7280; text-decoration: line-through; line-height: 1.2;">Do a short stretch</span>
-                 </div>
-                 <div style="display: flex; align-items: flex-start; gap: 8px;">
-                   <span class="material-symbols-outlined" style="color: #d1d5db; font-size: 16px; font-variation-settings: 'FILL' 1;">radio_button_unchecked</span>
-                   <span style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #111827; font-weight: 500; line-height: 1.2;">Review and plan the day</span>
-                 </div>
-               </div>
-
-             </div>
+          <div class="routine-poster-right" style="flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2; min-height: 400px; padding-right: 20px;">
+             <img src="/images/tab.png" alt="Tablet Dashboard Mockup" style="max-width: 100%; max-height: 120%; object-fit: contain; position: absolute; right: 0; top: -50px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));" />
           </div>
 
-          <p style="font-size: 0.85rem; font-family: 'Inter', sans-serif; color: #9ca3af; position: absolute; bottom: 32px; left: 48px; z-index: 2; margin: 0;">
-            *Simple blocks help you stay on track without thinking.
+          <p class="routine-poster-footer" style="font-size: 0.85rem; font-family: 'Inter', sans-serif; color: #9ca3af; position: absolute; bottom: 32px; left: 48px; z-index: 2; margin: 0;">
+            *Custom-built systems tailored for your exact operational needs.
           </p>
 
         </div>
@@ -769,6 +732,9 @@ export function renderHomePage(): string {
         <!-- The Globe -->
         <style>
           @media (max-width: 768px) {
+            .globe-section {
+              padding-bottom: 0px !important;
+            }
             .projects-badge {
               font-size: 0.55rem !important;
               padding: 4px 10px !important;
@@ -779,11 +745,21 @@ export function renderHomePage(): string {
               width: calc(100% + 40px) !important;
               margin-left: -20px !important;
               margin-right: -20px !important;
+              margin-bottom: 0px !important;
+              background-color: #e0f2fe !important;
+              -webkit-mask-image: linear-gradient(to top, transparent 0%, black 15%) !important;
+              mask-image: linear-gradient(to top, transparent 0%, black 15%) !important;
+            }
+            .globe-bottom-fade {
+              display: none !important;
             }
             .globe-video-element {
               width: 130vw !important;
               height: 130vw !important;
               max-width: none !important;
+            }
+            .stats-container {
+              margin-bottom: 20px !important;
             }
           }
         </style>
@@ -798,7 +774,7 @@ export function renderHomePage(): string {
           <div style="position: absolute; bottom: -20px; left: -10%; width: 120%; height: 160px; background-image: url('/images/cloude_img.avif'); background-size: cover; background-position: top center; z-index: 5; pointer-events: none;"></div>
           
           <!-- Bottom Fade to match section color -->
-          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, #e0f2fe 20%, transparent 100%); z-index: 6; pointer-events: none;"></div>
+          <div class="globe-bottom-fade" style="position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, #e0f2fe 20%, transparent 100%); z-index: 6; pointer-events: none;"></div>
           
         </div>
 
@@ -998,12 +974,24 @@ export function initHome(): void {
       let progress = (currentScrollY - splitWrapperTop) / stickyDistance;
       progress = Math.max(0, Math.min(1, progress));
 
-      const offsetPercent = progress * (200 / 3);
+      const totalCards = 3;
+      
+      // Calculate stepped progress for a smooth magnetic snap effect
+      const rawIndex = progress * (totalCards - 1);
+      const i = Math.floor(rawIndex);
+      const f = rawIndex - i;
+      
+      // Cosine easing creates a natural slowdown at the edges (centers of cards)
+      const fStepped = (1 - Math.cos(f * Math.PI)) / 2;
+      
+      const steppedProgress = Math.min(1, Math.max(0, (i + fStepped) / (totalCards - 1)));
+
+      const offsetPercent = steppedProgress * (200 / 3);
       splitLeft.style.transform = `translateY(-${offsetPercent}%)`;
       splitRight.style.transform = `translateY(${offsetPercent}%)`;
 
-      const totalCards = 3;
-      const cardIndex = Math.min(Math.floor(progress * totalCards), totalCards - 1);
+      // Use steppedProgress to accurately determine active card index
+      const cardIndex = Math.min(Math.round(steppedProgress * (totalCards - 1)), totalCards - 1);
 
       if (cardIndex !== lastCardIndex && textCards.length > 0) {
         lastCardIndex = cardIndex;

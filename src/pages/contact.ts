@@ -86,8 +86,8 @@ export function renderContactPage(): string {
           
           @media (max-width: 900px) {
             .svc-contact-card { flex-direction: column; }
-            .svc-contact-image { height: 300px; }
-            .svc-contact-form { padding: 40px 24px; }
+            .svc-contact-image { flex: none !important; height: 250px; width: 100%; }
+            .svc-contact-form { flex: none !important; padding: 40px 24px; width: 100%; box-sizing: border-box; }
             .svc-form-row { flex-direction: column; gap: 16px; margin-bottom: 16px; }
           }
         </style>
