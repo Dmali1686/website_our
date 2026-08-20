@@ -1572,11 +1572,11 @@ export function initServiceShowcaseTabs(): void {
 
   // Process Carousel Logic
   const processCardsData = [
-    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
-    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
-    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
-    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
-    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
+    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/1.png' },
+    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/2.png' },
+    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/3.png' },
+    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/4.png' },
+    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/5.png' }
   ];
 
   const carouselViewport = document.getElementById('processCarousel');

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cresenixsolutions.com/sitemap.xml
+
+# Disallow admin/internal paths
+Disallow: /api/
+Disallow: /backend/

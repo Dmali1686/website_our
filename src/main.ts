@@ -24,8 +24,8 @@ import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
 registerRoutes([
   {
     path: '/',
-    title: 'Custom Software, AI & App Development | Cresenix Solutions LLP',
-    description: 'Cresenix Solutions LLP builds custom software, mobile apps, AI chatbots, ERP systems, and digital marketing solutions for startups, SMEs, and enterprises across India.',
+    title: 'Custom Software & AI Development Company in Pune | Cresenix Solutions LLP',
+    description: 'Cresenix Solutions LLP is a leading software development company in Pimpri-Chinchwad, Pune. We build custom software, mobile apps, AI chatbots, ERP systems, and LMS platforms for startups, SMEs, and enterprises across Maharashtra and India.',
     render: renderHomePage,
     onMount: () => {
       initNavbar();
@@ -34,8 +34,8 @@ registerRoutes([
   },
   {
     path: '/services',
-    title: 'Our Services | Cresenix Solutions LLP',
-    description: 'Explore our comprehensive digital solutions including mobile app development, enterprise ERP systems, and custom LMS platforms.',
+    title: 'Software Development Services in Pimpri-Chinchwad & Pune | Cresenix Solutions',
+    description: 'Explore our software development services in Pune — mobile app development, enterprise ERP systems, custom LMS platforms, AI chatbots, and web applications for businesses in Pimpri-Chinchwad and Maharashtra.',
     render: renderServicesPage,
     onMount: () => {
       initNavbar();
@@ -44,8 +44,8 @@ registerRoutes([
   },
   {
     path: '/ai-solutions',
-    title: 'AI Chatbots, Voice Agents & Automation | Cresenix Solutions',
-    description: 'Build intelligent AI chatbots, voice assistants, calling agents, OCR systems, and workflow automation with Cresenix Solutions. Scalable AI for modern enterprises.',
+    title: 'AI Chatbots & Automation Solutions in Pune | Cresenix Solutions',
+    description: 'Build intelligent AI chatbots, voice assistants, calling agents, OCR systems, and workflow automation with Cresenix Solutions in Pimpri-Chinchwad, Pune. Scalable AI solutions for modern enterprises in Maharashtra.',
     render: renderAISolutionsPage,
     onMount: () => {
       initNavbar();
@@ -54,15 +54,15 @@ registerRoutes([
   },
   {
     path: '/erp-lms',
-    title: 'Custom ERP & LMS Development Company | Cresenix Solutions',
-    description: 'Custom ERP software and Learning Management System (LMS) development by Cresenix Solutions. Streamline HR, payroll, inventory, and education delivery.',
+    title: 'Custom ERP & LMS Development Company in Pune | Cresenix Solutions',
+    description: 'Custom ERP software and Learning Management System (LMS) development in Pimpri-Chinchwad, Pune by Cresenix Solutions. Streamline HR, payroll, inventory, and education delivery for businesses across Maharashtra.',
     render: renderERPLMSPage,
     onMount: initNavbar
   },
   {
     path: '/portfolio',
-    title: 'Case Studies & Portfolio | Cresenix Solutions LLP',
-    description: 'Explore real case studies from Cresenix Solutions — custom LMS platforms, animal rescue apps, charity ERP systems, and industrial automation projects.',
+    title: 'Case Studies & Portfolio — Software Projects in Pune | Cresenix Solutions',
+    description: 'Explore real case studies from Cresenix Solutions in Pune — custom LMS platforms, animal rescue apps, charity ERP systems, and industrial automation projects delivered across Pimpri-Chinchwad and Maharashtra.',
     render: renderPortfolioPage,
     onMount: () => {
       initNavbar();
@@ -71,8 +71,8 @@ registerRoutes([
   },
   {
     path: '/use-cases',
-    title: 'Use Cases | Cresenix Solutions LLP',
-    description: 'Explore real-world use cases of Cresenix Solutions custom software, AI, and enterprise applications.',
+    title: 'Software Use Cases & Industry Solutions in Pune | Cresenix Solutions',
+    description: 'Explore real-world use cases of Cresenix Solutions custom software, AI, and enterprise applications built for businesses in Pune, Pimpri-Chinchwad, and across India.',
     render: renderUseCasesPage,
     onMount: () => {
       initNavbar();
@@ -81,8 +81,8 @@ registerRoutes([
   },
   {
     path: '/about',
-    title: 'About Cresenix Solutions LLP | AI & Software Consultancy',
-    description: 'Cresenix Solutions LLP is an AI and software consultancy building custom enterprise applications, intelligent automation, and scalable digital solutions.',
+    title: 'About Cresenix Solutions LLP | Software Company in Pune, Pimpri-Chinchwad',
+    description: 'Cresenix Solutions LLP is a software development and AI consultancy based in Pimpri-Chinchwad, Pune. We build custom enterprise applications, intelligent automation, and scalable digital solutions for businesses across Maharashtra.',
     render: renderAboutPage,
     onMount: () => {
       initNavbar();
@@ -91,8 +91,8 @@ registerRoutes([
   },
   {
     path: '/contact',
-    title: 'Contact Us — Free Consultation | Cresenix Solutions',
-    description: 'Book a free software consultation with Cresenix Solutions. Get expert advice on custom software, AI, mobile apps, and enterprise system development.',
+    title: 'Contact Us in Pimpri-Chinchwad, Pune — Free Consultation | Cresenix Solutions',
+    description: 'Book a free software consultation with Cresenix Solutions in Pune. Get expert advice on custom software, AI chatbots, mobile apps, ERP, and LMS development in Pimpri-Chinchwad and Maharashtra.',
     render: renderContactPage,
     onMount: () => {
       initNavbar();
@@ -101,8 +101,8 @@ registerRoutes([
   },
   {
     path: '/careers',
-    title: 'Careers at Cresenix Solutions LLP | Join Our Team',
-    description: 'Join Cresenix Solutions LLP — explore open positions in software development, AI engineering, mobile development, and digital marketing.',
+    title: 'Careers at Cresenix Solutions, Pune | Software Development Jobs in PCMC',
+    description: 'Join Cresenix Solutions LLP in Pimpri-Chinchwad, Pune — explore open positions in software development, AI engineering, mobile development, and digital marketing.',
     render: renderCareersPage,
     onMount: () => {
       initNavbar();

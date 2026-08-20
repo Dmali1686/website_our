@@ -388,16 +388,16 @@ export function renderHomePage(): string {
                 height: auto;
                 max-height: none;
                 border-radius: 0;
-                margin: 0;
-                width: 100%;
+                margin: 0 -20px;
+                width: calc(100% + 40px);
                 box-shadow: none;
                 
                 /* Horizontal Scroll Grid */
                 display: grid;
                 grid-template-rows: auto auto;
-                grid-template-columns: repeat(3, 85vw);
+                grid-template-columns: 7.5vw repeat(3, 85vw) 7.5vw;
                 gap: 16px;
-                padding: 0 calc(50% - 42.5vw) 30px;
+                padding: 0 0 30px 0;
                 overflow-x: auto;
                 overflow-y: hidden;
                 scroll-snap-type: x mandatory;
@@ -407,7 +407,14 @@ export function renderHomePage(): string {
                 display: none; /* Safari and Chrome */
               }
               
-              /* Ensure there's a padding element at the end for the last item, or rely on padding */
+              /* Spacer elements to avoid clipping bugs on mobile */
+              .snap-sticky-viewport::before,
+              .snap-sticky-viewport::after {
+                content: '';
+                display: block;
+              }
+              .snap-sticky-viewport::before { grid-column: 1; grid-row: 1 / span 2; }
+              .snap-sticky-viewport::after { grid-column: 5; grid-row: 1 / span 2; }
 
               .snap-half, .snap-slide-track {
                 display: contents; /* Flattens the DOM for CSS Grid */
@@ -418,17 +425,17 @@ export function renderHomePage(): string {
                 transform: none !important;
               }
 
-              /* Column 1: Image 1 and Text 1 */
-              .snap-half.right .snap-card:nth-child(3) { grid-column: 1; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
-              .snap-half.left .snap-text-card:nth-child(1) { grid-column: 1; grid-row: 2; margin-top: 0; }
+              /* Column 2: Image 1 and Text 1 */
+              .snap-half.right .snap-card:nth-child(3) { grid-column: 2; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(1) { grid-column: 2; grid-row: 2; margin-top: 0; scroll-snap-align: center; }
               
-              /* Column 2: Image 2 and Text 2 */
-              .snap-half.right .snap-card:nth-child(2) { grid-column: 2; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
-              .snap-half.left .snap-text-card:nth-child(2) { grid-column: 2; grid-row: 2; margin-top: 0; }
+              /* Column 3: Image 2 and Text 2 */
+              .snap-half.right .snap-card:nth-child(2) { grid-column: 3; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(2) { grid-column: 3; grid-row: 2; margin-top: 0; scroll-snap-align: center; }
               
-              /* Column 3: Image 3 and Text 3 */
-              .snap-half.right .snap-card:nth-child(1) { grid-column: 3; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
-              .snap-half.left .snap-text-card:nth-child(3) { grid-column: 3; grid-row: 2; margin-top: 0; }
+              /* Column 4: Image 3 and Text 3 */
+              .snap-half.right .snap-card:nth-child(1) { grid-column: 4; grid-row: 1; border-radius: 24px; min-height: 250px; scroll-snap-align: center; }
+              .snap-half.left .snap-text-card:nth-child(3) { grid-column: 4; grid-row: 2; margin-top: 0; scroll-snap-align: center; }
 
               .snap-text-card {
                 padding: 32px 24px;
@@ -796,7 +803,245 @@ export function renderHomePage(): string {
 
       </section>
 
+      <!-- Address / Location Section -->
+      <section class="color-section" data-color="#f8fafc" style="background: transparent; padding: 80px 20px 100px; position: relative; overflow: hidden;">
+        <style>
+          .address-section-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          .address-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: stretch;
+          }
+          .address-info-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 48px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          .address-map-card {
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            min-height: 380px;
+          }
+          .address-map-card iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            border: 0;
+            display: block;
+          }
+          .address-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+            border: 1px solid #bfdbfe;
+            border-radius: 999px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #1d4ed8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+            font-family: 'Inter', sans-serif;
+          }
+          .address-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+            line-height: 1.15;
+          }
+          .address-detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+          }
+          .address-detail-row:hover {
+            background: #f1f5f9;
+            transform: translateX(4px);
+          }
+          .address-icon-circle {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .address-detail-text {
+            font-family: 'Inter', sans-serif;
+          }
+          .address-detail-text h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0 0 4px 0;
+          }
+          .address-detail-text p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #1e293b;
+            margin: 0;
+            line-height: 1.5;
+          }
+          .address-detail-text a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+          }
+          .address-detail-text a:hover {
+            color: #1d4ed8;
+          }
+          @media (max-width: 768px) {
+            .address-grid {
+              grid-template-columns: 1fr;
+            }
+            .address-info-card {
+              padding: 32px 24px;
+            }
+            .address-map-card {
+              min-height: 280px;
+            }
+            .address-map-card iframe {
+              min-height: 280px;
+            }
+          }
+        </style>
+
+        <div class="address-section-wrapper">
+          <div style="text-align: center; margin-bottom: 48px;">
+            <div class="address-label">
+              <span class="material-symbols-outlined" style="font-size: 16px;">location_on</span>
+              Our Office
+            </div>
+            <h2 class="address-title">Visit Us or Get In Touch</h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+              We'd love to hear from you. Drop by our office or reach out through any of the channels below.
+            </p>
+          </div>
+
+          <div class="address-grid">
+            <!-- Info Card -->
+            <div class="address-info-card">
+              <div class="address-detail-row">
+                <div class="address-icon-circle" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);">
+                  <span class="material-symbols-outlined" style="color: #2563eb; font-size: 22px;">apartment</span>
+                </div>
+                <div class="address-detail-text">
+                  <h4>Office Address</h4>
+                  <p>Office No. 302, 3rd Floor, Sai Plaza,<br/>Athavan Chowk, Nandadeep Colony,<br/>Kalewadi, Pimpri-Chinchwad,<br/>Maharashtra 411017</p>
+                </div>
+              </div>
+
+              <div class="address-detail-row">
+                <div class="address-icon-circle" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                  <span class="material-symbols-outlined" style="color: #16a34a; font-size: 22px;">call</span>
+                </div>
+                <div class="address-detail-text">
+                  <h4>Phone</h4>
+                  <p><a href="tel:+917387792415">+91 73877 92415</a></p>
+                </div>
+              </div>
+
+              <div class="address-detail-row">
+                <div class="address-icon-circle" style="background: linear-gradient(135deg, #fef3c7, #fde68a);">
+                  <span class="material-symbols-outlined" style="color: #d97706; font-size: 22px;">mail</span>
+                </div>
+                <div class="address-detail-text">
+                  <h4>Email</h4>
+                  <p><a href="mailto:info@cresenixsolutions.com">info@cresenixsolutions.com</a></p>
+                </div>
+              </div>
+
+              <div class="address-detail-row">
+                <div class="address-icon-circle" style="background: linear-gradient(135deg, #fdf2f8, #fce7f3);">
+                  <span class="material-symbols-outlined" style="color: #db2777; font-size: 22px;">schedule</span>
+                </div>
+                <div class="address-detail-text">
+                  <h4>Working Hours</h4>
+                  <p>Mon – Sat: 10:00 AM – 7:00 PM</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Card -->
+            <div class="address-map-card">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.5!2d73.7988!3d18.6298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9e76c8fa205%3A0x71fd4d5e183a24b4!2sKalewadi%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411017!5e0!3m2!1sen!2sin!4v1703011200000!5m2!1sen!2sin" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Cresenix Solutions Office - Kalewadi, Pimpri-Chinchwad"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
+
+    <!-- Sticky WhatsApp Button -->
+    <a id="whatsapp-sticky-btn" href="https://wa.me/917387792415?text=Hi%20Cresenix%20Solutions!%20I'm%20interested%20in%20your%20services." target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" style="position: fixed; bottom: 28px; right: 28px; z-index: 9999; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; background: #25D366; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); text-decoration: none; animation: whatsapp-pulse 2s infinite;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      <!-- Tooltip -->
+      <span class="whatsapp-tooltip" style="position: absolute; right: 72px; background: #1e293b; color: white; padding: 8px 16px; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: all 0.3s ease; transform: translateX(8px); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">Chat with us</span>
+    </a>
+    <style>
+      @keyframes whatsapp-pulse {
+        0% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.15), 0 0 0 0 rgba(37, 211, 102, 0.4); }
+        70% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.15), 0 0 0 18px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45), 0 2px 8px rgba(0,0,0,0.15), 0 0 0 0 rgba(37, 211, 102, 0); }
+      }
+      #whatsapp-sticky-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0,0,0,0.2);
+      }
+      #whatsapp-sticky-btn:hover .whatsapp-tooltip {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      @media (max-width: 768px) {
+        #whatsapp-sticky-btn {
+          bottom: 20px !important;
+          right: 20px !important;
+          width: 54px !important;
+          height: 54px !important;
+        }
+        #whatsapp-sticky-btn svg {
+          width: 26px;
+          height: 26px;
+        }
+        .whatsapp-tooltip {
+          display: none !important;
+        }
+      }
+    </style>
+
     ${renderFooter()}
   `;
 }
