@@ -55,13 +55,13 @@ export function renderHomePage(): string {
             <div class="panels3d-scene" id="panels-scene-home">
               <div class="panels3d-wrap" id="panels-wrap-home">
                 <div class="panels3d-panel" style="padding: 0;">
-                  <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  <img src="/images/mobile_screen_1.webp" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                 </div>
                 <div class="panels3d-panel" style="padding: 0;">
-                  <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  <img src="/images/mobile_screen_1.webp" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                 </div>
                 <div class="panels3d-panel" style="padding: 0;">
-                  <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                  <img src="/images/mobile_screen_1.webp" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                 </div>
               </div>
             </div> 
@@ -485,7 +485,7 @@ export function renderHomePage(): string {
                     <p class="snap-text-desc">
                       A powerful Learning Management System that helps students prepare, practice, and improve — with the right content, insights, and performance tracking.
                     </p>
-                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                    <a href="/use-cases" class="snap-text-cta" data-route="/use-cases">
                       View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                     </a>
                   </div>
@@ -496,7 +496,7 @@ export function renderHomePage(): string {
                     <p class="snap-text-desc">
                       An operational hub for animal rescue. Simplifying operations to save more lives with complete history tracking and volunteer management.
                     </p>
-                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                    <a href="/use-cases" class="snap-text-cta" data-route="/use-cases">
                       View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                     </a>
                   </div>
@@ -507,7 +507,7 @@ export function renderHomePage(): string {
                     <p class="snap-text-desc">
                       Smart ERP for stronger operations. A powerful solution built to streamline every process from orders to production with complete visibility.
                     </p>
-                    <a href="#/use-cases" class="snap-text-cta" data-route="/use-cases">
+                    <a href="/use-cases" class="snap-text-cta" data-route="/use-cases">
                       View Case Study <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
                     </a>
                   </div>
@@ -522,7 +522,7 @@ export function renderHomePage(): string {
                   
                   <!-- Image 3: Jayshree (bottom of track) -->
                   <div class="snap-card" style="background: #11152c;">
-                    <img src="/images/Jayshree_Electrocoating.png" alt="ERP System" class="snap-card-image" style="object-fit: cover;" />
+                    <img src="/images/Jayshree_Electrocoating.webp" alt="ERP System" class="snap-card-image" style="object-fit: cover;" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">Manufacturing & Enterprise</span>
                     </div>
@@ -530,14 +530,14 @@ export function renderHomePage(): string {
 
                   <!-- Image 2: NGO -->
                   <div class="snap-card" style="background: #e8f5e9;">
-                    <img src="/images/ngo_image.png" alt="MH-14 NGO" class="snap-card-image" />
+                    <img src="/images/ngo_image.webp" alt="MH-14 NGO" class="snap-card-image" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">NGO & Animal Welfare</span>
                     </div>
                   </div>
 
                   <div class="snap-card" style="background: #fce1e6;">
-                    <img src="/images/geek_by_choice_new.jpg" alt="Geek By Choice" class="snap-card-image" style="object-fit: cover;" />
+                    <img src="/images/geek_by_choice_new.webp" alt="Geek By Choice" class="snap-card-image" style="object-fit: cover;" />
                     <div class="snap-image-overlay">
                       <span class="snap-category-badge">Education & EdTech</span>
                     </div>
@@ -586,14 +586,14 @@ export function renderHomePage(): string {
              <p style="font-size: 1.15rem; font-family: 'Inter', sans-serif; color: #d1d5db; margin-bottom: 40px; line-height: 1.6;">
                Streamline your complex workflows into intelligent systems so your business runs efficiently without the clutter.
              </p>
-             <a href="#" style="display: inline-block; background: white; color: #111827; font-weight: 600; font-family: 'Inter', sans-serif; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-size: 1.05rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+             <a href="/contact" data-route="/contact" style="display: inline-block; background: white; color: #111827; font-weight: 600; font-family: 'Inter', sans-serif; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-size: 1.05rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
                Explore AI Solutions
              </a>
           </div>
 
           <!-- Right Phone Mockup -->
           <div class="routine-poster-right" style="flex: 1; display: flex; justify-content: flex-end; position: relative; z-index: 2; min-height: 400px; padding-right: 20px;">
-             <img src="/images/tab.png" alt="Tablet Dashboard Mockup" style="max-width: 100%; max-height: 120%; object-fit: contain; position: absolute; right: 0; top: -50px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));" />
+             <img src="/images/tab.webp" alt="Tablet Dashboard Mockup" style="max-width: 100%; max-height: 120%; object-fit: contain; position: absolute; right: 0; top: -50px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));" />
           </div>
 
           <p class="routine-poster-footer" style="font-size: 0.85rem; font-family: 'Inter', sans-serif; color: #9ca3af; position: absolute; bottom: 32px; left: 48px; z-index: 2; margin: 0;">
@@ -648,7 +648,7 @@ export function renderHomePage(): string {
             <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
               
               <!-- App Development -->
-              <a href="#/services?tab=app-dev" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit;">
+              <a href="/services?tab=app-dev" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit; text-decoration: none;">
                 <div class="service-icon-wrap" style="background: #eff6ff; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                   <span class="material-symbols-outlined" style="color: #2563eb; font-size: 28px;">smartphone</span>
                 </div>
@@ -662,7 +662,7 @@ export function renderHomePage(): string {
               </a>
 
               <!-- LMS Systems -->
-              <a href="#/services?tab=lms" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit;">
+              <a href="/services?tab=lms" class="service-card" style="flex: 1; background: white; border: 1px solid #e5e7eb; border-radius: 28px; padding: 32px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: center; transform: translateY(0); color: inherit; text-decoration: none;">
                 <div class="service-icon-wrap" style="background: #fdf4ff; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                   <span class="material-symbols-outlined" style="color: #c026d3; font-size: 28px;">school</span>
                 </div>
@@ -681,7 +681,7 @@ export function renderHomePage(): string {
             <div style="flex: 1; min-width: 320px; display: flex;">
               
               <!-- ERP Systems -->
-              <a href="#/services?tab=erp" class="service-card" style="flex: 1; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-radius: 28px; padding: 40px 48px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; transform: translateY(0); color: inherit;">
+              <a href="/services?tab=erp" class="service-card" style="flex: 1; background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-radius: 28px; padding: 40px 48px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; transform: translateY(0); color: inherit; text-decoration: none;">
                 
                 <!-- Decorative element -->
                 <div style="position: absolute; right: -50px; bottom: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); border-radius: 50%;"></div>
@@ -905,12 +905,14 @@ export function renderHomePage(): string {
             color: #1e293b;
             margin: 0;
             line-height: 1.5;
+            word-break: break-word;
           }
           .address-detail-text a {
             color: #2563eb;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
+            word-break: break-word;
           }
           .address-detail-text a:hover {
             color: #1d4ed8;

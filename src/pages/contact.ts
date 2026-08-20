@@ -38,7 +38,7 @@ export function renderContactPage(): string {
             backdrop-filter: blur(16px);
           }
           .svc-contact-image {
-            flex: 0 0 45%; background: url('/images/3d_software_services.jpg') center/cover no-repeat;
+            flex: 0 0 45%; background: url('/images/3d_software_services.webp') center/cover no-repeat;
             position: relative;
           }
           .svc-contact-image::after {

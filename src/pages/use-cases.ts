@@ -415,7 +415,7 @@ export function renderUseCasesPage(): string {
             <div class="uc-pane active" id="pane-mh14">
               
               <div class="uc-image-wrapper uc-animate-1">
-                <img src="/images/MH-14.png" alt="MH-14 Project" class="uc-image" />
+                <img src="/images/MH-14.webp" alt="MH-14 Project" class="uc-image" />
                 <div class="uc-image-overlay">
                   <span class="uc-project-category">NGO & Animal Welfare</span>
                   <h2 class="uc-project-title-large">MH-14 Platform</h2>
@@ -435,7 +435,7 @@ export function renderUseCasesPage(): string {
                     "Limited visibility into donations and expenses",
                     "Struggle to showcase real impact to donors"
                   ],
-                  "/images/error_mh14.png"
+                  "/images/error_mh14.webp"
                 )}
                 
                 ${renderSolution(
@@ -449,7 +449,7 @@ export function renderUseCasesPage(): string {
                     "Integrated donation and expense tracking",
                     "Public platform to showcase impact"
                   ],
-                  "/images/our_solution_mh14.png"
+                  "/images/our_solution_mh14.webp"
                 )}
                 
                 <!-- Impact -->
@@ -464,7 +464,7 @@ export function renderUseCasesPage(): string {
             <div class="uc-pane" id="pane-geek">
               
               <div class="uc-image-wrapper uc-animate-1">
-                <img src="/images/Geek by Choice.png" alt="Geek By Choice Project" class="uc-image" />
+                <img src="/images/Geek by Choice.webp" alt="Geek By Choice Project" class="uc-image" />
                 <div class="uc-image-overlay">
                   <span class="uc-project-category">Education & EdTech</span>
                   <h2 class="uc-project-title-large">Geek By Choice LMS</h2>
@@ -484,7 +484,7 @@ export function renderUseCasesPage(): string {
                     "Lack of clear performance insights",
                     "Need for scalable digital learning"
                   ],
-                  "/images/challenges-illustration.png"
+                  "/images/challenges-illustration.webp"
                 )}
                 
                 ${renderSolution(
@@ -498,7 +498,7 @@ export function renderUseCasesPage(): string {
                     "Clear progress insights",
                     "Engaging digital learning experience"
                   ],
-                  "/images/lms-solution.png"
+                  "/images/lms-solution.webp"
                 )}
                 
                 <!-- Impact -->
@@ -513,7 +513,7 @@ export function renderUseCasesPage(): string {
             <div class="uc-pane" id="pane-jayshree">
               
               <div class="uc-image-wrapper uc-animate-1">
-                <img src="/images/Jayshree Electrocoating.png" alt="Jayshree Electrocoating Project" class="uc-image" />
+                <img src="/images/Jayshree Electrocoating.webp" alt="Jayshree Electrocoating Project" class="uc-image" />
                 <div class="uc-image-overlay">
                   <span class="uc-project-category">Manufacturing & Enterprise</span>
                   <h2 class="uc-project-title-large">Jayshree Electrocoating ERP</h2>
@@ -533,7 +533,7 @@ export function renderUseCasesPage(): string {
                     "Slow manual decision-making",
                     "No real-time operational insights"
                   ],
-                  "/images/challenges-illustration.png"
+                  "/images/challenges-illustration.webp"
                 )}
                 
                 ${renderSolution(
@@ -548,7 +548,7 @@ export function renderUseCasesPage(): string {
                     "Seamless logistics coordination",
                     "Centralized reports and insights"
                   ],
-                  "/images/erp-solution.png"
+                  "/images/erp-solution.webp"
                 )}
                 
                 <!-- Impact -->

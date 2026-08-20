@@ -1,6 +1,6 @@
 /**
- * Cresenix Solutions — Hash-based SPA Router
- * Handles client-side routing between pages with smooth transitions.
+ * Cresenix Solutions — SPA Router
+ * Handles client-side routing between pages with History API (pushState) for SEO.
  */
 
 import { setActiveNavId, getActiveNavId } from './components/navbar';
@@ -11,6 +11,7 @@ export interface Route {
   description?: string;
   render: () => string;
   onMount?: () => void;
+  schema?: () => object; // Optional function returning JSON-LD object
 }
 
 let routes: Route[] = [];
@@ -27,23 +28,71 @@ export function onNavigate(cb: () => void): void {
   onNavigateCallback = cb;
 }
 
-/** Get the current hash path, defaulting to '/' */
-function getHashPath(): string {
-  let hash = window.location.hash.slice(1); // Remove '#'
-  if (hash.includes('?')) {
-    hash = hash.split('?')[0];
-  }
-  return hash || '/';
+/** Get the current path, defaulting to '/' */
+function getPath(): string {
+  const path = window.location.pathname;
+  return path || '/';
 }
 
 /** Navigate to a specific path */
 export function navigateTo(path: string): void {
-  window.location.hash = `#${path}`;
+  history.pushState(null, '', path);
+  renderRoute();
 }
 
 /** Find route matching a path */
 function matchRoute(path: string): Route | undefined {
   return routes.find(r => r.path === path);
+}
+
+/** Update the meta tags dynamically for SPA SEO */
+function updateMetaTags(route: Route, path: string): void {
+  // Update Meta Description
+  if (route.description) {
+    let metaDesc = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = 'description';
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = route.description;
+  }
+
+  // Update Canonical URL
+  let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = `https://cresenixsolutions.com${path === '/' ? '' : path}`;
+
+  // Update OG URL
+  let ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement | null;
+  if (!ogUrl) {
+    ogUrl = document.createElement('meta');
+    ogUrl.setAttribute('property', 'og:url');
+    document.head.appendChild(ogUrl);
+  }
+  ogUrl.content = `https://cresenixsolutions.com${path === '/' ? '' : path}`;
+  
+  // Update OG Title
+  let ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement | null;
+  if (!ogTitle) {
+    ogTitle = document.createElement('meta');
+    ogTitle.setAttribute('property', 'og:title');
+    document.head.appendChild(ogTitle);
+  }
+  ogTitle.content = route.title;
+  
+  // Update Twitter Title
+  let twitterTitle = document.querySelector('meta[name="twitter:title"]') as HTMLMetaElement | null;
+  if (!twitterTitle) {
+    twitterTitle = document.createElement('meta');
+    twitterTitle.name = 'twitter:title';
+    document.head.appendChild(twitterTitle);
+  }
+  twitterTitle.content = route.title;
 }
 
 /** Update the meta description tag dynamically for SPA SEO */
@@ -57,9 +106,78 @@ function updateMetaDescription(description: string): void {
   meta.content = description;
 }
 
+/** Update Structured Data (JSON-LD) dynamically */
+function updateStructuredData(route: Route, path: string): void {
+  // Remove existing dynamic schemas
+  document.querySelectorAll('script[data-dynamic-schema]').forEach(el => el.remove());
+
+  const baseUrl = 'https://cresenixsolutions.com';
+
+  // 1. BreadcrumbList Schema (for all pages except Home)
+  if (path !== '/') {
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": baseUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": route.title.split('|')[0].trim(),
+          "item": `${baseUrl}${path}`
+        }
+      ]
+    };
+    const breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.setAttribute('data-dynamic-schema', 'true');
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema);
+    document.head.appendChild(breadcrumbScript);
+  }
+
+  // 2. Service Schema (for specific service pages)
+  if (['/services', '/ai-solutions', '/erp-lms'].includes(path)) {
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": route.title.split('|')[0].trim(),
+      "description": route.description || '',
+      "provider": {
+        "@type": "Organization",
+        "name": "Cresenix Solutions LLP"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Maharashtra"
+      },
+      "url": `${baseUrl}${path}`
+    };
+    const serviceScript = document.createElement('script');
+    serviceScript.type = 'application/ld+json';
+    serviceScript.setAttribute('data-dynamic-schema', 'true');
+    serviceScript.textContent = JSON.stringify(serviceSchema);
+    document.head.appendChild(serviceScript);
+  }
+
+  // 3. Route-specific custom schema (e.g. BlogPosting, FAQPage)
+  if (route.schema) {
+    const customSchema = route.schema();
+    const customScript = document.createElement('script');
+    customScript.type = 'application/ld+json';
+    customScript.setAttribute('data-dynamic-schema', 'true');
+    customScript.textContent = JSON.stringify(customSchema);
+    document.head.appendChild(customScript);
+  }
+}
+
 /** Render the current route into #app */
 function renderRoute(): void {
-  const path = getHashPath();
+  const path = getPath();
   
   // Don't re-render the same page, but still update nav highlighting
   if (path === currentPath) {
@@ -91,10 +209,9 @@ function performRender(route: Route | undefined, appEl: HTMLElement, path: strin
     appEl.innerHTML = route.render();
     document.title = route.title;
     
-    // Update meta description for SEO
-    if (route.description) {
-      updateMetaDescription(route.description);
-    }
+    // Update meta tags for SEO
+    updateMetaTags(route, path);
+    updateStructuredData(route, path);
     
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
@@ -121,7 +238,7 @@ function performRender(route: Route | undefined, appEl: HTMLElement, path: strin
       <div class="page-wrapper" style="min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
         <h1 class="font-display-lg-mobile" style="color:var(--on-background);">404</h1>
         <p class="font-body-lg" style="color:var(--on-surface-variant);">Page not found.</p>
-        <a href="#/" class="btn-primary" style="margin-top:16px;">Back to Home</a>
+        <a href="/" class="btn-primary" style="margin-top:16px;">Back to Home</a>
       </div>
     `;
   }
@@ -156,7 +273,7 @@ function updateActiveNav(path: string): void {
 
 /** Initialize the router — call once on app start */
 export function initRouter(): void {
-  window.addEventListener('hashchange', renderRoute);
+  window.addEventListener('popstate', renderRoute);
   
   // Handle clicks on route links
   document.addEventListener('click', (e) => {
@@ -175,8 +292,8 @@ export function initRouter(): void {
         if (mobileMenu?.classList.contains('open')) {
           mobileMenu.classList.remove('open');
         }
-        // If already on this route, hashchange won't fire, so update nav manually
-        if (getHashPath() === route) {
+        // If already on this route, don't push state but update nav manually
+        if (getPath() === route) {
           updateActiveNav(route);
         } else {
           navigateTo(route);
@@ -191,5 +308,5 @@ export function initRouter(): void {
 
 /** Get the current active path */
 export function getCurrentPath(): string {
-  return getHashPath();
+  return getPath();
 }

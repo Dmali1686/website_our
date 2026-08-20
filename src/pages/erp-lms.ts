@@ -11,7 +11,7 @@ export function renderERPLMSPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Hero Section -->
-      <header class="hero" style="overflow:hidden; position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background-image: url('/images/erp-hero-bg.png'); background-size: cover; background-position: center;">
+      <header class="hero" style="overflow:hidden; position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background-image: url('/images/erp-hero-bg.webp'); background-size: cover; background-position: center;">
         
         <!-- Dark Gradient Overlay -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(17, 24, 39, 0.95) 100%); z-index: 1;"></div>
@@ -19,7 +19,7 @@ export function renderERPLMSPage(): string {
         <!-- Full-height Dissolved Image on the Right -->
         <div class="animate-scale-in delay-300" style="position: absolute; top: 0; right: 0; bottom: 0; width: 55%; z-index: 2; pointer-events: none; padding-left:70px">
           <img
-            src="/images/erp-team.png"
+            src="/images/erp-team.webp"
             alt="Enterprise technology team"
             style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center left; opacity: 0.8; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);"
           />
@@ -39,10 +39,10 @@ export function renderERPLMSPage(): string {
                 Custom systems designed for operational excellence. Streamline HR, payroll, inventory management, and educational delivery with scalable, high-performance platforms.
               </p>
               <div class="hero-actions animate-fade-in-up delay-300" style="display: flex; gap: 16px; flex-wrap: wrap;">
-                <a href="#/contact" data-route="/contact" style="background: #3b82f6; color: white; text-decoration: none; border: none; padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); transition: transform 0.2s;">
-                  Request Demo <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
+                <a href="/contact" data-route="/contact" style="background: #3b82f6; color: white; text-decoration: none; border: none; padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); transition: transform 0.2s;">
+                  Request Audit <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
                 </a>
-                <a data-route="/portfolio" href="#/portfolio" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: background 0.2s;">
+                <a data-route="/portfolio" href="/portfolio" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: background 0.2s;">
                   View Case Studies
                 </a>
               </div>

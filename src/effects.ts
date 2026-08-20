@@ -113,7 +113,7 @@ export function initContactForm(): void {
             </div>
             <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--on-surface); margin-bottom: 12px;">Message Sent Successfully!</h3>
             <p style="color: var(--on-surface-variant); line-height: 1.6; margin-bottom: 24px;">Thank you for reaching out to Cresenix Solutions. Our team will review your project details and get back to you shortly.</p>
-            <button onclick="window.location.hash='#/'" class="btn-primary" style="padding: 12px 24px;">Return Home</button>
+            <button onclick="window.location.href='/'" class="btn-primary" style="padding: 12px 24px;">Return Home</button>
           </div>
         `;
       }

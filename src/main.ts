@@ -4,7 +4,7 @@
  */
 
 import './style.css';
-import { registerRoutes, initRouter, onNavigate } from './router';
+import { registerRoutes, initRouter, onNavigate, getCurrentPath } from './router';
 import { initNavbar } from './components/navbar';
 import { initAllEffects } from './effects';
 import { renderHomePage, initHome } from './pages/home';
@@ -19,9 +19,33 @@ import { renderPrivacyPage } from './pages/privacy';
 import { renderTermsPage } from './pages/terms';
 import { renderDemoPage, initDemo, cleanupDemo } from './pages/demo';
 import { renderUseCasesPage, initUseCasesTabs } from './pages/use-cases';
+import { renderBlogPage } from './pages/blog';
+import { renderBlogPostPage } from './pages/blog-post';
+import { blogPosts } from './data/blog-posts';
+
+const dynamicBlogRoutes = blogPosts.map(post => ({
+  path: `/blog/${post.slug}`,
+  title: `${post.title} | Cresenix Solutions`,
+  description: post.excerpt,
+  render: () => renderBlogPostPage(post),
+  onMount: initNavbar,
+  schema: () => ({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": `https://cresenixsolutions.com${post.imageUrl}`,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "datePublished": post.date,
+    "description": post.excerpt
+  })
+}));
 
 // Register all application routes with SEO-optimized titles & descriptions
 registerRoutes([
+  ...dynamicBlogRoutes,
   {
     path: '/',
     title: 'Custom Software & AI Development Company in Pune | Cresenix Solutions LLP',
@@ -41,6 +65,44 @@ registerRoutes([
       initNavbar();
       initServiceShowcaseTabs();
     },
+    schema: () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the typical cost for custom software development?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Costs in India typically range from ₹3 Lakhs to ₹50 Lakhs depending on complexity, features, and platform support. We offer free technical consultations to provide you with a precise estimate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide post-launch support and maintenance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! We provide comprehensive SLA-backed maintenance and support for all our custom software, mobile apps, and ERP systems to ensure 99.9% uptime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which technologies do you use for mobile app development?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We specialize in modern frameworks like React Native and Flutter for cross-platform apps, as well as native Swift (iOS) and Kotlin (Android) when device-level performance is strictly required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to build an MVP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical Minimum Viable Product (MVP) takes anywhere from 6 to 12 weeks to design, develop, test, and launch, depending on the core features required."
+          }
+        }
+      ]
+    })
   },
   {
     path: '/ai-solutions',
@@ -50,7 +112,37 @@ registerRoutes([
     onMount: () => {
       initNavbar();
       initAISolutions();
-    }
+    },
+    schema: () => ({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an AI Chatbot and how does it help my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI Chatbot uses Natural Language Processing (NLP) to understand and respond to customer queries automatically. It can handle support, generate leads, and automate repetitive tasks 24/7 without human intervention."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you integrate AI Chatbots with WhatsApp?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We build custom AI Chatbots that seamlessly integrate with the WhatsApp Business API, allowing you to engage with customers directly on their preferred messaging platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data secure when using your AI solutions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We use enterprise-grade LLMs and isolated environments to ensure that your proprietary data is never used to train public models. Security and compliance are built in from day one."
+          }
+        }
+      ]
+    })
   },
   {
     path: '/erp-lms',
@@ -132,21 +224,30 @@ registerRoutes([
       initNavbar();
       initDemo();
     }
+  },
+  {
+    path: '/blog',
+    title: 'Blog & Resources | Cresenix Solutions',
+    description: 'Insights and expert guides on software development, AI automation, mobile apps, and scaling tech for modern businesses.',
+    render: renderBlogPage,
+    onMount: initNavbar
   }
 ]);
 
 // After every navigation, re-initialize scroll animations and effects
 onNavigate(() => {
+  const path = getCurrentPath();
+  
   // Cleanup scroll listeners if navigating away
-  if (window.location.hash !== '#/demo') {
+  if (path !== '/demo') {
     cleanupDemo();
   }
-  if (window.location.hash !== '#/careers') {
+  if (path !== '/careers') {
     cleanupCareers();
   }
   
   // Reset body background to default if not on demo page
-  if (window.location.hash !== '#/demo') {
+  if (path !== '/demo') {
     document.body.style.backgroundColor = '#fafafa';
   }
 

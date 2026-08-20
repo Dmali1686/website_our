@@ -43,7 +43,7 @@ const CASE_STUDIES: CaseStudy[] = [
       'Real-time geolocation tracking for emergency response',
     ],
     techStack: ['Flutter', 'Firebase', 'Google Maps API'],
-    imageUrl: '/images/mh14.png',
+    imageUrl: '/images/mh14.webp',
     imageAlt: 'MH12 Animal NGO mobile app showing map interface for rescue coordination',
     mockupType: 'mobile',
   },
@@ -138,7 +138,7 @@ function renderCaseStudy(cs: CaseStudy, index: number): string {
             <h4 class="cs-section-label">Tech Stack</h4>
             <div class="cs-tech-chips">${techHTML}</div>
           </div>
-          <a class="cs-cta" href="#">
+          <a class="cs-cta" href="/use-cases" data-route="/use-cases">
             View Case Study
             <span class="material-symbols-outlined">arrow_forward</span>
           </a>
@@ -159,7 +159,7 @@ export function renderPortfolioPage(): string {
     ${renderNavbar()}
     <div class="page-wrapper">
       <!-- Portfolio Hero -->
-      <header class="hero" style="overflow:hidden; position: relative; height: 150vh; display: flex; flex-direction: column; padding: 80px 0 0 0; background-image: url('/images/portfolio-bg.png'); background-size: cover; background-position: center;">
+      <header class="hero" style="overflow:hidden; position: relative; height: 150vh; display: flex; flex-direction: column; padding: 80px 0 0 0; background-image: url('/images/portfolio-bg.webp'); background-size: cover; background-position: center;">
         
         <!-- Dark Gradient Overlay -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(13, 20, 36, 0.85) 0%, rgba(20, 10, 30, 0.95) 100%); z-index: 1;"></div>
@@ -167,7 +167,7 @@ export function renderPortfolioPage(): string {
         <!-- Full-height Dissolved Image on the Right -->
         <div class="animate-scale-in delay-300" style="position: absolute; top: 0; right: 0; bottom: 0; width: 55%; z-index: 2; pointer-events: none;">
           <img
-            src="/images/portfolio-team.png"
+            src="/images/portfolio-team.webp"
             alt="Design and development team"
             style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center left; opacity: 0.85; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);"
           />
@@ -206,13 +206,13 @@ export function renderPortfolioPage(): string {
               <div class="panels3d-scene">
                 <div class="panels3d-wrap" id="panels-wrap">
                   <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                    <img src="/images/mobile_screen_1.webp" alt="Mobile App 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                   </div>
                   <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                    <img src="/images/mobile_screen_1.webp" alt="Mobile App 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                   </div>
                   <div class="panels3d-panel" style="padding: 0;">
-                    <img src="/images/mobile_screen_1.png" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
+                    <img src="/images/mobile_screen_1.webp" alt="Mobile App 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; pointer-events: none;" />
                   </div>
                 </div>
               </div> 
