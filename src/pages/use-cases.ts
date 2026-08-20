@@ -158,6 +158,7 @@ export function renderUseCasesPage(): string {
       }
       .uc-card-img {
         max-width: 100%; height: auto; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+        border-radius: 24px;
       }
       
       .uc-card-badge {
