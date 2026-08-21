@@ -545,21 +545,21 @@ export function renderServicesPage(): string {
                 <!-- Left Phone (Tilted) -->
                 <div class="svc-phone left">
                   <div class="svc-phone-screen">
-                    <img src="/images/app-screen-left.jpg" alt="Mobile App Finance Dashboard" loading="lazy" />
+                    <img src="/images/app-screen-left.webp" alt="Mobile App Finance Dashboard" loading="lazy" />
                   </div>
                 </div>
 
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <img src="/images/app-screen-center.jpg" alt="App Demo Video" loading="lazy" style="width: 100%; height: auto; display: block;" />
-                    <video class="svc-real-video" src="/videos/Web.mp4" loop playsinline controls poster="/images/app-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
+                    <img src="/images/app-screen-center.webp" alt="App Demo Video" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/Web.mp4" loop playsinline controls poster="/images/app-screen-center.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
 
                 <!-- Right Phone (Tilted) -->
                 <div class="svc-phone right">
                   <div class="svc-phone-screen">
-                    <img src="/images/app-screen-right.jpg" alt="Mobile App Analytics Dashboard" loading="lazy" />
+                    <img src="/images/app-screen-right.webp" alt="Mobile App Analytics Dashboard" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -632,18 +632,18 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone left">
                   <div class="svc-phone-screen">
-                    <img src="/images/erp-screen-left.jpg" alt="ERP Inventory Management" loading="lazy" />
+                    <img src="/images/erp-screen-left.webp" alt="ERP Inventory Management" loading="lazy" />
                   </div>
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <img src="/images/erp-screen-center.jpg" alt="ERP Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
-                    <video class="svc-real-video" src="/videos/erp.mp4" loop playsinline controls poster="/images/erp-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
+                    <img src="/images/erp-screen-center.webp" alt="ERP Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/erp.mp4" loop playsinline controls poster="/images/erp-screen-center.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
                 <div class="svc-phone right">
                   <div class="svc-phone-screen">
-                    <img src="/images/erp-screen-right.jpg" alt="ERP HR Management" loading="lazy" />
+                    <img src="/images/erp-screen-right.webp" alt="ERP HR Management" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -715,18 +715,18 @@ export function renderServicesPage(): string {
                 </div>
                 <div class="svc-phone left">
                   <div class="svc-phone-screen">
-                    <img src="/images/lms-screen-left.jpg" alt="LMS Course Catalog" loading="lazy" />
+                    <img src="/images/lms-screen-left.webp" alt="LMS Course Catalog" loading="lazy" />
                   </div>
                 </div>
                 <div class="svc-phone center">
                   <div class="svc-phone-screen">
-                    <img src="/images/lms-screen-center.jpg" alt="LMS Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
-                    <video class="svc-real-video" src="/videos/lms_main.mp4" loop playsinline controls poster="/images/lms-screen-center.jpg" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
+                    <img src="/images/lms-screen-center.webp" alt="LMS Dashboard Demo" loading="lazy" style="width: 100%; height: auto; display: block;" />
+                    <video class="svc-real-video" src="/videos/lms_main.mp4" loop playsinline controls poster="/images/lms-screen-center.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 5;"></video>
                   </div>
                 </div>
                 <div class="svc-phone right">
                   <div class="svc-phone-screen">
-                    <img src="/images/lms-screen-right.jpg" alt="LMS Quiz Interface" loading="lazy" />
+                    <img src="/images/lms-screen-right.webp" alt="LMS Quiz Interface" loading="lazy" />
                   </div>
                 </div>
               </div>
@@ -828,7 +828,7 @@ export function renderServicesPage(): string {
                   </div>
                 </div>
 
-                <a href="#/contact" data-route="/contact" class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                <a href="/contact" data-route="/contact" class="svc-cta-btn motion-fade-up">Let's Grow Together <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
               </div>
 
               <!-- Right Panel (Orbit) -->
@@ -1247,6 +1247,56 @@ export function renderServicesPage(): string {
       </section>
 
       <!-- Contact Form Section -->
+      <!-- FAQ Section -->
+      <section style="padding: 100px 24px; background: #ffffff;">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #111827; text-align: center; margin-bottom: 48px;">Frequently Asked Questions</h2>
+          <div class="svc-faq-list">
+            
+            <div class="svc-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="svc-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                What is the typical cost for custom software development?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="svc-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">Costs in India typically range from ₹3 Lakhs to ₹50 Lakhs depending on complexity, features, and platform support. We offer free technical consultations to provide you with a precise estimate.</p>
+              </div>
+            </div>
+
+            <div class="svc-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="svc-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                Do you provide post-launch support and maintenance?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="svc-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">Yes! We provide comprehensive SLA-backed maintenance and support for all our custom software, mobile apps, and ERP systems to ensure 99.9% uptime.</p>
+              </div>
+            </div>
+
+            <div class="svc-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="svc-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                Which technologies do you use for mobile app development?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="svc-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">We specialize in modern frameworks like React Native and Flutter for cross-platform apps, as well as native Swift (iOS) and Kotlin (Android) when device-level performance is strictly required.</p>
+              </div>
+            </div>
+
+            <div class="svc-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="svc-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                How long does it take to build an MVP?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="svc-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">A typical Minimum Viable Product (MVP) takes anywhere from 6 to 12 weeks to design, develop, test, and launch, depending on the core features required.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <section class="svc-contact-section" style="padding: 80px 24px 140px; background: #fafafa; display: flex; justify-content: center;">
         <style>
           .svc-contact-card {
@@ -1254,7 +1304,7 @@ export function renderServicesPage(): string {
             box-shadow: 0 20px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9;
           }
           .svc-contact-image {
-            flex: 0 0 45%; background: url('/images/3d_software_services.jpg') center/cover no-repeat;
+            flex: 0 0 45%; background: url('/images/3d_software_services.webp') center/cover no-repeat;
             position: relative;
           }
           .svc-contact-image::after {
@@ -1395,7 +1445,7 @@ export function initServiceShowcaseTabs(): void {
       e.preventDefault();
       const targetId = tab.getAttribute('data-svc-target');
       if (targetId) {
-        window.history.replaceState(null, '', `#/services?tab=${targetId}`);
+        window.history.replaceState(null, '', `/services?tab=${targetId}`);
         switchTab(targetId, false);
       }
     });
@@ -1403,24 +1453,20 @@ export function initServiceShowcaseTabs(): void {
 
   const handleHashChange = () => {
     if (!document.getElementById('svcTabs')) {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleHashChange);
       return;
     }
 
-    const hashStr = window.location.hash;
-    if (hashStr.includes('?')) {
-      const query = hashStr.split('?')[1];
-      const urlParams = new URLSearchParams(query);
-      const targetTabId = urlParams.get('tab');
-      if (targetTabId) {
-        switchTab(targetTabId, true);
-      }
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetTabId = urlParams.get('tab');
+    if (targetTabId) {
+      switchTab(targetTabId, true);
     }
   };
 
   // Run initial switch slightly delayed to ensure DOM is ready and painted
   setTimeout(handleHashChange, 100);
-  window.addEventListener('hashchange', handleHashChange);
+  window.addEventListener('popstate', handleHashChange);
 
   // Init text reveal word splitting
   const revealTexts = document.querySelectorAll('.textreveal-text');
@@ -1572,11 +1618,11 @@ export function initServiceShowcaseTabs(): void {
 
   // Process Carousel Logic
   const processCardsData = [
-    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/app-screen-left.jpg' },
-    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/app-screen-center.jpg' },
-    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/app-screen-right.jpg' },
-    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/erp-screen-left.jpg' },
-    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/erp-screen-right.jpg' }
+    { id: '01', title: 'Discover', desc: 'We research, analyze and understand your business challenges and opportunities.', icon: 'search', color: '#a78bfa', img: '/images/1.webp' },
+    { id: '02', title: 'Strategize', desc: 'We create a smart strategy tailored to your goals and market opportunities.', icon: 'lightbulb', color: '#fb923c', img: '/images/2.webp' },
+    { id: '03', title: 'Design', desc: 'We design intuitive, functional and user-friendly solutions that your users will love.', icon: 'edit', color: '#4ade80', img: '/images/3.webp' },
+    { id: '04', title: 'Develop', desc: 'We build robust and scalable solutions using the latest technologies.', icon: 'code', color: '#c084fc', img: '/images/4.webp' },
+    { id: '05', title: 'Deliver', desc: 'We deliver with excellence and continuously optimize for better performance and growth.', icon: 'bar_chart', color: '#60a5fa', img: '/images/5.webp' }
   ];
 
   const carouselViewport = document.getElementById('processCarousel');
@@ -1669,17 +1715,26 @@ export function initServiceShowcaseTabs(): void {
   const faqItems = document.querySelectorAll('.svc-faq-item');
   faqItems.forEach(item => {
     const btn = item.querySelector('.svc-faq-question');
+    const answer = item.querySelector('.svc-faq-answer') as HTMLElement;
+    const icon = item.querySelector('.material-symbols-outlined') as HTMLElement;
+    
     btn?.addEventListener('click', () => {
       const isActive = item.classList.contains('active');
 
       // Close all others
       faqItems.forEach(faq => {
         faq.classList.remove('active');
+        const fAns = faq.querySelector('.svc-faq-answer') as HTMLElement;
+        const fIcon = faq.querySelector('.material-symbols-outlined') as HTMLElement;
+        if (fAns) fAns.style.maxHeight = '0px';
+        if (fIcon) fIcon.style.transform = 'rotate(0deg)';
       });
 
       // Toggle current
       if (!isActive) {
         item.classList.add('active');
+        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
       }
     });
   });

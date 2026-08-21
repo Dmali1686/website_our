@@ -16,6 +16,7 @@ const NAV_LINKS: NavLink[] = [
   { path: '/services', label: 'Services', id: 'services' },
   { path: '/use-cases', label: 'Use Cases', id: 'use-cases' },
   { path: '/about', label: 'About Us', id: 'about' },
+  { path: '/blog', label: 'Blog', id: 'blog' },
 ];
 
 /* Track which nav item was last clicked so we only highlight that one */
@@ -66,7 +67,7 @@ export function renderNavbar(): string {
 
     if (link.dropdown) {
       const dropdownHtml = link.dropdown.map(d => 
-        `<a class="dropdown-link" data-route="${d.path}" data-nav-id="${d.id}" href="#${d.path}">${d.label}</a>`
+        `<a class="dropdown-link" data-route="${d.path}" data-nav-id="${d.id}" href="${d.path}">${d.label}</a>`
       ).join('');
       
       return `
@@ -81,7 +82,7 @@ export function renderNavbar(): string {
       `;
     }
     
-    return `<a class="nav-link${isActive ? ' active' : ''}" data-route="${link.path}" data-nav-id="${link.id}" href="#${link.path}">${link.label}</a>`;
+    return `<a class="nav-link${isActive ? ' active' : ''}" data-route="${link.path}" data-nav-id="${link.id}" href="${link.path}">${link.label}</a>`;
   }).join('');
 
   // Reset for mobile links
@@ -97,7 +98,7 @@ export function renderNavbar(): string {
           isChildActive = true;
           activatedRoutes.add(d.path);
         }
-        return `<a class="nav-link${isChildActive ? ' active' : ''}" data-route="${d.path}" data-nav-id="${d.id}" href="#${d.path}" style="padding-left: 32px; font-size: 0.95rem; font-weight: 500;">${d.label}</a>`;
+        return `<a class="nav-link${isChildActive ? ' active' : ''}" data-route="${d.path}" data-nav-id="${d.id}" href="${d.path}" style="padding-left: 32px; font-size: 0.95rem; font-weight: 500;">${d.label}</a>`;
       }).join('');
       
       return `
@@ -117,14 +118,14 @@ export function renderNavbar(): string {
         activatedRoutes.add(link.path!);
       }
     }
-    return `<a class="nav-link${isActive ? ' active' : ''}" data-route="${link.path}" data-nav-id="${link.id}" href="#${link.path}">${link.label}</a>`;
+    return `<a class="nav-link${isActive ? ' active' : ''}" data-route="${link.path}" data-nav-id="${link.id}" href="${link.path}">${link.label}</a>`;
   }).join('');
 
   return `
     <header class="main-nav" id="main-nav">
       <div class="nav-inner">
         <a class="nav-logo" href="/">
-          <img src="/images/logo.png" alt="Cresenix Solutions Logo" class="nav-logo-img" style="height: 36px; width: auto; object-fit: contain;" />
+          <img src="/images/logo.webp" alt="Cresenix Solutions Logo" class="nav-logo-img" style="height: 36px; width: auto; object-fit: contain;" />
           <div class="logo-text-stack">
             <span class="logo-text-top">CRESENIX</span>
             <span class="logo-text-bottom">SOLUTIONS LLP</span>
@@ -134,7 +135,7 @@ export function renderNavbar(): string {
           ${linksHTML}
         </nav>
         <div class="nav-actions">
-          <a class="nav-start-btn" data-route="/contact" href="#/contact" style="background: transparent; color: #111827; padding: 10px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.8';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
+          <a class="nav-start-btn" data-route="/contact" href="/contact" style="background: transparent; color: #111827; padding: 10px 24px; border-radius: 50px; font-weight: 600; font-family: 'Inter', sans-serif; text-decoration: none; font-size: 0.95rem; transition: transform 0.2s, opacity 0.2s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.opacity='0.8';" onmouseout="this.style.transform='scale(1)'; this.style.opacity='1';">
             Get in touch
           </a>
         </div>
@@ -147,7 +148,7 @@ export function renderNavbar(): string {
       <div class="mobile-menu-card">
         ${mobileLinksHTML}
         <div class="mobile-menu-actions">
-          <a class="nav-cta" data-route="/contact" href="#/contact">Get Started</a>
+          <a class="nav-cta" data-route="/contact" href="/contact">Get Started</a>
         </div>
       </div>
     </div>

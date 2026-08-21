@@ -12,12 +12,12 @@ export function renderAboutPage(): string {
     <div class="page-wrapper" style="background-color: #fafbfc; color: #334155; font-family: 'Inter', sans-serif;">
       
       <!-- Premium Hero (Home-Page Style Dissolve Layout) -->
-      <section class="abt-hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; background-image: url('/images/about-bg-medium.png'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
+      <section class="abt-hero" style="position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; background-image: url('/images/about-bg-medium.webp'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
         <!-- Dark/Medium Overlay to ensure text readability -->
         <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(14, 165, 233, 0.5) 100%); z-index: 1;"></div>
         
         <!-- Right Side Team Overlay (Dissolve Effect) -->
-        <div style="position: absolute; top: 0; right: 0; width: 55%; height: 100%; background-image: url('/images/portfolio-team.png'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 2; mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); opacity: 1;"></div>
+        <div style="position: absolute; top: 0; right: 0; width: 55%; height: 100%; background-image: url('/images/portfolio-team.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; z-index: 2; mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 20%, rgba(0, 0, 0, 1) 50%); opacity: 1;"></div>
         
         <div class="container" style="position: relative; z-index: 5;">
           
@@ -34,7 +34,7 @@ export function renderAboutPage(): string {
               We empower enterprises to navigate the complexities of the modern digital landscape through scalable, high-performance software architecture and state-of-the-art artificial intelligence integration.
             </p>
             <div class="animate-fade-in-up delay-300">
-              <a href="#/portfolio" class="btn-primary" style="background: #ffffff; color: #07476f; font-family: 'Inter', sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center; transition: all 0.3s ease;">
+              <a href="/portfolio" class="btn-primary" style="background: #ffffff; color: #07476f; font-family: 'Inter', sans-serif; font-weight: 600; padding: 14px 28px; border-radius: 8px; display: inline-flex; align-items: center; transition: all 0.3s ease;">
                 Discover Our Solutions
                 <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
               </a>
@@ -125,7 +125,7 @@ export function renderAboutPage(): string {
             <!-- Content side with Image -->
             <div class="animate-fade-in-up delay-200">
               <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.08); margin-bottom: 32px; position: relative;">
-                <img src="/images/about-team.png" alt="Cresenix Team Collaborating" style="width: 100%; height: auto; display: block;" />
+                <img src="/images/about-team.webp" alt="Cresenix Team Collaborating" style="width: 100%; height: auto; display: block;" />
               </div>
               <h3 class="journey-heading-main" style="font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: #07476f; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em;">We turn ideas into scalable digital solutions.</h3>
               
@@ -189,7 +189,7 @@ export function renderAboutPage(): string {
               
               <!-- Left Side: Image -->
               <div style="flex: 1 1 400px; position: relative; min-height: 400px;">
-                <img src="/images/raj.jpeg" alt="Raj Bhandari — Founder and CEO" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+                <img src="/images/raj.webp" alt="Raj Bhandari — Founder and CEO" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
               </div>
 
               <!-- Right Side: Content Wrapper -->
@@ -464,10 +464,10 @@ export function renderAboutPage(): string {
             Our team is a carefully curated collective of senior engineers, data scientists, and strategists. We operate with an agile mindset, fostering an environment where deep technical expertise meets creative problem-solving. We are dedicated, relentless, and driven by impact.
           </p>
           <div class="about-cta-buttons animate-fade-in-up delay-200">
-            <a href="#/contact" class="about-cta-btn" style="background: #0ea5e9; color: white;" onmouseover="this.style.background='#0284c7';" onmouseout="this.style.background='#0ea5e9';">
+            <a href="/contact" class="about-cta-btn" style="background: #0ea5e9; color: white;" onmouseover="this.style.background='#0284c7';" onmouseout="this.style.background='#0ea5e9';">
               Join Our Journey <span class="material-symbols-outlined ml-2 text-sm" style="margin-left: 8px;">rocket_launch</span>
             </a>
-            <a href="#/contact" class="about-cta-btn" style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='transparent';">
+            <a href="/contact" class="about-cta-btn" style="background: transparent; color: white; border: 2px solid rgba(255,255,255,0.3);" onmouseover="this.style.background='rgba(255,255,255,0.1)';" onmouseout="this.style.background='transparent';">
               Contact Us
             </a>
           </div>

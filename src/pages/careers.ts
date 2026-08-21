@@ -168,7 +168,7 @@ export function renderCareersPage(): string {
                     <span><span class="material-symbols-outlined">schedule</span> Full-time</span>
                   </div>
                 </div>
-                <a href="#/contact" class="career-job-btn">Apply Now</a>
+                <a href="/contact" class="career-job-btn">Apply Now</a>
               </div>
               <p class="career-job-desc">
                 We are looking for an experienced Frontend Developer with deep knowledge of modern JavaScript frameworks (React, Vue) and CSS architectures to build highly interactive, scalable user interfaces.
@@ -185,7 +185,7 @@ export function renderCareersPage(): string {
                     <span><span class="material-symbols-outlined">schedule</span> Full-time</span>
                   </div>
                 </div>
-                <a href="#/contact" class="career-job-btn">Apply Now</a>
+                <a href="/contact" class="career-job-btn">Apply Now</a>
               </div>
               <p class="career-job-desc">
                 Join our backend team to build and maintain robust APIs using Python and FastAPI. Experience with PostgreSQL and scalable cloud infrastructure is required.
@@ -196,7 +196,7 @@ export function renderCareersPage(): string {
           
           <div class="animate-fade-in-up delay-400 text-center" style="margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.2);">
             <p style="color: #e0f2fe; font-size: 1rem;">
-              Don't see a role that fits? <a href="#/contact" style="color: #ffffff; text-decoration: underline; font-weight: 600;">Send us your resume</a> anyway! We're always looking for talent.
+              Don't see a role that fits? <a href="/contact" style="color: #ffffff; text-decoration: underline; font-weight: 600;">Send us your resume</a> anyway! We're always looking for talent.
             </p>
           </div>
           

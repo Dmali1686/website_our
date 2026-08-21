@@ -42,7 +42,7 @@ export function renderAISolutionsPage(): string {
       <style>
         /* Hero Section */
         .hero {
-          overflow:hidden; position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background-image: url('/images/ai-hero-bg.png'); background-size: cover; background-position: center;
+          overflow:hidden; position: relative; min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background-image: url('/images/ai-hero-bg.webp'); background-size: cover; background-position: center;
         }
         
         /* New Full Orbit Section Styles */
@@ -192,7 +192,7 @@ export function renderAISolutionsPage(): string {
       <header class="hero">
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(7, 71, 111, 0.85) 0%, rgba(17, 24, 39, 0.95) 100%); z-index: 1;"></div>
         <div class="ai-hero-image-wrapper animate-scale-in delay-300" style="position: absolute; top: 0; right: 0; bottom: 0; width: 55%; z-index: 2; pointer-events: none; transition: all 0.3s;">
-          <img src="/images/happy-team.png" alt="Happy tech team" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center left; opacity: 0.8; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);" />
+          <img src="/images/happy-team.webp" alt="Happy tech team" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: center left; opacity: 0.8; -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to left, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);" />
         </div>
         <div class="container" style="position: relative; z-index: 5;">
           <div class="hero-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; min-height: 500px;">
@@ -212,7 +212,7 @@ export function renderAISolutionsPage(): string {
                 <button style="background: #3b82f6; color: white; border: none; padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4); transition: transform 0.2s;">
                   Explore Capabilities <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
                 </button>
-                <a data-route="/contact" href="#/contact" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: background 0.2s;">
+                <a data-route="/contact" href="/contact" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 14px 28px; border-radius: 100px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; transition: background 0.2s;">
                   Book a Consultation
                 </a>
               </div>
@@ -296,6 +296,47 @@ export function renderAISolutionsPage(): string {
               <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #94a3b8; line-height: 1.6;">Seamless integration into your existing tech stack, followed by continuous monitoring to ensure maximum performance.</p>
             </div>
             
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section style="padding: 100px 24px; background: #ffffff;">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #111827; text-align: center; margin-bottom: 48px;">Frequently Asked Questions</h2>
+          <div class="ai-faq-list">
+            
+            <div class="ai-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="ai-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                What is an AI Chatbot and how does it help my business?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="ai-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">An AI Chatbot uses Natural Language Processing (NLP) to understand and respond to customer queries automatically. It can handle support, generate leads, and automate repetitive tasks 24/7 without human intervention.</p>
+              </div>
+            </div>
+
+            <div class="ai-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="ai-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                Can you integrate AI Chatbots with WhatsApp?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="ai-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">Yes. We build custom AI Chatbots that seamlessly integrate with the WhatsApp Business API, allowing you to engage with customers directly on their preferred messaging platform.</p>
+              </div>
+            </div>
+
+            <div class="ai-faq-item" style="border-bottom: 1px solid #e5e7eb; padding: 20px 0;">
+              <button class="ai-faq-question" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: none; border: none; padding: 0; cursor: pointer; text-align: left; font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; color: #111827;">
+                Is my data secure when using your AI solutions?
+                <span class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+              </button>
+              <div class="ai-faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;">
+                <p style="padding-top: 16px; color: #4b5563; line-height: 1.6; margin: 0;">Absolutely. We use enterprise-grade LLMs and isolated environments to ensure that your proprietary data is never used to train public models. Security and compliance are built in from day one.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -407,4 +448,32 @@ export function initAISolutions(): void {
   }, { threshold: 0.2 });
 
   document.querySelectorAll('.animate-fade-in-up').forEach(el => observer.observe(el));
+
+  // FAQ Accordion Logic
+  const faqItems = document.querySelectorAll('.ai-faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.ai-faq-question');
+    const answer = item.querySelector('.ai-faq-answer') as HTMLElement;
+    const icon = item.querySelector('.material-symbols-outlined') as HTMLElement;
+    
+    btn?.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      // Close all others
+      faqItems.forEach(faq => {
+        faq.classList.remove('active');
+        const fAns = faq.querySelector('.ai-faq-answer') as HTMLElement;
+        const fIcon = faq.querySelector('.material-symbols-outlined') as HTMLElement;
+        if (fAns) fAns.style.maxHeight = '0px';
+        if (fIcon) fIcon.style.transform = 'rotate(0deg)';
+      });
+
+      // Toggle current
+      if (!isActive) {
+        item.classList.add('active');
+        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
 }
